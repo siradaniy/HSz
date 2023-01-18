@@ -77,6 +77,10 @@ local function webhook()
                             ["name"] = "Current Gems:",
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gem_amount.Value).." <:gem:997123585476927558>",
                             ["inline"] = true
+						}, {
+                            ["name"] = "Current Gold:",
+                            ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." <:gem:997123585476927558>",
+                            ["inline"] = true	
                         }, {
                             ["name"] = "Current Level:",
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",

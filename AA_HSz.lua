@@ -218,9 +218,9 @@ function sex()
         local gettrigon = gettrigonserver:Channel(" HOLYSHz Member Only")
         gettrigon:Label("Thank for Support")
 		gettrigon:Label("อย่าลืมต่อ Member กันด้วยละ")
-        gettrigon:Button("👉 Copy HOLYSHz Discord Link!", function()
-            setclipboard("https://discord.gg/6V8nzm5ZYB")
-            DiscordLib:Notification("Copied!!", "✔ ลิ้งคำเชิญของ Discord HOLYSHz Copy ไว้แล้ว เอาไปวางแล้วเข้าดิสมาได้เลย!!", "Okay!")
+        gettrigon:Button("👉 Copy HOLYSHz Member Link!", function()
+            setclipboard("https://www.youtube.com/channel/UC8IbVYA7y2q67zcsgsWbycA/join")
+            DiscordLib:Notification("Copied!!", "✔ ลิ้งสมัคร Member ของ HOLYSHz Copy ไว้แล้ว เอาไปวางแล้วกดสมัครได้เลย!!", "Okay!")
         end)
     end
 

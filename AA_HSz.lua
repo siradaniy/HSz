@@ -86,6 +86,7 @@ local function webhook()
                             ["name"] = "Current Gold:",
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true	
+						}	
                         }, {
                             ["name"] = "Current Level:",
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
@@ -503,7 +504,7 @@ function sex()
             elseif world =="Cape Canaveral" then
                 getgenv().leveldrop:Clear()
                 table.clear(levels)
-                getgenv().levels = {"jojo_infinite","jojo_level_1","jojo_level_2","jojo_level_3","jojo_level_4","jojo_level_5","jojo_level_6",}
+                getgenv().levels = {"jojo_infinite","jojo_level_1","jojo_level_2","jojo_level_3","jojo_level_4","jojo_level_5","jojo_level_6","jojo_legend_1","jojo_legend_2","jojo_legend_3",}
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
                 end

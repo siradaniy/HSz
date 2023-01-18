@@ -209,7 +209,7 @@ function sex()
         local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=7628278821")
         local gettrigon = gettrigonserver:Channel("📐 HOLYSHz Member Only")
         gettrigon:Label("Thank for Support")
-	gettrigon:Label("อย่าลืมต่อ Member กันด้วยละ")
+		gettrigon:Label("อย่าลืมต่อ Member กันด้วยละ")
         gettrigon:Button("👉 Copy HOLYSHz Discord Link!", function()
             setclipboard("https://discord.gg/6V8nzm5ZYB")
             DiscordLib:Notification("Copied!!", "✔ Trigon Evo's Discord Invite Link Has Been Copied To Your Clipboard!!", "Okay!")
@@ -745,7 +745,7 @@ devilcity:Label("Also if you have any old tier portal it may start it, so dont b
 
 
     local autofarmtab = autofrmserver:Channel("🤖 Auto Farm")
-    local devilcity = autofrmserver:Channel("👿 Devil City")
+    local devilcity = autofrmserver:Channel("😈 Devil City")
     local autoclngtab = autofrmserver:Channel("🎯 Auto Challenge")
     local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script_")
     local autoseltab = autofrmserver:Channel("💸 Auto Sell")
@@ -1057,19 +1057,9 @@ end)
 
 
     end
---#endregion
-local diskord = diskordserver:Channel("👾 Discord")
-diskord:Button("👉 Copy Official Discord Link!", function()
-    setclipboard("https://discord.gg/2ttfCfzxut")
-    DiscordLib:Notification("Copied!!", "✔ Discord Invite Link Has Been Copied To Your Clipboard!!", "Okay!")
-end)
 --#region Credits
 local credits = creditsserver:Channel("✨ Credits")
-credits:Label("Arpon AG#6612")
-credits:Label("Forever4D#0001")
-credits:Button("👉 Copy Official Discord Link!", function()
-    setclipboard("https://discord.gg/2ttfCfzxut")
-    DiscordLib:Notification("Copied!!", "✔ Discord Invite Link Has Been Copied To Your Clipboard!!", "Okay!")
+credits:Label("HOLYSHz#3819")
 end)
 --#endregion
 

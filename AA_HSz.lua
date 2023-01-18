@@ -218,6 +218,7 @@ function sex()
 
     local autofrmserver = win:Server("Auto Farm Section", "http://www.roblox.com/asset/?id=11579310982")
     local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=11585480207")
+	local diskordserver = win:Server("Discord Server   ", "http://www.roblox.com/asset/?id=12155612675")
     local creditsserver = win:Server("Credits          ", "http://www.roblox.com/asset/?id=11579371312")
 
 
@@ -1056,15 +1057,23 @@ end)
 
 
     end
+--#endregion
+local diskord = diskordserver:Channel("👾 Discord")
+diskord:Button("👉 HOLYSHz Discord Link!", function()
+    setclipboard("https://discord.gg/6V8nzm5ZYB")
+    DiscordLib:Notification("Copied!!", "✔ https://discord.gg/6V8nzm5ZYB!!", "Okay!")
+end)
 --#region Credits
 local credits = creditsserver:Channel("✨ Credits")
 credits:Label("HOLYSHz#3819")
+credits:Button("👉 HOLYSHz Discord Link!", function()
+    setclipboard("https://discord.gg/6V8nzm5ZYB")
+    DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
 end)
 --#endregion
 
 
 end
-
 --------------------------------------------------
 --------------------------------------------------
 

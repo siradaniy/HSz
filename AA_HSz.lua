@@ -63,6 +63,10 @@ local function webhook()
 								" <:wave:997136622363627530>",
 							["inline"] = true
 						}, {
+                            ["name"] = "Total Time:",
+                            ["value"] = tostring(ttime[2]) .. " ⏳",
+                            ["inline"] = true	
+						}, {
 							["name"] = "Recieved Gems:",
 							["value"] = gems .. " <:gem:997123585476927558>",
 							["inline"] = true
@@ -73,10 +77,6 @@ local function webhook()
 						}, {
                             ["name"] = "Recieved XP:",
                             ["value"] = XP .. " 🧪",
-                            ["inline"] = true
-                        }, {
-                            ["name"] = "Total Time:",
-                            ["value"] = tostring(ttime[2]) .. " ⏳",
                             ["inline"] = true
                         }, {
                             ["name"] = "Current Gems:",

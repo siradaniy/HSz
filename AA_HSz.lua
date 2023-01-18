@@ -218,8 +218,8 @@ function sex()
 
     local autofrmserver = win:Server("Auto Farm Section", "http://www.roblox.com/asset/?id=11579310982")
     local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=11585480207")
-    local diskordserver = win:Server("Discord Server   ", "http://www.roblox.com/asset/?id=12155612675")
-    local creditsserver = win:Server("Credits          ", "http://www.roblox.com/asset/?id=11579371312")
+	local diskordserver = win:Server("Discord Server   ", "http://www.roblox.com/asset/?id=12155612675")
+    local creditsserver = win:Server("Youtube          ", "http://www.roblox.com/asset/?id=11579371312")
 
 
     if game.PlaceId == 8304191830 then
@@ -1063,12 +1063,15 @@ diskord:Button("👉 HOLYSHz Discord Link!", function()
     setclipboard("https://discord.gg/6V8nzm5ZYB")
     DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
 end)
---#region Credits
-local credits = creditsserver:Channel("✨ Credits")
-credits:Label("HOLYSHz#3819")
-credits:Button("👉 HOLYSHz Discord Link!", function()
-    setclipboard("https://discord.gg/6V8nzm5ZYB")
-    DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
+--#region Youtube
+local credits = creditsserver:Channel("✨ Youtube")
+credits:Label("HOLYSHz")
+credits:Button("👉 HOLYSHz Youtube Link!", function()
+    setclipboard("https://www.youtube.com/@HOLYSHz")
+    DiscordLib:Notification("Copied!!", "✔ Link ช่อง Youtube ถูก Copy แล้ว!!", "Okay!")
+credits:Button("👉 Link สมัคร Member Ship!", function()
+    setclipboard("https://https://www.youtube.com/channel/UC8IbVYA7y2q67zcsgsWbycA/join")
+    DiscordLib:Notification("Copied!!", "✔ Link สมัคร Mrmber ถูก Copy แล้ว!!", "Okay!")	
 end)
 --#endregion
 

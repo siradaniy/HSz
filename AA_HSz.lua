@@ -209,6 +209,7 @@ function sex()
         local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=7628278821")
         local gettrigon = gettrigonserver:Channel("📐 HOLYSHz Member Only")
         gettrigon:Label("Thank for Support")
+		gettrigon:Label("อย่าลืมต่อ Member กันด้วยละ")
         gettrigon:Button("👉 Copy HOLYSHz Discord Link!", function()
             setclipboard("https://discord.gg/6V8nzm5ZYB")
             DiscordLib:Notification("Copied!!", "✔ Trigon Evo's Discord Invite Link Has Been Copied To Your Clipboard!!", "Okay!")
@@ -594,13 +595,13 @@ devilcity:Label("Also if you have any old tier portal it may start it, so dont b
 		autoloadtab:Label("This Automatically executes script when you teleport to man.")
         autoloadtab:Label("You don't need to put the script in AutoExec folder!")
         autoloadtab:Toggle("Auto Load Script", getgenv().AutoLoadTP, function(bool)
-            --queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures.lua'))()")
+            --queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
             getgenv().AutoLoadTP = bool
             updatejson()
             if exec == "Synapse X" and getgenv().AutoLoadTP then
-                syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures.lua'))()")
+                syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
             elseif exec ~= "Synapse X" and getgenv().AutoLoadTP then
-                queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures.lua'))()")
+                queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
             end
 
         end)
@@ -756,9 +757,9 @@ devilcity:Label("Also if you have any old tier portal it may start it, so dont b
             getgenv().AutoLoadTP = bool
             updatejson()
             if exec == "Synapse X" and getgenv().AutoLoadTP then
-                syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures.lua'))()")
+                syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
             elseif exec ~= "Synapse X" and getgenv().AutoLoadTP then
-                queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures.lua'))()")
+                queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
             end
 
         end)
@@ -2924,9 +2925,9 @@ if getgenv().AutoLoadTP == true then
     local exec = tostring(identifyexecutor())
 
     if exec == "Synapse X" then
-        syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures.lua'))()")
+        syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
     else
-        queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ArponAG/Scripts/main/AnimeAdventures.lua'))()")
+        queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
     end
 
 end

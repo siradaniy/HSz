@@ -66,6 +66,10 @@ local function webhook()
 							["value"] = gems .. " <:gem:997123585476927558>",
 							["inline"] = true
 						}, {
+							["name"] = "Recieved Gold:",
+							["value"] = gold .. " 💰",
+							["inline"] = true	
+						}, {
                             ["name"] = "Recieved XP:",
                             ["value"] = XP .. " 🧪",
                             ["inline"] = true
@@ -79,7 +83,7 @@ local function webhook()
                             ["inline"] = true
 						}, {
                             ["name"] = "Current Gold:",
-                            ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." <:gem:997123585476927558>",
+                            ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true	
                         }, {
                             ["name"] = "Current Level:",

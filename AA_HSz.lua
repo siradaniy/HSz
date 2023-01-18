@@ -1061,7 +1061,7 @@ end)
 local diskord = diskordserver:Channel("👾 Discord")
 diskord:Button("👉 HOLYSHz Discord Link!", function()
     setclipboard("https://discord.gg/6V8nzm5ZYB")
-    DiscordLib:Notification("Copied!!", "✔ https://discord.gg/6V8nzm5ZYB!!", "Okay!")
+    DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
 end)
 --#region Credits
 local credits = creditsserver:Channel("✨ Credits")
@@ -1074,6 +1074,8 @@ end)
 
 
 end
+
+
 --------------------------------------------------
 --------------------------------------------------
 

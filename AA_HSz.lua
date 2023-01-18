@@ -200,7 +200,23 @@ function sex()
 
     local exec = tostring(identifyexecutor())
 
+    local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/Forever4D/Lib/main/DiscordLib2.lua")()
     local win = DiscordLib:Window("[👹UPD 9] Anime Adventures "..versionx.." - "..exec)
+       
+    if exec == "Synapse X" or exec == "ScriptWare" or exec == "Trigon" then
+        print("Good boi")
+    else
+        local gettrigonserver = win:Server("Get Trigon Evo!", "http://www.roblox.com/asset/?id=7628278821")
+        local gettrigon = gettrigonserver:Channel("📐 Get Trigon Evo!")
+        gettrigon:Label("⚠️ It looks like you're using "..exec..".💀⚠️")
+        gettrigon:Label("❗ You maybe wanna try out Trigon Evo, It could be better\nthen "..exec..". 🤮")
+        gettrigon:Label("❗ Click the button below to copy Trigon Evo's Discord server!!")
+        gettrigon:Button("👉 Copy Trigon Discord Link!", function()
+            setclipboard("https://discord.gg/rnZXbd2yfW")
+            DiscordLib:Notification("Copied!!", "✔ Trigon Evo's Discord Invite Link Has Been Copied To Your Clipboard!!", "Okay!")
+        end)
+    end
+
     local autofrmserver = win:Server("Auto Farm Section", "http://www.roblox.com/asset/?id=11579310982")
     local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=11585480207")
     local diskordserver = win:Server("Discord Server   ", "http://www.roblox.com/asset/?id=12155612675")

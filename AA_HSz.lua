@@ -498,6 +498,13 @@ function sex()
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
                 end
+			elseif world == "Cape Canaveral Legend" then
+                getgenv().leveldrop:Clear()
+                table.clear(levels)
+                getgenv().levels = {"jojo_legend_1","jojo_legend_2","jojo_legend_3",}
+                for i, v in ipairs(levels) do
+                    getgenv().leveldrop:Add(v)
+                end	
             end
         end)
 
@@ -930,6 +937,12 @@ devilcity:Label("Also if you have any old tier portal it may start it, so dont b
                             SpawnUnitPos["chainsaw"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["chainsaw"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["chainsaw"][UnitPos]["z"] = a.Position.Z
+                        end
+						elseif game.Workspace._map:FindFirstChild("jj legend") then
+                            print("Cape Canaveral Legend")   
+                            SpawnUnitPos["jojo_lg"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["jojo_lg"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["jojo_lg"][UnitPos]["z"] = a.Position.Z
                         end
 
                         updatejson()
@@ -1603,6 +1616,38 @@ else
                 y = 15.255210876464844, 
                 z = -529.9589233398438
              }
+		},
+           jojo_lg= {
+            UP1  = {
+                x = -111.61297607421875, 
+                y = 15.255210876464844, 
+                z = -513.5579833984375
+             },
+              UP3  = {
+                x = -120.01858520507812, 
+                y = 15.255210876464844, 
+                z = -522.66650390625
+             },
+              UP2  = {
+                x = -124.42668151855469, 
+                y = 15.255210876464844, 
+                z = -530.7169799804688
+             },
+              UP6  = {
+                x = -120.38040161132812, 
+                y = 15.255212783813477, 
+                z = -536.6077270507812
+             },
+              UP5  = {
+                x = -115.62987518310547, 
+                y = 15.255210876464844, 
+                z = -518.679931640625                
+             },
+              UP4  = {
+                x = -118.3056411743164, 
+                y = 15.255210876464844, 
+                z = -529.9589233398438
+             }	 
            }
            
          },
@@ -2410,6 +2455,57 @@ coroutine.resume(coroutine.create(function()
                             game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                         end
                     end
+				elseif game.Workspace._map:FindFirstChild("jj legend") then
+                    print("Cape Canaveral Legend")
+                    for i = 1, 6 do
+                        local unitinfo = getgenv().SelectedUnits["U" .. i]
+                        if unitinfo ~= nil then
+                            local unitinfo_ = unitinfo:split(" #")
+                            local pos = getgenv().SpawnUnitPos["chainsaw"]["UP" .. i]
+    
+                            --place units 0
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 1
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 2 
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 3 
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 4
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 5
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                        end
+                    end	
                 end
             end
         end

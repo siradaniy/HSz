@@ -1,4 +1,4 @@
-local versionx = "1.6.6"
+local versionx = "1.0.0"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -504,7 +504,7 @@ function sex()
             elseif world =="Cape Canaveral" then
                 getgenv().leveldrop:Clear()
                 table.clear(levels)
-                getgenv().levels = {"jojo_infinite","jojo_level_1","jojo_level_2","jojo_level_3","jojo_level_4","jojo_level_5","jojo_level_6","jojo_legend_1","jojo_legend_2","jojo_legend_3",}
+                getgenv().levels = {"jojo_infinite","jojo_level_1","jojo_level_2","jojo_level_3","jojo_level_4","jojo_level_5","jojo_level_6",}
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
                 end

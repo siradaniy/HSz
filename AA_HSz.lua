@@ -37,6 +37,7 @@ local function webhook()
 		item = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.FirstCompletion.Main.Amount.Text)
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
+		difficulty = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Difficulty.Text
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
 
@@ -94,6 +95,10 @@ local function webhook()
 						}, {
                             ["name"] = "Recieved Item:",
                             ["value"] = item .. " 🧧",
+                            ["inline"] = true	
+						}, {
+                            ["name"] = "Total difficulty:",
+                            ["value"] = tostring(ttime[2]) .. " <3",
                             ["inline"] = true	
                         }
 					}

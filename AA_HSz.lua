@@ -2954,7 +2954,6 @@ task.spawn(function()  -- Hides name for yters (not sure if its Fe)
     end
 end)
 
-
 --anti afk
 pcall(function()
     local vu = game:GetService("VirtualUser")

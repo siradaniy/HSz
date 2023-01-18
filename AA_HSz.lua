@@ -200,19 +200,17 @@ function sex()
 
     local exec = tostring(identifyexecutor())
 
-    local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/Forever4D/Lib/main/DiscordLib2.lua")()
+    local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/DiscordLid2.lua")()
     local win = DiscordLib:Window("[👹UPD 9] Anime Adventures "..versionx.." - "..exec)
        
     if exec == "Synapse X" or exec == "ScriptWare" or exec == "Trigon" then
         print("Good boi")
     else
-        local gettrigonserver = win:Server("Get Trigon Evo!", "http://www.roblox.com/asset/?id=7628278821")
-        local gettrigon = gettrigonserver:Channel("📐 Get Trigon Evo!")
-        gettrigon:Label("⚠️ It looks like you're using "..exec..".💀⚠️")
-        gettrigon:Label("❗ You maybe wanna try out Trigon Evo, It could be better\nthen "..exec..". 🤮")
-        gettrigon:Label("❗ Click the button below to copy Trigon Evo's Discord server!!")
-        gettrigon:Button("👉 Copy Trigon Discord Link!", function()
-            setclipboard("https://discord.gg/rnZXbd2yfW")
+        local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=7628278821")
+        local gettrigon = gettrigonserver:Channel("📐 HOLYSHz Member Only")
+        gettrigon:Label("Thank for Support")
+        gettrigon:Button("👉 Copy HOLYSHz Discord Link!", function()
+            setclipboard("https://discord.gg/6V8nzm5ZYB")
             DiscordLib:Notification("Copied!!", "✔ Trigon Evo's Discord Invite Link Has Been Copied To Your Clipboard!!", "Okay!")
         end)
     end
@@ -225,11 +223,11 @@ function sex()
 
     if game.PlaceId == 8304191830 then
 
-        local unitselecttab = autofrmserver:Channel("👷 Select Units")
-        local slectworld = autofrmserver:Channel("🌎 Select World")
-        local devilcity = autofrmserver:Channel("👿 Devil City")
+        local unitselecttab = autofrmserver:Channel("🧙‍ Select Units")
+        local slectworld = autofrmserver:Channel("🌏 Select World")
+        local devilcity = autofrmserver:Channel("😈 Devil City")
         local autofarmtab = autofrmserver:Channel("🤖 Auto Farm")
-        local autoclngtab = autofrmserver:Channel("🎯 Auto Challenge")
+        local autoclngtab = autofrmserver:Channel("⌛ Auto Challenge")
     
 
 --------------------------------------------------

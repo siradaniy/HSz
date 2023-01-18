@@ -207,12 +207,12 @@ function sex()
         print("Good boi")
     else
         local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=7628278821")
-        local gettrigon = gettrigonserver:Channel("📐 HOLYSHz Member Only")
+        local gettrigon = gettrigonserver:Channel(" HOLYSHz Member Only")
         gettrigon:Label("Thank for Support")
 		gettrigon:Label("อย่าลืมต่อ Member กันด้วยละ")
         gettrigon:Button("👉 Copy HOLYSHz Discord Link!", function()
             setclipboard("https://discord.gg/6V8nzm5ZYB")
-            DiscordLib:Notification("Copied!!", "✔ Trigon Evo's Discord Invite Link Has Been Copied To Your Clipboard!!", "Okay!")
+            DiscordLib:Notification("Copied!!", "✔ ลิ้งคำเชิญของ Discord HOLYSHz Copy ไว้แล้ว เอาไปวางแล้วเข้าดิสมาได้เลย!!", "Okay!")
         end)
     end
 

@@ -1068,10 +1068,7 @@ local credits = creditsserver:Channel("✨ Youtube")
 credits:Label("HOLYSHz")
 credits:Button("👉 HOLYSHz Youtube Link!", function()
     setclipboard("https://www.youtube.com/@HOLYSHz")
-    DiscordLib:Notification("Copied!!", "✔ Link ช่อง Youtube ถูก Copy แล้ว!!", "Okay!")
-credits:Button("👉 Link สมัคร Member Ship!", function()
-    setclipboard("https://https://www.youtube.com/channel/UC8IbVYA7y2q67zcsgsWbycA/join")
-    DiscordLib:Notification("Copied!!", "✔ Link สมัคร Mrmber ถูก Copy แล้ว!!", "Okay!")	
+    DiscordLib:Notification("Copied!!", "✔ Link ช่อง Youtube ถูก Copy แล้ว!!", "Okay!")	
 end)
 --#endregion
 

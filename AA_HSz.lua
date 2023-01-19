@@ -800,13 +800,13 @@ devilcity:Label("Also if you have any old tier portal it may start it, so dont b
         end
     end)
     
-    devilcity:Toggle("Auto Farm Portal", getgenv().farmprotal, function(bool)
+    devilcity:Toggle("Auto Farm ประตู Devil", getgenv().farmprotal, function(bool)
         getgenv().farmprotal = bool
         updatejson()
     end)
     
-    devilcity:Label("Only unlocked portals are playable")
-    devilcity:Label("Also if you have any old tier portal it may start it, so dont buy low tier portal you dont wanna farm.")
+    devilcity:Label("เฉพาะประตูที่ปลดล็อค Rank แล้วเท่านั้น")
+    devilcity:Label("หากมีประตูเก่า มันอาจจะเริ่มทำงาน ดังนั้นอย่าซื้อประตูระดับต่ำที่คุณไม่ต้องการทำฟาร์ม.")
 
         
 --#region Auto Farm Tab
@@ -2782,7 +2782,7 @@ local function startfarming()
                            and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmprotal or getgenv().farmprotal then
 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
-            if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
+            if v.Name == "csm_contract_0" or v.Name == "csm_contract_1" or v.Name == "csm_contract_2" or v.Name == "csm_contract_3" or v.Name == "csm_contract_4" or v.Name == "csm_contract_5"  then
                 print(v._uuid_or_id.value)
                 getgenv().PortalID = v._uuid_or_id.value
                 break;

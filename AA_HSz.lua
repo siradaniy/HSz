@@ -606,8 +606,8 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         end)
         
         local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script")
-		autoloadtab:Label("This Automatically executes script when you teleport to man.")
-        autoloadtab:Label("You don't need to put the script in AutoExec folder!")
+		autoloadtab:Label("ฟั่งชั่นนี้ จะเปิดใช้งานสคริป ออโต้.")
+        autoloadtab:Label("คุณไม่จำเป็นต้องใส่สคริปต์ในโฟลเดอร์ AutoExec!")
         autoloadtab:Toggle("Auto Load Script", getgenv().AutoLoadTP, function(bool)
             --queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
             getgenv().AutoLoadTP = bool
@@ -619,7 +619,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             end
 
         end)
-        autoloadtab:Label("⚠️ If it doesnt work properly then put the script in Autoexec\nfolder!!! ⚠️")
+        autoloadtab:Label("⚠️ หากทำงานไม่ถูกต้องให้ใส่สคริปต์เข้าไปใน Autoexec\nfolder!!! ⚠️")
 
         
 

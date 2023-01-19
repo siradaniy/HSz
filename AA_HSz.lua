@@ -546,8 +546,8 @@ devilcity:Toggle("Auto Farm Portal", getgenv().farmprotal, function(bool)
     updatejson()
 end)
 
-devilcity:Label("Only unlocked portals are playable")
-devilcity:Label("Also if you have any old tier portal it may start it, so dont buy low tier portal you dont wanna farm.")
+devilcity:Label("เฉพาะประตูที่ปลดล็อค Rank แล้วเท่านั้น")
+devilcity:Label("หากมีประตูเก่า มันอาจจะเริ่มทำงาน ดังนั้นอย่าซื้อประตูระดับต่ำที่คุณไม่ต้องการทำฟาร์ม.")
 
 --------------------------------------------------
 ------------------ Auto Farm Tab -----------------

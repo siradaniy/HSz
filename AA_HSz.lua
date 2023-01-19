@@ -215,7 +215,7 @@ function sex()
     local exec = tostring(identifyexecutor())
 
     local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/DiscordLid2.lua")()
-    local win = DiscordLib:Window("HSz[👹UPD 9] Anime Adventures "..versionx.." - "..exec)
+    local win = DiscordLib:Window("HSz Member> [👹UPD 9] Anime Adventures <"..versionx.." - "..exec)
        
     if exec == "Synapse X" or exec == "ScriptWare" or exec == "Trigon" then
         print("Good boi")

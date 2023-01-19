@@ -525,7 +525,7 @@ function sex()
 
 
 
-getgenv().portalname = devilcity:Dropdown("Select Portal", {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, getgenv().portalnameX, function(pornname)
+getgenv().portalname = devilcity:Dropdown("Select Portal", {"portal_csm_0", "portal_csm_1","portal_csm_2","portal_csm_3","portal_csm_4","portal_csm_5"}, getgenv().portalnameX, function(pornname)
     getgenv().portalnameX = pornname
     updatejson()
 end)
@@ -546,8 +546,8 @@ devilcity:Toggle("Auto Farm Portal", getgenv().farmprotal, function(bool)
     updatejson()
 end)
 
-devilcity:Label("Only unlocked portals are playable")
-devilcity:Label("Also if you have any old tier portal it may start it, so dont buy low tier portal you dont wanna farm.")
+devilcity:Label("เฉพาะระดับที่ปลดแล้วเท่านั้นที่เปิดได้")
+devilcity:Label("หากว่ามีประตูเก่า อย่าชื้อระดับที่ต่ำกว่ามา.")
 
 --------------------------------------------------
 ------------------ Auto Farm Tab -----------------

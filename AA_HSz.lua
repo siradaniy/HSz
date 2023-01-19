@@ -2782,7 +2782,7 @@ local function startfarming()
                            and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmprotal or getgenv().farmprotal then
 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
-            if v.Name == "csm_contract_0" or v.Name == "csm_contract_1" or v.Name == "csm_contract_2" or v.Name == "csm_contract_3" or v.Name == "csm_contract_4" or v.Name == "csm_contract_5"  then
+            if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
                 print(v._uuid_or_id.value)
                 getgenv().PortalID = v._uuid_or_id.value
                 break;

@@ -34,6 +34,7 @@ local function webhook()
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
+		item = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.Configuration.ResourceReward.Main.Amount.Text)
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
@@ -46,7 +47,7 @@ local function webhook()
 			["embeds"] = {
 				{
 					["author"] = {
-						["name"] = "Anime Adventures | แจ้งเตือน ✔",
+						["name"] = "Anime Adventures | Result ✔",
 						["icon_url"] = "https://cdn.discordapp.com/emojis/997123585476927558.webp?size=96&quality=lossless"
 					},
 					["description"] = "🎮 ||**"..game:GetService("Players").LocalPlayer.Name.."**|| 🎮",
@@ -63,10 +64,6 @@ local function webhook()
 								" <:wave:997136622363627530>",
 							["inline"] = true
 						}, {
-                            ["name"] = "Total Time:",
-                            ["value"] = tostring(ttime[2]) .. " ⏳",
-                            ["inline"] = true	
-						}, {
 							["name"] = "Recieved Gems:",
 							["value"] = gems .. " <:gem:997123585476927558>",
 							["inline"] = true
@@ -79,6 +76,10 @@ local function webhook()
                             ["value"] = XP .. " 🧪",
                             ["inline"] = true
                         }, {
+                            ["name"] = "Total Time:",
+                            ["value"] = tostring(ttime[2]) .. " ⏳",
+                            ["inline"] = true
+                        }, {
                             ["name"] = "Current Gems:",
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gem_amount.Value).." <:gem:997123585476927558>",
                             ["inline"] = true
@@ -86,10 +87,13 @@ local function webhook()
                             ["name"] = "Current Gold:",
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true	
-						}	
                         }, {
                             ["name"] = "Current Level:",
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
+                            ["inline"] = true
+						}, {
+                            ["name"] = "Recieved Item:",
+                            ["value"] = item .. " 🧧",
                             ["inline"] = true	
                         }
 					}
@@ -2953,6 +2957,7 @@ task.spawn(function()  -- Hides name for yters (not sure if its Fe)
         end)
     end
 end)
+
 
 --anti afk
 pcall(function()

@@ -34,7 +34,7 @@ local function webhook()
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
-		item = tostring(game:GetService("ReplicatedStorage").endpoints.server_to_clientserver.show_unit_and_item_rewards.text)
+		item = tostring(game:GetService("ReplicatedStorage").endpoints.server_to_clientserver.show_unit_and_item_rewards.new_items.text)
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
@@ -215,7 +215,7 @@ function sex()
     local exec = tostring(identifyexecutor())
 
     local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/DiscordLid2.lua")()
-    local win = DiscordLib:Window("HSz Member> [👹UPD 9] Anime Adventures <"..versionx.." - "..exec)
+    local win = DiscordLib:Window("HSz[👹UPD 9] Anime Adventures "..versionx.." - "..exec)
        
     if exec == "Synapse X" or exec == "ScriptWare" or exec == "Trigon" then
         print("Good boi")
@@ -606,8 +606,8 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         end)
         
         local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script")
-		autoloadtab:Label("ฟั่งชั่นนี้ จะเปิดใช้งานสคริป ออโต้.")
-        autoloadtab:Label("คุณไม่จำเป็นต้องใส่สคริปต์ในโฟลเดอร์ AutoExec!")
+		autoloadtab:Label("This Automatically executes script when you teleport to man.")
+        autoloadtab:Label("You don't need to put the script in AutoExec folder!")
         autoloadtab:Toggle("Auto Load Script", getgenv().AutoLoadTP, function(bool)
             --queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
             getgenv().AutoLoadTP = bool
@@ -619,7 +619,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             end
 
         end)
-        autoloadtab:Label("⚠️ หากทำงานไม่ถูกต้องให้ใส่สคริปต์เข้าไปใน Autoexec\nfolder!!! ⚠️")
+        autoloadtab:Label("⚠️ If it doesnt work properly then put the script in Autoexec\nfolder!!! ⚠️")
 
         
 

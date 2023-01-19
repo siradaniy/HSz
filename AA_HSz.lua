@@ -34,7 +34,7 @@ local function webhook()
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
-		item = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished)
+		item = tostring(game:GetService("ReplicatedStorage").endpoints.server_to_client.loot_redeemed)
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
@@ -561,12 +561,12 @@ devilcity:Label("Also if you have any old tier portal it may start it, so dont b
             getgenv().AutoLeave = bool
             updatejson()
         end)
-        autofarmtab:Toggle("Auto Farm Event ⭐⭐", getgenv().AutoFarmTP, function(bool)
+        autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
             getgenv().AutoFarmTP = bool
             updatejson()
         end)
 
-        autofarmtab:Toggle("Auto Start Infinity Castle", getgenv().AutoFarmIC, function(bool)
+        autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(bool)
             getgenv().AutoFarmIC = bool
             updatejson()
         end)

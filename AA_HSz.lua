@@ -34,7 +34,7 @@ local function webhook()
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
-		item = tostring(game:GetService("ReplicatedStorage").endpoints.server_to_clientserver.show_unit_and_item_rewards.text)
+		item = tostring(game:GetService("ReplicatedStorage").endpoints.server_to_clientserver.show_unit_and_item_rewards.new_items.text)
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
@@ -525,7 +525,7 @@ function sex()
 
 
 
-getgenv().portalname = devilcity:Dropdown("Select Portal", {"portal_csm_0", "portal_csm_1","portal_csm_2","portal_csm_3","portal_csm_4","portal_csm_5"}, getgenv().portalnameX, function(pornname)
+getgenv().portalname = devilcity:Dropdown("Select Portal", {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, getgenv().portalnameX, function(pornname)
     getgenv().portalnameX = pornname
     updatejson()
 end)

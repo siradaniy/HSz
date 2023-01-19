@@ -818,12 +818,12 @@ devilcity:Label("Also if you have any old tier portal it may start it, so dont b
             getgenv().AutoLeave = bool
             updatejson()
         end)
-        autofarmtab:Toggle("Auto Farm Event ⭐⭐", getgenv().AutoFarmTP, function(bool)
+        autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
             getgenv().AutoFarmTP = bool
             updatejson()
         end)
 
-        autofarmtab:Toggle("Auto Start Infinity Castle", getgenv().AutoFarmIC, function(bool)
+        autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(bool)
             getgenv().AutoFarmIC = bool
             updatejson()
         end)
@@ -833,7 +833,7 @@ devilcity:Label("Also if you have any old tier portal it may start it, so dont b
             updatejson()
         end)
 
-        autofarmtab:Toggle("Auto Abilities", getgenv().autoabilities, function(bool)
+        autofarmtab:Toggle("Auto Abilities ใช้สกิล", getgenv().autoabilities, function(bool)
             getgenv().autoabilities = bool
             updatejson()
         end)
@@ -1053,7 +1053,7 @@ end)
 
 --#region Webhook
 		--//Webhook Tab (in-game)\\--
-		webhooktab:Label("Webhook sends notification in discord everytime game Finishes.")
+		webhooktab:Label("Webhook จะส่งแจ้งเตือน ทุกครั้ง ที่จบรอบ.")
 		local webhoolPlaceholder
 		if getgenv().weburl == "" then
 			webhoolPlaceholder = "Insert url here!"

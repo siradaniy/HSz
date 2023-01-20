@@ -765,8 +765,8 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
     local autoseltab = autofrmserver:Channel("💸 Auto Sell")
     local webhooktab = webhookserver:Channel("🌐 Webhook")
     
-		autoloadtab:Label("This Automatically executes script when you teleport to man.")
-        autoloadtab:Label("You don't need to put the script in AutoExec folder!")
+		autoloadtab:Label("รันสคริปต์โดยอัตโนมัติเมื่อออกจากMap.")
+        autoloadtab:Label("ไม่จำเป็นต้องใส่สคริปต์ในโฟลเดอร์ AutoExec!")
         autoloadtab:Toggle("Auto Load Script", getgenv().AutoLoadTP, function(bool)
             getgenv().AutoLoadTP = bool
             updatejson()
@@ -777,7 +777,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             end
 
         end)
-        autoloadtab:Label("⚠️ If it doesnt work properly then put the script in Autoexec\nfolder!!! ⚠️")
+        autoloadtab:Label("⚠️ หากสคริปต์ทำงานไม่ถูกต้องให้ใส่สคริปต์เข้าไป Autoexec\nfolder!!! ⚠️")
 
 
 

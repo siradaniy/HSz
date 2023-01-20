@@ -952,7 +952,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         end
 
         --// Set Position \\--
-        autofarmtab:Button("Set Unit 1 Postion", function()
+        autofarmtab:Button("Set จุดวางตัว Unit 1", function()
             DiscordLib:Notification("Set Unit 1 Spawn Position",
                 "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
                 "Done")
@@ -961,19 +961,19 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             warn(2)
         end)
 
-        autofarmtab:Button("Set Unit 2 Postion", function()
+        autofarmtab:Button("Set จุดวางตัว Unit 2", function()
             DiscordLib:Notification("Set Unit 2 Spawn Position",
                 "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
                 "Done")
             MouseClick("UP2")
         end)
-        autofarmtab:Button("Set Unit 3 Postion", function()
+        autofarmtab:Button("Set จุดวางตัว Unit 3", function()
             DiscordLib:Notification("Set Unit 3 Spawn Position",
                 "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
                 "Done")
             MouseClick("UP3")
         end)
-        autofarmtab:Button("Set Unit 4 Postion", function()
+        autofarmtab:Button("Set จุดวางตัว Unit 4", function()
             DiscordLib:Notification("Set Unit 4 Spawn Position",
                 "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
                 "Done")
@@ -984,7 +984,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         local axxc = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split(" ")
 
         if tonumber(axxc[2]) >= 20 then
-            autofarmtab:Button("Set Unit 5 Postion", function()
+            autofarmtab:Button("Set จุดวางตัว Unit 5", function()
                 DiscordLib:Notification("Set Unit 5 Spawn Position",
                     "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
                     "Done")
@@ -993,7 +993,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         end
 
         if tonumber(axxc[2]) >= 50 then
-            autofarmtab:Button("Set Unit 6 Postion", function()
+            autofarmtab:Button("Set จุดวางตัว Unit 6", function()
                 DiscordLib:Notification("Set Unit 6 Spawn Position",
                     "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
                     "Done")

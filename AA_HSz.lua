@@ -571,7 +571,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             updatejson()
         end)
 
-        autofarmtab:Toggle("Auto Farm", getgenv().AutoFarm, function(bool)
+        autofarmtab:Toggle("Auto Farm วางตัว", getgenv().AutoFarm, function(bool)
             getgenv().AutoFarm = bool
             updatejson()
         end)
@@ -828,7 +828,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             updatejson()
         end)
 
-        autofarmtab:Toggle("Auto Farm", getgenv().AutoFarm, function(bool)
+        autofarmtab:Toggle("Auto Farm วางตัว", getgenv().AutoFarm, function(bool)
             getgenv().AutoFarm = bool
             updatejson()
         end)

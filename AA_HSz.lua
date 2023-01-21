@@ -553,7 +553,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 ------------------ Auto Farm Tab -----------------
 --------------------------------------------------
 --#region Auto Farm Tab
-        autofarmtab:Toggle("Auto Replay", getgenv().AutoReplay, function(bool)
+        autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
             getgenv().AutoReplay = bool
             updatejson()
         end)
@@ -810,7 +810,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 
         
 --#region Auto Farm Tab
-        autofarmtab:Toggle("Auto Replay", getgenv().AutoReplay, function(bool)
+        autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
             getgenv().AutoReplay = bool
             updatejson()
         end)

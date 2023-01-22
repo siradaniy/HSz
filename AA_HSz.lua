@@ -92,9 +92,9 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
                             ["inline"] = true	
 						}, {
-                            ["name"] = "Item:",
-                            ["value"] = tostring(game.Players.LocalPlayer._stats.resource.Value).. " ",
-                            ["inline"] = true			
+							["name"] = "Item Drop:",
+							["value"] =  item .. " 💰",
+							["inline"] = true			
                         }
 					}
 				}

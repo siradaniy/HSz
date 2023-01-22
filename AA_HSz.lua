@@ -39,7 +39,6 @@ local function webhook()
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
-		item2 = ctime:split(": ")
 
 		local data = {
 			["content"] = "",
@@ -93,13 +92,9 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
                             ["inline"] = true	
 						}, {
-                            ["name"] = "item2:",
-                            ["value"] = tostring(game.Players.LocalPlayer.inventory.items.Text).. " 💰",
-                            ["inline"] = true
-						}, {
                             ["name"] = "item:",
-                            ["value"] = item .. " 🧪",
-                            ["inline"] = true	
+                            ["value"] = item .. " 🎖 ",
+                            ["inline"] = true
                         }
 					}
 				}

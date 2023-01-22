@@ -94,7 +94,7 @@ local function webhook()
                             ["inline"] = true	
 						}, {
                             ["name"] = "item2:",
-                            ["value"] = tostring(game.ReplicatedStorage.src.client.Services.NPCServiceClient).. " 💰",
+                            ["value"] = tostring(game.Players.LocalPlayer.inventory.items.Text).. " 💰",
                             ["inline"] = true
 						}, {
                             ["name"] = "item:",

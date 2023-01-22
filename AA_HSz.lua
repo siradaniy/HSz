@@ -591,7 +591,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             updatejson()
         end)
 
-        autofarmtab:Toggle("Auto Sell at spectic Wave", getgenv().autosell, function(x)
+        autofarmtab:Toggle("Auto Sell ขายเมื่อถึง Wave", getgenv().autosell, function(x)
             getgenv().autosell = x
             updatejson()
             if getgenv().autosell == false then
@@ -600,7 +600,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         end)
 
         ---- 
-        autofarmtab:Textbox("Select Wave Number for Auto Sell {Press Enter}", tostring(getgenv().sellatwave), false, function(t)
+        autofarmtab:Textbox("ใส่ตัวเลขเพื่อ Auto Sell {ใส่เลขแล้วกด Enter}", tostring(getgenv().sellatwave), false, function(t)
             getgenv().sellatwave = tonumber(t)
             updatejson()
         end)
@@ -1035,7 +1035,7 @@ end)
 --#endregion
 
 --#region Auto Sell Tab
-        autoseltab:Toggle("Auto Sell at Specfic Wave", getgenv().autosell, function(x)
+        autoseltab:Toggle("Auto Sell ขายเมื่อถึง Wave", getgenv().autosell, function(x)
             getgenv().autosell = x
             updatejson()
             if getgenv().autosell == false then
@@ -1043,7 +1043,7 @@ end)
             end
         end)
 
-        autoseltab:Textbox("Select Wave Number for Auto Sell {Press Enter}", getgenv().sellatwave, false, function(t)
+        autoseltab:Textbox("ใส่ตัวเลขเพื่อ Auto Sell {ใส่เลขแล้วกด Enter}", getgenv().sellatwave, false, function(t)
             getgenv().sellatwave = tonumber(t)
             updatejson()
         end)

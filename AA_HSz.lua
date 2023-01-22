@@ -43,7 +43,7 @@ local function webhook()
 		local data = {
 			["content"] = "",
 			["username"] = "Anime Adventures",
-			["avatar_url"] = "https://tr.rbxcdn.com/e5b5844fb26df605986b94d87384f5fb/150/150/Image/Jpeg",
+			["avatar_url"] = "https://tr.rbxcdn.com/59739ce27080a9076dd408dfdeb1791d/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {

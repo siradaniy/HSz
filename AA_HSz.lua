@@ -2965,6 +2965,24 @@ task.spawn(function()  -- Hides name for yters (not sure if its Fe)
     end
 end)
 
+--item drop check
+
+for i,v in next, reg do
+        if type(v) == 'function' then --> Checks if the current iteration is a function
+            if getfenv(v).script then --> Checks if the function's environment is in a script
+                if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
+                    for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                for items, value in pairs(v["session"]["inventory"])
+                                    print(items, value) -- will print key value pairs of inventory sections (items, unique items, etc) haven't tested it in-game
+                                end
+                                return portals
+                            end
+                        end)
+                    end
+                end)
+
 
 --anti afk
 pcall(function()

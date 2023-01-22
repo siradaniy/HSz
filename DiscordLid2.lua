@@ -173,7 +173,7 @@ function DiscordLib:Window(text)
 
 	MinimizeBtn.Name = "MinimizeButton"
 	MinimizeBtn.Parent = TopFrame
-	MinimizeBtn.BackgroundColor3 = Color3.fromRGB(32, 34, 37)
+	MinimizeBtn.BackgroundColor3 = Color3.fromRGB(153, 255, 204)
 	MinimizeBtn.BackgroundTransparency = 0
 	MinimizeBtn.Position = UDim2.new(0.917947114, 0, -0.0169996787, 0)
 	MinimizeBtn.Size = UDim2.new(0, 28, 0, 22)

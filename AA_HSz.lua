@@ -232,7 +232,7 @@ function sex()
 
     local autofrmserver = win:Server("Auto Farm Section", "http://www.roblox.com/asset/?id=11579310982")
     local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=11585480207")
-	local diskordserver = win:Server("Discord Server   ", "http://www.roblox.com/asset/?id=11585480207")
+	local macroserver = win:Server("Discord Server   ", "http://www.roblox.com/asset/?id=11585480207")
     local youtubesserver = win:Server("Youtube          ", "http://www.roblox.com/asset/?id=11585480207")
 
 
@@ -1079,8 +1079,8 @@ end)
 
     end
 --#endregion
-local diskord = diskordserver:Channel("👾 Discord")
-diskord:Button("👉 HOLYSHz Discord Link!", function()
+local macro = macroserver:Channel("👾 Macro ")
+macro:Button("👉 HOLYSHz Discord Link!", function()
     setclipboard("https://discord.gg/6V8nzm5ZYB")
     DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
 end)
@@ -1092,8 +1092,8 @@ youtubes:Button("👉 HOLYSHz Youtube Link!", function()
     setclipboard("https://www.youtube.com/@HOLYSHz")
     DiscordLib:Notification("Copied!!", "✔ Link ช่อง Youtube ถูก Copy แล้ว!!", "Okay!")	
 end)
-local diskord = youtubesserver:Channel("👾 Discord")
-diskord:Button("👉 HOLYSHz Discord Link!", function()
+local macro = youtubesserver:Channel("👾 Discord")
+macro:Button("👉 HOLYSHz Discord Link!", function()
     setclipboard("https://discord.gg/6V8nzm5ZYB")
     DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
 end)

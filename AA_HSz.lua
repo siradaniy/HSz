@@ -232,8 +232,8 @@ function sex()
 
     local autofrmserver = win:Server("Auto Farm Section", "http://www.roblox.com/asset/?id=11579310982")
     local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=11585480207")
-	local macroserver = win:Server("Discord Server   ", "http://www.roblox.com/asset/?id=11585480207")
-    local youtubesserver = win:Server("Youtube          ", "http://www.roblox.com/asset/?id=11585480207")
+	local macroserver = win:Server("Macro   ", "http://www.roblox.com/asset/?id=11779390242")
+    local youtubesserver = win:Server("Youtube          ", "http://www.roblox.com/asset/?id=5573136551")
 
 
     if game.PlaceId == 8304191830 then

@@ -1084,13 +1084,20 @@ diskord:Button("👉 HOLYSHz Discord Link!", function()
     setclipboard("https://discord.gg/6V8nzm5ZYB")
     DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
 end)
---#region Youtube
-local credits = creditsserver:Channel("✨ Youtube")
+
+--#region Youtube & Discord
+local credits = creditsserver:Channel("✨ Youtube & Discord")
 credits:Label("HOLYSHz")
 credits:Button("👉 HOLYSHz Youtube Link!", function()
     setclipboard("https://www.youtube.com/@HOLYSHz")
     DiscordLib:Notification("Copied!!", "✔ Link ช่อง Youtube ถูก Copy แล้ว!!", "Okay!")	
 end)
+local diskord = creditsserver:Channel("👾 Discord")
+diskord:Button("👉 HOLYSHz Discord Link!", function()
+    setclipboard("https://discord.gg/6V8nzm5ZYB")
+    DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
+end)
+
 --#endregion
 
 

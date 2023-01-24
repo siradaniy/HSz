@@ -95,10 +95,6 @@ local function webhook()
                             ["name"] = "Star Fruit Epic:",
                             ["value"] = Fruitepic .. " 🧪",
                             ["inline"] = true
-						}, {
-                            ["name"] = "Current Star Fruit:",
-                            ["value"] = tostring(game.LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.evolve_materials.Value).." 🌟",
-                            ["inline"] = true	
                         }
 					}
 				}

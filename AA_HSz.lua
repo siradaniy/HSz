@@ -92,7 +92,7 @@ local function webhook()
                             ["inline"] = true		
                         }, {
                             ["name"] = "Current Star Event:",
-                            ["value"] = tostring(game.Players.LocalPlayer._resourceHolidayStars.Value).. " ✨",
+                            ["value"] = tostring(game.Players.LocalPlayer._resourceHolidayStars.Value).. " ⭐",
                             ["inline"] = true 
                         }
 					}

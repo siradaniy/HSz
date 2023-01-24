@@ -34,7 +34,6 @@ local function webhook()
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
-		Fruitepic = game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.evolve_materials.Text
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
@@ -92,9 +91,9 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
                             ["inline"] = true	
 						}, {
-                            ["name"] = "Star Fruit Epic:",
-                            ["value"] = Fruitepic .. " 🧪",
-                            ["inline"] = true
+                            ["name"] = "Current Star Fruit:",
+                            ["value"] = tostring(game.LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.evolve_materials.Value).." 🌟",
+                            ["inline"] = true	
                         }
 					}
 				}
@@ -233,7 +232,7 @@ function sex()
     local autofrmserver = win:Server("Auto Farm Section", "http://www.roblox.com/asset/?id=11579310982")
     local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=11585480207")
 	local macroserver = win:Server("Macro   ", "http://www.roblox.com/asset/?id=11779390242")
-    local youtubesserver = win:Server("Youtube          ", "http://www.roblox.com/asset/?id=5573136551")
+    local youtubesserver = win:Server("Youtube & Discord         ", "http://www.roblox.com/asset/?id=5573136551")
 
 
     if game.PlaceId == 8304191830 then
@@ -631,7 +630,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         
 
 		local webhooktab = webhookserver:Channel("🌐 Webhook")
-		webhooktab:Label("Webhook sends notification in discord everytime\nGame is Finished!")
+		webhooktab:Label("Webhook จะส่งแจ้งเตือนทุกครั้งที่เกมจบลง!")
 		
 		local webhoolPlaceholder
 		if getgenv().weburl == "" then
@@ -1090,7 +1089,7 @@ macro:Button("👉 HOLYSHz Discord Link!", function()
 end)
 
 --#region Youtube & Discord
-local youtubes = youtubesserver:Channel("✨ Youtube & Discord")
+local youtubes = youtubesserver:Channel("✨ Youtube")
 youtubes:Label("HOLYSHz")
 youtubes:Button("👉 HOLYSHz Youtube Link!", function()
     setclipboard("https://www.youtube.com/@HOLYSHz")

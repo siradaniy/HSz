@@ -93,7 +93,7 @@ local function webhook()
                             ["inline"] = true		
                         }, {
                             ["name"] = "Current Fruite:",
-                            ["value"] = Fruite .. " ",
+                            ["value"] = Fruite .. " 🌟",
                             ["inline"] = true 
                         }
 					}

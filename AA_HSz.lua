@@ -22,22 +22,74 @@ local UserInputService = game:GetService("UserInputService")
 getgenv().savefilename = "Anime-Adventures_UPD9t"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
 
+function get_inventory_items()
+	for i,v in next, getgc() do
+		if type(v) == 'function' then 
+			if getfenv(v).script then 
+				if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
+					for _, v in pairs(debug.getupvalues(v)) do 
+						if type(v) == 'table' then
+							if v["session"] then
+								return v["session"]["inventory"]['inventory_profile_data']['normal_items']
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+local Table_Items_Name_data = {}
+local Old_Inventory_table = {}
+for v2, v3 in pairs(game:GetService("ReplicatedStorage").src.Data.Items:GetDescendants()) do
+	if v3:IsA("ModuleScript") then
+		for v4, v5 in pairs(require(v3)) do
+		    Table_Items_Name_data[v4] = v5.name
+		end;
+	end;
+end;
+for i,v in pairs(get_inventory_items()) do
+	Old_Inventory_table[i] = v
+end
+
 --#region Webhook Sender
 local function webhook()
 	pcall(function()
 		local url = tostring(getgenv().weburl) --webhook
 		print("webhook?")
-		if url == "" then
-			return
-		end 
+		if url == "" then return end 
         
+		local Time = os.date('!*t', OSTime);
+
+		local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
+
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
+		if gold == "+99999" then
+			gold = "+0"
+		end
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
+
+		local TextDropLabel = ""
+		local CountAmount = 1
+		for i,v in pairs(get_inventory_items()) do
+			if (v - Old_Inventory_table[i]) > 0 then
+				for NameData, NameShow in pairs(Table_Items_Name_data) do
+					if (v - Old_Inventory_table[i]) > 0 and tostring(NameData) == tostring(i) then
+						TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(string.gsub(i, i, NameShow)) .. " : x" .. tostring(v - Old_Inventory_table[i]) .. "\n"
+						CountAmount = CountAmount + 1
+					end
+				end;
+			end
+		end
+		if TextDropLabel == "" then
+			TextDropLabel = "Not Have Items Drops"
+		end
 
 		local data = {
 			["content"] = "",
@@ -49,15 +101,25 @@ local function webhook()
 						["name"] = "Anime Adventures | แจ้งเตือน ✔",
 						["icon_url"] = "https://cdn.discordapp.com/emojis/997123585476927558.webp?size=96&quality=lossless"
 					},
+					["thumbnail"] = {
+						['url'] = thumbnails_avatar.data[1].imageUrl,
+					},
+					["image"] = {
+						['url'] = "https://tr.rbxcdn.com/bc2ea8300bfaea9fb3193d7f801f0e8b/768/432/Image/Png"
+					},
 					["description"] = "🎮 ||**"..game:GetService("Players").LocalPlayer.Name.."**|| 🎮",
 					["color"] = 110335,
-
-					["thumbnail"] = {
-						['url'] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. game.Players.LocalPlayer.userId .. "&width=420&height=420&format=png"
+					["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
+					['footer'] = {
+						['text'] = "// Made by Negative & HOLYSHz", 
+						['icon_url'] = "https://yt3.ggpht.com/mApbVVD8mT92f50OJuTObnBbc3j7nDCXMJFBk2SCDpSPcaoH9DB9rxVpJhsB5SxAQo1UN2GzyA=s48-c-k-c0x00ffffff-no-rj"
 					},
-
 					["fields"] = {
 						{
+                            ["name"] = "Current Level:",
+                            ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
+                            ["inline"] = true		
+                        }, {
 							["name"] = "Total Waves:",
 							["value"] = tostring(waves[2]) ..
 								" <:wave:997136622363627530>",
@@ -65,16 +127,8 @@ local function webhook()
 						}, {
                             ["name"] = "Total Time:",
                             ["value"] = tostring(ttime[2]) .. " ⏳",
-                            ["inline"] = true	
-						}, {
-							["name"] = "Recieved Gems:",
-							["value"] = gems .. " <:gem:997123585476927558>",
-							["inline"] = true
-						}, {
-							["name"] = "Recieved Gold:",
-							["value"] = gold .. " 💰",
-							["inline"] = true	
-						}, {
+                            ["inline"] = true
+                        }, {
                             ["name"] = "Recieved XP:",
                             ["value"] = XP .. " 🧪",
                             ["inline"] = true
@@ -87,13 +141,21 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true	
                         }, {
-                            ["name"] = "Current Level:",
-                            ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
-                            ["inline"] = true		
-                        }, {
                             ["name"] = "Current Star Event:",
                             ["value"] = tostring(game.Players.LocalPlayer._stats._resourceHolidayStars.Value).. " ⭐",
                             ["inline"] = true 
+                        }, {
+							["name"] = "Recieved Gems:",
+							["value"] = gems .. " <:gem:997123585476927558>",
+							["inline"] = true
+						}, {
+							["name"] = "Recieved Gold:",
+							["value"] = gold .. " 💰",
+							["inline"] = true	
+						}, {
+                            ["name"] = "Items Drop:",
+                            ["value"] = "```ini\n" .. TextDropLabel .. "```",
+                            ["inline"] = falseye 
                         }
 					}
 				}
@@ -130,7 +192,7 @@ function sex()
     local jsonData = readfile(savefilename)
     local data = HttpService:JSONDecode(jsonData)
 
---#region global values
+	--#region global values
 
     --DEVIL CITY
     getgenv().portalnameX = data.portalnameX
@@ -219,7 +281,7 @@ function sex()
     if exec == "Synapse X" or exec == "ScriptWare" then
         print("Good boi")
     else
-        local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=11779390242")
+        local gettrigonserver = win:Server("Support Member Ship!", "https://tr.rbxcdn.com/59739ce27080a9076dd408dfdeb1791d/150/150/Image/Png")
         local gettrigon = gettrigonserver:Channel(" HOLYSHz Member Only")
         gettrigon:Label("Thank for Support")
 		gettrigon:Label("อย่าลืมต่อ Member กันด้วยละ")
@@ -232,7 +294,7 @@ function sex()
     local autofrmserver = win:Server("Auto Farm Section", "http://www.roblox.com/asset/?id=11579310982")
     local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=11585480207")
 	local macroserver = win:Server("Macro   ", "http://www.roblox.com/asset/?id=11779390242")
-    local youtubesserver = win:Server("Youtube & Discord         ", "http://www.roblox.com/asset/?id=11779390242")
+    local youtubesserver = win:Server("Youtube & Discord         ", "http://www.roblox.com/asset/?id=5573136551")
 
 
     if game.PlaceId == 8304191830 then
@@ -2536,6 +2598,7 @@ end
 
 coroutine.resume(coroutine.create(function()
 	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
+
     GameFinished:GetPropertyChangedSignal("Value"):Connect(function()
         print("Changed", GameFinished.Value == true)
         if GameFinished.Value == true then

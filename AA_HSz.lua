@@ -34,7 +34,7 @@ local function webhook()
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
-		trophies = game:GetService("Players").LocalPlayer._stats.trophies.value
+		gundevil = game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.gun_devil_bullet.text
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
@@ -92,9 +92,9 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
                             ["inline"] = true	
 						}, {
-                            ["name"] = "Trophies:",
-                            ["value"] = trophies .. " 🏆 ",
-                            ["inline"] = true
+                            ["name"] = "Gun Devil Bullet:",
+                            ["value"] = bullet .. " 🔫 ",
+                            ["inline"] = true	
                         }
 					}
 				}

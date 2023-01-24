@@ -92,7 +92,7 @@ local function webhook()
                             ["inline"] = true	
 						}, {
                             ["name"] = "Current Star Fruit:",
-                            ["value"] = tostring(game.LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.evolve_materials.Value).." 🌟",
+                            ["value"] = tostring(game.LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.evolve_materials.Text).." 🌟",
                             ["inline"] = true	
                         }
 					}

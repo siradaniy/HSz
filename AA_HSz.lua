@@ -89,11 +89,7 @@ local function webhook()
                         }, {
                             ["name"] = "Current Level:",
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
-                            ["inline"] = true	
-						}, {
-                            ["name"] = "Current Star Fruit:",
-                            ["value"] = tostring(game.LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.Text).." 🌟",
-                            ["inline"] = true	
+                            ["inline"] = true		
                         }
 					}
 				}

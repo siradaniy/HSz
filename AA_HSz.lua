@@ -643,6 +643,9 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             getgenv().weburl = web_url
             updatejson()
         end)
+		webhooktab:Button("Test Webhook", function()
+            webhook()
+        end)
 
         autofarmtab:Label(" ")
         autofarmtab:Label(" ")

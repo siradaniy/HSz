@@ -30,10 +30,11 @@ local function webhook()
 		if url == "" then
 			return
 		end 
-			
+        
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
+        Fruite = tostring(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.Amount.Text)
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
@@ -90,6 +91,10 @@ local function webhook()
                             ["name"] = "Current Level:",
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
                             ["inline"] = true		
+                        }, {
+                            ["name"] = "Current Fruite:",
+                            ["value"] = Fruite .. " ",
+                            ["inline"] = true 
                         }
 					}
 				}

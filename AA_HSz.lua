@@ -147,7 +147,7 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true	
                         }, {
-                            ["name"] = "Current Star Event:",
+                            ["name"] = "Star:",
                             ["value"] = tostring(game.Players.LocalPlayer._stats._resourceHolidayStars.Value).. " ⭐",
                             ["inline"] = true 
                         }, {
@@ -160,7 +160,7 @@ local function webhook()
 							["inline"] = true	
 						}, {
                             ["name"] = "Items Drop:",
-                            ["value"] = "```ini\n" .. TextDropLabel .. "```",
+                            ["value"] = "```ini\n" .. TextDropLabel .. "⚙️",
                             ["inline"] = falseye 
                         }
 					}

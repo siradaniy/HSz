@@ -11,7 +11,7 @@ else
     game:GetService("ReplicatedStorage").endpoints.client_to_server.vote_start:InvokeServer()
     repeat task.wait() until game:GetService("Workspace")["_waves_started"].Value == true
 end
-------------------------------
+------------------------------webhookname
 local HttpService = game:GetService("HttpService")
 local Workspace = game:GetService("Workspace") 
 local plr = game:GetService("Players").LocalPlayer
@@ -356,7 +356,7 @@ function sex()
             updatejson()
         end
 
-        unitselecttab:Button("Select Equipped Units", function()
+        unitselecttab:Button("เลือก Units ที่ใส่อยู่", function()
             for i, v in ipairs(game:GetService("Players").LocalPlayer.PlayerGui["spawn_units"].Lives.Frame.Units:GetChildren()) do
                 if v:IsA("ImageButton") then
                     local unitxx = v.Main.petimage.WorldModel:GetChildren()[1]
@@ -367,7 +367,7 @@ function sex()
                     end
                 end
             end
-            DiscordLib:Notification("Equipped Units Are Selected!", "The dropdowns may not show the unit names now, but it will show next time you execute!", "Okay!")
+            DiscordLib:Notification("ใส่ Units ที่เลือกแล้ว!", "The dropdowns may not show the unit names now, but it will show next time you execute!", "Okay!")
 
         end)
 
@@ -639,7 +639,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             updatejson()
         end)
 
-        autofarmtab:Toggle("Auto Farm วางตัว", getgenv().AutoFarm, function(bool)
+        autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
             getgenv().AutoFarm = bool
             updatejson()
         end)
@@ -899,7 +899,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             updatejson()
         end)
 
-        autofarmtab:Toggle("Auto Farm วางตัว", getgenv().AutoFarm, function(bool)
+        autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
             getgenv().AutoFarm = bool
             updatejson()
         end)
@@ -1024,8 +1024,8 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 
         --// Set Position \\--
         autofarmtab:Button("Set จุดวางตัว Unit 1", function()
-            DiscordLib:Notification("Set Unit 1 Spawn Position",
-                "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
+            DiscordLib:Notification("Set จุดวางตัวที่ 1 ",
+                "คลิ๊ก บนแผนที่ ในจุดที่จะวางตัวละคร!\n (ห้ามกด \"Done\" เพราะมันจะเซ็ทจุด)",
                 "Done")
                 warn(1)
             MouseClick("UP1")
@@ -1033,20 +1033,20 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         end)
 
         autofarmtab:Button("Set จุดวางตัว Unit 2", function()
-            DiscordLib:Notification("Set Unit 2 Spawn Position",
-                "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
+            DiscordLib:Notification("Set จุดวางตัว Unit 2 ",
+                "คลิ๊ก บนแผนที่ ในจุดที่จะวางตัวละคร!\n (ห้ามกด \"Done\" เพราะมันจะเซ็ทจุด)",
                 "Done")
             MouseClick("UP2")
         end)
         autofarmtab:Button("Set จุดวางตัว Unit 3", function()
-            DiscordLib:Notification("Set Unit 3 Spawn Position",
-                "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
+            DiscordLib:Notification("Set จุดวางตัว Unit 3 ",
+                "คลิ๊ก บนแผนที่ ในจุดที่จะวางตัวละคร!\n (ห้ามกด \"Done\" เพราะมันจะเซ็ทจุด)",
                 "Done")
             MouseClick("UP3")
         end)
         autofarmtab:Button("Set จุดวางตัว Unit 4", function()
-            DiscordLib:Notification("Set Unit 4 Spawn Position",
-                "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
+            DiscordLib:Notification("Set จุดวางตัว Unit 4 ",
+                "คลิ๊ก บนแผนที่ ในจุดที่จะวางตัวละคร!\n (ห้ามกด \"Done\" เพราะมันจะเซ็ทจุด)",
                 "Done")
             MouseClick("UP4")
         end)
@@ -1056,8 +1056,8 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 
         if tonumber(axxc[2]) >= 20 then
             autofarmtab:Button("Set จุดวางตัว Unit 5", function()
-                DiscordLib:Notification("Set Unit 5 Spawn Position",
-                    "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
+                DiscordLib:Notification("Set จุดวางตัว Unit 5 ",
+                    "คลิ๊ก บนแผนที่ ในจุดที่จะวางตัวละคร!\n (ห้ามกด \"Done\" เพราะมันจะเซ็ทจุด)",
                     "Done")
                 MouseClick("UP5")
             end)
@@ -1065,8 +1065,8 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 
         if tonumber(axxc[2]) >= 50 then
             autofarmtab:Button("Set จุดวางตัว Unit 6", function()
-                DiscordLib:Notification("Set Unit 6 Spawn Position",
-                    "Click on the floor to set the spawn unit position!\n (don't press \"Done\" until you set position)",
+                DiscordLib:Notification("Set จุดวางตัว Unit 6 ",
+                    "คลิ๊ก บนแผนที่ ในจุดที่จะวางตัวละคร!\n (ห้ามกด \"Done\" เพราะมันจะเซ็ทจุด)",
                     "Done")
                 MouseClick("UP6")
             end)

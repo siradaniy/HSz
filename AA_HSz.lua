@@ -34,7 +34,7 @@ local function webhook()
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
-		Fruitepic = game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.evolve_materials.StarFruitEpic.Text
+		Fruitepic = game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.evolve_materials.Text
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
@@ -95,6 +95,10 @@ local function webhook()
                             ["name"] = "Star Fruit Epic:",
                             ["value"] = Fruitepic .. " 🧪",
                             ["inline"] = true
+						}, {
+                            ["name"] = "Current Gold:",
+                            ["value"] = tostring(game.LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.evolve_materials.Value).." 🌟",
+                            ["inline"] = true	
                         }
 					}
 				}

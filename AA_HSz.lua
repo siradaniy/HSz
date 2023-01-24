@@ -94,7 +94,7 @@ local function webhook()
 						}, {
                             ["name"] = "Gun Devil Bullet:",
                             ["value"] = bullet .. " 🔫 ",
-                            ["inline"] = true	
+                            ["inline"] = false	
                         }
 					}
 				}

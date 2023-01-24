@@ -34,7 +34,6 @@ local function webhook()
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
 		gold = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GoldReward.Main.Amount.Text)
-        Fruite = tostring(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Top.Buttons.ScrollingFrame.Materials.Text)
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
@@ -92,8 +91,8 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
                             ["inline"] = true		
                         }, {
-                            ["name"] = "Current Fruite:",
-                            ["value"] = Fruite .. " 🌟",
+                            ["name"] = "Current Star Event:",
+                            ["value"] = tostring(game.Players.LocalPlayer._resourceHolidayStars.Value).. " ✨",
                             ["inline"] = true 
                         }
 					}

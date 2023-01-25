@@ -158,7 +158,7 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true	
                         }, {
-                            ["name"] = "Star:",
+                            ["name"] = "Ice Star:",
                             ["value"] = tostring(game.Players.LocalPlayer._stats._resourceHolidayStars.Value).. " ⭐",
                             ["inline"] = true 
                         }, {

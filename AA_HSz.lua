@@ -316,6 +316,16 @@ function sex()
 --------------- Select Units Tab -----------------
 --------------------------------------------------
 --#region Select Units Tab
+
+    local services = game:GetService("ReplicatedStorage"):WaitForChild("src").client.Services
+    local placement_service = require(services.PlacementServiceClient)
+
+    task.spawn(function()
+        while task.wait() do
+            placement_service.can_place = true
+        end
+    end)
+
         local Units = {}
 
         local function loadUnit()

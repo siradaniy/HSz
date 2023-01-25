@@ -32,7 +32,7 @@ task.spawn(function()
         placement_service.can_place = true
     end
 end)
-
+------------item drop result
 function get_inventory_items()
 	for i,v in next, getgc() do
 		if type(v) == 'function' then 
@@ -63,7 +63,7 @@ end;
 for i,v in pairs(get_inventory_items()) do
 	Old_Inventory_table[i] = v
 end
-
+---------------------
 --#region Webhook Sender
 local function webhook()
 	pcall(function()

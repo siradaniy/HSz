@@ -287,7 +287,7 @@ function sex()
     if exec == "Synapse X" or exec == "ScriptWare" then
         print("Good boi")
     else
-        local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=5998624788")
+        local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=10762290998")
         local gettrigon = gettrigonserver:Channel(" HOLYSHz Member Only")
         gettrigon:Label("Thank for Support")
 		gettrigon:Label("อย่าลืมต่อ Member กันด้วยละ")

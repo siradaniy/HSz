@@ -32,7 +32,7 @@ function anyplacefunc()
     
     task.spawn(function()
         while task.wait() do
-            placement_service.can_place = true
+            placement_service.can_place = false
         end
     end)
     
@@ -53,10 +53,10 @@ coroutine.resume(coroutine.create(function()
                     anyplacefunc()
                 end)
             end
-            if  getgenv().anyplace == true then
+            if  getgenv().anyplaceerr == true then
                 task.wait()
                 anyplacefunc()
-                getgenv().anyplace = false
+                getgenv().anyplaceerr = false
             end
         end
     end   

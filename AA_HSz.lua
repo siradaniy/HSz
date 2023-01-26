@@ -24,14 +24,25 @@ getgenv().door = "_lobbytemplategreen1"
 
 -----placeeverywhere
 
-local services = game:GetService("ReplicatedStorage"):WaitForChild("src").client.Services
-local placement_service = require(services.PlacementServiceClient)
+getgenv().anyplaceerr = false
 
-task.spawn(function()
-    while task.wait() do
-        placement_service.can_place = true
+function anyplacefunc()
+    local services = game:GetService("ReplicatedStorage"):WaitForChild("src").client.Services
+    local placement_service = require(services.PlacementServiceClient)
+    
+    task.spawn(function()
+        while task.wait() do
+            placement_service.can_place = true
+        end
+    end)
+    
+    if err then
+        warn("//////////////////////////////////////////////////")
+        warn("//////////////////////////////////////////////////")
+        getgenv().anyplaceerr = true
+        error(err)
     end
-end)
+end
 
 coroutine.resume(coroutine.create(function()
 
@@ -42,16 +53,17 @@ coroutine.resume(coroutine.create(function()
                     anyplacefunc()
                 end)
             end
-            if  getgenv().anyplace == true then
+            if  getgenv().anyplaceerr == true then
                 task.wait()
                 anyplacefunc()
-                getgenv().anyplace = false
+                getgenv().anyplaceerr = false
             end
         end
     end   
 
 end))
 --#endregionplaceeverywhere
+
 
 ------------item drop result
 function get_inventory_items()

@@ -53,10 +53,10 @@ coroutine.resume(coroutine.create(function()
                     anyplacefunc()
                 end)
             end
-            if  getgenv().anyplaceerr == true then
+            if  getgenv().anyplace == true then
                 task.wait()
                 anyplacefunc()
-                getgenv().anyplaceerr = false
+                getgenv().anyplace = false
             end
         end
     end   

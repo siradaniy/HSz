@@ -22,16 +22,6 @@ local UserInputService = game:GetService("UserInputService")
 getgenv().savefilename = "Anime-Adventures_HSz"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
 
------placeeverywhere
-
-local services = game:GetService("ReplicatedStorage"):WaitForChild("src").client.Services
-local placement_service = require(services.PlacementServiceClient)
-
-task.spawn(function()
-    while task.wait() do
-        placement_service.can_place = true
-    end
-end)
 ------------item drop result
 function get_inventory_items()
 	for i,v in next, getgc() do
@@ -3067,6 +3057,18 @@ pcall(function()
 
     game:GetService("ReplicatedStorage").endpoints.client_to_server.claim_daily_reward:InvokeServer()
 end)
+
+---test version
+local function NERMBF_fake_script() -- OpenClose.LocalScript 
+	local script = Instance.new('LocalScript', OpenClose)
+
+	local frame = script.Parent.Parent.Main
+	
+	script.Parent.MouseButton1Click:Connect(function()
+		frame.Visible = not frame.Visible
+	end)
+end
+coroutine.wrap(NERMBF_fake_script)()
 
 print("Successfully Loaded!!")
 ---------------------------------------------------------------------

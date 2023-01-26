@@ -22,6 +22,17 @@ local UserInputService = game:GetService("UserInputService")
 getgenv().savefilename = "Anime-Adventures_HSz"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
 
+-----placeeverywhere
+
+local services = game:GetService("ReplicatedStorage"):WaitForChild("src").client.Services
+local placement_service = require(services.PlacementServiceClient)
+
+task.spawn(function()
+    while task.wait() do
+        placement_service.can_place = true
+    end
+end)
+
 ------------item drop result
 function get_inventory_items()
 	for i,v in next, getgc() do

@@ -313,6 +313,7 @@ function sex()
     local webhookserver = win:Server("🌐Discord Wehhook  ", "http://www.roblox.com/asset/?id=10507357657")
 	local macroserver = win:Server("Discord   ", "http://www.roblox.com/asset/?id=8387379647")
     local youtubesserver = win:Server("Youtube         ", "http://www.roblox.com/asset/?id=1275974017")
+    local starbuxserver = win:Server("StarBux         ", "http://www.roblox.com/asset/?id=12281970113")
 
 
     if game.PlaceId == 8304191830 then
@@ -1162,19 +1163,83 @@ end)
 
 
     end
---#endregion
+--#endregion  Discord
 local macro = macroserver:Channel("👾 Discord ")
+macro:Label("Discord 𝗛𝗢𝗟𝗬𝗦𝗛𝘇 - 𝘊𝘰𝘮𝘮𝘶𝘯𝘪𝘵𝘺 นะครับ")
+macro:Label("เข้ามาแล้ว ต้องทำตัวดี ๆ นะงั๊บ")
 macro:Button("👉 HOLYSHz Discord Link!", function()
     setclipboard("https://discord.gg/6V8nzm5ZYB")
     DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
 end)
 
---#region Youtube & Discord
+--#region Youtube
 local youtubes = youtubesserver:Channel("✨ Youtube")
-youtubes:Label("HOLYSHz")
+youtubes:Label("ช่อง HOLYSHz นะครับ")
+youtubes:Label("กดติดตาม ไว้เป็นกำลังใจให้กันด้วยนะครับ")
+youtubes:Label("ถ้าใจดีก็สมัครสมาชิกช่องด้วยนะครับ มี 3 ราคา ให้เลือกเลย")
 youtubes:Button("👉 HOLYSHz Youtube Link!", function()
     setclipboard("https://www.youtube.com/@HOLYSHz")
     DiscordLib:Notification("Copied!!", "✔ Link ช่อง Youtube ถูก Copy แล้ว!!", "Okay!")	
+end)
+
+--#endregion
+
+--#region Starbux
+
+local starbux = starbuxserver:Channel(" Discord StarBux ")
+starbux:Label("Discord 🌟 StarBux 🌟 Store")
+starbux:Label("ติดต่อยศส้มเพื่อชื้อ GamePass ได้เลยครับ")
+starbux:Label("มีแอดมินให้บริการตลอดเวลาทำการ")
+starbux:Label("✅ รับของผ่านเซิร์ฟ วี จ่ายปุ๊บรับเลย แค่เรท 9 เท่านั้นเอง")
+starbux:Button("👉 Discord StarBux Link!", function()
+    setclipboard("https://discord.gg/eGKGE2sQtX")
+    DiscordLib:Notification("Copied!!", "✔ Link Discord StarBux ถูก Copy แล้ว!!", "Okay!")	  
+end)
+
+local starbux = starbuxserver:Channel(" ชื้อ GamePass ")
+starbux:Label("👑ร้าน 🌟 STARBUX 🌟 🛒 เปิด Gift Game Pass เรท 9  [ ROBLOX ]")
+starbux:Label("✅ ร้านเปิดบริการเวลา 12:00 - 22:00 ทุกวัน")
+starbux:Label("✅ ไม่ต้องใช้ ID - PASS")
+starbux:Label("✅ รับของผ่านเซิร์ฟ วี จ่ายปุ๊บรับเลย")
+starbux:Label("✅ Anime Adventures , Blox Fruits , BedWars , Anime Dimension , 9ล9")
+starbux:Button("👉 StarBux Facebook Link!", function()
+    setclipboard("https://www.facebook.com/StarBux.Store")
+    DiscordLib:Notification("Copied!!", "✔ Link Facebook StarBux Store ถูก Copy แล้ว!!", "Okay!")	
+end)
+
+local starbux = starbuxserver:Channel(" ชื้อ ID ไก่เพชร ")
+starbux:Label("👑ร้าน 🌟 STARBUX 🌟 🛒 เปิดขายไก่เพชร [Anime Adventures]")
+starbux:Label("🐣 ไก่ 40,000 เพชร + 2 Mythic & Random Traits ราคา 250 บาท")
+starbux:Label("🐣 ไก่ 60,000 เพชร + 2 Mythic & Random Traits ราคา 375 บาท")
+starbux:Label("🐣 ไก่ 100,000 เพชร + 2-4 Mythic & Random Traits ราคา 699 บาท")
+starbux:Label("💳 บัตรเติม ROBUX 10$ + ของแถม [ได้พรีเมี่ยม Roblox] ราคา 279 บาท")
+starbux:Label("💳 บัตรเติม ROBUX 10$ จะได้รับ ROBUX 1000 และพรีเมี่ยม 1เดือน  ")
+starbux:Button("👉 ชื้อไก่เพชร & บัตร ROBUX 10$  StarBux ", function()
+    setclipboard("https://farm.starbuxstore.com/shop?tab=shop&q=Anime%20Adventures%20ID")
+    DiscordLib:Notification("Copied!!", "✔ Link ไก่เพชร StarBux Store ถูก Copy แล้ว!!", "Okay!")	
+end)
+
+local starbux = starbuxserver:Channel(" บริการฟาร์มเพชร ")
+starbux:Label("👑ร้าน 🌟 STARBUX 🌟 🛒 เปิดบริการรับฟาร์มเพชร [Anime Adventures]")
+starbux:Label("✅ ต้องใช้ ID - PASS")
+starbux:Label("✅ ต้องปิด 2FA ก่อนเติมทุกๆครั้งเพื่อให้แอดมินได้ทำการเติมตามคิวอย่างรวดเร็ว")
+starbux:Label("🌟 บริการ ราคา และจำนวนวันที่ต้องใช้ 🌟")
+starbux:Label("💎 20,000 เพชร (ใช้เวลา 3วัน) ราคา 125 บาท")
+starbux:Label("💎 30,000 เพชร (ใช้เวลา 4วัน) ราคา 185 บาท")
+starbux:Label("💎 40,000 เพชร (ใช้เวลา 5วัน) ราคา 249 บาท")
+starbux:Label("💎 50,000 เพชร (ใช้เวลา 6วัน) ราคา 309 บาท")
+starbux:Button("👉 บริการฟาร์มเพชร StarBux Link!", function()
+    setclipboard("https://farm.starbuxstore.com/shop?tab=topup&q=บริการรับฟามเพชร%20ID%20-%20PASS")
+    DiscordLib:Notification("คำเตือน!!", "ต้อง ล็อคอิน StarBux ก่อนเอาลิ้งค์ไปวาง!!", "Okay!")	
+end)
+
+local starbux = starbuxserver:Channel(" ROBUX แบบกลุ่ม ")
+starbux:Label("👑ร้าน 🌟 STARBUX 🌟 🛒 กำลังจะเปิดขาย ROBUX แบบกลุ่ม [ROBLOX]")
+starbux:Label("ROBUX กลุ่ม ใครสนใจเข้ากลุ่มไว้เลยนะ ")
+starbux:Label("เรทยังไม่บอก แต่เข้ากลุ่มมากันก่อนน้าทุกคน  ")
+starbux:Button("👉 กลุ่มชื้อ ROBUX StarBux Link!", function()
+    setclipboard("https://www.roblox.com/groups/16807082/STARBUX-STORE#!/about")
+    DiscordLib:Notification("Copied!!", "✔ Link กลุ่ม ROBUX StarBux ถูก Copy แล้ว!!", "Okay!")	
 end)
 
 --#endregion

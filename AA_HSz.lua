@@ -299,7 +299,7 @@ function sex()
     if exec == "Synapse X" or exec == "ScriptWare" then
         print("Good boi")
     else
-        local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=11347112400")
+        local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=12281640494")
         local gettrigon = gettrigonserver:Channel(" HOLYSHz Member Only")
         gettrigon:Label("Thank for Support")
 		gettrigon:Label("อย่าลืมต่อ Member กันด้วยละ")
@@ -310,7 +310,7 @@ function sex()
     end
 
     local autofrmserver = win:Server("Auto Farm Section", "http://www.roblox.com/asset/?id=11347197194")
-    local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=11347239269")
+    local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=10507357657")
 	local macroserver = win:Server("Discord   ", "http://www.roblox.com/asset/?id=8387379647")
     local youtubesserver = win:Server("Youtube         ", "http://www.roblox.com/asset/?id=1275974017")
 

@@ -1165,7 +1165,7 @@ end)
     end
 --#endregion  Discord
 local macro = macroserver:Channel("👾 Discord ")
-macro:Label("Discord 𝗛𝗢𝗟𝗬𝗦𝗛𝘇 - 𝘊𝘰𝘮𝘮𝘶𝘯𝘪𝘵𝘺 นะครับ")
+macro:Label("Discord HOLYSHz - Community นะครับ")
 macro:Label("เข้ามาแล้ว ต้องทำตัวดี ๆ นะงั๊บ")
 macro:Button("👉 HOLYSHz Discord Link!", function()
     setclipboard("https://discord.gg/6V8nzm5ZYB")

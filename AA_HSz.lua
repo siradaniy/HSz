@@ -299,7 +299,7 @@ function sex()
     if exec == "Synapse X" or exec == "ScriptWare" then
         print("Good boi")
     else
-        local gettrigonserver = win:Server("Support Member Ship!", "🎪")
+        local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=11347112400")
         local gettrigon = gettrigonserver:Channel(" HOLYSHz Member Only")
         gettrigon:Label("Thank for Support")
 		gettrigon:Label("อย่าลืมต่อ Member กันด้วยละ")
@@ -309,10 +309,10 @@ function sex()
         end)
     end
 
-    local autofrmserver = win:Server("Auto Farm Section", "⚙️")
-    local webhookserver = win:Server("Discord Wehhook  ", "👨‍💻")
-	local macroserver = win:Server("Macro   ", "http://www.roblox.com/asset/?id=11779390242")
-    local youtubesserver = win:Server("Youtube & Discord         ", "🔔")
+    local autofrmserver = win:Server("Auto Farm Section", "http://www.roblox.com/asset/?id=11347197194")
+    local webhookserver = win:Server("Discord Wehhook  ", "http://www.roblox.com/asset/?id=11347239269")
+	local macroserver = win:Server("Discord   ", "http://www.roblox.com/asset/?id=8387379647")
+    local youtubesserver = win:Server("Youtube         ", "http://www.roblox.com/asset/?id=1275974017")
 
 
     if game.PlaceId == 8304191830 then
@@ -1163,7 +1163,7 @@ end)
 
     end
 --#endregion
-local macro = macroserver:Channel("👾 Macro ")
+local macro = macroserver:Channel("👾 Discord ")
 macro:Button("👉 HOLYSHz Discord Link!", function()
     setclipboard("https://discord.gg/6V8nzm5ZYB")
     DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
@@ -1175,11 +1175,6 @@ youtubes:Label("HOLYSHz")
 youtubes:Button("👉 HOLYSHz Youtube Link!", function()
     setclipboard("https://www.youtube.com/@HOLYSHz")
     DiscordLib:Notification("Copied!!", "✔ Link ช่อง Youtube ถูก Copy แล้ว!!", "Okay!")	
-end)
-local macro = youtubesserver:Channel("👾 Discord")
-macro:Button("👉 HOLYSHz Discord Link!", function()
-    setclipboard("https://discord.gg/6V8nzm5ZYB")
-    DiscordLib:Notification("Copied!!", "✔ คำเชิญ Discord ถูก Copy แล้ว!!", "Okay!")
 end)
 
 --#endregion

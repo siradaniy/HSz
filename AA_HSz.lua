@@ -33,6 +33,26 @@ task.spawn(function()
     end
 end)
 
+coroutine.resume(coroutine.create(function()
+
+    while task.wait(2) do
+        if getgenv().anyplace then
+            if game.PlaceId ~= 8304191830 then
+                pcall(function()
+                    anyplacefunc()
+                end)
+            end
+            if  getgenv().anyplace == true then
+                task.wait()
+                anyplacefunc()
+                getgenv().anyplace = false
+            end
+        end
+    end   
+
+end))
+--#endregionplaceeverywhere
+
 ------------item drop result
 function get_inventory_items()
 	for i,v in next, getgc() do
@@ -234,6 +254,7 @@ function sex()
     getgenv().weburl = data.webhook
     getgenv().autostart = data.autostart
     getgenv().autoupgrade = data.autoupgrade
+    getgenv().anyplace = data.anyplace
     getgenv().difficulty = data.difficulty
     getgenv().world = data.world
     getgenv().level = data.level
@@ -271,6 +292,7 @@ function sex()
             autofarmtp = getgenv().AutoFarmTP,
             autostart = getgenv().autostart,
             autoupgrade = getgenv().autoupgrade,
+            anyplace = getgenv().anyplace,
             difficulty = getgenv().difficulty,
             world = getgenv().world,
             level = getgenv().level,
@@ -637,10 +659,14 @@ end)
 devilcity:Label("เฉพาะประตูที่ปลดล็อค Rank แล้วเท่านั้น")
 devilcity:Label("หากมีประตูเก่า มันอาจจะเริ่มทำงาน ดังนั้นอย่าซื้อประตูระดับต่ำที่คุณไม่ต้องการทำฟาร์ม.")
 
---------------------------------------------------
+--------------------------------------------------anyplace
 ------------------ Auto Farm Tab -----------------
 --------------------------------------------------
 --#region Auto Farm Tab
+        autofarmtab:Toggle("วางตัวได้ทุกที่", getgenv().anyplace, function(bool)
+            getgenv().anyplace = bool
+            updatejson()
+        end)
         autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
             getgenv().AutoReplay = bool
             updatejson()
@@ -900,7 +926,12 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
     devilcity:Label("หากมีประตูเก่า มันอาจจะเริ่มทำงาน ดังนั้นอย่าซื้อประตูระดับต่ำที่คุณไม่ต้องการทำฟาร์ม.")
 
         
---#region Auto Farm Tab
+--#region Auto Farm Tab anyplace
+
+        autofarmtab:Toggle("วางตัวได้ทุกที่", getgenv().anyplace, function(bool)
+            getgenv().anyplace = bool
+            updatejson()
+        end)   
         autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
             getgenv().AutoReplay = bool
             updatejson()
@@ -1093,7 +1124,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         end
 
 
-        -- set unit position end--
+        -- set unit position end--anyplace
         autofarmtab:Label("--- Saved Config (Doesn't Refresh) ---")
         autofarmtab:Label("Auto Sell at Wave: " .. tostring(getgenv().sellatwave))
         autofarmtab:Label("Webhook: " .. tostring(getgenv().weburl))
@@ -1101,6 +1132,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         autofarmtab:Label("Auto Start: " .. tostring(getgenv().autostart))
         autofarmtab:Label("Auto Sell: " .. tostring(getgenv().autosell))
         autofarmtab:Label("Auto Upgrade: " .. tostring(getgenv().autoupgrade))
+        autofarmtab:Label("Place everywhere: " .. tostring(getgenv().anyplace))
         autofarmtab:Label("Difficulty: " .. tostring(getgenv().difficulty))
         autofarmtab:Label("Selected World: " .. tostring(getgenv().world))
         autofarmtab:Label("Selected Level: " .. tostring(getgenv().level))
@@ -1285,6 +1317,7 @@ else
         autostart = false,
         autoloadtp = false,
         autoupgrade = false,
+        anyplace = false,
         difficulty = "nil",
         world = "nil",
         level = "nil",

@@ -675,7 +675,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 ------------------ Auto Farm Tab -----------------
 --------------------------------------------------
 --#region Auto Farm Tab
-        autofarmtab:Toggle("วางตัวได้ทุกที่", getgenv().anyplace, function(bool)
+        autofarmtab:Toggle("Any Place วางตัวได้ทุกที่", getgenv().anyplace, function(bool)
             getgenv().anyplace = bool
             updatejson()
         end)
@@ -940,7 +940,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         
 --#region Auto Farm Tab anyplace
 
-        autofarmtab:Toggle("วางตัวได้ทุกที่", getgenv().anyplace, function(bool)
+        autofarmtab:Toggle("Any Place วางตัวได้ทุกที่", getgenv().anyplace, function(bool)
             getgenv().anyplace = bool
             updatejson()
         end)   

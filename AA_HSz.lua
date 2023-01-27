@@ -32,7 +32,7 @@ function anyplacefunc()
     
     task.spawn(function()
         while task.wait() do
-            placement_service.can_place = false
+            placement_service.can_place = true
         end
     end)
     

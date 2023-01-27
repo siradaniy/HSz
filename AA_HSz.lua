@@ -1247,7 +1247,7 @@ starbux:Label("✅ ไม่ต้องใช้ ID - PASS")
 starbux:Label("✅ รับของผ่านเซิร์ฟ วี จ่ายปุ๊บรับเลย")
 starbux:Label("✅ Anime Adventures , Blox Fruits , BedWars , Anime Dimension , 9ล9")
 starbux:Button("👉 StarBux Facebook Link!", function()
-    setclipboard("https://www.facebook.com/StarBux.Store")
+    setclipboard("https://www.facebook.com/StarBux.Store/")
     DiscordLib:Notification("Copied!!", "✔ Link Facebook StarBux Store ถูก Copy แล้ว!!", "Okay!")	
 end)
 

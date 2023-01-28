@@ -513,7 +513,8 @@ function sex()
         end)
 
         local worlddrop = slectworld:Dropdown("Select World", {"Plannet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
-        "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom", "Clover Legend - HARD","Hollow Legend - HARD","Cape Canaveral","JoJo Legend - HARD"}, getgenv().world, function(world)
+        "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom", "Clover Legend - HARD","Hollow Legend - HARD","Cape Canaveral",
+        "JoJo Legend - HARD","Aline Spaceship"}, getgenv().world, function(world)
             getgenv().world = world
             updatejson()
             if world == "Plannet Namak" then
@@ -634,6 +635,13 @@ function sex()
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
                 end	
+            elseif world =="Aline Spaceship" then
+                getgenv().leveldrop:Clear()
+                table.clear(levels)
+                getgenv().levels = {"opm_infinite","opm_level_1","opm_level_2","opm_level_3","opm_level_4","opm_level_5","opm_level_6",}
+                for i, v in ipairs(levels) do
+                    getgenv().leveldrop:Add(v)
+                end    
             end
         end)
 
@@ -1073,6 +1081,11 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
                             SpawnUnitPos["jojo"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["jojo"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["jojo"][UnitPos]["z"] = a.Position.Z
+                        elseif game.Workspace._map:FindFirstChild("boros_ship") then
+                            print("Aline Spaceship")    
+                            SpawnUnitPos["Aline"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["Aline"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["Aline"][UnitPos]["z"] = a.Position.Z    
                         elseif game.Workspace._map:FindFirstChild("vending machines") then
                             print("chainsaw")    
                             SpawnUnitPos["chainsaw"][UnitPos]["x"] = a.Position.X
@@ -1786,6 +1799,38 @@ else
                 z = -550.587890625
            }
          },
+         Aline = {
+            UP1  = {
+                x = -316.16632080078125, 
+                y = 364.21185302734375, 
+                z = 1418.370849609375
+             },
+              UP3  = {
+                x = -304.1457824707031, 
+                y = 364.21185302734375, 
+                z = 1436.0750732421875
+             },
+              UP2  = {
+                x = -280.52178955078125, 
+                y = 364.21185302734375, 
+                z = 1442.6151123046875
+             },
+              UP6  = {
+                x = -261.36993408203125, 
+                y = 364.2118225097656, 
+                z = 1421.857421875
+             },
+              UP5  = {
+                x = -254.68722534179688, 
+                y = 364.21185302734375, 
+                z = 1382.4862060546875               
+             },
+              UP4  = {
+                x = -282.77978515625, 
+                y = 364.21185302734375, 
+                z = 1367.6402587890625
+           }
+         },         
            jojo = {
             UP1  = {
                 x = -111.61297607421875, 
@@ -2573,6 +2618,57 @@ coroutine.resume(coroutine.create(function()
                             game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                         end
                     end
+                elseif game.Workspace._map:FindFirstChild("boros_ship") then
+                    print("Aline Spaceship")
+                    for i = 1, 6 do
+                        local unitinfo = getgenv().SelectedUnits["U" .. i]
+                        if unitinfo ~= nil then
+                            local unitinfo_ = unitinfo:split(" #")
+                            local pos = getgenv().SpawnUnitPos["Aline"]["UP" .. i]
+    
+                            --place units 0
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 1
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 2 
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 3 
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 4
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                            --place units 5
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                        end
+                    end    
                 elseif game.Workspace._map:FindFirstChild("SpaceCenter") then
                     print("Cape Canaveral")
                     for i = 1, 6 do

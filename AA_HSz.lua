@@ -208,7 +208,7 @@ function sex()
     getgenv().PortalID = data.PortalID
 
 
-    getgenv().AutoNext = data.AutoNext
+    --getgenv().AutoNext = data.AutoNext
     getgenv().AutoLeave = data.AutoLeave
     getgenv().AutoReplay = data.AutoReplay
     getgenv().AutoChallenge = data.AutoChallenge  
@@ -248,7 +248,7 @@ function sex()
             -- unitname = getgenv().unitname,
             -- unitid = getgenv().unitid,
             autoloadtp = getgenv().AutoLoadTP,
-            AutoNext = getgenv().AutoNext,
+            --AutoNext = getgenv().AutoNext,
             AutoLeave = getgenv().AutoLeave,
             AutoReplay = getgenv().AutoReplay,
             AutoChallenge  = getgenv().AutoChallenge, 
@@ -657,10 +657,6 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             getgenv().AutoFarmIC = bool
             updatejson()
         end)
-        autofarmtab:Toggle("Auto Next Room [หอคอย]", getgenv().AutoNext, function(bool)
-            getgenv().AutoNext = bool
-            updatejson()
-        end)
         autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
             getgenv().AutoFarm = bool
             updatejson()
@@ -903,6 +899,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 
         
 --#region Auto Farm Tab anyplaceAutoNext
+        
         autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
             getgenv().AutoReplay = bool
             updatejson()
@@ -920,10 +917,6 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
             getgenv().AutoFarmIC = bool
             updatejson()
         end)
-        autofarmtab:Toggle("Auto Next Room [หอคอย]", getgenv().AutoNext, function(bool)
-            getgenv().AutoNext = bool
-            updatejson()
-        end)    
         autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
             getgenv().AutoFarm = bool
             updatejson()
@@ -1281,7 +1274,7 @@ else
         -- unitname = "name",
         -- unitid = "id",
         AutoReplay = false,
-        AutoNext = false,
+        --AutoNext = false,
         AutoLeave = true,
         AutoChallenge = false,
         selectedreward = "star_fruit_random",
@@ -2784,32 +2777,6 @@ coroutine.resume(coroutine.create(function()
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
             elseif getgenv().AutoLeave then
-                --
-                Teleport()
-                -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
-            end
-        end
-	end)
-end))
---#endregion
-
--------------------------------------------Auto Next Room
-
-coroutine.resume(coroutine.create(function()
-	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
-
-    GameFinished:GetPropertyChangedSignal("Value"):Connect(function()
-        print("Changed", GameFinished.Value == true)
-        if GameFinished.Value == true then
-            repeat task.wait() until  game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Enabled == true
-            task.wait()
-            pcall(function() webhook() end)
-            print("nextlevel")
-            task.wait(2.1)
-            if getgenv().AutoNext then
-                local a={[1]="nextlevel"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-                local a={[1]="nextlevel"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-            elseif getgenv().AutoNext then
                 --
                 Teleport()
                 -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)

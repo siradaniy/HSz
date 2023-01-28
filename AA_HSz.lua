@@ -22,49 +22,6 @@ local UserInputService = game:GetService("UserInputService")
 getgenv().savefilename = "Anime-Adventures_HSz"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
 
------placeeverywhere
-
-getgenv().anyplaceerr = false
-
-function anyplacefunc()
-    local services = game:GetService("ReplicatedStorage"):WaitForChild("src").client.Services
-    local placement_service = require(services.PlacementServiceClient)
-    
-    task.spawn(function()
-        while task.wait() do
-            placement_service.can_place = true
-        end
-    end)
-    
-    if err then
-        warn("//////////////////////////////////////////////////")
-        warn("//////////////////////////////////////////////////")
-        getgenv().anyplaceerr = true
-        error(err)
-    end
-end
-
-coroutine.resume(coroutine.create(function()
-
-    while task.wait(2) do
-        if getgenv().anyplace then
-            if game.PlaceId ~= 8304191830 then
-                pcall(function()
-                    anyplacefunc()
-                end)
-            end
-            if  getgenv().anyplaceerr == true then
-                task.wait()
-                anyplacefunc()
-                getgenv().anyplaceerr = false
-            end
-        end
-    end   
-
-end))
---#endregionplaceeverywhere
-
-
 ------------item drop result
 function get_inventory_items()
 	for i,v in next, getgc() do
@@ -266,7 +223,6 @@ function sex()
     getgenv().weburl = data.webhook
     getgenv().autostart = data.autostart
     getgenv().autoupgrade = data.autoupgrade
-    getgenv().anyplace = data.anyplace
     getgenv().difficulty = data.difficulty
     getgenv().world = data.world
     getgenv().level = data.level
@@ -304,7 +260,6 @@ function sex()
             autofarmtp = getgenv().AutoFarmTP,
             autostart = getgenv().autostart,
             autoupgrade = getgenv().autoupgrade,
-            anyplace = getgenv().anyplace,
             difficulty = getgenv().difficulty,
             world = getgenv().world,
             level = getgenv().level,
@@ -683,10 +638,6 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 ------------------ Auto Farm Tab -----------------
 --------------------------------------------------
 --#region Auto Farm Tab
-        autofarmtab:Toggle("Any Place วางตัวได้ทุกที่", getgenv().anyplace, function(bool)
-            getgenv().anyplace = bool
-            updatejson()
-        end)
         autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
             getgenv().AutoReplay = bool
             updatejson()
@@ -947,11 +898,6 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 
         
 --#region Auto Farm Tab anyplace
-
-        autofarmtab:Toggle("Any Place วางตัวได้ทุกที่", getgenv().anyplace, function(bool)
-            getgenv().anyplace = bool
-            updatejson()
-        end)   
         autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
             getgenv().AutoReplay = bool
             updatejson()
@@ -1157,7 +1103,6 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
         autofarmtab:Label("Auto Start: " .. tostring(getgenv().autostart))
         autofarmtab:Label("Auto Sell: " .. tostring(getgenv().autosell))
         autofarmtab:Label("Auto Upgrade: " .. tostring(getgenv().autoupgrade))
-        autofarmtab:Label("Place everywhere: " .. tostring(getgenv().anyplace))
         autofarmtab:Label("Difficulty: " .. tostring(getgenv().difficulty))
         autofarmtab:Label("Selected World: " .. tostring(getgenv().world))
         autofarmtab:Label("Selected Level: " .. tostring(getgenv().level))
@@ -1342,7 +1287,6 @@ else
         autostart = false,
         autoloadtp = false,
         autoupgrade = false,
-        anyplace = false,
         difficulty = "nil",
         world = "nil",
         level = "nil",

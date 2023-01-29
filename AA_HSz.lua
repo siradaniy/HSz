@@ -17,7 +17,7 @@ local Workspace = game:GetService("Workspace")
 local plr = game:GetService("Players").LocalPlayer
 local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
-local UserInputService = game:GetService("UserInputService")
+local UserInputService = game:GetService("UserInputService")f
 
 getgenv().savefilename = "Anime-Adventures_HSz_UPD10_"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
@@ -292,7 +292,7 @@ function sex()
     -- Uilib Shits
     local exec = tostring(identifyexecutor())
 
-    local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/Discord_UiLib.lua")()
+    local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/DiscordLid2.lua")()
     local win = DiscordLib:Window("HSz Member [👊UPD 10] Anime Adventures "..versionx.." - "..exec)
            
     if exec == "Synapse X" or exec == "ScriptWare" then
@@ -1063,16 +1063,11 @@ end)
                             SpawnUnitPos["jojo_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["jojo_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["jojo_leg"][UnitPos]["z"] = a.Position.Z    
-                        elseif game.Workspace._map:FindFirstChild("boros_ship") then
-                            print("Aline Spaceship")    
-                            SpawnUnitPos["Aline"][UnitPos]["x"] = a.Position.X
-                            SpawnUnitPos["Aline"][UnitPos]["y"] = a.Position.Y
-                            SpawnUnitPos["Aline"][UnitPos]["z"] = a.Position.Z   
-                        elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
-                            print("Alien Spaceship (Final)")    
-                            SpawnUnitPos["Aline_leg"][UnitPos]["x"] = a.Position.X
-                            SpawnUnitPos["Aline_leg"][UnitPos]["y"] = a.Position.Y
-                            SpawnUnitPos["Aline_leg"][UnitPos]["z"] = a.Position.Z     
+                        elseif game.Workspace._map:FindFirstChild("secret") then
+                            print("opm")    
+                            SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["opm"][UnitPos]["z"] = a.Position.Z 
                         elseif game.Workspace._map:FindFirstChild("vending machines") then
                             print("chainsaw")    
                             SpawnUnitPos["chainsaw"][UnitPos]["x"] = a.Position.X
@@ -1782,7 +1777,7 @@ else
                 z = -565.4340209960938
            }
          },
-         Aline = {
+         opm = {
             UP1  = {
                 x = -339.7117614746094, 
                 y = 364.21185302734375, 
@@ -1814,38 +1809,7 @@ else
                 z = 1433.202392578125
            }
          },         
-         Aline_leg = {
-            UP1  = {
-                x = -339.7117614746094, 
-                y = 364.21185302734375, 
-                z = 1396.416748046875
-             },
-              UP3  = {
-                x = -281.6949462890625, 
-                y = 364.21185302734375, 
-                z = 1436.8084716796875
-             },
-              UP2  = {
-                x = -334.77142333984375, 
-                y = 368.2612609863281, 
-                z = 1391.615234375
-             },
-              UP6  = {
-                x = -312.58642578125, 
-                y = 364.21185302734375, 
-                z = 1425.9600830078125
-             },
-              UP5  = {
-                x = -293.9329833984375, 
-                y = 364.21185302734375, 
-                z = 1437.103759765625               
-             },
-              UP4  = {
-                x = -261.8616027832031, 
-                y = 369.92950439453125, 
-                z = 1433.202392578125
-           }
-         },  
+         
          jojo_leg = {
             UP1  = {
                 x = -93.5505142211914, 
@@ -2758,61 +2722,9 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end        
-            elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
-                print("Alien Spaceship (Final)")
-                for i = 1, 6 do
-                    local unitinfo = getgenv().SelectedUnits["U" .. i]
-                    if unitinfo ~= nil then
-                        local unitinfo_ = unitinfo:split(" #")
-                        local pos = getgenv().SpawnUnitPos["Aline"]["UP" .. i]
-
-                        --place units 0
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 1
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 2 
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 3 
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 4
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 5
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-                    end
-                end
             end
         end
     end
-end
 
 
 ------// Auto Farm \\------

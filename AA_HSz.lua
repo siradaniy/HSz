@@ -254,7 +254,7 @@ function sex()
             --Aline Portal
             portalnameA = getgenv().portalnameA,
             farmaline = getgenv().farmaline,
-            PortalID = getgenv().PortalIDA,
+            PortalIDA = getgenv().PortalIDA,
 
             -- unitname = getgenv().unitname,
             -- unitid = getgenv().unitid,
@@ -481,7 +481,7 @@ function sex()
 
         local worlddrop = slectworld:Dropdown("Select World", {"Plannet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
         "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom", "Clover Legend - HARD","Hollow Legend - HARD","Cape Canaveral",
-        "JoJo Legend - HARD","Aline Spaceship"}, getgenv().world, function(world)
+        "JoJo Legend - HARD","Alien Spaceship"}, getgenv().world, function(world)
             getgenv().world = world
             updatejson()
             if world == "Plannet Namak" then
@@ -1078,7 +1078,7 @@ end)
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z        
                         elseif game.Workspace._map:FindFirstChild("secret") then
-                            print("opm")    
+                            print("Alien Spaceship")    
                             SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm"][UnitPos]["z"] = a.Position.Z
@@ -3345,7 +3345,7 @@ coroutine.resume(coroutine.create(function()
             FarmCastlePark()--regular farming
         end
     end
-end))
+end)) 
 
 if getgenv().AutoLoadTP == true then
     local exec = tostring(identifyexecutor())

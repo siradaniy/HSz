@@ -627,17 +627,6 @@ getgenv().portalname = devilcity:Dropdown("Select Portal", {"csm_contract_0", "c
     updatejson()
 end)
 
-devilcity:Button("Buy Portal", function()
-
-    if getgenv().buyportal then
-        local args = {
-            [1] = tostring(getgenv().portalnameX)
-        }
-        game:GetService("ReplicatedStorage").endpoints.client_to_server.buy_csmportal_shop_item:InvokeServer(unpack(args))
-    end
-
-end)
-
 devilcity:Toggle("Auto Farm Devil Portal", getgenv().farmportal, function(bool)
     getgenv().farmportal = bool
     updatejson()
@@ -901,16 +890,6 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
     getgenv().portalname = devilcity:Dropdown("Select Portal", {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, getgenv().portalnameX, function(pornname)
         getgenv().portalnameX = pornname
         updatejson()
-    end)
-    
-    devilcity:Button("Buy Portal", function()
-        if getgenv().buyportal then
-            local args = {
-                [1] = tostring(getgenv().portalnameX)
-            }
-            
-            game:GetService("ReplicatedStorage").endpoints.client_to_server.buy_csmportal_shop_item:InvokeServer(unpack(args))
-        end
     end)
     
     devilcity:Toggle("Auto Farm ประตู Devil", getgenv().farmprotal, function(bool)
@@ -3183,7 +3162,7 @@ end
 
 
 local function startfarming()
-    if getgenv().farmprotal == false and getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
+    if getgenv().farmprotal == false and getgenv().farmaline == false and getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
                            and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false then
 
         if game.PlaceId == 8304191830 then

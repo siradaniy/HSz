@@ -862,6 +862,7 @@ else -- When in a match
 
     local autofarmtab = autofrmserver:Channel("🤖 Auto Farm")
     local devilcity = autofrmserver:Channel("😈 Devil City")
+    local alinecity = autofrmserver:Channel("👽 Aline Portal")
     local autoclngtab = autofrmserver:Channel("🎯 Auto Challenge")
     local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script_")
     local autoseltab = autofrmserver:Channel("💸 Auto Sell")

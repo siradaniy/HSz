@@ -1,4 +1,4 @@
-local versionx = "1.0.0"
+local versionx = "1.0.1"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -250,7 +250,7 @@ function sex()
             PortalID = getgenv().PortalID,
 
             --Aline Portal
-            portalnameX = getgenv().portalnameA,
+            portalnameA = getgenv().portalnameA,
             farmaline = getgenv().farmaline,
             PortalID = getgenv().PortalIDA,
 
@@ -1306,7 +1306,7 @@ else
         PortalID = "nil",
 
         --Aline protal
-        portalnameX = "portal_boros_g",
+        portalnameA = "portal_boros_g",
         farmaline = false,
         PortalID = "nil",
         

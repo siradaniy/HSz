@@ -1076,8 +1076,8 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
                             SpawnUnitPos["Aline"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["Aline"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["Aline"][UnitPos]["z"] = a.Position.Z   
-                        elseif game.Workspace._map:FindFirstChild("portal_boros_g") then
-                            print("Portal Aline")    
+                        elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
+                            print("Alien Spaceship (Final)")    
                             SpawnUnitPos["Aline_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["Aline_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["Aline_leg"][UnitPos]["z"] = a.Position.Z     
@@ -2733,8 +2733,8 @@ coroutine.resume(coroutine.create(function()
                             game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                         end
                     end    
-                elseif game.Workspace._map:FindFirstChild("portal_boros_g") then
-                    print("Portal Aline")
+                elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
+                    print("Alien Spaceship (Final)")
                     for i = 1, 6 do
                         local unitinfo = getgenv().SelectedUnits["U" .. i]
                         if unitinfo ~= nil then
@@ -3263,6 +3263,9 @@ local function startfarming()
             }
         }
         ----Farm Aline portal
+    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
+                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline or getgenv().farmaline then    
+
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)

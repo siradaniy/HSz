@@ -1,4 +1,4 @@
-local versionx = "1.0.1"
+local versionx = "1.0.0"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -921,6 +921,20 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
     devilcity:Label("เฉพาะประตูที่ปลดล็อค Rank แล้วเท่านั้น")
     devilcity:Label("หากมีประตูเก่า มันอาจจะเริ่มทำงาน ดังนั้นอย่าซื้อประตูระดับต่ำที่คุณไม่ต้องการทำฟาร์ม.")
 
+    -- Aline Portal
+
+    getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"portal_boros_g"}, getgenv().portalnameA, function(pornname)
+        getgenv().portalnameA = pornname
+        updatejson()
+    end)
+
+    alinecity:Toggle("Auto Farm Aline Portal", getgenv().farmaline, function(bool)
+        getgenv().farmaline = bool
+        updatejson()
+    end)
+
+    alinecity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf Aline Spacship.")
+
         
 --#region Auto Farm Tab anyplaceAutoNext
         
@@ -1308,7 +1322,7 @@ else
         --Aline protal
         portalnameA = "portal_boros_g",
         farmaline = false,
-        PortalID = "nil",
+        PortalIDA = "nil",
         
         -- unitname = "name",
         -- unitid = "id",
@@ -3250,16 +3264,16 @@ local function startfarming()
         }
         ----Farm Aline portal
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
-            if v.Name == "portal_boros_g" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
+            if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)
-                getgenv().PortalID = v._uuid_or_id.value
+                getgenv().PortalIDA = v._uuid_or_id.value
                 break;
             end
         end
           task.wait(1.5)
 
           local args = {
-            [1] = tostring(getgenv().PortalID),
+            [1] = tostring(getgenv().PortalIDA),
             [2] = {
                 ["friends_only"] = true
             }

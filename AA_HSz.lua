@@ -620,7 +620,7 @@ function sex()
         end)
 --#endregion
 
---Devil City
+--Devil City----------------------------
 
 getgenv().portalname = devilcity:Dropdown("Select Portal", {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, getgenv().portalnameX, function(pornname)
     getgenv().portalnameX = pornname
@@ -646,9 +646,9 @@ end)
 devilcity:Label("เฉพาะประตูที่ปลดล็อค Rank แล้วเท่านั้น")
 devilcity:Label("หากมีประตูเก่า มันอาจจะเริ่มทำงาน ดังนั้นอย่าซื้อประตูระดับต่ำที่คุณไม่ต้องการทำฟาร์ม.")
 
--- Aline Portal
+-- Aline Portal ------------------------------------
 
-getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"portal_boros_g"}, getgenv().portalnameA, function(pornname)
+getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"boros_ship_portal"}, getgenv().portalnameA, function(pornname)
     getgenv().portalnameA = pornname
     updatejson()
 end)
@@ -923,7 +923,7 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
 
     -- Aline Portal
 
-    getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"portal_boros_g"}, getgenv().portalnameA, function(pornname)
+    getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"boros_ship_portal"}, getgenv().portalnameA, function(pornname)
         getgenv().portalnameA = pornname
         updatejson()
     end)
@@ -1320,7 +1320,7 @@ else
         PortalID = "nil",
 
         --Aline protal
-        portalnameA = "portal_boros_g",
+        portalnameA = "boros_ship_portal",
         farmaline = false,
         PortalIDA = "nil",
         

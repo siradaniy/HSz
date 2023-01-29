@@ -19,7 +19,7 @@ local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 
-getgenv().savefilename = "Anime-Adventures_HSz_UPD10_"..game.Players.LocalPlayer.Name..".json"
+getgenv().savefilename = "Anime-Adventures_HSz_UPD10_fix"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
 
 ------------item drop result

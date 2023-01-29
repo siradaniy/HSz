@@ -1,4 +1,4 @@
-local versionx = "1.1.0"
+local versionx = "1.6.7"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -17,7 +17,7 @@ local Workspace = game:GetService("Workspace")
 local plr = game:GetService("Players").LocalPlayer
 local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
-local UserInputService = game:GetService("UserInputService")f
+local UserInputService = game:GetService("UserInputService")
 
 getgenv().savefilename = "Anime-Adventures_HSz_UPD10_"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
@@ -54,6 +54,7 @@ for i,v in pairs(get_inventory_items()) do
 	Old_Inventory_table[i] = v
 end
 ---------------------end webhook
+
 
 --#region Webhook Sender
 local function webhook()
@@ -208,7 +209,7 @@ function sex()
     getgenv().buyportal = data.buyportal
     getgenv().PortalID = data.PortalID
 
-    --Aline Portal
+    --Aline
     getgenv().portalnameA = data.portalnameA
     getgenv().farmaline = data.farmaline
     getgenv().PortalIDA = data.PortalIDA
@@ -290,12 +291,13 @@ function sex()
     --\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\--
 
     -- Uilib Shits
+
     local exec = tostring(identifyexecutor())
 
     local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/DiscordLid2.lua")()
     local win = DiscordLib:Window("HSz Member [👊UPD 10] Anime Adventures "..versionx.." - "..exec)
-           
-    if exec == "Synapse X" or exec == "ScriptWare" then
+       
+    if exec == "Synapse X" or exec == "ScriptWare" or exec == "Trigon" then
         print("Good boi")
     else
         local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=12281640494")
@@ -375,7 +377,7 @@ function sex()
             updatejson()
         end
 
-        unitselecttab:Button("Select Equipped Units", function()
+        unitselecttab:Button("เลือก Units ที่ใส่อยู่ตอนนี้", function()
             for i, v in ipairs(game:GetService("Players").LocalPlayer.PlayerGui["spawn_units"].Lives.Frame.Units:GetChildren()) do
                 if v:IsA("ImageButton") then
                     local unitxx = v.Main.petimage.WorldModel:GetChildren()[1]
@@ -599,7 +601,7 @@ function sex()
                 getgenv().levels = {"jojo_legend_1","jojo_legend_2","jojo_legend_3",}
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
-                end	    
+                end	        
             elseif world =="Alien Spaceship" then
                 getgenv().leveldrop:Clear()
                 table.clear(levels)
@@ -618,7 +620,7 @@ function sex()
         end)
 --#endregion
 
---Devil City----------------------------
+------Devil City
 
 getgenv().portalname = devilcity:Dropdown("Select Portal", {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, getgenv().portalnameX, function(pornname)
     getgenv().portalnameX = pornname
@@ -653,63 +655,62 @@ end)
 
 alinecity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf Aline Spacship.")
 
-
 --------------------------------------------------
 ------------------ Auto Farm Tab -----------------
 --------------------------------------------------
-	--#region Auto Farm Tab
-    autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
-        getgenv().AutoReplay = bool
-        updatejson()
-    end)
-    autofarmtab:Toggle("Auto Leave", getgenv().AutoLeave, function(bool)
-        getgenv().AutoLeave = bool
-        updatejson()
-    end)
-    autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
-        getgenv().AutoFarmTP = bool
-        updatejson()
-    end)
+--#region Auto Farm Tab
+autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
+    getgenv().AutoReplay = bool
+    updatejson()
+end)
+autofarmtab:Toggle("Auto Leave", getgenv().AutoLeave, function(bool)
+    getgenv().AutoLeave = bool
+    updatejson()
+end)
+autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
+    getgenv().AutoFarmTP = bool
+    updatejson()
+end)
 
-    autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(bool)
-        getgenv().AutoFarmIC = bool
-        updatejson()
-    end)
-    autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
-        getgenv().AutoFarm = bool
-        updatejson()
-    end)
+autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(bool)
+    getgenv().AutoFarmIC = bool
+    updatejson()
+end)
+autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
+    getgenv().AutoFarm = bool
+    updatejson()
+end)
 
-    autofarmtab:Toggle("Auto Start", getgenv().autostart, function(bool)
-        getgenv().autostart = bool
-        updatejson()
-    end)
+autofarmtab:Toggle("Auto Start", getgenv().autostart, function(bool)
+    getgenv().autostart = bool
+    updatejson()
+end)
 
-    autofarmtab:Toggle("Auto Abilities", getgenv().autoabilities, function(bool)
-        getgenv().autoabilities = bool
-        updatejson()
-    end)
+autofarmtab:Toggle("Auto Abilities", getgenv().autoabilities, function(bool)
+    getgenv().autoabilities = bool
+    updatejson()
+end)
 
-    autofarmtab:Toggle("Auto Upgrade Units", getgenv().autoupgrade, function(bool)
-        getgenv().autoupgrade = bool
-        updatejson()
-    end)
+autofarmtab:Toggle("Auto Upgrade Units", getgenv().autoupgrade, function(bool)
+    getgenv().autoupgrade = bool
+    updatejson()
+end)
 
-    autofarmtab:Toggle("Auto Sell ขายเมื่อถึง Wave", getgenv().autosell, function(x)
-        getgenv().autosell = x
-        updatejson()
-        if getgenv().autosell == false then
-            getgenv().disableatuofarm = false
-        end
-    end)
+autofarmtab:Toggle("Auto Sell ขายเมื่อถึง Wave", getgenv().autosell, function(x)
+    getgenv().autosell = x
+    updatejson()
+    if getgenv().autosell == false then
+        getgenv().disableatuofarm = false
+    end
+end)
 
-    ---- 
-    autofarmtab:Textbox("ใส่ตัวเลขเพื่อ Auto Sell {ใส่เลขแล้วกด Enter}", tostring(getgenv().sellatwave), false, function(t)
-        getgenv().sellatwave = tonumber(t)
-        updatejson()
-    end)
-    
-    local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script")
+        ---- 
+        autofarmtab:Textbox("ใส่ตัวเลขเพื่อ Auto Sell {ใส่เลขแล้วกด Enter}", tostring(getgenv().sellatwave), false, function(t)
+            getgenv().sellatwave = tonumber(t)
+            updatejson()
+        end)
+        
+        local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script")
     autoloadtab:Label("รันสคริปต์โดยอัตโนมัติเมื่อออกจากMap.")
     autoloadtab:Label("ไม่จำเป็นต้องใส่สคริปต์ในโฟลเดอร์ AutoExec!")
     autoloadtab:Toggle("Auto Load Script", getgenv().AutoLoadTP, function(bool)
@@ -729,25 +730,22 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
 
     local webhooktab = webhookserver:Channel("🌐 Webhook")
     webhooktab:Label("Webhook จะส่งแจ้งเตือนทุกครั้งที่เกมจบลง!")
-    
-    local webhoolPlaceholder
-    if getgenv().weburl == "" then
-        webhoolPlaceholder = "Insert url here!"
-    else
-        webhoolPlaceholder = getgenv().weburl
-    end
-    webhooktab:Textbox("Webhook URL {Press Enter}" , webhoolPlaceholder, false, function(web_url)
-        getgenv().weburl = web_url
-        updatejson()
-    end)
-    webhooktab:Button("Test Webhook", function()
-        webhook()
-    end)
+		
+		local webhoolPlaceholder
+		if getgenv().weburl == "" then
+			webhoolPlaceholder = "Insert url here!"
+		else
+			webhoolPlaceholder = getgenv().weburl
+		end
+		webhooktab:Textbox("Webhook URL {Press Enter}" , webhoolPlaceholder, false, function(web_url)
+            getgenv().weburl = web_url
+            updatejson()
+        end)
 
-    autofarmtab:Label(" ")
-    autofarmtab:Label(" ")
-    autofarmtab:Label(" ")
-    autofarmtab:Label(" ")
+        autofarmtab:Label(" ")
+        autofarmtab:Label(" ")
+        autofarmtab:Label(" ")
+        autofarmtab:Label(" ")
 --#endregion
 --------------------------------------------------
 -------------------- Auto Challenge --------------
@@ -856,35 +854,36 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
 --------------------------------------------------
 --------------------------------------------------
 --#region --- Inside match ---
-else -- When in a match
-    game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false
-    game:GetService("ReplicatedStorage").packages.assets["ui_sfx"].error.Volume = 0
-    game:GetService("ReplicatedStorage").packages.assets["ui_sfx"].error_old.Volume = 0
+    else -- When in a match
+        game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false
+        game:GetService("ReplicatedStorage").packages.assets["ui_sfx"].error.Volume = 0
+        game:GetService("ReplicatedStorage").packages.assets["ui_sfx"].error_old.Volume = 0
+        
 
 
 
-local autofarmtab = autofrmserver:Channel("🤖 Auto Farm")
-local devilcity = autofrmserver:Channel("😈 Devil City")
-local alinecity = autofrmserver:Channel("👽 Aline Portal")
-local autoclngtab = autofrmserver:Channel("🎯 Auto Challenge")
-local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script_")
-local autoseltab = autofrmserver:Channel("💸 Auto Sell")
-local webhooktab = webhookserver:Channel("🌐 Webhook")
 
-    autoloadtab:Label("รันสคริปต์โดยอัตโนมัติเมื่อออกจากMap.")
+        local autofarmtab = autofrmserver:Channel("🤖 Auto Farm")
+        local devilcity = autofrmserver:Channel("😈 Devil City")
+        local alinecity = autofrmserver:Channel("👽 Aline Portal")
+        local autoclngtab = autofrmserver:Channel("🎯 Auto Challenge")
+        local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script_")
+        local autoseltab = autofrmserver:Channel("💸 Auto Sell")
+        local webhooktab = webhookserver:Channel("🌐 Webhook")
+    
+		autoloadtab:Label("รันสคริปต์โดยอัตโนมัติเมื่อออกจากMap.")
     autoloadtab:Label("ไม่จำเป็นต้องใส่สคริปต์ในโฟลเดอร์ AutoExec!")
     autoloadtab:Toggle("Auto Load Script", getgenv().AutoLoadTP, function(bool)
-        getgenv().AutoLoadTP = bool
-        updatejson()
-        if exec == "Synapse X" and getgenv().AutoLoadTP then
-            syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
-        elseif exec ~= "Synapse X" and getgenv().AutoLoadTP then
-            queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
-        end
+            getgenv().AutoLoadTP = bool
+            updatejson()
+            if exec == "Synapse X" and getgenv().AutoLoadTP then
+                syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
+            elseif exec ~= "Synapse X" and getgenv().AutoLoadTP then
+                queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz.lua'))()")
+            end
 
-end)
-
-    autoloadtab:Label("⚠️ หากสคริปต์ทำงานไม่ถูกต้องให้ใส่สคริปต์เข้าไป Autoexec\nfolder!!! ⚠️")
+        end)
+        autoloadtab:Label("⚠️ หากสคริปต์ทำงานไม่ถูกต้องให้ใส่สคริปต์เข้าไป Autoexec\nfolder!!! ⚠️")
 
 
 
@@ -896,14 +895,16 @@ end)
         getgenv().portalnameX = pornname
         updatejson()
     end)
-
-    --devil city
-
-	devilcity:Button("Buy Devil Portal", function(bool)
-		local string_1 = getgenv().portalnameX
-		local Target = game:GetService("ReplicatedStorage").endpoints["client_to_server"]["buy_csmportal_shop_item"];
-		Target:InvokeServer(string_1);
-	end)
+    
+    devilcity:Button("Buy Portal", function()
+        if getgenv().buyportal then
+            local args = {
+                [1] = tostring(getgenv().portalnameX)
+            }
+            
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.buy_csmportal_shop_item:InvokeServer(unpack(args))
+        end
+    end)
     
     devilcity:Toggle("Auto Farm ประตู Devil", getgenv().farmprotal, function(bool)
         getgenv().farmprotal = bool
@@ -911,7 +912,7 @@ end)
     end)
     
     devilcity:Label("เฉพาะประตูที่ปลดล็อค Rank แล้วเท่านั้น")
-    devilcity:Label("หากมีประตูเก่า มันอาจจะเริ่มทำงาน ดังนั้นอย่าซื้อประตูระดับต่ำที่คุณไม่ต้องการทำฟาร์ม.")
+    devilcity:Label("หากมีประตูเก่า มันอาจจะเริ่มทำงาน ดังนั้นอย่าซื้อประตูระดับต่ำที่คุณไม่ต้องการฟาร์ม.")
 
     -- Aline Portal
 
@@ -929,43 +930,46 @@ end)
 
 
         
+
+        
 --#region Auto Farm Tab
-    autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
-        getgenv().AutoReplay = bool
-        updatejson()
-    end)
-    autofarmtab:Toggle("Auto Leave", getgenv().AutoLeave, function(bool)
-        getgenv().AutoLeave = bool
-        updatejson()
-    end)
-    autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
-        getgenv().AutoFarmTP = bool
-        updatejson()
-    end)
+autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
+    getgenv().AutoReplay = bool
+    updatejson()
+end)
+autofarmtab:Toggle("Auto Leave", getgenv().AutoLeave, function(bool)
+    getgenv().AutoLeave = bool
+    updatejson()
+end)
+autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
+    getgenv().AutoFarmTP = bool
+    updatejson()
+end)
 
-    autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(bool)
-        getgenv().AutoFarmIC = bool
-        updatejson()
-    end)
-    autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
-        getgenv().AutoFarm = bool
-        updatejson()
-    end)
+autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(bool)
+    getgenv().AutoFarmIC = bool
+    updatejson()
+end)
+autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
+    getgenv().AutoFarm = bool
+    updatejson()
+end)
 
-    autofarmtab:Toggle("Auto Abilities ใช้สกิล", getgenv().autoabilities, function(bool)
-        getgenv().autoabilities = bool
-        updatejson()
-    end)
+autofarmtab:Toggle("Auto Abilities ใช้สกิล", getgenv().autoabilities, function(bool)
+    getgenv().autoabilities = bool
+    updatejson()
+end)
 
-    autofarmtab:Toggle("Auto Start", getgenv().autostart, function(bool)
-        getgenv().autostart = bool
-        updatejson()
-    end)
+autofarmtab:Toggle("Auto Start", getgenv().autostart, function(bool)
+    getgenv().autostart = bool
+    updatejson()
+end)
 
-    autofarmtab:Toggle("Auto Upgrade Units", getgenv().autoupgrade, function(bool)
-        getgenv().autoupgrade = bool
-        updatejson()
-    end)
+autofarmtab:Toggle("Auto Upgrade Units", getgenv().autoupgrade, function(bool)
+    getgenv().autoupgrade = bool
+    updatejson()
+end)
+
 
         function MouseClick(UnitPos)
             local connection
@@ -1058,22 +1062,28 @@ end)
                             SpawnUnitPos["jojo"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["jojo"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["jojo"][UnitPos]["z"] = a.Position.Z
-                        elseif game.Workspace._map:FindFirstChild("SpaceCenter") then
-                            print("JoJo Legend - HARD")    
-                            SpawnUnitPos["jojo_leg"][UnitPos]["x"] = a.Position.X
-                            SpawnUnitPos["jojo_leg"][UnitPos]["y"] = a.Position.Y
-                            SpawnUnitPos["jojo_leg"][UnitPos]["z"] = a.Position.Z    
-                        elseif game.Workspace._map:FindFirstChild("secret") then
-                            print("opm")    
-                            SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
-                            SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
-                            SpawnUnitPos["opm"][UnitPos]["z"] = a.Position.Z 
                         elseif game.Workspace._map:FindFirstChild("vending machines") then
                             print("chainsaw")    
                             SpawnUnitPos["chainsaw"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["chainsaw"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["chainsaw"][UnitPos]["z"] = a.Position.Z
+                        elseif game.Workspace._map:FindFirstChild("SpaceCenter") then
+                            print("JoJo Legend - HARD")    
+                            SpawnUnitPos["jojo_leg"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["jojo_leg"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["jojo_leg"][UnitPos]["z"] = a.Position.Z    
+                        elseif game.Workspace._map:FindFirstChild("portal_boros_g") then
+                            print("Alien Portal")    
+                            SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z        
+                        elseif game.Workspace._map:FindFirstChild("secret") then
+                            print("opm")    
+                            SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["opm"][UnitPos]["z"] = a.Position.Z
                         end
+                        
 
                         updatejson()
                     end
@@ -1172,7 +1182,7 @@ end)
             end
         end)
 
-        autoseltab:Textbox("ใส่ตัวเลขเพื่อ Auto Sell {ใส่เลขแล้วกด Enter}", getgenv().sellatwave, false, function(t)
+        autoseltab:Textbox("ใส่ตัวเลขเพื่อ Auto Sell {ใส่เลขแล้วกด Enter", getgenv().sellatwave, false, function(t)
             getgenv().sellatwave = tonumber(t)
             updatejson()
         end)
@@ -1278,6 +1288,11 @@ starbux:Button("👉 กลุ่มชื้อ ROBUX StarBux Link!", function(
     setclipboard("https://www.roblox.com/groups/16807082/STARBUX-STORE#!/about")
     DiscordLib:Notification("Copied!!", "✔ Link กลุ่ม ROBUX StarBux ถูก Copy แล้ว!!", "Okay!")	
 end)
+--#endregion
+
+
+end
+
 --------------------------------------------------
 --------------------------------------------------
 
@@ -1327,35 +1342,35 @@ else
     
         xspawnUnitPos  = {
             black_clover  = {
-              UP1  = {
-                y  = 4.233243942260742,
-                x  = -59.31547927856445,
-                z  = -14.749141693115234
-             },
-              UP3  = {
-                y  = 4.232996940612793,
-                x  = -38.23970031738281,
-                z  = 12.037586212158203
-             },
-              UP2  = {
-                y  = 9.241189002990723,
-                x  = -66.3019027709961,
-                z  = -19.23602867126465
-             },
-              UP6  = {
-                y  = 4.233219146728516,
-                x  = -65.29586791992188,
-                z  = -40.6997184753418
-             },
-              UP5  = {
-                y  = 4.233260154724121,
-                x  = -55.7475700378418,
-                z  = -35.305747985839844
-             },
-              UP4  = {
-                y  = 9.900957107543945,
-                x  = -37.22032165527344,
-                z  = 3.945315361022949
+                UP1  = {
+                    y  = 4.233243942260742,
+                    x  = -59.31547927856445,
+                    z  = -14.749141693115234
+                 },
+                  UP3  = {
+                    y  = 4.232996940612793,
+                    x  = -38.23970031738281,
+                    z  = 12.037586212158203
+                 },
+                  UP2  = {
+                    y  = 9.241189002990723,
+                    x  = -66.3019027709961,
+                    z  = -19.23602867126465
+                 },
+                  UP6  = {
+                    y  = 4.233219146728516,
+                    x  = -65.29586791992188,
+                    z  = -40.6997184753418
+                 },
+                  UP5  = {
+                    y  = 4.233260154724121,
+                    x  = -55.7475700378418,
+                    z  = -35.305747985839844
+                 },
+                  UP4  = {
+                    y  = 9.900957107543945,
+                    x  = -37.22032165527344,
+                    z  = 3.945315361022949
              }
            },
            hollow_leg = {
@@ -1392,324 +1407,324 @@ else
             }
            },
             Cursed  = {
-              UP1  = {
-                y  = 124.89727020263672,
-                x  = 351.5869140625,
-                z  = -160.93724060058594
-             },
-              UP3  = {
-                y  = 124.97206115722656,
-                x  = 307.2110900878906,
-                z  = -109.24397277832031
-             },
-              UP2  = {
-                y  = 129.0974884033203,
-                x  = 340.3296813964844,
-                z  = -161.85208129882812
-             },
-              UP6  = {
-                y  = 124.95498657226562,
-                x  = 332.0729064941406,
-                z  = -93.70829772949219
-             },
-              UP5  = {
-                y  = 124.95631408691406,
-                x  = 330.1289367675781,
-                z  = -106.5566635131836
-             },
-              UP4  = {
-                y  = 127.7710952758789,
-                x  = 312.7218933105469,
-                z  = -99.5513687133789
+                UP1  = {
+                    y  = 124.89727020263672,
+                    x  = 351.5869140625,
+                    z  = -160.93724060058594
+                 },
+                  UP3  = {
+                    y  = 124.97206115722656,
+                    x  = 307.2110900878906,
+                    z  = -109.24397277832031
+                 },
+                  UP2  = {
+                    y  = 129.0974884033203,
+                    x  = 340.3296813964844,
+                    z  = -161.85208129882812
+                 },
+                  UP6  = {
+                    y  = 124.95498657226562,
+                    x  = 332.0729064941406,
+                    z  = -93.70829772949219
+                 },
+                  UP5  = {
+                    y  = 124.95631408691406,
+                    x  = 330.1289367675781,
+                    z  = -106.5566635131836
+                 },
+                  UP4  = {
+                    y  = 127.7710952758789,
+                    x  = 312.7218933105469,
+                    z  = -99.5513687133789
              }
            },
             Sand  = {
-              UP1  = {
-                y  = 28.28097915649414,
-                x  = -890.0916137695312,
-                z  = 314.10345458984375
-             },
-              UP3  = {
-                y  = 28.280975341796875,
-                x  = -893.39208984375,
-                z  = 287.6628112792969
-             },
-              UP2  = {
-                y  = 32.56867599487305,
-                x  = -894.2457885742188,
-                z  = 318.3748779296875
-             },
-              UP6  = {
-                y  = 28.280914306640625,
-                x  = -869.957763671875,
-                z  = 318.6862487792969
-             },
-              UP5  = {
-                y  = 28.280654907226562,
-                x  = -876.4010009765625,
-                z  = 318.6846618652344
-             },
-              UP4  = {
-                y  = 34.5429573059082,
-                x  = -880.2827758789062,
-                z  = 297.32562255859375
+                UP1  = {
+                    y  = 28.28097915649414,
+                    x  = -890.0916137695312,
+                    z  = 314.10345458984375
+                 },
+                  UP3  = {
+                    y  = 28.280975341796875,
+                    x  = -893.39208984375,
+                    z  = 287.6628112792969
+                 },
+                  UP2  = {
+                    y  = 32.56867599487305,
+                    x  = -894.2457885742188,
+                    z  = 318.3748779296875
+                 },
+                  UP6  = {
+                    y  = 28.280914306640625,
+                    x  = -869.957763671875,
+                    z  = 318.6862487792969
+                 },
+                  UP5  = {
+                    y  = 28.280654907226562,
+                    x  = -876.4010009765625,
+                    z  = 318.6846618652344
+                 },
+                  UP4  = {
+                    y  = 34.5429573059082,
+                    x  = -880.2827758789062,
+                    z  = 297.32562255859375
              }
            },
             Namak  = {
-              UP1  = {
-                y  = 94.80620574951172,
-                x  = -2956.620849609375,
-                z  = -714.4996337890625
-             },
-              UP3  = {
-                y  = 94.80618286132812,
-                x  = -2918.517333984375,
-                z  = -730.8157348632812
-             },
-              UP2  = {
-                y  = 97.41859436035156,
-                x  = -2951.377197265625,
-                z  = -716.8060913085938
-             },
-              UP6  = {
-                y  = 94.80619812011719,
-                x  = -2925.846435546875,
-                z  = -701.25390625
-             },
-              UP5  = {
-                y  = 94.81072998046875,
-                x  = -2925.618896484375,
-                z  = -709.9654541015625
-             },
-              UP4  = {
-                y  = 97.39073944091797,
-                x  = -2879.582275390625,
-                z  = -737.7210693359375
+                UP1  = {
+                    y  = 94.80620574951172,
+                    x  = -2956.620849609375,
+                    z  = -714.4996337890625
+                 },
+                  UP3  = {
+                    y  = 94.80618286132812,
+                    x  = -2918.517333984375,
+                    z  = -730.8157348632812
+                 },
+                  UP2  = {
+                    y  = 97.41859436035156,
+                    x  = -2951.377197265625,
+                    z  = -716.8060913085938
+                 },
+                  UP6  = {
+                    y  = 94.80619812011719,
+                    x  = -2925.846435546875,
+                    z  = -701.25390625
+                 },
+                  UP5  = {
+                    y  = 94.81072998046875,
+                    x  = -2925.618896484375,
+                    z  = -709.9654541015625
+                 },
+                  UP4  = {
+                    y  = 97.39073944091797,
+                    x  = -2879.582275390625,
+                    z  = -737.7210693359375
              }
            },
             Hollow  = {
-              UP1  = {
-                y  = 135.66392517089844,
-                x  = -165.0266571044922,
-                z  = -715.7265625
-             },
-              UP3  = {
-                y  = 135.66384887695312,
-                x  = -233.5709686279297,
-                z  = -660.9861450195312
-             },
-              UP2  = {
-                y  = 139.34066772460938,
-                x  = -175.31907653808594,
-                z  = -708.5353393554688
-             },
-              UP6  = {
-                y  = 135.66390991210938,
-                x  = -148.3011474609375,
-                z  = -719.6495361328125
-             },
-              UP5  = {
-                y  = 135.66392517089844,
-                x  = -157.43101501464844,
-                z  = -732.3544921875
-             },
-              UP4  = {
-                y  = 140.4937744140625,
-                x  = -220.6124267578125,
-                z  = -651.38330078125
+                UP1  = {
+                    y  = 135.66392517089844,
+                    x  = -165.0266571044922,
+                    z  = -715.7265625
+                 },
+                  UP3  = {
+                    y  = 135.66384887695312,
+                    x  = -233.5709686279297,
+                    z  = -660.9861450195312
+                 },
+                  UP2  = {
+                    y  = 139.34066772460938,
+                    x  = -175.31907653808594,
+                    z  = -708.5353393554688
+                 },
+                  UP6  = {
+                    y  = 135.66390991210938,
+                    x  = -148.3011474609375,
+                    z  = -719.6495361328125
+                 },
+                  UP5  = {
+                    y  = 135.66392517089844,
+                    x  = -157.43101501464844,
+                    z  = -732.3544921875
+                 },
+                  UP4  = {
+                    y  = 140.4937744140625,
+                    x  = -220.6124267578125,
+                    z  = -651.38330078125
              }
            },
             Ant  = {
-              UP1  = {
-                y  = 26.012632369995117,
-                x  = -169.46522521972656,
-                z  = 2963.9541015625
-             },
-              UP3  = {
-                y  = 26.012632369995117,
-                x  = -141.493896484375,
-                z  = 3005.433349609375
-             },
-              UP2  = {
-                y  = 34.05636215209961,
-                x  = -172.1795196533203,
-                z  = 2971.837158203125
-             },
-              UP6  = {
-                y  = 26.01263427734375,
-                x  = -162.243896484375,
-                z  = 2943.75634765625
-             },
-              UP5  = {
-                y  = 26.012632369995117,
-                x  = -177.58714294433594,
-                z  = 2951.063232421875
-             },
-              UP4  = {
-                y  = 29.16413688659668,
-                x  = -140.66038513183594,
-                z  = 2989.589599609375
+                UP1  = {
+                    y  = 26.012632369995117,
+                    x  = -169.46522521972656,
+                    z  = 2963.9541015625
+                 },
+                  UP3  = {
+                    y  = 26.012632369995117,
+                    x  = -141.493896484375,
+                    z  = 3005.433349609375
+                 },
+                  UP2  = {
+                    y  = 34.05636215209961,
+                    x  = -172.1795196533203,
+                    z  = 2971.837158203125
+                 },
+                  UP6  = {
+                    y  = 26.01263427734375,
+                    x  = -162.243896484375,
+                    z  = 2943.75634765625
+                 },
+                  UP5  = {
+                    y  = 26.012632369995117,
+                    x  = -177.58714294433594,
+                    z  = 2951.063232421875
+                 },
+                  UP4  = {
+                    y  = 29.16413688659668,
+                    x  = -140.66038513183594,
+                    z  = 2989.589599609375
              }
            },
             Aot  = {
-              UP1  = {
-                y  = 36.74178695678711,
-                x  = -3010.0390625,
-                z  = -684.7892456054688
-             },
-              UP3  = {
-                y  = 36.74178695678711,
-                x  = -2977.2900390625,
-                z  = -711.2384033203125
-             },
-              UP2  = {
-                y  = 41.23928451538086,
-                x  = -3014.18359375,
-                z  = -687.8216552734375
-             },
-              UP6  = {
-                y  = 36.74179458618164,
-                x  = -3004.541748046875,
-                z  = -661.7230834960938
-             },
-              UP5  = {
-                y  = 36.741798400878906,
-                x  = -3011.074951171875,
-                z  = -661.494140625
-             },
-              UP4  = {
-                y  = 41.83006286621094,
-                x  = -2990.846923828125,
-                z  = -723.219970703125
+                UP1  = {
+                    y  = 36.74178695678711,
+                    x  = -3010.0390625,
+                    z  = -684.7892456054688
+                 },
+                  UP3  = {
+                    y  = 36.74178695678711,
+                    x  = -2977.2900390625,
+                    z  = -711.2384033203125
+                 },
+                  UP2  = {
+                    y  = 41.23928451538086,
+                    x  = -3014.18359375,
+                    z  = -687.8216552734375
+                 },
+                  UP6  = {
+                    y  = 36.74179458618164,
+                    x  = -3004.541748046875,
+                    z  = -661.7230834960938
+                 },
+                  UP5  = {
+                    y  = 36.741798400878906,
+                    x  = -3011.074951171875,
+                    z  = -661.494140625
+                 },
+                  UP4  = {
+                    y  = 41.83006286621094,
+                    x  = -2990.846923828125,
+                    z  = -723.219970703125
              }
            },
             Snowy  = {
-              UP1  = {
-                y  = 37.34696960449219,
-                x  = -2864.549560546875,
-                z  = -124.55713653564453
-             },
-              UP3  = {
-                y  = 37.359893798828125,
-                x  = -2933.601318359375,
-                z  = -154.97682189941406
-             },
-              UP2  = {
-                y  = 42.06093215942383,
-                x  = -2877.109375,
-                z  = -125.04695892333984
-             },
-              UP6  = {
-                y  = 37.34697723388672,
-                x  = -2891.855712890625,
-                z  = -133.81826782226562
-             },
-              UP5  = {
-                y  = 37.34696960449219,
-                x  = -2894.031005859375,
-                z  = -142.91297912597656
-             },
-              UP4  = {
-                y  = 40.24900817871094,
-                x  = -2929.740478515625,
-                z  = -148.74620056152344
+                UP1  = {
+                    y  = 37.34696960449219,
+                    x  = -2864.549560546875,
+                    z  = -124.55713653564453
+                 },
+                  UP3  = {
+                    y  = 37.359893798828125,
+                    x  = -2933.601318359375,
+                    z  = -154.97682189941406
+                 },
+                  UP2  = {
+                    y  = 42.06093215942383,
+                    x  = -2877.109375,
+                    z  = -125.04695892333984
+                 },
+                  UP6  = {
+                    y  = 37.34697723388672,
+                    x  = -2891.855712890625,
+                    z  = -133.81826782226562
+                 },
+                  UP5  = {
+                    y  = 37.34696960449219,
+                    x  = -2894.031005859375,
+                    z  = -142.91297912597656
+                 },
+                  UP4  = {
+                    y  = 40.24900817871094,
+                    x  = -2929.740478515625,
+                    z  = -148.74620056152344
              }
            },
             Ghoul  = {
-              UP1  = {
-                y  = 61.58512878417969,
-                x  = -2997.47900390625,
-                z  = -81.828857421875
-             },
-              UP3  = {
-                y  = 61.584571838378906,
-                x  = -2945.214599609375,
-                z  = -90.4542236328125
-             },
-              UP2  = {
-                y  = 65.84390258789062,
-                x  = -2992.01904296875,
-                z  = -76.64124298095703
-             },
-              UP6  = {
-                y  = 61.585121154785156,
-                x  = -3018.08349609375,
-                z  = -71.79875183105469
-             },
-              UP5  = {
-                y  = 61.585121154785156,
-                x  = -3017.391845703125,
-                z  = -64.38458251953125
-             },
-              UP4  = {
-                y  = 64.84632873535156,
-                x  = -2958.0888671875,
-                z  = -104.31985473632812
+                UP1  = {
+                    y  = 61.58512878417969,
+                    x  = -2997.47900390625,
+                    z  = -81.828857421875
+                 },
+                  UP3  = {
+                    y  = 61.584571838378906,
+                    x  = -2945.214599609375,
+                    z  = -90.4542236328125
+                 },
+                  UP2  = {
+                    y  = 65.84390258789062,
+                    x  = -2992.01904296875,
+                    z  = -76.64124298095703
+                 },
+                  UP6  = {
+                    y  = 61.585121154785156,
+                    x  = -3018.08349609375,
+                    z  = -71.79875183105469
+                 },
+                  UP5  = {
+                    y  = 61.585121154785156,
+                    x  = -3017.391845703125,
+                    z  = -64.38458251953125
+                 },
+                  UP4  = {
+                    y  = 64.84632873535156,
+                    x  = -2958.0888671875,
+                    z  = -104.31985473632812
              }
            },
             Magic  = {
-              UP1  = {
-                y  = 9.749897956848145,
-                x  = -600.001220703125,
-                z  = -819.3095703125
-             },
-              UP3  = {
-                y  = 9.753203392028809,
-                x  = -638.4988403320312,
-                z  = -804.590576171875
-             },
-              UP2  = {
-                y  = 15.93001937866211,
-                x  = -595.7818603515625,
-                z  = -823.0579833984375
-             },
-              UP6  = {
-                y  = 9.747742652893066,
-                x  = -651.8687744140625,
-                z  = -829.0013427734375
-             },
-              UP5  = {
-                y  = 9.750102043151855,
-                x  = -652.0703735351562,
-                z  = -818.4439086914062
-             },
-              UP4  = {
-                y  = 15.903207778930664,
-                x  = -625.4501953125,
-                z  = -824.5261840820312
+                UP1  = {
+                    y  = 9.749897956848145,
+                    x  = -600.001220703125,
+                    z  = -819.3095703125
+                 },
+                  UP3  = {
+                    y  = 9.753203392028809,
+                    x  = -638.4988403320312,
+                    z  = -804.590576171875
+                 },
+                  UP2  = {
+                    y  = 15.93001937866211,
+                    x  = -595.7818603515625,
+                    z  = -823.0579833984375
+                 },
+                  UP6  = {
+                    y  = 9.747742652893066,
+                    x  = -651.8687744140625,
+                    z  = -829.0013427734375
+                 },
+                  UP5  = {
+                    y  = 9.750102043151855,
+                    x  = -652.0703735351562,
+                    z  = -818.4439086914062
+                 },
+                  UP4  = {
+                    y  = 15.903207778930664,
+                    x  = -625.4501953125,
+                    z  = -824.5261840820312
              }
            },
            --เซ็ทเงินติดถนน
             Marine  = {
-              UP1  = {
-                y  = 28.21086883544922,
-                x  = -2576.212158203125,
-                z  = -70.02584075927734
-             },
-              UP3  = {
-                y  = 28.210960388183594,
-                x  = -2612.01513671875,
-                z  = -35.47972869873047
-             },
-              UP2  = {
-                y  = 34.377342224121094,
-                x  = -2582.0732421875,
-                z  = -60.22590255737305
-             },
-              UP6  = {
-                y  = 28.21086883544922,
-                x  = -2561.314453125,
-                z  = -58.36928939819336
-             },
-              UP5  = {
-                y  = 28.210874557495117,
-                x  = -2613.655517578125,
-                z  = -52.236820220947266
-             },
-              UP4  = {
-                y  = 31.358009338378906,
-                x  = -2603.824951171875,
-                z  = -46.777408599853516
+                UP1  = {
+                    y  = 28.21086883544922,
+                    x  = -2576.212158203125,
+                    z  = -70.02584075927734
+                 },
+                  UP3  = {
+                    y  = 28.210960388183594,
+                    x  = -2612.01513671875,
+                    z  = -35.47972869873047
+                 },
+                  UP2  = {
+                    y  = 34.377342224121094,
+                    x  = -2582.0732421875,
+                    z  = -60.22590255737305
+                 },
+                  UP6  = {
+                    y  = 28.21086883544922,
+                    x  = -2561.314453125,
+                    z  = -58.36928939819336
+                 },
+                  UP5  = {
+                    y  = 28.210874557495117,
+                    x  = -2613.655517578125,
+                    z  = -52.236820220947266
+                 },
+                  UP4  = {
+                    y  = 31.358009338378906,
+                    x  = -2603.824951171875,
+                    z  = -46.777408599853516
              }
            },
             thriller_park  = {
@@ -1777,40 +1792,39 @@ else
                 z = -565.4340209960938
            }
          },
-         opm = {
+           jojo = {
             UP1  = {
-                x = -339.7117614746094, 
-                y = 364.21185302734375, 
-                z = 1396.416748046875
+                x = -93.5505142211914, 
+                y = 17.90195655822754, 
+                z = -582.4182739257812
              },
               UP3  = {
-                x = -281.6949462890625, 
-                y = 364.21185302734375, 
-                z = 1436.8084716796875
+                x = -47.614036560058594, 
+                y = 17.899141311645508, 
+                z = -592.3721313476562
              },
               UP2  = {
-                x = -334.77142333984375, 
-                y = 368.2612609863281, 
-                z = 1391.615234375
+                x = -89.10867309570312, 
+                y = 23.173965454101562, 
+                z = -583.8086547851562
              },
               UP6  = {
-                x = -312.58642578125, 
-                y = 364.21185302734375, 
-                z = 1425.9600830078125
+                x = -85.75068664550781, 
+                y = 17.899860382080078, 
+                z = -589.832763671875
              },
               UP5  = {
-                x = -293.9329833984375, 
-                y = 364.21185302734375, 
-                z = 1437.103759765625               
+                x = -57.20876693725586, 
+                y = 17.89964485168457, 
+                z = -590.5894775390625                
              },
               UP4  = {
-                x = -261.8616027832031, 
-                y = 369.92950439453125, 
-                z = 1433.202392578125
-           }
-         },         
-         
-         jojo_leg = {
+                x = -55.77149200439453, 
+                y = 23.17935562133789, 
+                z = -583.1688232421875
+             }
+           },
+           jojo_leg = {
             UP1  = {
                 x = -93.5505142211914, 
                 y = 17.90195655822754, 
@@ -1842,38 +1856,71 @@ else
                 z = -583.1688232421875
            }
          },  
-           jojo = {
+         opm_leg = {
             UP1  = {
-                x = -93.5505142211914, 
-                y = 17.90195655822754, 
-                z = -582.4182739257812
+                x = -339.7117614746094, 
+                y = 364.21185302734375, 
+                z = 1396.416748046875
              },
               UP3  = {
-                x = -47.614036560058594, 
-                y = 17.899141311645508, 
-                z = -592.3721313476562
+                x = -281.6949462890625, 
+                y = 364.21185302734375, 
+                z = 1436.8084716796875
              },
               UP2  = {
-                x = -89.10867309570312, 
-                y = 23.173965454101562, 
-                z = -583.8086547851562
+                x = -334.77142333984375, 
+                y = 368.2612609863281, 
+                z = 1391.615234375
              },
               UP6  = {
-                x = -85.75068664550781, 
-                y = 17.899860382080078, 
-                z = -589.832763671875
+                x = -312.58642578125, 
+                y = 364.21185302734375, 
+                z = 1425.9600830078125
              },
               UP5  = {
-                x = -57.20876693725586, 
-                y = 17.89964485168457, 
-                z = -590.5894775390625                
+                x = -293.9329833984375, 
+                y = 364.21185302734375, 
+                z = 1437.103759765625               
              },
               UP4  = {
-                x = -55.77149200439453, 
-                y = 23.17935562133789, 
-                z = -583.1688232421875
-             }	 
+                x = -261.8616027832031, 
+                y = 369.92950439453125, 
+                z = 1433.202392578125
            }
+         },
+           opm = {
+            UP1  = {
+                x = -339.7117614746094, 
+                y = 364.21185302734375, 
+                z = 1396.416748046875
+             },
+              UP3  = {
+                x = -281.6949462890625, 
+                y = 364.21185302734375, 
+                z = 1436.8084716796875
+             },
+              UP2  = {
+                x = -334.77142333984375, 
+                y = 368.2612609863281, 
+                z = 1391.615234375
+             },
+              UP6  = {
+                x = -312.58642578125, 
+                y = 364.21185302734375, 
+                z = 1425.9600830078125
+             },
+              UP5  = {
+                x = -293.9329833984375, 
+                y = 364.21185302734375, 
+                z = 1437.103759765625               
+             },
+              UP4  = {
+                x = -261.8616027832031, 
+                y = 369.92950439453125, 
+                z = 1433.202392578125
+            }
+           }
+         },
 
         xselectedUnits = {
             U1 = nil,
@@ -2671,14 +2718,14 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end
-            elseif game.Workspace._map:FindFirstChild("boros_ship") then
-                print("Aline Spaceship")
+            elseif game.Workspace._map:FindFirstChild("portal_boros_g") then
+                print("Alien Portal")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then
                         local unitinfo_ = unitinfo:split(" #")
-                        local pos = getgenv().SpawnUnitPos["Aline"]["UP" .. i]
-
+                        local pos = getgenv().SpawnUnitPos["opm_leg"]["UP" .. i]
+                        task.wait()
                         --place units 0
                         local args = {
                             [1] = unitinfo_[2],
@@ -2721,10 +2768,62 @@ function placesex()
                         }
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
-                end        
+                end    
+            elseif game.Workspace._map:FindFirstChild("secret") then
+                print("opm")
+                for i = 1, 6 do
+                    local unitinfo = getgenv().SelectedUnits["U" .. i]
+                    if unitinfo ~= nil then
+                        local unitinfo_ = unitinfo:split(" #")
+                        local pos = getgenv().SpawnUnitPos["opm"]["UP" .. i]
+                        task.wait()
+                        --place units 0
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 1
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 2 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 3 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 4
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 5
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end
+                end
             end
         end
     end
+end
 
 
 ------// Auto Farm \\------
@@ -2746,7 +2845,9 @@ end))
 ------// Auto Leave \\------
 --#region Auto Leave 
 
---- Made by "HOLYSHz"
+
+
+--- Made by "CharWar" # Modified by "binsfr" (V3rm)
 local PlaceID = 8304191830
 local AllIDs = {}
 local foundAnything = ""
@@ -2826,7 +2927,7 @@ function Teleport()
        end)
    end
 end
--------------------------------------------Auto Replay
+-------------------------------------------
 
 coroutine.resume(coroutine.create(function()
 	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")

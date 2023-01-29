@@ -1932,16 +1932,19 @@ end
 --------------------------------------------------
 
 ------// Auto Farm \\------
+--#region Auto Farm Loop
+coroutine.resume(coroutine.create(function()
+    while task.wait(1.5) do
+        local _wave = game:GetService("Workspace"):WaitForChild("_wave_num")
+        repeat task.wait() until game:GetService("Workspace"):WaitForChild("_map")
 
-
-function placesex()
-    if getgenv().AutoFarm and not getgenv().disableatuofarm then
-        print("a")
-        if game.PlaceId ~= 8304191830 then
-            x = 1.7
-            y = 0
-            z = 1.7
-            print("AutoFarming")
+        if getgenv().AutoFarm and not getgenv().disableatuofarm then
+            print('farming')
+            if game.PlaceId ~= 8304191830 then
+                x = 1
+                y = 0.7
+                z = 1
+                --print("AutoFarming")
                 if game.Workspace._map:FindFirstChild("namek mushroom model") then
                     print("Namak")
                     for i = 1, 6 do
@@ -2863,20 +2866,6 @@ function placesex()
                 end
             end
         end
-    end
-
---#endregion
-
-------// Auto Farm \\------
---#region Auto Farm Loop
-coroutine.resume(coroutine.create(function()
-    while task.wait(1.5) do
-        local _wave = game:GetService("Workspace"):WaitForChild("_wave_num")
-        repeat task.wait() until game:GetService("Workspace"):WaitForChild("_map")
-
-        placesex()
-
-        print("function called")
     end
 end))
 --#endregion

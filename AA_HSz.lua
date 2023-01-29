@@ -1932,7 +1932,6 @@ end
 --------------------------------------------------
 
 ------// Auto Farm \\------
---#region Auto Farm Loop
 
 
 function placesex()
@@ -2865,7 +2864,7 @@ function placesex()
             end
         end
     end
-end))
+
 --#endregion
 
 ------// Auto Farm \\------

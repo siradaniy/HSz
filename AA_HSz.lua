@@ -1076,7 +1076,7 @@ end)
                             SpawnUnitPos["jojo_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["jojo_leg"][UnitPos]["z"] = a.Position.Z    
                         elseif game.Workspace._map:FindFirstChild("portal_boros_g") then
-                            print("Alien Portal")    
+                            print("Alien Spaceship")    
                             SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z        
@@ -2722,7 +2722,7 @@ function placesex()
                     end
                 end
             elseif game.Workspace._map:FindFirstChild("portal_boros_g") then
-                print("Alien Portal")
+                print("Alien Spaceship")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then
@@ -3132,7 +3132,7 @@ end
 
 
 local function startfarming()
-    if getgenv().farmprotal == false and getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
+    if getgenv().farmprotal == false and getgenv().autostart and getgenv().farmaline == false and getgenv().AutoFarm and getgenv().teleporting 
                            and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false then
 
         if game.PlaceId == 8304191830 then
@@ -3193,8 +3193,9 @@ local function startfarming()
             warn("farming")
             task.wait(3)
         end
+        ------Devil Portal
     elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
-                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmprotal or getgenv().farmprotal then
+                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline and getgenv().farmprotal or getgenv().farmprotal then
 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
@@ -3207,6 +3208,27 @@ local function startfarming()
 
           local args = {
             [1] = tostring(getgenv().PortalID),
+            [2] = {
+                ["friends_only"] = true
+            }
+        }
+
+        ---Aline Portal
+
+        elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
+                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline and getgenv().farmprotal or getgenv().farmprotal then
+
+        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
+            if v.Name == "portal_boros_g" then
+                print(v._uuid_or_id.value)
+                getgenv().PortalIDA = v._uuid_or_id.value
+                break;
+            end
+        end
+          task.wait(1.5)
+
+          local args = {
+            [1] = tostring(getgenv().PortalIDA),
             [2] = {
                 ["friends_only"] = true
             }

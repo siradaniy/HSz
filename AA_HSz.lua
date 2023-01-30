@@ -1080,7 +1080,7 @@ end)
                             SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z        
-                        elseif game.Workspace._map:FindFirstChild("secret") then
+                        elseif game.Workspace._map:FindFirstChild("boros_ship") then
                             print("Alien Spaceship")    
                             SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
@@ -1812,9 +1812,9 @@ else
                 z = -584.2532348632813
              },
               UP6  = {
-                x = -101.23492431640625, 
-                y = 15.307596206665039, 
-                z = -575.9161987304688
+                x = -100.13937377929688, 
+                y = 15.309493064880371, 
+                z = -565.8590087890625
              },
               UP5  = {
                 x = -66.3667221069336, 
@@ -1862,45 +1862,45 @@ else
          opm_leg = {
             UP1  = {
                 x = -339.7117614746094, 
-                y = 364.21185302734375, 
+                y = 364.21185302734377,
                 z = 1396.416748046875
              },
               UP3  = {
                 x = -281.6949462890625, 
-                y = 364.21185302734375, 
-                z = 1436.8084716796875
+                y = 364.21185302734377, 
+                z = 1436.8084716796876
              },
               UP2  = {
-                x = -334.77142333984375, 
+                x = -334.77142333984377, 
                 y = 368.2612609863281, 
                 z = 1391.615234375
              },
               UP6  = {
                 x = -312.58642578125, 
-                y = 364.21185302734375, 
-                z = 1425.9600830078125
+                y = 364.21185302734377, 
+                z = 1425.9600830078126
              },
               UP5  = {
                 x = -293.9329833984375, 
-                y = 364.21185302734375, 
-                z = 1437.103759765625               
+                y = 364.21185302734377, 
+                z = 1437.103759765625            
              },
               UP4  = {
                 x = -261.8616027832031, 
-                y = 369.92950439453125, 
+                y = 369.92950439453127, 
                 z = 1433.202392578125
            }
          },
            opm = {
             UP1  = {
-                x = -325.3381042480469, 
-                y = 361.6615295410156, 
-                z = 1407.6005859375
+                x = -338.8056640625, 
+                y = 361.8869323730469, 
+                z = 1397.4739990234376
              },
               UP3  = {
-                x = -273.4905090332031, 
-                y = 361.6615295410156, 
-                z = 1435.8953857421876
+                x = -272.9444885253906, 
+                y = 361.6577453613281, 
+                z = 1435.677490234375
              },
               UP2  = {
                 x = -332.57379150390627, 
@@ -1908,9 +1908,9 @@ else
                 z = 1394.9212646484376
              },
               UP6  = {
-                x = -284.3965759277344, 
+                x = -292.2444152832031, 
                 y = 361.6577453613281, 
-                z = 1442.93212890625
+                z = 1442.4683837890626
              },
               UP5  = {
                 x = -306.50079345703127, 
@@ -2772,8 +2772,8 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end    
-            elseif game.Workspace._map:FindFirstChild("secret") then
-                print("opm")
+            elseif game.Workspace._map:FindFirstChild("boros_ship") then
+                print("Alien Spaceship")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then

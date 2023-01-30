@@ -212,7 +212,7 @@ function sex()
     --Aline
     getgenv().portalnameA = data.portalnameA
     getgenv().farmaline = data.farmaline
-    getgenv().PortalIDA = data.PortalIDA
+    getgenv().PortalID = data.PortalID
 
 
     getgenv().AutoLeave = data.AutoLeave
@@ -254,7 +254,7 @@ function sex()
             --Aline Portal
             portalnameA = getgenv().portalnameA,
             farmaline = getgenv().farmaline,
-            PortalIDA = getgenv().PortalIDA,
+            PortalID = getgenv().PortalID,
 
             -- unitname = getgenv().unitname,
             -- unitid = getgenv().unitid,
@@ -643,7 +643,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 
 -- Aline Portal ------------------------------------
 
-getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"portal_boros_g"}, getgenv().portalnameA, function(pornname)
+getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"boros_ship_portal"}, getgenv().portalnameA, function(pornname)
     getgenv().portalnameA = pornname
     updatejson()
 end)
@@ -919,7 +919,7 @@ end)
 
     -- Aline Portal
 
-    getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"portal_boros_g"}, getgenv().portalnameA, function(pornname)
+    getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"boros_ship_portal"}, getgenv().portalnameA, function(pornname)
         getgenv().portalnameA = pornname
         updatejson()
     end)
@@ -1075,7 +1075,7 @@ end)
                             SpawnUnitPos["jojo_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["jojo_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["jojo_leg"][UnitPos]["z"] = a.Position.Z    
-                        elseif game.Workspace._map:FindFirstChild("portal_boros_g") then
+                        elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
                             print("Alien Spaceship")    
                             SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
@@ -1317,9 +1317,9 @@ else
         PortalID = "nil",
 
         --Aline protal
-        portalnameA = "portal_boros_g",
+        portalnameA = "boros_ship_portal",
         farmaline = false,
-        PortalIDA = "nil",
+        PortalID = "nil",
         
         -- unitname = "name",
         -- unitid = "id",
@@ -2721,7 +2721,7 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end
-            elseif game.Workspace._map:FindFirstChild("portal_boros_g") then
+            elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
                 print("Alien Spaceship")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
@@ -3221,14 +3221,14 @@ local function startfarming()
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)
-                getgenv().PortalIDA = v._uuid_or_id.value
+                getgenv().PortalID = v._uuid_or_id.value
                 break;
             end
         end
           task.wait(1.5)
 
           local args = {
-            [1] = tostring(getgenv().PortalIDA),
+            [1] = tostring(getgenv().PortalID),
             [2] = {
                 ["friends_only"] = true
             }

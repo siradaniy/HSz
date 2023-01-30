@@ -1076,7 +1076,7 @@ end)
                             SpawnUnitPos["jojo_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["jojo_leg"][UnitPos]["z"] = a.Position.Z    
                         elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
-                            print("Alien Spaceship")    
+                            print("Alien Spaceship (Final)")    
                             SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z        
@@ -2722,7 +2722,7 @@ function placesex()
                     end
                 end
             elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
-                print("Alien Spaceship")
+                print("Alien Spaceship (Final)")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then
@@ -3194,9 +3194,7 @@ local function startfarming()
             task.wait(3)
         end
         ------Devil Portal
-    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
-                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline == false and getgenv().farmprotal or getgenv().farmprotal then
-
+    elseif getgenv().farmprotal then
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
                 print(v._uuid_or_id.value)
@@ -3212,21 +3210,37 @@ local function startfarming()
                 ["friends_only"] = true
             }
         }
+		game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
+
+        task.wait(1.5)
+
+        for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
+            if v.Name == "Owner" then
+                if tostring(v.value) == game.Players.LocalPlayer.Name then
+                    local args = {
+                        [1] = tostring(v.Parent.Name)
+                    }
+                    
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+                    break;
+                end
+            end 
+        end
+
+        task.wait(7)
 
         ---Aline Portal
-    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
-    and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline and getgenv().farmprotal == false or getgenv().farmprotal == false then    
-
+    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline or getgenv().farmaline then    
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
-            if v.Name == "portal_boros_g" or v.Name == "boros_ship_portal" then
+            if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)
                 getgenv().PortalIDA = v._uuid_or_id.value
                 break;
             end
         end
-          task.wait(1.5)
+        task.wait(1.5)
 
-          local args = {
+        local args = {
             [1] = tostring(getgenv().PortalIDA),
             [2] = {
                 ["friends_only"] = true
@@ -3249,7 +3263,6 @@ local function startfarming()
                 end
             end 
         end
-        
 
         task.wait(7)
     end

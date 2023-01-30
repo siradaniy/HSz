@@ -19,7 +19,7 @@ local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 
-getgenv().savefilename = "Anime-Adventures_HSz_UPD10_fix_"..game.Players.LocalPlayer.Name..".json"
+getgenv().savefilename = "Anime-Adventures_HSz_UPD10_new_"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
 
 ------------item drop result
@@ -1080,7 +1080,7 @@ end)
                             SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z        
-                        elseif game.Workspace._map:FindFirstChild("boros_ship") then
+                        elseif game.Workspace._map:FindFirstChild("secret") then
                             print("Alien Spaceship")    
                             SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
@@ -2727,7 +2727,7 @@ function placesex()
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then
                         local unitinfo_ = unitinfo:split(" #")
-                        local pos = getgenv().SpawnUnitPos["opm"]["UP" .. i]
+                        local pos = getgenv().SpawnUnitPos["opm_leg"]["UP" .. i]
                         task.wait()
                         --place units 0
                         local args = {
@@ -2772,8 +2772,8 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end    
-            elseif game.Workspace._map:FindFirstChild("boros_ship") then
-                print("Alien Spaceship")
+            elseif game.Workspace._map:FindFirstChild("secret") then
+                print("opm")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then

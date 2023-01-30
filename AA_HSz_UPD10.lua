@@ -148,8 +148,8 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true	
                         }, {
-                            ["name"] = "Result:",
-                            ["value"] = result .. " ",
+                            ["name"] = "ผลการเล่น:",
+                            ["value"] = result .. " ⚔️",
                             ["inline"] = true
                         }, {
 							["name"] = "Recieved Gems:",

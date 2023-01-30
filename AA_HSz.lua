@@ -1075,7 +1075,7 @@ end)
                             SpawnUnitPos["jojo_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["jojo_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["jojo_leg"][UnitPos]["z"] = a.Position.Z    
-                        elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
+                        elseif game.Workspace._map:FindFirstChild("secret") then
                             print("Alien Spaceship (Final)")    
                             SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
@@ -2721,13 +2721,13 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end
-            elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
+            elseif game.Workspace._map:FindFirstChild("secret") then
                 print("Alien Spaceship (Final)")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then
                         local unitinfo_ = unitinfo:split(" #")
-                        local pos = getgenv().SpawnUnitPos["opm_leg"]["UP" .. i]
+                        local pos = getgenv().SpawnUnitPos["opm"]["UP" .. i]
                         task.wait()
                         --place units 0
                         local args = {
@@ -2773,7 +2773,7 @@ function placesex()
                     end
                 end    
             elseif game.Workspace._map:FindFirstChild("secret") then
-                print("opm")
+                print("Alien Spaceship")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then

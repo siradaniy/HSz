@@ -643,7 +643,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 
 -- Aline Portal ------------------------------------
 
-getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"portal_boros_g", "boros_ship_portal"}, getgenv().portalnameA, function(pornname)
+getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"boros_ship_portal"}, getgenv().portalnameA, function(pornname)
     getgenv().portalnameA = pornname
     updatejson()
 end)
@@ -919,7 +919,7 @@ end)
 
     -- Aline Portal
 
-    getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"portal_boros_g", "boros_ship_portal"}, getgenv().portalnameA, function(pornname)
+    getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"boros_ship_portal"}, getgenv().portalnameA, function(pornname)
         getgenv().portalnameA = pornname
         updatejson()
     end)
@@ -3195,7 +3195,7 @@ local function startfarming()
         end
         ------Devil Portal
     elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
-                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline and getgenv().farmprotal or getgenv().farmprotal then
+                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline == false and getgenv().farmprotal or getgenv().farmprotal then
 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
@@ -3214,6 +3214,8 @@ local function startfarming()
         }
 
         ---Aline Portal
+    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
+    and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline and getgenv().farmprotal == false or getgenv().farmprotal == false then    
 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_boros_g" or v.Name == "boros_ship_portal" then

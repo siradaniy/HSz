@@ -1073,7 +1073,7 @@ end)
                             SpawnUnitPos["jojo_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["jojo_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["jojo_leg"][UnitPos]["z"] = a.Position.Z    
-                        elseif game.Workspace._map:FindFirstChild("portal_boros_g") then
+                        elseif game.Workspace._map:FindFirstChild("secret") then
                             print("Alien Spaceship (Final)")    
                             SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y

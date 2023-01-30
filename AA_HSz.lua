@@ -212,7 +212,7 @@ function sex()
     --Aline
     getgenv().portalnameA = data.portalnameA
     getgenv().farmaline = data.farmaline
-    getgenv().PortalID = data.PortalID
+    getgenv().PortalIDA = data.PortalIDA
 
 
     getgenv().AutoLeave = data.AutoLeave
@@ -254,7 +254,7 @@ function sex()
             --Aline Portal
             portalnameA = getgenv().portalnameA,
             farmaline = getgenv().farmaline,
-            PortalID = getgenv().PortalID,
+            PortalIDA = getgenv().PortalIDA,
 
             -- unitname = getgenv().unitname,
             -- unitid = getgenv().unitid,
@@ -643,7 +643,7 @@ devilcity:Label("หากมีประตูเก่า มันอาจ�
 
 -- Aline Portal ------------------------------------
 
-getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"boros_ship_portal"}, getgenv().portalnameA, function(pornname)
+getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"portal_boros_g", "boros_ship_portal"}, getgenv().portalnameA, function(pornname)
     getgenv().portalnameA = pornname
     updatejson()
 end)
@@ -919,7 +919,7 @@ end)
 
     -- Aline Portal
 
-    getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"boros_ship_portal"}, getgenv().portalnameA, function(pornname)
+    getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"portal_boros_g", "boros_ship_portal"}, getgenv().portalnameA, function(pornname)
         getgenv().portalnameA = pornname
         updatejson()
     end)
@@ -1317,9 +1317,9 @@ else
         PortalID = "nil",
 
         --Aline protal
-        portalnameA = "boros_ship_portal",
+        portalnameA = "portal_boros_g",
         farmaline = false,
-        PortalID = "nil",
+        PortalIDA = "nil",
         
         -- unitname = "name",
         -- unitid = "id",
@@ -3215,20 +3215,17 @@ local function startfarming()
 
         ---Aline Portal
 
-        elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting 
-                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline and getgenv().farmprotal or getgenv().farmprotal then
-
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
-            if v.Name == "portal_boros_g" then
+            if v.Name == "portal_boros_g" or v.Name == "boros_ship_portal" then
                 print(v._uuid_or_id.value)
-                getgenv().PortalID = v._uuid_or_id.value
+                getgenv().PortalIDA = v._uuid_or_id.value
                 break;
             end
         end
           task.wait(1.5)
 
           local args = {
-            [1] = tostring(getgenv().PortalID),
+            [1] = tostring(getgenv().PortalIDA),
             [2] = {
                 ["friends_only"] = true
             }

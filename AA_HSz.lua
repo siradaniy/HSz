@@ -1317,7 +1317,7 @@ else
         PortalID = "nil",
 
         --Aline protal
-        portalnameA = "portal_boros_g",
+        portalnameA = "boros_ship_portal",
         farmaline = false,
         PortalIDA = "nil",
         

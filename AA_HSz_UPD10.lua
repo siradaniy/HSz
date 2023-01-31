@@ -68,9 +68,6 @@ local function webhook()
 		local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
 
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
-        if XP == "+99999" then
-			XP = "+0"
-		end
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
         if gems == "+99999" then
 			gems = "+0"
@@ -80,6 +77,7 @@ local function webhook()
 			gold = "+0"
 		end
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
+        resultx = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
@@ -150,9 +148,9 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true	
                         }, {
-                            ["name"] = "Ice Star:",
-                            ["value"] = tostring(game.Players.LocalPlayer._stats._resourceHolidayStars.Value).. " ⭐",
-                            ["inline"] = true 
+                            ["name"] = "ผลการต่อสู้:",
+                            ["value"] = resultx .. " ⚔️",
+                            ["inline"] = true
                         }, {
 							["name"] = "Recieved Gems:",
 							["value"] = gems .. " <:gem:997123585476927558>",

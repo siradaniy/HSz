@@ -19,7 +19,7 @@ local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 
-getgenv().savefilename = "Anime-Adventures_HSz_UPD10_Fix_999"..game.Players.LocalPlayer.Name..".json"
+getgenv().savefilename = "Anime-Adventures_HSz_UPD10_Fix_100"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
 
 ------------item drop result
@@ -1081,7 +1081,7 @@ end)
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z        
                         elseif game.Workspace._map:FindFirstChild("secret") then
-                            print("Alien Spaceship")    
+                            print("opm")    
                             SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm"][UnitPos]["z"] = a.Position.Z

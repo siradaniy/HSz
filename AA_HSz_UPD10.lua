@@ -19,7 +19,7 @@ local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 
-getgenv().savefilename = "Anime-Adventures_HSz_UPD10_30_"..game.Players.LocalPlayer.Name..".json"
+getgenv().savefilename = "Anime-Adventures_HSz_UPD10_new_220"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
 
 ------------item drop result
@@ -68,6 +68,9 @@ local function webhook()
 		local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
 
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
+        if XP == "+99999" then
+			XP = "+0"
+		end
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
         if gems == "+99999" then
 			gems = "+0"
@@ -77,7 +80,6 @@ local function webhook()
 			gold = "+0"
 		end
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
-        result = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
@@ -148,9 +150,9 @@ local function webhook()
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true	
                         }, {
-                            ["name"] = "ผลการเล่น:",
-                            ["value"] = result .. " ⚔️",
-                            ["inline"] = true
+                            ["name"] = "Ice Star:",
+                            ["value"] = tostring(game.Players.LocalPlayer._stats._resourceHolidayStars.Value).. " ⭐",
+                            ["inline"] = true 
                         }, {
 							["name"] = "Recieved Gems:",
 							["value"] = gems .. " <:gem:997123585476927558>",
@@ -582,7 +584,7 @@ function sex()
             elseif world == "Hollow Legend - HARD" then
                 getgenv().leveldrop:Clear()
                 table.clear(levels)
-                getgenv().levels = {"bleach_legend_1","bleach_legend_2","bleach_legend_3","bleach_legend_4","bleach_legend_5","bleach_legend_6",}
+                getgenv().levels = {"bleach_legend_1","bleach_legend_2","bleach_legend_3","bleach_legend_4","bleach_legend_5",}
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
                 end
@@ -1073,12 +1075,12 @@ end)
                             SpawnUnitPos["jojo_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["jojo_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["jojo_leg"][UnitPos]["z"] = a.Position.Z    
-                        elseif game.Workspace._map:FindFirstChild("borosshipportal") then
+                        elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
                             print("Alien Spaceship (Final)")    
                             SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z        
-                        elseif game.Workspace._map:FindFirstChild("borosship") then
+                        elseif game.Workspace._map:FindFirstChild("secret") then
                             print("Alien Spaceship")    
                             SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
@@ -1348,15 +1350,15 @@ else
                     x  = -60.936012268066409,
                     z  = -17.815866470336915
                  },
-                 UP2  = {
-                    y  = 6.592540740966797,
-                    x  = -64.9782943725586,
-                    z  = -16.04295539855957
-                 },
                   UP3  = {
                     y  = 1.584641933441162,
                     x  = -41.46944808959961,
                     z  = 10.981884002685547
+                 },
+                  UP2  = {
+                    y  = 6.592540740966797,
+                    x  = -64.9782943725586,
+                    z  = -16.04295539855957
                  },
                   UP6  = {
                     y  = 1.5806325674057007,
@@ -1413,15 +1415,15 @@ else
                     x  = 350.8210754394531,
                     z  = -162.07774353027345
                  },
-                 UP2  = {
-                    y  = 126.44705200195313,
-                    x  = 342.19903564453127,
-                    z  = -159.8677978515625
-                 },
                   UP3  = {
                     y  = 122.37862396240235,
                     x  = 307.1986389160156,
                     z  = -110.59969329833985
+                 },
+                  UP2  = {
+                    y  = 126.44705200195313,
+                    x  = 342.19903564453127,
+                    z  = -159.8677978515625
                  },
                   UP6  = {
                     y  = 122.2503433227539,
@@ -1445,15 +1447,15 @@ else
                     x  = -890.8043823242188,
                     z  = 313.8632507324219
                  },
-                 UP2  = {
-                    y  = 29.9185791015625,
-                    x  = -894.8745727539063,
-                    z  = 320.17279052734377
-                 },
                   UP3  = {
                     y  = 25.63469886779785,
                     x  = -890.8817138671875,
                     z  = 288.5116882324219
+                 },
+                  UP2  = {
+                    y  = 29.9185791015625,
+                    x  = -894.8745727539063,
+                    z  = 320.17279052734377
                  },
                   UP6  = {
                     y  = 25.634540557861329,
@@ -1477,15 +1479,15 @@ else
                     x  = -2956.73193359375,
                     z  = -716.7922973632813
                  },
-                 UP2  = {
-                    y  = 94.77137756347656,
-                    x  = -2951.260986328125,
-                    z  = -717.804443359375
-                 },
                   UP3  = {
                     y  = 92.15702819824219,
                     x  = -2920.022216796875,
                     z  = -729.0972900390625
+                 },
+                  UP2  = {
+                    y  = 94.77137756347656,
+                    x  = -2951.260986328125,
+                    z  = -717.804443359375
                  },
                   UP6  = {
                     y  = 92.16128540039063,
@@ -1509,15 +1511,15 @@ else
                     x  = -164.7485809326172,
                     z  = -708.7227172851563
                  },
-                 UP2  = {
-                    y  = 136.68968200683595,
-                    x  = -175.1417999267578,
-                    z  = -708.4566650390625
-                 },
                   UP3  = {
                     y  = 133.02149963378907,
                     x  = -236.7266845703125,
                     z  = -669.0444946289063
+                 },
+                  UP2  = {
+                    y  = 136.68968200683595,
+                    x  = -175.1417999267578,
+                    z  = -708.4566650390625
                  },
                   UP6  = {
                     y  = 133.49078369140626,
@@ -1541,15 +1543,15 @@ else
                     x  = -161.99302673339845,
                     z  = 2965.1572265625
                  },
-                 UP2  = {
-                    y  = 31.533567428588868,
-                    x  = -171.0098419189453,
-                    z  = 2972.414794921875
-                 },
                   UP3  = {
                     y  = 23.37002182006836,
                     x  = -144.85105895996095,
                     z  = 2996.060546875
+                 },
+                  UP2  = {
+                    y  = 31.533567428588868,
+                    x  = -171.0098419189453,
+                    z  = 2972.414794921875
                  },
                   UP6  = {
                     y  = 23.363950729370118,
@@ -1573,15 +1575,15 @@ else
                     x  = -3010.3740234375,
                     z  = -685.14599609375
                  },
-                 UP2  = {
-                    y  = 38.68673324584961,
-                    x  = -3014.444580078125,
-                    z  = -688.4807739257813
-                 },
                   UP3  = {
                     y  = 34.18759536743164,
                     x  = -2993.00146484375,
                     z  = -713.3661499023438
+                 },
+                  UP2  = {
+                    y  = 38.68673324584961,
+                    x  = -3014.444580078125,
+                    z  = -688.4807739257813
                  },
                   UP6  = {
                     y  = 34.190486907958987,
@@ -1605,17 +1607,17 @@ else
                     x  = -2864.95166015625,
                     z  = -125.98533630371094
                  },
-                 UP2  = {
-                    y  = 39.736934661865237,
-                    x  = -2877.181640625,
-                    z  = -125.01622009277344
-                 },
-                 UP3  = {
+                  UP3  = {
                     y  = 34.805694580078128,
                     x  = -2934.28857421875,
                     z  = -155.3917999267578
                  },
-                 UP6  = {
+                  UP2  = {
+                    y  = 39.736934661865237,
+                    x  = -2877.181640625,
+                    z  = -125.01622009277344
+                 },
+                  UP6  = {
                     y  = 34.79277038574219,
                     x  = -2893.751220703125,
                     z  = -153.32833862304688
@@ -1637,15 +1639,15 @@ else
                     x  = -2997.170654296875,
                     z  = -81.0949478149414
                  },
-                 UP2  = {
-                    y  = 63.28971481323242,
-                    x  = -2991.822021484375,
-                    z  = -75.84800720214844
-                 },
                   UP3  = {
                     y  = 58.94676971435547,
                     x  = -2947.560791015625,
                     z  = -96.52957916259766
+                 },
+                  UP2  = {
+                    y  = 63.28971481323242,
+                    x  = -2991.822021484375,
+                    z  = -75.84800720214844
                  },
                   UP6  = {
                     y  = 59.03092575073242,
@@ -1669,15 +1671,15 @@ else
                     x  = -600.5551147460938,
                     z  = -819.5928344726563
                  },
-                 UP2  = {
-                    y  = 14.233622550964356,
-                    x  = -595.70947265625,
-                    z  = -823.6626586914063
-                 },
-                 UP3  = {
+                  UP3  = {
                     y  = 6.315590858459473,
                     x  = -638.746337890625,
                     z  = -805.4141235351563
+                 },
+                  UP2  = {
+                    y  = 14.233622550964356,
+                    x  = -595.70947265625,
+                    z  = -823.6626586914063
                  },
                   UP6  = {
                     y  = 6.3124308586120609,
@@ -1702,15 +1704,15 @@ else
                     x  = -2575.1875,
                     z  = -69.69309997558594
                  },
-                 UP2  = {
-                    y  = 31.823074340820314,
-                    x  = -2583.66455078125,
-                    z  = -61.25366973876953
-                 },
                   UP3  = {
                     y  = 25.65696144104004,
                     x  = -2611.51806640625,
                     z  = -37.29831314086914
+                 },
+                  UP2  = {
+                    y  = 31.823074340820314,
+                    x  = -2583.66455078125,
+                    z  = -61.25366973876953
                  },
                   UP6  = {
                     y  = 25.65955924987793,
@@ -1767,15 +1769,15 @@ else
                 z = -539.1539916992188
                 
            },
-           UP2  = {
-                x = -358.3482666015625,
-                y = 6.915028095245361,
-                z = -544.3803100585938
-           },
-           UP3  = {
+            UP3  = {
                 x = -299.34271240234375,
                 y = 3.9999992847442627,
                 z = -551.524658203125
+           },
+            UP2  = {
+                x = -358.3482666015625,
+                y = 6.915028095245361,
+                z = -544.3803100585938
            },
             UP6  = {
                 x = -336.8035583496094,
@@ -1799,15 +1801,15 @@ else
                 y = 15.304971694946289, 
                 z = -583.9602661132813
              },
-             UP2  = {
-                x = -85.22750091552735, 
-                y = 20.571115493774415, 
-                z = -584.2532348632813  
-             },
-             UP3  = {
+              UP3  = {
                 x = -50.297454833984378, 
                 y = 15.302647590637207, 
                 z = -593.872802734375
+             },
+              UP2  = {
+                x = -85.22750091552735, 
+                y = 20.571115493774415, 
+                z = -584.2532348632813
              },
               UP6  = {
                 x = -101.23492431640625, 
@@ -1831,15 +1833,15 @@ else
                 y = 17.90195655822754, 
                 z = -582.4182739257812
              },
-             UP2  = {
-                x = -89.10867309570312, 
-                y = 23.173965454101562, 
-                z = -583.8086547851562  
-             },
-             UP3  = {
+              UP3  = {
                 x = -47.614036560058594, 
                 y = 17.899141311645508, 
                 z = -592.3721313476562
+             },
+              UP2  = {
+                x = -89.10867309570312, 
+                y = 23.173965454101562, 
+                z = -583.8086547851562
              },
               UP6  = {
                 x = -85.75068664550781, 
@@ -1859,34 +1861,34 @@ else
          },  
          opm_leg = {
             UP1  = {
-                x = -325.3381042480469, 
-                y = 361.6615295410156, 
-                z = 1407.6005859375
+                x = -339.7117614746094, 
+                y = 364.21185302734375, 
+                z = 1396.416748046875
              },
-             UP2  = {
-                x = -332.57379150390627, 
-                y = 364.84625244140627, 
-                z = 1394.9212646484376
+              UP3  = {
+                x = -281.6949462890625, 
+                y = 364.21185302734375, 
+                z = 1436.8084716796875
              },
-             UP3  = {
-                x = -273.4905090332031, 
-                y = 361.6615295410156, 
-                z = 1435.8953857421876
+              UP2  = {
+                x = -334.77142333984375, 
+                y = 368.2612609863281, 
+                z = 1391.615234375
              },
               UP6  = {
-                x = -284.3965759277344, 
-                y = 361.6577453613281, 
-                z = 1442.93212890625
+                x = -312.58642578125, 
+                y = 364.21185302734375, 
+                z = 1425.9600830078125
              },
               UP5  = {
-                x = -306.50079345703127, 
-                y = 361.66064453125, 
-                z = 1428.7728271484376             
+                x = -293.9329833984375, 
+                y = 364.21185302734375, 
+                z = 1437.103759765625               
              },
               UP4  = {
-                x = -261.56683349609377, 
-                y = 366.44110107421877, 
-                z = 1432.847412109375
+                x = -261.8616027832031, 
+                y = 369.92950439453125, 
+                z = 1433.202392578125
            }
          },
            opm = {
@@ -1895,15 +1897,15 @@ else
                 y = 361.6615295410156, 
                 z = 1407.6005859375
              },
-             UP2  = {
-                x = -332.57379150390627, 
-                y = 364.84625244140627, 
-                z = 1394.9212646484376
-             },
-             UP3  = {
+              UP3  = {
                 x = -273.4905090332031, 
                 y = 361.6615295410156, 
                 z = 1435.8953857421876
+             },
+              UP2  = {
+                x = -332.57379150390627, 
+                y = 364.84625244140627, 
+                z = 1394.9212646484376
              },
               UP6  = {
                 x = -284.3965759277344, 
@@ -2719,7 +2721,7 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end
-            elseif game.Workspace._map:FindFirstChild("portalborosg") then
+            elseif game.Workspace._map:FindFirstChild("boros_ship_portal") then
                 print("Alien Spaceship (Final)")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
@@ -2770,8 +2772,8 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end    
-            elseif game.Workspace._map:FindFirstChild("borosship") then
-                print("Alien Spaceship")
+            elseif game.Workspace._map:FindFirstChild("secret") then
+                print("opm")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then

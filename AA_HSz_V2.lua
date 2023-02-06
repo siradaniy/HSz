@@ -2459,7 +2459,7 @@ end
 ---############### ACTUAL CODE ################---Start Code 
 ---############################################---
 
-local scriptVersion = "1.6.7"
+local scriptVersion = "2.10.5"
 
 if not isfolder("AAMacros" .. scriptVersion) then
 	makefolder("AAMacros" .. scriptVersion)
@@ -2486,7 +2486,7 @@ local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 
-getgenv().saveFileName = "Anime-Adventures_UPD10"..game.Players.LocalPlayer.Name.."-"..scriptVersion..".json"
+getgenv().saveFileName = "Anime-Adventures_HSz_UPD10_Fix_100"..game.Players.LocalPlayer.Name.."-"..scriptVersion..".json"
 getgenv().door = "_lobbytemplategreen1"
 getgenv().selectedMacroFile = "nil"
 
@@ -3719,21 +3719,12 @@ local function UniqueItemWebhook(test)
 			["embeds"] = {
 				{
 					["author"] = {
-						["name"] = "Anime Adventures | แจ้งเตือน ✔",
+						["name"] = "New Unique Items Acquired!",
 						["icon_url"] = "https://cdn.discordapp.com/emojis/997123585476927558.webp?size=96&quality=lossless"
 					},
+					["color"] = 0xFF00FF,
 					["thumbnail"] = {
-						['url'] = thumbnails_avatar.data[1].imageUrl,
-					},
-					["image"] = {
-						['url'] = "https://tr.rbxcdn.com/bc2ea8300bfaea9fb3193d7f801f0e8b/768/432/Image/Png"
-					},
-					["description"] = "🎮 ||**"..game:GetService("Players").LocalPlayer.Name.."**|| 🎮",
-					["color"] = 110335,
-					["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
-					['footer'] = {
-						['text'] = "// Made by Negative & HOLYSHz", 
-						['icon_url'] = "https://yt3.ggpht.com/mApbVVD8mT92f50OJuTObnBbc3j7nDCXMJFBk2SCDpSPcaoH9DB9rxVpJhsB5SxAQo1UN2GzyA=s48-c-k-c0x00ffffff-no-rj"
+						['url'] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. game.Players.LocalPlayer.userId .. "&width=420&height=420&format=png"
 					}
 				}
 			}
@@ -3899,16 +3890,16 @@ function MainModule()
         LoadingSubtitle = "Script By HOLYSHz"
     })
 
-    local autoFarmTab = mainWindow:CreateTab("Auto Farm")
+    local autoFarmTab = mainWindow:CreateTab("⚙️ Auto Farm")
 	local autoMacroTab = mainWindow:CreateTab("Auto Macro [BETA]")
-    local webhookTab = mainWindow:CreateTab("Webhooks")
+    local webhookTab = mainWindow:CreateTab("🌐 Webhooks")
 
     if game.PlaceId == 8304191830 then
 		local altsInGame = false
         
 		getgenv().recordingMacro = false
 		autoMacroTab:CreateToggle({
-			Name = "Record Macro on Map Join",
+			Name = "บันทึก Macro เมื่อเข้า Map",
 			CurrentValue = getgenv().recordMacroOnTeleport,
 			Callback = function(bool)
 				getgenv().recordMacroOnTeleport = bool
@@ -3916,7 +3907,7 @@ function MainModule()
 			end})
 
 		autoMacroTab:CreateToggle({
-			Name = "Replay Macro on Map Join (DISABLE RECORD MACRO WHILE THIS IS ACTIVE)",
+			Name = "Replay Macro เมื่อเข้า Map (ปิด บันทึก MACRO หากเปิดฟังชั่นนี้อยู่)",
 			CurrentValue = getgenv().replayMacroOnTeleport,
 			Callback = function(bool)
 				getgenv().replayMacroOnTeleport = bool
@@ -3931,7 +3922,7 @@ function MainModule()
             Name = "Select Macro World", 
             Options = {"Planet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
         				"Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom", 
-						"Cape Canaveral", "Alien Ship", "Clover Kingdom [Elf Invasion]", "Hollow Invasion", "Cape Canaveral [Legend]", "Chainsaw Man Contract"},
+						"Cape Canaveral", "Alien Ship", "Clover Kingdom [Elf Invasion]", "Hollow Legend - HARD", "Cape Canaveral [Legend]", "Chainsaw Man Contract", "Alien Portal"},
         CurrentOption = getgenv().macroWorld, 
         Callback = function(world)
             getgenv().macroWorld = world
@@ -4047,7 +4038,7 @@ function MainModule()
                 for i, v in ipairs(macroLevels) do
                     getgenv().macroLevelDrop:Add(v)
                 end
-            elseif world == "Hollow Invasion" then
+            elseif world == "Hollow Legend - HARD" then
                 getgenv().macroLevelDrop:Clear()
                 table.clear(macroLevels)
                 getgenv().macroLevels = {"bleach_legend_1","bleach_legend_2","bleach_legend_3","bleach_legend_4","bleach_legend_5","bleach_legend_6"}
@@ -4164,11 +4155,18 @@ function MainModule()
                 for i, v in ipairs(macroLevels) do
                     getgenv().macroLevelDrop:Add(v)
                 end
+			elseif world == "Alien Portal" then
+				getgenv().macroLevelDrop:Clear()
+                table.clear(macroLevels)
+                getgenv().macroLevels = {"boros_ship_portal"}
+                for i, v in ipairs(macroLevels) do
+                    getgenv().macroLevelDrop:Add(v)
+                end	
 			end
         end})
         
         getgenv().macroLevelDrop = autoMacroTab:CreateDropdown({
-            Name = "Select Macro Level", 
+            Name = "เลือก Macro Level", 
             Options = getgenv().macroLevels, 
             CurrentOption = getgenv().macroLevel, 
             Callback = function(level)
@@ -4245,7 +4243,7 @@ function MainModule()
         end
 
         autoFarmTab:CreateButton({
-            Name = "Select Equipped Units", 
+            Name = "เลือก Units ที่ใส่อยู่ตอนนี้", 
             Callback = function()
                 for i, v in ipairs(game:GetService("Players").LocalPlayer.PlayerGui["spawn_units"].Lives.Frame.Units:GetChildren()) do
                     if v:IsA("ImageButton") then
@@ -4259,8 +4257,8 @@ function MainModule()
                 end
                 
                 RayfieldLib:Notify({
-                Title = "Equipped Units Are Selected!",
-                Content = "The dropdowns may not show the unit names now, but it will show next time you execute!",
+                Title = "ใส่ Units ที่เลือกแล้ว!",
+                Content = "เมนูแบบเลื่อนลงอาจไม่แสดงชื่อหน่วยในขณะนี้ แต่จะแสดงในครั้งต่อไปที่กลับเข้ามาที่ Lobby!",
                 Duration = 6.5,
                 Image = 4483362458,
                 Actions = { -- Notification Buttons
@@ -4365,7 +4363,8 @@ function MainModule()
         local worlddrop = autoFarmTab:CreateDropdown({
             Name = "Select World", 
             Options = {"Planet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
-        "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom", "Clover Legend - HARD","Hollow Legend - HARD","Cape Canaveral", "Alien Ship"},
+        "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom", "Clover Legend - HARD","Hollow Legend - HARD","Cape Canaveral",
+		 "Alien Ship","JoJo Legend - HARD"},
         CurrentOption = getgenv().world, 
         Callback = function(world)
             getgenv().world = world
@@ -4496,14 +4495,14 @@ function MainModule()
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
                 end
-            elseif world == "Hollow Invasion" then
+            elseif world == "Hollow Legend - HARD" then
                 getgenv().leveldrop:Clear()
                 table.clear(levels)
                 getgenv().levels = {"bleach_legend_1","bleach_legend_2","bleach_legend_3","bleach_legend_4","bleach_legend_5","bleach_legend_6"}
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
                 end
-            elseif world == "Cape Canaveral [Legend]" then
+            elseif world == "JoJo Legend - HARD" then
                 getgenv().leveldrop:Clear()
                 table.clear(levels)
                 getgenv().levels = {"jojo_legend_1","jojo_legend_2","jojo_legend_3","jojo_portal_pucci"}
@@ -4521,6 +4520,40 @@ function MainModule()
                 getgenv().level = level
                 updatejson()
             end})
+------Devil City
+
+getgenv().portalname = devilcity:Dropdown("Select Portal", {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, getgenv().portalnameX, function(pornname)
+    getgenv().portalnameX = pornname
+    updatejson()
+end)
+
+devilcity:Button("Buy Devil Portal", function(bool)
+    local string_1 = getgenv().portalnameX
+    local Target = game:GetService("ReplicatedStorage").endpoints["client_to_server"]["buy_csmportal_shop_item"];
+    Target:InvokeServer(string_1);
+end)
+
+devilcity:Toggle("Auto Farm Devil Portal", getgenv().farmprotal, function(bool)
+    getgenv().farmprotal = bool
+    updatejson()
+end)
+
+devilcity:Label("เฉพาะประตูที่ปลดล็อค Rank แล้วเท่านั้น")
+devilcity:Label("หากมีประตูเก่า มันอาจจะเริ่มทำงาน ดังนั้นอย่าซื้อประตูระดับต่ำที่คุณไม่ต้องการทำฟาร์ม.")
+
+-- Aline Portal ------------------------------------
+
+getgenv().portalnameA = alinecity:Dropdown("Select Portal", {"boros_ship_portal"}, getgenv().portalnameA, function(pornname)
+    getgenv().portalnameA = pornname
+    updatejson()
+end)
+
+alinecity:Toggle("Auto Farm Aline Portal", getgenv().farmaline, function(bool)
+    getgenv().farmaline = bool
+    updatejson()
+end)
+
+alinecity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf Aline Spacship.")
 
 
 		--------------------------------------------------

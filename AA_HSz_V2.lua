@@ -3714,17 +3714,26 @@ local function UniqueItemWebhook(test)
         
 		local data = {
 			["content"] = "",
-			["username"] = "Professional Gamer",
-			["avatar_url"] = "https://i.pinimg.com/originals/1c/6c/55/1c6c55a47126ddf97931d9463876594c.jpg",
+			["username"] = "Anime Adventures",
+			["avatar_url"] = "https://tr.rbxcdn.com/33e128db5189ee794a9d8255e4b80044/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {
-						["name"] = "New Unique Items Acquired!",
+						["name"] = "Anime Adventures | แจ้งเตือน ✔",
 						["icon_url"] = "https://cdn.discordapp.com/emojis/997123585476927558.webp?size=96&quality=lossless"
 					},
-					["color"] = 0xFF00FF,
 					["thumbnail"] = {
-						['url'] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. game.Players.LocalPlayer.userId .. "&width=420&height=420&format=png"
+						['url'] = thumbnails_avatar.data[1].imageUrl,
+					},
+					["image"] = {
+						['url'] = "https://tr.rbxcdn.com/bc2ea8300bfaea9fb3193d7f801f0e8b/768/432/Image/Png"
+					},
+					["description"] = "🎮 ||**"..game:GetService("Players").LocalPlayer.Name.."**|| 🎮",
+					["color"] = 110335,
+					["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
+					['footer'] = {
+						['text'] = "// Made by Negative & HOLYSHz", 
+						['icon_url'] = "https://yt3.ggpht.com/mApbVVD8mT92f50OJuTObnBbc3j7nDCXMJFBk2SCDpSPcaoH9DB9rxVpJhsB5SxAQo1UN2GzyA=s48-c-k-c0x00ffffff-no-rj"
 					}
 				}
 			}

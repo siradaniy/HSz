@@ -3654,22 +3654,12 @@ local function NormalItemWebhook(test)
 			["embeds"] = {
 				{
 					["author"] = {
-						["name"] = "Anime Adventures | แจ้งเตือน ✔",
+						["name"] = "New Normal Items Acquired!",
 						["icon_url"] = "https://cdn.discordapp.com/emojis/997123585476927558.webp?size=96&quality=lossless"
 					},
 					["color"] = 0xFF00FF,
 					["thumbnail"] = {
-						['url'] = thumbnails_avatar.data[1].imageUrl,
-					},
-					["image"] = {
-						['url'] = "https://tr.rbxcdn.com/bc2ea8300bfaea9fb3193d7f801f0e8b/768/432/Image/Png"
-					},
-					["description"] = "🎮 ||**"..game:GetService("Players").LocalPlayer.Name.."**|| 🎮",
-					["color"] = 110335,
-					["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
-					['footer'] = {
-						['text'] = "// Made by Negative & HOLYSHz", 
-						['icon_url'] = "https://yt3.ggpht.com/mApbVVD8mT92f50OJuTObnBbc3j7nDCXMJFBk2SCDpSPcaoH9DB9rxVpJhsB5SxAQo1UN2GzyA=s48-c-k-c0x00ffffff-no-rj"
+						['url'] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. game.Players.LocalPlayer.userId .. "&width=420&height=420&format=png"
 					}
 				}
 			}
@@ -3773,8 +3763,6 @@ function MainModule()
     local jsonData = readfile(saveFileName)
     local data = HttpService:JSONDecode(jsonData)
 
-	getgenv().altCount = data.altcount
-
     getgenv().AutoLeave = data.AutoLeave
     getgenv().AutoReplay = data.AutoReplay
     getgenv().AutoChallenge = data.AutoChallenge  
@@ -3824,7 +3812,6 @@ function MainModule()
 
     function updatejson()
         local xdata = {
-			altcount = getgenv().altCount,
 
             autoloadtp = getgenv().AutoLoadTP,
             AutoLeave = getgenv().AutoLeave,
@@ -3895,7 +3882,6 @@ function MainModule()
     local webhookTab = mainWindow:CreateTab("🌐 Webhooks")
 
     if game.PlaceId == 8304191830 then
-		local altsInGame = false
         
 		getgenv().recordingMacro = false
 		autoMacroTab:CreateToggle({

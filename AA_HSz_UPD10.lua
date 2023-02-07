@@ -54,6 +54,40 @@ for i,v in pairs(get_inventory_items()) do
 	Old_Inventory_table[i] = v
 end
 ---------------------end webhook
+
+------------itemgetUniqueItems
+function getUniqueItems()
+	for i,v in next, getgc() do
+		if type(v) == 'function' then 
+			if getfenv(v).script then 
+				if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
+					for _, v in pairs(debug.getupvalues(v)) do 
+						if type(v) == 'table' then
+							if v["session"] then
+								return v["session"]["inventory"]['inventory_profile_data']['unique_items']
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
+local Table_Items_Name_data = {}
+local Old_Inventory_table = {}
+for v2, v3 in pairs(game:GetService("ReplicatedStorage").src.Data.Items:GetDescendants()) do
+	if v3:IsA("ModuleScript") then
+		for v4, v5 in pairs(require(v3)) do
+		    Table_Items_Name_data[v4] = v5.name
+		end;
+	end;
+end;
+for i,v in pairs(getUniqueItems()) do
+	Old_Inventory_table[i] = v
+end
+---------------------end webhook
+
 local function GetCurrentLevelId()
     if game.Workspace._MAP_CONFIG then
         return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
@@ -107,6 +141,23 @@ local function webhook()
 		end
 		if TextDropLabel == "" then
 			TextDropLabel = "Not Have Items Drops"
+		end
+
+        --test
+        local TextDropLabel2 = ""
+		local CountAmount = 1
+		for i,v in pairs(getUniqueItems()) do
+			if (v - Old_Inventory_table[i]) > 0 then
+				for NameData, NameShow in pairs(Table_Items_Name_data) do
+					if (v - Old_Inventory_table[i]) > 0 and tostring(NameData) == tostring(i) then
+						TextDropLabel2 = TextDropLabel2 .. tostring(CountAmount) .. ". " .. tostring(string.gsub(i, i, NameShow)) .. " : x" .. tostring(v - Old_Inventory_table[i]) .. "\n"
+						CountAmount = CountAmount + 1
+					end
+				end;
+			end
+		end
+		if TextDropLabel2 == "" then
+			TextDropLabel2 = "Not Have Items Drops"
 		end
 
 		local data = {
@@ -173,10 +224,14 @@ local function webhook()
                         }, {
                             ["name"] = "Map:",
                             ["value"] = GetCurrentLevelName() .. " ⚔️",
-                            ["inline"] = falseye            
-						}, {
+                            ["inline"] = falseye
+                        }, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",
+                            ["inline"] = falseye                 
+						}, {
+                            ["name"] = "Items Drop:",
+                            ["value"] = "```ini\n" .. TextDropLabel2 .. "```",
                             ["inline"] = falseye 
                         }
 					}

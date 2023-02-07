@@ -2459,7 +2459,7 @@ end
 ---############### ACTUAL CODE ################-----updatefix
 ---############################################---
 
-local scriptVersion = "1.6.7"
+local scriptVersion = "10.5.0"
 
 if not isfolder("AAMacros" .. scriptVersion) then
 	makefolder("AAMacros" .. scriptVersion)
@@ -3878,21 +3878,9 @@ function MainModule()
 
 	print(getgenv().isAlt)
 
-	coroutine.resume(coroutine.create(function()
-		while task.wait(0.5) do
-			if isrbxactive() ~= true then
-				setfpscap(3)
-				game:GetService("RunService"):Set3dRenderingEnabled(false)
-			else
-				setfpscap(100)
-				game:GetService("RunService"):Set3dRenderingEnabled(true)
-			end
-		end
-	end))
-
 
     mainWindow = RayfieldLibrary:CreateWindow({
-        Name = "Anime Adventures " .. scriptVersion .. " - " .. exec .. " (ALT: " .. tostring(getgenv().isAlt) .. ")",
+        Name = "Anime Adventures_UPD " .. scriptVersion .. " - " .. exec .. " (HSz Member Only: " .. tostring(getgenv().isAlt) .. ")",
         LoadingTitle = "Anime Adventures " .. scriptVersion,
         LoadingSubtitle = "rewritten by Defrag"
     })
@@ -3900,7 +3888,7 @@ function MainModule()
     local autoFarmTab = mainWindow:CreateTab("Auto Farm")
 	local autoMacroTab = mainWindow:CreateTab("Auto Macro [BETA]")
     local webhookTab = mainWindow:CreateTab("Webhooks")
-
+    local unitPlacementTab = mainWindow:CreateTab("Unit Setting")
     if game.PlaceId == 8304191830 then
 		local altsInGame = false
 		if getgenv().altMode and not getgenv().isAlt then

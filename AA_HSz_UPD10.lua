@@ -173,7 +173,7 @@ local function webhook()
 							["inline"] = true  	   
                         }, {
                             ["name"] = "Map:",
-                            ["value"] = "```ini\n" .. GetCurrentLevelName() .. " ⚔️",
+                            ["value"] = GetCurrentLevelName() .. " ⚔️",
                             ["inline"] = falseye            
 						}, {
                             ["name"] = "Items Drop:",

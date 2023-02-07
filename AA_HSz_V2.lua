@@ -3352,8 +3352,8 @@ local function BabyWebhook()
 
 		local data = {
 			["content"] = "",
-			["username"] = "Professional Gamer",
-			["avatar_url"] = "https://i.pinimg.com/originals/1c/6c/55/1c6c55a47126ddf97931d9463876594c.jpg",
+			["username"] = "Anime Adventures",
+			["avatar_url"] = "https://tr.rbxcdn.com/33e128db5189ee794a9d8255e4b80044/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {
@@ -3414,8 +3414,8 @@ local function ShopSniperWebhook(test)
 
 		local data = {
 			["content"] = "",
-			["username"] = "Professional Gamer",
-			["avatar_url"] = "https://i.pinimg.com/originals/1c/6c/55/1c6c55a47126ddf97931d9463876594c.jpg",
+			["username"] = "Anime Adventures",
+			["avatar_url"] = "https://tr.rbxcdn.com/33e128db5189ee794a9d8255e4b80044/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {
@@ -3500,8 +3500,8 @@ local function SpecialSummonSniperWebhook(test)
 
 		local data = {
 			["content"] = "",
-			["username"] = "Professional Gamer",
-			["avatar_url"] = "https://i.pinimg.com/originals/1c/6c/55/1c6c55a47126ddf97931d9463876594c.jpg",
+			["username"] = "Anime Adventures",
+			["avatar_url"] = "https://tr.rbxcdn.com/33e128db5189ee794a9d8255e4b80044/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {
@@ -3578,8 +3578,8 @@ local function StandardSummonSniperWebhook(test)
         
 		local data = {
 			["content"] = "",
-			["username"] = "Professional Gamer",
-			["avatar_url"] = "https://i.pinimg.com/originals/1c/6c/55/1c6c55a47126ddf97931d9463876594c.jpg",
+			["username"] = "Anime Adventures",
+			["avatar_url"] = "https://tr.rbxcdn.com/33e128db5189ee794a9d8255e4b80044/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {
@@ -3632,8 +3632,8 @@ local function NormalItemWebhook(test)
         
 		local data = {
 			["content"] = "",
-			["username"] = "Professional Gamer",
-			["avatar_url"] = "https://i.pinimg.com/originals/1c/6c/55/1c6c55a47126ddf97931d9463876594c.jpg",
+			["username"] = "Anime Adventures",
+			["avatar_url"] = "https://tr.rbxcdn.com/33e128db5189ee794a9d8255e4b80044/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {
@@ -3687,8 +3687,8 @@ local function UniqueItemWebhook(test)
         
 		local data = {
 			["content"] = "",
-			["username"] = "Professional Gamer",
-			["avatar_url"] = "https://i.pinimg.com/originals/1c/6c/55/1c6c55a47126ddf97931d9463876594c.jpg",
+			["username"] = "Anime Adventures",
+			["avatar_url"] = "https://tr.rbxcdn.com/33e128db5189ee794a9d8255e4b80044/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {

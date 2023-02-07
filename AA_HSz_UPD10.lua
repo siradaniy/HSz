@@ -111,23 +111,6 @@ local function webhook()
 			TextDropLabel = "Not Have Items Drops"
 		end
 
-        --test
-        local TextDropLabel2 = ""
-		local CountAmount = 1
-		for i,v in pairs(getUniqueItems()) do
-			if (v - Old_Inventory_table[i]) > 0 then
-				for NameData, NameShow in pairs(Table_Items_Name_data) do
-					if (v - Old_Inventory_table[i]) > 0 and tostring(NameData) == tostring(i) then
-						TextDropLabel2 = TextDropLabel2 .. tostring(CountAmount) .. ". " .. tostring(string.gsub(i, i, NameShow)) .. " : x" .. tostring(v - Old_Inventory_table[i]) .. "\n"
-						CountAmount = CountAmount + 1
-					end
-				end;
-			end
-		end
-		if TextDropLabel2 == "" then
-			TextDropLabel2 = "Not Have Items Drops"
-		end
-
 		local data = {
 			["content"] = "",
 			["username"] = "Anime Adventures",

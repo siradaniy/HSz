@@ -53,38 +53,6 @@ end;
 for i,v in pairs(get_inventory_items()) do
 	Old_Inventory_table[i] = v
 end
-
-------------item UniqueItems
-function getUniqueItems()
-	for i,v in next, getgc() do
-		if type(v) == 'function' then 
-			if getfenv(v).script then 
-				if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
-					for _, v in pairs(debug.getupvalues(v)) do 
-						if type(v) == 'table' then
-							if v["session"] then
-								return v["session"]["inventory"]['inventory_profile_data']['unique_items']
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-end
-
-local Table_Items_Name_data = {}
-local Old_Inventory_table = {}
-for v2, v3 in pairs(game:GetService("ReplicatedStorage").src.Data.Items.UniqueItems:GetDescendants()) do
-	if v3:IsA("ModuleScript") then
-		for v4, v5 in pairs(require(v3)) do
-		    Table_Items_Name_data[v4] = v5.name
-		end;
-	end;
-end;
-for i,v in pairs(getUniqueItems()) do
-	Old_Inventory_table[i] = v
-end
 ---------------------end webhook
 local function GetCurrentLevelId()
     if game.Workspace._MAP_CONFIG then
@@ -110,7 +78,7 @@ local function webhook()
 		local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
 
 
-        
+        current_wave = tostring(game:GetService("Workspace")["_wave_num"].Value)
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
         if gems == "+99999" then
@@ -123,7 +91,6 @@ local function webhook()
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
         resultx = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
-        current_wave = tostring(game:GetService("Workspace")["_wave_num"].Value)
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
 
@@ -141,23 +108,6 @@ local function webhook()
 		end
 		if TextDropLabel == "" then
 			TextDropLabel = "Not Have Items Drops"
-		end
-
-        --test Uquen
-        local TextDropLabel2 = ""
-		local CountAmount = 1
-		for i,v in pairs(getUniqueItems()) do
-			if (v - Old_Inventory_table[i]) > 0 then
-				for NameData, NameShow in pairs(Table_Items_Name_data) do
-					if (v - Old_Inventory_table[i]) > 0 and tostring(NameData) == tostring(i) then
-						TextDropLabel2 = TextDropLabel2 .. tostring(CountAmount) .. ". " .. tostring(string.gsub(i, i, NameShow)) .. " : x" .. tostring(v - Old_Inventory_table[i]) .. "\n"
-						CountAmount = CountAmount + 1
-					end
-				end;
-			end
-		end
-		if TextDropLabel2 == "" then
-			TextDropLabel2 = "Not Have Items Drops"
 		end
 
 		local data = {
@@ -224,14 +174,10 @@ local function webhook()
                         }, {
                             ["name"] = "Map:",
                             ["value"] = GetCurrentLevelName() .. " ⚔️",
-                            ["inline"] = falseye  
-                        }, {
-                            ["name"] = "Normal Items Drop:",
-                            ["value"] = "```ini\n" .. TextDropLabel .. "```",
-                            ["inline"] = falseye              
+                            ["inline"] = falseye            
 						}, {
-                            ["name"] = "UniqueI Items Drop:",
-                            ["value"] = "```ini\n" .. TextDropLabel2 .. "```",
+                            ["name"] = "Items Drop:",
+                            ["value"] = "```ini\n" .. TextDropLabel .. "```",
                             ["inline"] = falseye 
                         }
 					}
@@ -282,10 +228,9 @@ function sex()
     getgenv().farmaline = data.farmaline
     getgenv().PortalIDA = data.PortalIDA
 
-    
+
     getgenv().AutoLeave = data.AutoLeave
     getgenv().AutoReplay = data.AutoReplay
-    getgenv().AutoContinue = data.AutoContinue
     getgenv().AutoChallenge = data.AutoChallenge  
     getgenv().selectedreward = data.selectedreward
     getgenv().AutoChallengeAll = data.AutoChallengeAll
@@ -330,7 +275,6 @@ function sex()
             autoloadtp = getgenv().AutoLoadTP,
             AutoLeave = getgenv().AutoLeave,
             AutoReplay = getgenv().AutoReplay,
-            AutoContinue = getgenv().AutoContinue,
             AutoChallenge  = getgenv().AutoChallenge, 
             selectedreward = getgenv().selectedreward,
             AutoChallengeAll = getgenv().AutoChallengeAll, 
@@ -726,13 +670,9 @@ end)
 alinecity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf Aline Spacship.")
 
 --------------------------------------------------
------------------- Auto Farm Tab -----------------AutoContinue
+------------------ Auto Farm Tab -----------------
 --------------------------------------------------
 --#region Auto Farm Tab
-autofarmtab:Toggle("Auto Continue ด่านถัดไป", getgenv().AutoContinue, function(bool)
-    getgenv().AutoContinue = bool
-    updatejson()
-end)
 autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
     getgenv().AutoReplay = bool
     updatejson()
@@ -1009,11 +949,7 @@ end)
         
 
         
---#region Auto Farm TabAutoContinue
-autofarmtab:Toggle("Auto Continue ด่านถัดไป", getgenv().AutoContinue, function(bool)
-    getgenv().AutoContinue = bool
-    updatejson()
-end)
+--#region Auto Farm Tab
 autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
     getgenv().AutoReplay = bool
     updatejson()
@@ -1400,9 +1336,8 @@ else
         PortalIDA = "nil",
         
         -- unitname = "name",
-        -- unitid = "id",AutoContinue
+        -- unitid = "id",
         AutoReplay = false,
-        AutoContinue = false,
         AutoLeave = true,
         AutoChallenge = false,
         selectedreward = "star_fruit_random",
@@ -3024,11 +2959,6 @@ coroutine.resume(coroutine.create(function()
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
             elseif getgenv().AutoLeave and getgenv().AutoReplay ~= true then
-
-            if getgenv().AutoContinue then
-                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-            elseif getgenv().AutoContinue and getgenv().AutoContinue ~= true then    
                 --
                 Teleport()
                 -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)

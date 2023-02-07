@@ -1,4 +1,4 @@
-local versionx = "1.1.0"
+local versionx = "10.5.0"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -19,7 +19,7 @@ local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 
-getgenv().savefilename = "Anime-Adventures_HSz_UPD10_Fix_100"..game.Players.LocalPlayer.Name..".json"
+getgenv().savefilename = "HSz_Anime-Adventures_UPD"..game.Players.LocalPlayer.Name.."-"..scriptVersion..".json"
 getgenv().door = "_lobbytemplategreen1"
 
 function getBorosPortals()
@@ -398,7 +398,7 @@ function sex()
     local exec = tostring(identifyexecutor())
 
     local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/DiscordLid2.lua")()
-    local win = DiscordLib:Window("HSz Member [👊UPD 10] Anime Adventures "..versionx.." - "..exec)
+    local win = DiscordLib:Window("[HSz Member] Anime Adventures_UPD "..versionx.." - "..exec)
        
     if exec == "Synapse X" or exec == "ScriptWare" or exec == "Trigon" then
         print("Good boi")

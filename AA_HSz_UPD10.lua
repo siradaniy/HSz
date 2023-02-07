@@ -22,6 +22,47 @@ local UserInputService = game:GetService("UserInputService")
 getgenv().savefilename = "Anime-Adventures_HSz_UPD10_Fix_100"..game.Players.LocalPlayer.Name..".json"
 getgenv().door = "_lobbytemplategreen1"
 
+function getBorosPortals()
+    local reg = getreg() --> returns Roblox's registry in a table
+
+    for i,v in next, reg do
+        if type(v) == 'function' then --> Checks if the current iteration is a function
+            if getfenv(v).script then --> Checks if the function's environment is in a script
+                --if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.DropService" or getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
+                    for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                local portals = {}
+                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
+                                  if item["item_id"] == "portal_boros_g" then
+                                    table.insert(portals, item)
+                                  end
+                                end
+                                return portals
+                            end
+                        end
+                    end
+                --end
+            end
+        end
+    end
+end
+
+function tprint (tbl, indent)
+  if not indent then indent = 0 end
+  for k, v in pairs(tbl) do
+    formatting = string.rep("  ", indent) .. k .. ": "
+    if type(v) == "table" then
+      print(formatting)
+      tprint(v, indent+1)
+    elseif type(v) == 'boolean' then
+      print(formatting .. tostring(v))      
+    else
+      print(formatting .. v)
+    end
+  end
+end
+
 ------------item drop result
 function get_inventory_items()
 	for i,v in next, getgc() do
@@ -53,6 +94,60 @@ end;
 for i,v in pairs(get_inventory_items()) do
 	Old_Inventory_table[i] = v
 end
+
+---------------------------------------------
+
+function getUniqueItems()
+    local reg = getreg() --> returns Roblox's registry in a table
+
+    for i,v in next, reg do
+        if type(v) == 'function' then --> Checks if the current iteration is a function
+            if getfenv(v).script then --> Checks if the function's environment is in a script
+                --if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.DropService" or getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
+                    for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                return v["session"]["inventory"]['inventory_profile_data']['unique_items']
+                            end
+                        end
+                    end
+                --end
+            end
+        end
+    end
+end
+
+function getItemChangesUnique(preGameTable, postGameTable)
+    local itemAdditions = {}
+    
+    for _, item in pairs(postGameTable) do
+        local currentItemUUID = item['uuid']
+        local currentItemIsNew = true
+        for i, itemToCompare in pairs(preGameTable) do
+            if itemToCompare['uuid'] == currentItemUUID then
+                currentItemIsNew = false
+            end
+        end
+        if currentItemIsNew then
+            print("New Unique Item: " .. item["item_id"])
+            table.insert(itemAdditions, item["item_id"])
+        end
+    end
+
+	return itemAdditions
+end
+
+local function GetCurrentLevelId()
+    if game.Workspace._MAP_CONFIG then
+        return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
+    end
+end
+
+local function GetCurrentLevelName()
+    if game.Workspace._MAP_CONFIG then
+        return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
+    end
+end
 ---------------------end webhook
 
 
@@ -67,6 +162,7 @@ local function webhook()
 
 		local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
 
+        current_wave = tostring(game:GetService("Workspace")["_wave_num"].Value)
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
         if gems == "+99999" then
@@ -81,6 +177,9 @@ local function webhook()
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
+
+        timeSinceStart = os.time(os.date("!*t")) - startTime
+        gemsSinceStart = game.Players.LocalPlayer._stats.gem_amount.Value - startGems
 
 		local TextDropLabel = ""
 		local CountAmount = 1
@@ -146,11 +245,11 @@ local function webhook()
 						}, {
                             ["name"] = "Current Gold:",
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
-                            ["inline"] = true	
-                        }, {
-                            ["name"] = "ผลการต่อสู้:",
-                            ["value"] = resultx .. " ⚔️",
                             ["inline"] = true
+                        },{
+                            ["name"] = "Estimated Gems per Hour:",
+                            ["value"] = tostring(math.floor(gemsSinceStart / ((timeSinceStart + 82) / (60 * 60)))).." 💎",
+                            ["inline"] = true      	
                         }, {
 							["name"] = "Recieved Gems:",
 							["value"] = gems .. " <:gem:997123585476927558>",
@@ -159,6 +258,12 @@ local function webhook()
 							["name"] = "Recieved Gold:",
 							["value"] = gold .. " 💰",
 							["inline"] = true	
+                        }, {
+                            ["name"] = "ผลการต่อสู้:",
+                            ["value"] = resultx .. " ⚔️",
+                            ["value"] = GetCurrentLevelName() .. " ⚔️",
+                            ["value"] = current_wave .. " ⚔️",
+                            ["inline"] = falseye           
 						}, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",

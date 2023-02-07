@@ -3882,7 +3882,7 @@ function MainModule()
     mainWindow = RayfieldLibrary:CreateWindow({
         Name = "Anime Adventures_UPD " .. scriptVersion .. " - " .. exec .. " (HSz Member Only: " .. tostring(getgenv().isAlt) .. ")",
         LoadingTitle = "Anime Adventures " .. scriptVersion,
-        LoadingSubtitle = "rewritten by Defrag"
+        LoadingSubtitle = "rewritten by HOLYSHz"
     })
 
     local autoFarmTab = mainWindow:CreateTab("Auto Farm")
@@ -4550,13 +4550,13 @@ function MainModule()
         
         local autoFarmSection = autoFarmTab:CreateSection("Auto-Farm")
 		
-		autoFarmTab:CreateToggle({
-            Name = "Alt Mode", 
-            CurrentValue = getgenv().altMode, 
-            Callback = function(bool)
-                getgenv().altMode = bool
-                updatejson()
-            end})
+		--autoFarmTab:CreateToggle({
+            --Name = "Alt Mode", 
+            --CurrentValue = getgenv().altMode, 
+            --Callback = function(bool)
+                --getgenv().altMode = bool
+                --updatejson()
+            --end})
 		
         autoFarmTab:CreateToggle({
             Name = "Auto Continue", 
@@ -5743,9 +5743,9 @@ function MainModule()
 
 	local creditsTab = mainWindow:CreateTab("Credits")
     local credits = creditsTab:CreateSection("Credits")
-    creditsTab:CreateLabel("Arpon AG#6612")
-    creditsTab:CreateLabel("Forever4D#0001")
-    creditsTab:CreateLabel("Defrag")
+    creditsTab:CreateLabel("HOLYSHz")
+    creditsTab:CreateLabel("Negative")
+    creditsTab:CreateLabel("bytenode")
 end
 
 --------------------------------------------------

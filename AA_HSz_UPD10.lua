@@ -230,7 +230,7 @@ local function webhook()
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",
                             ["inline"] = falseye                 
 						}, {
-                            ["name"] = "Items Drop:",
+                            ["name"] = "Unique Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel2 .. "```",
                             ["inline"] = falseye 
                         }

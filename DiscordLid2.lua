@@ -513,7 +513,7 @@ function DiscordLib:Window(text)
 						):Play()
 					end
 					wait(.3)
-					SettingsFrame.Visible = false
+					SettingsFrame.Visible = true
 				end
 			end
 		end

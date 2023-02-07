@@ -54,8 +54,6 @@ for i,v in pairs(get_inventory_items()) do
 	Old_Inventory_table[i] = v
 end
 ---------------------end webhook
-
-
 local function GetCurrentLevelId()
     if game.Workspace._MAP_CONFIG then
         return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
@@ -79,6 +77,8 @@ local function webhook()
 
 		local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
 
+
+        current_wave = tostring(game:GetService("Workspace")["_wave_num"].Value)
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
         if gems == "+99999" then
@@ -91,7 +91,6 @@ local function webhook()
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
         resultx = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
-        current_wave = tostring(game:GetService("Workspace")["_wave_num"].Value)
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
 
@@ -163,7 +162,7 @@ local function webhook()
                         }, {
                             ["name"] = "ผลการต่อสู้:",
                             ["value"] = resultx .. " ⚔️",
-                            ["inline"] = true     	
+                            ["inline"] = true    	
                         }, {
 							["name"] = "Recieved Gems:",
 							["value"] = gems .. " <:gem:997123585476927558>",
@@ -171,15 +170,15 @@ local function webhook()
 						}, {
 							["name"] = "Recieved Gold:",
 							["value"] = gold .. " 💰",
-							["inline"] = true 	      
+							["inline"] = true  	   
                         }, {
                             ["name"] = "Map:",
                             ["value"] = GetCurrentLevelName() .. " ⚔️",
-                            ["inline"] = falseye
-                        }, {
-                            ["name"] = "Normal Items Drop:",
+                            ["inline"] = falseye            
+						}, {
+                            ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",
-                            ["inline"] = falseye                 
+                            ["inline"] = falseye 
                         }
 					}
 				}
@@ -310,7 +309,7 @@ function sex()
     local exec = tostring(identifyexecutor())
 
     local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/DiscordLid2.lua")()
-    local win = DiscordLib:Window("[HSz Member]  Anime Adventures_UPD "..versionx.." - "..exec)
+    local win = DiscordLib:Window("HSz Member [👊UPD 10] Anime Adventures "..versionx.." - "..exec)
        
     if exec == "Synapse X" or exec == "ScriptWare" or exec == "Trigon" then
         print("Good boi")

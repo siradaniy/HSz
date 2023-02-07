@@ -60,7 +60,7 @@ function getUniqueItems()
 	for i,v in next, getgc() do
 		if type(v) == 'function' then 
 			if getfenv(v).script then 
-				if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
+				if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" or getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.DropService" then
 					for _, v in pairs(debug.getupvalues(v)) do 
 						if type(v) == 'table' then
 							if v["session"] then
@@ -72,11 +72,11 @@ function getUniqueItems()
 			end
 		end
 	end
-end
+end game:GetService("ReplicatedStorage")
 
 local Table_Items_Name_data = {}
 local Old_Inventory_table = {}
-for v2, v3 in pairs(game:GetService("ReplicatedStorage").src.Data.Items:GetDescendants()) do
+for v2, v3 in pairs(game:GetService("ReplicatedStorage").src.Data.Items.UniqueItems:GetDescendants()) do
 	if v3:IsA("ModuleScript") then
 		for v4, v5 in pairs(require(v3)) do
 		    Table_Items_Name_data[v4] = v5.name

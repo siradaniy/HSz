@@ -94,9 +94,6 @@ local function webhook()
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
 
-        timeSinceStart = os.time(os.date("!*t")) - startTime
-        gemsSinceStart = game.Players.LocalPlayer._stats.gem_amount.Value - startGems
-
 		local TextDropLabel = ""
 		local CountAmount = 1
 		for i,v in pairs(get_inventory_items()) do
@@ -169,11 +166,7 @@ local function webhook()
 						}, {
 							["name"] = "Recieved Gold:",
 							["value"] = gold .. " 💰",
-							["inline"] = true
-                        },{
-                            ["name"] = "Estimated Gems per Hour:",
-                            ["value"] = tostring(math.floor(gemsSinceStart / ((timeSinceStart + 82) / (60 * 60)))).." 💎",
-                            ["inline"] = true    	
+							["inline"] = true 	
                         }, {
                             ["name"] = "ผลการต่อสู้:",
                             ["value"] = resultx .. " ⚔️",

@@ -81,9 +81,13 @@ local function MakeDraggable(topbarobject, object)
 	)
 end
 
+if game.CoreGui:FindFirstChild('Discord_UiLib') then
+	game.CoreGui:FindFirstChild('Discord_UiLib'):Destroy()
+end
+
 local Discord = Instance.new("ScreenGui")
-Discord.Name = "Discord"
-Discord.Parent = game.Players.LocalPlayer.PlayerGui
+Discord.Name = "Discord_UiLib"
+Discord.Parent = game.CoreGui
 Discord.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 function DiscordLib:Window(text)
@@ -490,7 +494,7 @@ function DiscordLib:Window(text)
 
 	UserInputService.InputBegan:Connect(
 		function(io, p)
-			if io.KeyCode == Enum.KeyCode.RightControl then
+			if io.KeyCode == Enum.KeyCode.RightShift then
 				if settingsopened == true then
 					settingsopened = false
 					TopFrameHolder.Visible = true

@@ -2979,7 +2979,7 @@ coroutine.resume(coroutine.create(function()
             if getgenv().AutoContinue then
                 local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                 local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-            elseif getgenv().AutoLeave and getgenv().AutoContinue ~= true then
+            elseif getgenv().AutoLeave and getgenv().AutoReplay and getgenv().AutoContinue ~= true then
                 --
                 Teleport()
                 -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)

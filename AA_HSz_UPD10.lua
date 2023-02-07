@@ -55,38 +55,6 @@ for i,v in pairs(get_inventory_items()) do
 end
 ---------------------end webhook
 
-------------itemgetUniqueItems
-function getUniqueItems()
-	for i,v in next, getgc() do
-		if type(v) == 'function' then 
-			if getfenv(v).script then 
-				if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" or getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.DropService" then
-					for _, v in pairs(debug.getupvalues(v)) do 
-						if type(v) == 'table' then
-							if v["session"] then
-								return v["session"]["inventory"]['inventory_profile_data']['unique_items']
-							end
-						end
-					end
-				end
-			end
-		end
-	end
-end game:GetService("ReplicatedStorage")
-
-local Table_Items_Name_data = {}
-local Old_Inventory_table = {}
-for v2, v3 in pairs(game:GetService("ReplicatedStorage").src.Data.Items.UniqueItems:GetDescendants()) do
-	if v3:IsA("ModuleScript") then
-		for v4, v5 in pairs(require(v3)) do
-		    Table_Items_Name_data[v4] = v5.name
-		end;
-	end;
-end;
-for i,v in pairs(getUniqueItems()) do
-	Old_Inventory_table[i] = v
-end
----------------------end webhook
 
 local function GetCurrentLevelId()
     if game.Workspace._MAP_CONFIG then
@@ -229,10 +197,6 @@ local function webhook()
                             ["name"] = "Normal Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",
                             ["inline"] = falseye                 
-						}, {
-                            ["name"] = "Unique Items Drop:",
-                            ["value"] = "```ini\n" .. TextDropLabel2 .. "```",
-                            ["inline"] = falseye 
                         }
 					}
 				}

@@ -137,44 +137,44 @@ local function webhook()
 					["fields"] = {
 						{
                             ["name"] = "Current Level:",
-                            ["value"] = "```ini\n".. tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
+                            ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
                             ["inline"] = true		
                         }, {
 							["name"] = "Total Waves:",
-							["value"] = "```ini\n".. tostring(waves[2]) ..
+							["value"] = tostring(waves[2]) ..
 								" <:wave:997136622363627530>",
 							["inline"] = true
 						}, {
                             ["name"] = "Total Time:",
-                            ["value"] = "```ini\n".. tostring(ttime[2]) .. " ⏳",
+                            ["value"] = tostring(ttime[2]) .. " ⏳",
                             ["inline"] = true
                         }, {
                             ["name"] = "Recieved XP:",
-                            ["value"] = "```ini\n".. XP .. " 🧪",
+                            ["value"] = XP .. " 🧪",
                             ["inline"] = true
                         }, {
                             ["name"] = "Current Gems:",
-                            ["value"] = "```ini\n".. tostring(game.Players.LocalPlayer._stats.gem_amount.Value).." <:gem:997123585476927558>",
+                            ["value"] = tostring(game.Players.LocalPlayer._stats.gem_amount.Value).." <:gem:997123585476927558>",
                             ["inline"] = true
 						}, {
                             ["name"] = "Current Gold:",
-                            ["value"] = "```ini\n".. tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
+                            ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
                             ["inline"] = true
                         }, {
                             ["name"] = "ผลการต่อสู้:",
-                            ["value"] = "```ini\n".. resultx .. " ⚔️",
+                            ["value"] = resultx .. " ⚔️",
                             ["inline"] = true     	
                         }, {
 							["name"] = "Recieved Gems:",
-							["value"] = "```ini\n".. gems .. " <:gem:997123585476927558>",
+							["value"] = gems .. " <:gem:997123585476927558>",
 							["inline"] = true
 						}, {
 							["name"] = "Recieved Gold:",
-							["value"] = "```ini\n".. gold .. " 💰",
+							["value"] = gold .. " 💰",
 							["inline"] = true 	      
                         }, {
                             ["name"] = "Map:",
-                            ["value"] = "```ini\n".. GetCurrentLevelName() .. " ⚔️",
+                            ["value"] = GetCurrentLevelName() .. " ⚔️",
                             ["inline"] = falseye
                         }, {
                             ["name"] = "Normal Items Drop:",

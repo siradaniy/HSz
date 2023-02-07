@@ -157,7 +157,11 @@ local function webhook()
 						}, {
                             ["name"] = "Current Gold:",
                             ["value"] = tostring(game.Players.LocalPlayer._stats.gold_amount.Value).." 💰",
-                            ["inline"] = true	
+                            ["inline"] = true
+                        }, {
+                            ["name"] = "ผลการต่อสู้:",
+                            ["value"] = resultx .. " ⚔️",
+                            ["inline"] = true     	
                         }, {
 							["name"] = "Recieved Gems:",
 							["value"] = gems .. " <:gem:997123585476927558>",
@@ -165,19 +169,11 @@ local function webhook()
 						}, {
 							["name"] = "Recieved Gold:",
 							["value"] = gold .. " 💰",
-							["inline"] = true 	
-                        }, {
-                            ["name"] = "ผลการต่อสู้:",
-                            ["value"] = resultx .. " ⚔️",
-                            ["inline"] = true 
-                        }, {
-                            ["name"] = "Wave:",
-                            ["value"] = current_wave .. " ⚔️",
-                            ["inline"] = true        
+							["inline"] = true 	      
                         }, {
                             ["name"] = "Map:",
                             ["value"] = GetCurrentLevelName() .. " ⚔️",
-                            ["inline"] = true            
+                            ["inline"] = falseye            
 						}, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",

@@ -301,6 +301,7 @@ function sex()
     getgenv().difficulty = data.difficulty
     getgenv().world = data.world
     getgenv().level = data.level
+    getgenv().AutoContinue = data.autocontinue
     --getgenv().door = data.door
 
     getgenv().SpawnUnitPos = data.xspawnUnitPos
@@ -343,6 +344,8 @@ function sex()
             difficulty = getgenv().difficulty,
             world = getgenv().world,
             level = getgenv().level,
+            AutoContinue = getgenv().autocontinue,
+            
             --door = getgenv().door,
 
             xspawnUnitPos = getgenv().SpawnUnitPos,
@@ -727,6 +730,10 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
 ------------------ Auto Farm Tab -----------------
 --------------------------------------------------
 --#region Auto Farm Tab
+autofarmtab:Toggle("Auto Next Level", getgenv().AutoContinue, function(bool)
+    getgenv().AutoContinue = bool
+    updatejson()
+end)
 autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
     getgenv().AutoReplay = bool
     updatejson()
@@ -1004,6 +1011,10 @@ end)
 
         
 --#region Auto Farm Tab
+autofarmtab:Toggle("Auto Next Level", getgenv().AutoContinue, function(bool)
+    getgenv().AutoContinue = bool
+    updatejson()
+end)
 autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
     getgenv().AutoReplay = bool
     updatejson()
@@ -1391,6 +1402,7 @@ else
         
         -- unitname = "name",
         -- unitid = "id",
+        AutoContinue = false,
         AutoReplay = false,
         AutoLeave = true,
         AutoChallenge = false,
@@ -3013,6 +3025,14 @@ coroutine.resume(coroutine.create(function()
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
             elseif getgenv().AutoLeave and getgenv().AutoReplay ~= true then
+                --
+                Teleport()
+                -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
+            end
+            if getgenv().AutoContinue then
+                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+            elseif getgenv().AutoLeave and getgenv().AutoContinue ~= true then
                 --
                 Teleport()
                 -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)

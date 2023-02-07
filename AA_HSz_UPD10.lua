@@ -110,7 +110,7 @@ local function webhook()
 		local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
 
 
-        current_wave = tostring(game:GetService("Workspace")["_wave_num"].Value)
+        
     	XP = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.XPReward.Main.Amount.Text)
 		gems = tostring(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.LevelRewards.ScrollingFrame.GemReward.Main.Amount.Text)
         if gems == "+99999" then
@@ -123,6 +123,7 @@ local function webhook()
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
         resultx = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
+        current_wave = tostring(game:GetService("Workspace")["_wave_num"].Value)
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
 
@@ -281,9 +282,10 @@ function sex()
     getgenv().farmaline = data.farmaline
     getgenv().PortalIDA = data.PortalIDA
 
-
+    
     getgenv().AutoLeave = data.AutoLeave
     getgenv().AutoReplay = data.AutoReplay
+    getgenv().AutoContinue = data.AutoContinue
     getgenv().AutoChallenge = data.AutoChallenge  
     getgenv().selectedreward = data.selectedreward
     getgenv().AutoChallengeAll = data.AutoChallengeAll
@@ -328,6 +330,7 @@ function sex()
             autoloadtp = getgenv().AutoLoadTP,
             AutoLeave = getgenv().AutoLeave,
             AutoReplay = getgenv().AutoReplay,
+            AutoContinue = getgenv().AutoContinue,
             AutoChallenge  = getgenv().AutoChallenge, 
             selectedreward = getgenv().selectedreward,
             AutoChallengeAll = getgenv().AutoChallengeAll, 
@@ -723,9 +726,13 @@ end)
 alinecity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf Aline Spacship.")
 
 --------------------------------------------------
------------------- Auto Farm Tab -----------------
+------------------ Auto Farm Tab -----------------AutoContinue
 --------------------------------------------------
 --#region Auto Farm Tab
+autofarmtab:Toggle("Auto Continue ด่านถัดไป", getgenv().AutoContinue, function(bool)
+    getgenv().AutoContinue = bool
+    updatejson()
+end)
 autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
     getgenv().AutoReplay = bool
     updatejson()
@@ -1002,7 +1009,11 @@ end)
         
 
         
---#region Auto Farm Tab
+--#region Auto Farm TabAutoContinue
+autofarmtab:Toggle("Auto Continue ด่านถัดไป", getgenv().AutoContinue, function(bool)
+    getgenv().AutoContinue = bool
+    updatejson()
+end)
 autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
     getgenv().AutoReplay = bool
     updatejson()
@@ -1389,8 +1400,9 @@ else
         PortalIDA = "nil",
         
         -- unitname = "name",
-        -- unitid = "id",
+        -- unitid = "id",AutoContinue
         AutoReplay = false,
+        AutoContinue = false,
         AutoLeave = true,
         AutoChallenge = false,
         selectedreward = "star_fruit_random",
@@ -3012,6 +3024,11 @@ coroutine.resume(coroutine.create(function()
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
             elseif getgenv().AutoLeave and getgenv().AutoReplay ~= true then
+
+            if getgenv().AutoContinue then
+                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+            elseif getgenv().AutoContinue and getgenv().AutoContinue ~= true then    
                 --
                 Teleport()
                 -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)

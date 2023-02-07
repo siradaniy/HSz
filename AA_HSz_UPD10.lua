@@ -226,7 +226,7 @@ local function webhook()
                             ["value"] = GetCurrentLevelName() .. " ⚔️",
                             ["inline"] = falseye
                         }, {
-                            ["name"] = "Items Drop:",
+                            ["name"] = "Normal Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",
                             ["inline"] = falseye                 
 						}, {

@@ -2982,7 +2982,7 @@ coroutine.resume(coroutine.create(function()
 end))
 --#endregion
 
--------------------------------------------test next level game:GetService("Players").siradaniy321.PlayerGui.ResultsUI.Finished.NextLevel
+-------------------------------------------test next level game:GetService("ReplicatedStorage").endpoints["client_to_server"]["set_game_finished_vote"]
 
 coroutine.resume(coroutine.create(function()
 	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
@@ -2992,11 +2992,11 @@ coroutine.resume(coroutine.create(function()
             repeat task.wait() until  game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Enabled == true
             task.wait()
             pcall(function() webhook() end)
-            print("next")
+            print("NextRetry")
             task.wait(2.1)
             if getgenv().AutoContinue then
-                local a={[1]="NextLevel"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-                local a={[1]="NextLevel"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+                local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+                local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
             elseif getgenv().AutoLeave and getgenv().AutoContinue ~= true then
                 --
                 Teleport()

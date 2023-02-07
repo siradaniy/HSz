@@ -2241,10 +2241,10 @@ function MainModule()
                 getgenv().AutoLoadTP = bool
                 updatejson()
                 if exec == "Synapse X" and getgenv().AutoLoadTP then
-                    syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Tesseract1234567890/animeadv/main/script.lua'))()")
+                    syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz_V2.lua'))()")
 
                     if exec == "Synapse X" then
-                        syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Tesseract1234567890/animeadv/main/script.lua'))()")
+                        syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz_V2.lua'))()")
                         RayfieldLib:Notify({
                             Title = "Queued to Auto-Attach on Teleport!",
                             Content =  "Success",
@@ -2261,7 +2261,7 @@ function MainModule()
                     end
 
                 elseif exec ~= "Synapse X" and getgenv().AutoLoadTP then
-                    queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Tesseract1234567890/animeadv/main/script.lua'))()")
+                    queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz_V2.lua'))()")
                 end
 
         end})
@@ -2831,9 +2831,9 @@ function MainModule()
                 getgenv().AutoLoadTP = bool
                 updatejson()
                 if exec == "Synapse X" and getgenv().AutoLoadTP then
-                    syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Tesseract1234567890/animeadv/main/script.lua'))()")
+                    syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz_V2.lua'))()")
                     if exec == "Synapse X" then
-                        syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Tesseract1234567890/animeadv/main/script.lua'))()")
+                        syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz_V2.lua'))()")
                         RayfieldLib:Notify({
                             Title = "Queued to Auto-Attach on Teleport!",
                             Content =  "Success",
@@ -2842,7 +2842,7 @@ function MainModule()
                     end
 
                 elseif exec ~= "Synapse X" and getgenv().AutoLoadTP then
-                    queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Tesseract1234567890/animeadv/main/script.lua'))()")
+                    queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz_V2.lua'))()")
                 end
             end})
 
@@ -4873,14 +4873,14 @@ if getgenv().AutoLoadTP == true then
     local exec = tostring(identifyexecutor())
 
     if exec == "Synapse X" then
-        syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Tesseract1234567890/animeadv/main/script.lua'))()")
+        syn.queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz_V2.lua'))()")
         RayfieldLib:Notify({
             Title = "Queued to Auto-Attach on Teleport!",
             Content = "Success",
             Duration = 6.5
         })
     else
-        queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/Tesseract1234567890/animeadv/main/script.lua'))()")
+        queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/siradaniy/HSz/main/AA_HSz_V2.lua'))()")
     end
 
 end

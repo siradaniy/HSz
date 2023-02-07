@@ -177,7 +177,7 @@ local function webhook()
                             ["value"] = GetCurrentLevelName() .. " 🗺️",
                             ["inline"] = falseye
                         }, {
-                            ["name"] = "Normal Items Drop:",
+                            ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",
                             ["inline"] = falseye                  
                         }
@@ -2982,7 +2982,7 @@ coroutine.resume(coroutine.create(function()
 end))
 --#endregion
 
--------------------------------------------test next level game:GetService("ReplicatedStorage").endpoints["client_to_server"]["set_game_finished_vote"]
+-------------------------------------------test next level 
 
 coroutine.resume(coroutine.create(function()
 	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")

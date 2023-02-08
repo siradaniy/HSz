@@ -2992,11 +2992,11 @@ coroutine.resume(coroutine.create(function()
             repeat task.wait() until  game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Enabled == true
             task.wait()
             pcall(function() webhook() end)
-            print("NextRetry")
+            print("next")
             task.wait(2.1)
             if getgenv().AutoContinue then
-                local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
-                local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
+                local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
+                local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
             elseif getgenv().AutoLeave and getgenv().AutoContinue ~= true then
                 --
                 Teleport()

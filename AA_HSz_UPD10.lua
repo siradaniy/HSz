@@ -175,13 +175,9 @@ local function webhook()
 							["value"] = gold .. " 💰",
 							["inline"] = true  	   
                         }, {
-                            ["name"] = "Map:",
+                            ["name"] = "Map :",
                             ["value"] = GetCurrentLevelName() .. " 🗺️",
-                            ["inline"] = falseye
-                        }, {
-                            ["name"] = "Map ID:",
-                            ["value"] = GetCurrentLevelId() .. " 🗺️",
-                            ["inline"] = falseye    
+                            ["inline"] = falseye  
                         }, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",

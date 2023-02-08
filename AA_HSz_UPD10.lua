@@ -231,6 +231,7 @@ function sex()
 
 
     getgenv().AutoLeave = data.AutoLeave
+    getgenv().AutoContinue = data.AutoContinue
     getgenv().AutoReplay = data.AutoReplay
     getgenv().AutoChallenge = data.AutoChallenge  
     getgenv().selectedreward = data.selectedreward
@@ -248,7 +249,6 @@ function sex()
     getgenv().difficulty = data.difficulty
     getgenv().world = data.world
     getgenv().level = data.level
-    getgenv().AutoContinue = data.autocontinue
     --getgenv().door = data.door
 
     getgenv().SpawnUnitPos = data.xspawnUnitPos
@@ -274,6 +274,7 @@ function sex()
 
             -- unitname = getgenv().unitname,
             -- unitid = getgenv().unitid,
+            AutoContinue = getgenv().AutoContinue,
             autoloadtp = getgenv().AutoLoadTP,
             AutoLeave = getgenv().AutoLeave,
             AutoReplay = getgenv().AutoReplay,
@@ -291,7 +292,6 @@ function sex()
             difficulty = getgenv().difficulty,
             world = getgenv().world,
             level = getgenv().level,
-            AutoContinue = getgenv().autocontinue,
             
             --door = getgenv().door,
 

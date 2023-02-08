@@ -1349,7 +1349,7 @@ else
         
         -- unitname = "name",
         -- unitid = "id",
-        AutoContinue = false,
+        AutoContinue = true,
         AutoReplay = false,
         AutoLeave = true,
         AutoChallenge = false,

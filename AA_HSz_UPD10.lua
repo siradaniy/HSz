@@ -677,7 +677,7 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
 ------------------ Auto Farm Tab -----------------
 --------------------------------------------------
 --#region Auto Farm Tab
-autofarmtab:Toggle("Auto Next Level", getgenv().AutoContinue, function(bool)
+autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
     getgenv().AutoContinue = bool
     updatejson()
 end)
@@ -958,7 +958,7 @@ end)
 
         
 --#region Auto Farm Tab
-autofarmtab:Toggle("Auto Next Level", getgenv().AutoContinue, function(bool)
+autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
     getgenv().AutoContinue = bool
     updatejson()
 end)

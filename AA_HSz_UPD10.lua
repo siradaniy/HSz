@@ -55,6 +55,8 @@ for i,v in pairs(get_inventory_items()) do
 end
 ---------------------end webhook
 
+----------------Map & ID Map
+
 local function GetCurrentLevelId()
     if game.Workspace._MAP_CONFIG then
         return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
@@ -176,6 +178,10 @@ local function webhook()
                             ["name"] = "Map:",
                             ["value"] = GetCurrentLevelName() .. " 🗺️",
                             ["inline"] = falseye
+                        }, {
+                            ["name"] = "Map ID:",
+                            ["value"] = GetCurrentLevelId() .. " 🗺️",
+                            ["inline"] = falseye    
                         }, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",

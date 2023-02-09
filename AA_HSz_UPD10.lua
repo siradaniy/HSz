@@ -175,9 +175,13 @@ local function webhook()
 							["value"] = gold .. " 💰",
 							["inline"] = true  	   
                         }, {
-                            ["name"] = "Map:",
-                            ["value"] = GetCurrentLevelName() - GetCurrentLevelId() .. " 🗺️",
+                            ["name"] = "โหมด:",
+                            ["value"] = GetCurrentLevelName() .. " 🗺️",
                             ["inline"] = falseye  
+                        }, {
+                            ["name"] = "ด่าน:",
+                            ["value"] = GetCurrentLevelId() .. " 🗺️",
+                            ["inline"] = falseye      
                         }, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",

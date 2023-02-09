@@ -175,7 +175,7 @@ local function webhook()
 							["value"] = gold .. " 💰",
 							["inline"] = true  	   
                         }, {
-                            ["name"] = "Map :",
+                            ["name"] = "Map:",
                             ["value"] = GetCurrentLevelName() .. " 🗺️",
                             ["inline"] = falseye  
                         }, {
@@ -1293,7 +1293,7 @@ starbux:Label("🐣 ไก่ 100,000 เพชร + 2-4 Mythic & Random Traits 
 starbux:Label("💳 บัตรเติม ROBUX 10$ + ของแถม [ได้พรีเมี่ยม Roblox] ราคา 279 บาท")
 starbux:Label("💳 บัตรเติม ROBUX 10$ จะได้รับ ROBUX 1000 และพรีเมี่ยม 1เดือน  ")
 starbux:Button("👉 ชื้อไก่เพชร & บัตร ROBUX 10$  StarBux ", function()
-    setclipboard("https://farm.starbuxstore.com/shop?tab=shop&q=Anime%20Adventures%20ID")
+    setclipboard("https://starbuxstore.com/categories/clduzowwu0033jxn22a9llwis")
     DiscordLib:Notification("Copied!!", "✔ Link ไก่เพชร StarBux Store ถูก Copy แล้ว!!", "Okay!")	
 end)
 
@@ -1307,7 +1307,7 @@ starbux:Label("💎 30,000 เพชร (ใช้เวลา 4วัน) ร�
 starbux:Label("💎 40,000 เพชร (ใช้เวลา 5วัน) ราคา 249 บาท")
 starbux:Label("💎 50,000 เพชร (ใช้เวลา 6วัน) ราคา 309 บาท")
 starbux:Button("👉 บริการฟาร์มเพชร StarBux Link!", function()
-    setclipboard("shorturl.at/EMQ17")
+    setclipboard("https://starbuxstore.com/categories/clduzowt00000jxn2aaruqdjr")
     DiscordLib:Notification("คำเตือน!!", "ต้อง ล็อคอิน StarBux ก่อนเอาลิ้งค์ไปวาง!!", "Okay!")	
 end)
 

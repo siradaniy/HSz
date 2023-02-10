@@ -57,15 +57,15 @@ end
 
 ----------------Map & ID Map
 
-local function GetCurrentLevelId()
-    if game.Workspace._MAP_CONFIG then
-        return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
-    end
-end
-
 local function GetCurrentLevelName()
     if game.Workspace._MAP_CONFIG then
         return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
+    end
+end
+
+local function GetCurrentLevelId()
+    if game.Workspace._MAP_CONFIG then
+        return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
     end
 end
 ----------------endMap & ID Map
@@ -178,7 +178,7 @@ local function webhook()
                         }, {
                             ["name"] = "โหมด Map:",
                             ["value"] = GetCurrentLevelName() .. " 🗺️",
-                            ["inline"] = falseye  
+                            ["inline"] = falseye      
                         }, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",

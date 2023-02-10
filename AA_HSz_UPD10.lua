@@ -498,7 +498,7 @@ function sex()
 --#region Select world tab
         getgenv().levels = {"nill"}
 
-        getgenv().diff = slectworld:Dropdown("Select Difficulty", {"Normal", "Hard"}, getgenv().difficulty, function(diff)
+        getgenv().diff = slectworld:Dropdown("เลือกระดับ [ต้องเลือกให้ตรงกับด่าน ไม่งั้นมันจะไม่วาป]", {"Normal", "Hard"}, getgenv().difficulty, function(diff)
             getgenv().difficulty = diff
             updatejson()
         end)

@@ -321,7 +321,7 @@ function sex()
     local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/DiscordLid2.lua")()
     local win = DiscordLib:Window("[HSz Member] Anime Adventures_UPD_ "..versionx.." - "..exec)
        
-    if exec == "Synapse X" or exec == "ScriptWare" or exec == "Trigon" then
+    if exec == "Synapse X" or exec == "ScriptWare" then
         print("Good boi")
     else
         local gettrigonserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=12281640494")
@@ -3001,8 +3001,8 @@ coroutine.resume(coroutine.create(function()
             print("NextRetry")
             task.wait(2.1)
             if getgenv().AutoContinue then 
-                local args={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(args))
-                local args={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(args))
+                local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
+                local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
             elseif getgenv().AutoLeave and getgenv().AutoContinue ~= true then
                 --
                 Teleport()

@@ -2863,6 +2863,121 @@ function placesex()
 end
 
 
+---------test Unit Place Robot
+
+
+function PlaceUnitsTEST(map)
+    x = getgenv().posX; y = getgenv().posY; z = getgenv().posZ
+    print("SEXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+
+    U1wave = 1
+    U1ammount = 3
+    U1upgrade = 4
+    
+    if current_wave <= U1wave then
+        if #current_ammount <= U1ammount then
+            local unitinfo = getgenv().SelectedUnits["U1"] --Unit _uuid
+            if unitinfo ~= nil then
+                local unitinfo_ = unitinfo:split(" #")
+                local pos = getgenv().SpawnUnitPos[map]["UP1"]
+                PlacePos(unitinfo_[2])
+            end
+        end
+    end
+    
+end
+
+
+function PlaceUnits(map)
+    if getgenv().AutoFarm and not getgenv().disableatuofarm then
+        x = getgenv().posX; z = getgenv().posZ
+        for i = 1, 6 do
+            local unitinfo = getgenv().SelectedUnits["U" .. i]
+            if unitinfo ~= nil then
+                local unitinfo_ = unitinfo:split(" #")
+                local pos = getgenv().SpawnUnitPos[map]["UP" .. i]
+                print(map.." attempt to place "..unitinfo_[1])
+
+                if unitinfo_[1] ~= "Metal Knight (Arsenal)" then
+
+                    --place units 0
+                    local args = {
+                        [1] = unitinfo_[2],
+                        [2] = CFrame.new(Vector3.new(pos["x"], pos["y"], pos["z"]) )
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+        
+                    --place units 1
+                    local args = {
+                        [1] = unitinfo_[2],
+                        [2] = CFrame.new(Vector3.new(pos["x"], pos["y2"], pos["z"] + z) )
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+        
+                    --place units 2 
+                    local args = {
+                        [1] = unitinfo_[2],
+                        [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y3"], pos["z"]) )
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+        
+                    --place units 3 
+                    local args = {
+                        [1] = unitinfo_[2],
+                        [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y4"], pos["z"]) )
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+        
+                    --place units 4
+                    local args = {
+                        [1] = unitinfo_[2],
+                        [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y5"], pos["z"] + z) )
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+        
+                    --place units 5
+                    local args = {
+                        [1] = unitinfo_[2],
+                        [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y6"], pos["z"] + z) )
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                elseif unitinfo_[1] == "Metal Knight (Arsenal)" then
+                    task.spawn(function()
+                        --place units 0
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"], pos["z"]) )
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end)
+
+                    task.spawn(function()
+                        --place units 1
+                        task.wait(2)
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"], pos["z"] + z) )
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end)
+
+                    task.spawn(function()
+                        --place units 2
+                        task.wait(3)
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"], pos["z"]) )
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end)
+                end
+            end
+        end
+    end
+end
+
+
 ------// Auto Farm \\------
 --#region Auto Farm Loop
 coroutine.resume(coroutine.create(function()

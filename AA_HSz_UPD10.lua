@@ -68,6 +68,7 @@ local function GetCurrentLevelName()
         return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
     end
 end
+----------------endMap & ID Map
 
 --#region Webhook Sender
 local function webhook()
@@ -2978,32 +2979,10 @@ coroutine.resume(coroutine.create(function()
             if getgenv().AutoReplay then
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-            elseif getgenv().AutoLeave and getgenv().AutoReplay ~= true then
-                --
-                Teleport()
-                -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
-            end
-        end
-	end)
-end))
---#endregion
-
--------------------------------------------test next level 
-
-coroutine.resume(coroutine.create(function()
-	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
-    GameFinished:GetPropertyChangedSignal("Value"):Connect(function()
-        print("Changed", GameFinished.Value == true)
-        if GameFinished.Value == true then
-            repeat task.wait() until  game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Enabled == true
-            task.wait()
-            pcall(function() webhook() end)
-            print("NextRetry")
-            task.wait(2.1)
-            if getgenv().AutoContinue then 
+            elseif getgenv().AutoContinue then
                 local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
                 local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
-            elseif getgenv().AutoLeave and getgenv().AutoContinue ~= true then
+            elseif getgenv().AutoLeave and getgenv().AutoReplay ~= true and getgenv().AutoContinue ~= true then
                 --
                 Teleport()
                 -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)

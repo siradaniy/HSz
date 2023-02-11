@@ -232,8 +232,9 @@ function sex()
     getgenv().farmaline = data.farmaline
     getgenv().PortalIDA = data.PortalIDA
 
-
+    
     getgenv().AutoLeave = data.AutoLeave
+    getgenv().AutoNext = data.AutoNext
     getgenv().AutoContinue = data.AutoContinue
     getgenv().AutoReplay = data.AutoReplay
     getgenv().AutoChallenge = data.AutoChallenge  
@@ -281,6 +282,7 @@ function sex()
             autoloadtp = getgenv().AutoLoadTP,
             AutoLeave = getgenv().AutoLeave,
             AutoReplay = getgenv().AutoReplay,
+            AutoNext = getgenv().AutoNext,
             AutoChallenge  = getgenv().AutoChallenge, 
             selectedreward = getgenv().selectedreward,
             AutoChallengeAll = getgenv().AutoChallengeAll, 
@@ -684,6 +686,10 @@ autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, fu
     getgenv().AutoContinue = bool
     updatejson()
 end)
+autofarmtab:Toggle("Auto Next Story ถัดไป", getgenv().AutoNext, function(bool)
+    getgenv().AutoNext = bool
+    updatejson()
+end)
 autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
     getgenv().AutoReplay = bool
     updatejson()
@@ -963,6 +969,10 @@ end)
 --#region Auto Farm Tab
 autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
     getgenv().AutoContinue = bool
+    updatejson()
+end)
+autofarmtab:Toggle("Auto Next Story ถัดไป", getgenv().AutoNext, function(bool)
+    getgenv().AutoNext = bool
     updatejson()
 end)
 autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
@@ -1352,7 +1362,8 @@ else
         
         -- unitname = "name",
         -- unitid = "id",
-        AutoContinue = true,
+        AutoContinue = false,
+        AutoNext = false,
         AutoReplay = false,
         AutoLeave = true,
         AutoChallenge = false,
@@ -3090,10 +3101,13 @@ coroutine.resume(coroutine.create(function()
             if getgenv().AutoReplay then
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+            elseif getgenv().AutoNext then
+                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))    
             elseif getgenv().AutoContinue then
                 local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
                 local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
-            elseif getgenv().AutoLeave and getgenv().AutoReplay ~= true and getgenv().AutoContinue ~= true then
+            elseif getgenv().AutoLeave and getgenv().AutoReplay ~= true and getgenv().AutoNext ~= true and getgenv().AutoContinue ~= true then
                 --
                 Teleport()
                 -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)

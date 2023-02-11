@@ -1,5 +1,5 @@
 --Beta
-local version = "v10.5.0"
+local version = "v10.5.0.b2"
 
 ------------------------------
 local HttpService = game:GetService("HttpService")
@@ -18,13 +18,13 @@ local dir = "Anime_Adventures/"..game.Players.LocalPlayer.Name
 local Uilib = loadstring(game:HttpGet("https://raw.githubusercontent.com/siradaniy/HSz/main/finitylib.lua"))()
 local exec = tostring(identifyexecutor())
 
-local Window = Uilib.new(true, "[HSz Member] Anime Adventures_UPD "..version.." - "..exec)
+local Window = Uilib.new(true, "[HSz Member] Anime Adventures_UPD"..version.." - "..exec)
 Window.ChangeToggleKey(Enum.KeyCode.RightShift)
 
-local Home = Window:Category(" 📋 หน้าแรก")
-local Farm = Window:Category(" 🏹 Auto Farm")
-local UC = Window:Category(" 👥 ตั้งค่า Unit")
-local Misc = Window:Category(" 🛠 Misc")
+local Home = Window:Category(" หน้าแรก")
+local Farm = Window:Category(" Auto Farm")
+local UC = Window:Category(" ตั้งค่า Unit")
+local Misc = Window:Category(" Misc")
 
 local Developers = Home:Sector("Anime Adventures")
 local asdasd = Home:Sector(" ")
@@ -1261,11 +1261,11 @@ function sex()
         getgenv().SelectedPreset = preset
         print(preset)
         end, { 
-            options = { "Preset 1", "Preset 2", "Preset 3", "Preset 4","Preset 5" }, 
+            options = { "ทีม 1", "ทีม 2", "ทีม 3", "ทีม 4","ทีม 5" }, 
             default = getgenv().SelectedPreset
         })
 
-        SelectUnits:Cheat("Button", " Save ทีม Units", function() --Saves to preset
+        SelectUnits:Cheat("Button", "Save ทีม Units", function() --Saves to preset
             preset = getgenv().SelectedPreset
             if preset == "Preset 1" then
                 getgenv().preset1 = getgenv().SelectedUnits
@@ -1282,7 +1282,7 @@ function sex()
             updatepreset() 
         end)
 
-        SelectUnits:Cheat("Button", " Load ทีม Units", function() --loads preset
+        SelectUnits:Cheat("Button", "Load ทีม Units", function() --loads preset
             preset = getgenv().SelectedPreset
             if preset == "Preset 1" then
                 loadpreset = getgenv().preset1
@@ -1318,7 +1318,7 @@ function sex()
     ------------------ World Section -------------
     ----------------------------------------------
     local function WorldSec()
-        SelectWorld:Cheat("Dropdown", "🌟 เลือก โหมด",function(value)
+        SelectWorld:Cheat("Dropdown", "เลือก โหมด",function(value)
             print(value)
             getgenv().WorldCategory = value
             getgenv().updateworld()
@@ -1334,7 +1334,7 @@ function sex()
             default = getgenv().WorldCategory
         })
 
-        local selectworld = SelectWorld:Cheat("Dropdown", "🌏 เลือก World",function(value)
+        local selectworld = SelectWorld:Cheat("Dropdown", "เลือก World",function(value)
             print(value)
             getgenv().SelectedWorld = value
             getgenv().updatelevel()
@@ -1358,7 +1358,7 @@ function sex()
             end
         end
 
-        local selectlevel = SelectWorld:Cheat("Dropdown", "✨ เลือก Level",function(value)
+        local selectlevel = SelectWorld:Cheat("Dropdown", "เลือก Level",function(value)
             print(value)
             getgenv().SelectedLevel = value
             getgenv().updatedifficulty()
@@ -1401,7 +1401,7 @@ function sex()
             end
         end
 
-        local selectdiff = SelectWorld:Cheat("Dropdown", " ระดับความยาก",function(value)
+        local selectdiff = SelectWorld:Cheat("Dropdown", "ระดับความยาก",function(value)
             print(value, " Selected")
             getgenv().Difficulty = value
             updatejson()
@@ -1435,49 +1435,49 @@ function sex()
     ---------------- AutoFarm Config -------------
     ----------------------------------------------
     local function AutoFarmSec()
-        AutoFarmConfig:Cheat("Checkbox"," Auto Farm วางตัว [ต้องเปิด]  ", function(bool)
+        AutoFarmConfig:Cheat("Checkbox","Auto Farm Start เริ่ม [วางตัว]  ", function(bool)
             print(bool)
             getgenv().AutoFarm = bool
             updatejson()
         end,{enabled = getgenv().AutoFarm })
 
-        AutoFarmConfig:Cheat("Checkbox","🏃 Auto Replay เล่นซ้ำ ", function(bool)
+        AutoFarmConfig:Cheat("Checkbox","Auto Replay เล่นซ้ำ ", function(bool)
             print(bool)
             getgenv().AutoReplay = bool
             updatejson()
         end,{enabled = getgenv().AutoReplay})
 
-        AutoFarmConfig:Cheat("Checkbox","🏃 Auto Next Story ด่านถัดไป ", function(bool)
+        AutoFarmConfig:Cheat("Checkbox","Auto Next Story ด่านถัดไป  ", function(bool)
             print(bool)
             getgenv().AutoNext = bool
             updatejson()
         end,{enabled = getgenv().AutoNext})
 
-        AutoFarmConfig:Cheat("Checkbox","🏃 Auto Leave  ", function(bool)
+        AutoFarmConfig:Cheat("Checkbox","Auto Leave   ", function(bool)
             print(bool)
             getgenv().AutoLeave = bool
             updatejson()
         end,{enabled = getgenv().AutoLeave})
         
-        AutoFarmConfig:Cheat("Checkbox","🔥 Auto Abilities ใช้สกิล ", function(bool)
+        AutoFarmConfig:Cheat("Checkbox","Auto Abilities ใช้สกิล  ", function(bool)
             print(bool)
             getgenv().AutoAbilities = bool
             updatejson()
         end,{enabled = getgenv().AutoAbilities})
 
-        AutoFarmConfig:Cheat("Checkbox","⭐️ Auto Upgrade Units  ", function(bool)
+        AutoFarmConfig:Cheat("Checkbox","Auto Upgrade Units  ", function(bool)
             print(bool)
             getgenv().AutoUpgrade = bool
             updatejson()
         end,{enabled = getgenv().AutoUpgrade})
 
-        AutoFarmConfig:Cheat("Checkbox","⭐️ Auto Sell Units  ", function(bool)
+        AutoFarmConfig:Cheat("Checkbox","Auto Sell Units  ", function(bool)
             print(bool)
             getgenv().AutoSell = bool
             updatejson()
         end,{enabled = getgenv().AutoSell})
 
-        AutoFarmConfig:Cheat("Textbox", "💸 Auto Sell เมื่อถึง Wave", function(Value)
+        AutoFarmConfig:Cheat("Textbox", "Auto Sell เมื่อถึง Wave", function(Value)
             Value = tonumber(Value)
             getgenv().AutoSellWave = Value
             updatejson()
@@ -1488,13 +1488,13 @@ function sex()
     --------------- More Farm Config -------------
     ----------------------------------------------
     local function MoreFarmSec()
-        MoreFarmConfig:Cheat("Checkbox","🏰️ Auto Infinity Castle หอคอย ", function(bool)
+        MoreFarmConfig:Cheat("Checkbox","Auto Infinity Castle หอคอย  ", function(bool)
             print(bool)
             getgenv().AutoInfinityCastle = bool
             updatejson()
         end,{enabled = getgenv().AutoInfinityCastle})
 
-        MoreFarmConfig:Cheat("Checkbox","⚡️ Auto Event Farm น้ำแข็ง  ", function(bool)
+        MoreFarmConfig:Cheat("Checkbox"," Auto Event Farm น้ำแข็ง  ", function(bool)
             print(bool)
             getgenv().AutoEventFarm = bool
             updatejson()
@@ -1505,17 +1505,17 @@ function sex()
     ----------------- Challenge ------------------
     ----------------------------------------------
     local function ChallengeSec()
-        local challengeconfig = ChallengeConfig:Cheat("Dropdown", "🥇 เลือก Reward",function(value)
+        local challengeconfig = ChallengeConfig:Cheat("Dropdown", "เลือก Reward",function(value)
             print(value)
         end, { options = {"star_fruit_random","star_remnant","gems", "gold"}, default = getgenv().SelectedReward})
 
-        ChallengeConfig:Cheat("Checkbox","🎯 Auto Challenge  ", function(bool)
+        ChallengeConfig:Cheat("Checkbox"," Auto Challenge  ", function(bool)
             print(bool)
             getgenv().AutoChallenge = bool
             updatejson()
         end, {enabled = getgenv().AutoChallenge})
 
-        ChallengeConfig:Cheat("Checkbox","🏆 Farm Any Rewards  ", function(bool)
+        ChallengeConfig:Cheat("Checkbox","Farm Any Rewards  ", function(bool)
             print(bool)
             getgenv().AutoChallengeAll = bool
             updatejson()
@@ -1526,12 +1526,11 @@ function sex()
     ------------------ credits -------------------
     ----------------------------------------------
     local function credits()
-        Developers:Cheat("Label","📝 Scripted by: Negative & HOLYSHz")    
-        Developers:Cheat("Label","📐 UI By: detourious @ v3rmillion.net")    
-        Developers:Cheat("Label","🔧 To toggle the script press \"RightShift\"")   
-        Developers:Cheat("Button","🔗 Copy Discord Invite", function()
+        Developers:Cheat("Label","Scripted by: Negative & HOLYSHz ")      
+        Developers:Cheat("Label","เปิด / ปิด เมนู กด \"RightShift\"")   
+        Developers:Cheat("Button"," Copy Discord Invite", function()
         end)    
-        UIUPDT:Cheat("Label","[+] Beta Test \n[+]Only Story Test")    
+        UIUPDT:Cheat("Label","[+] เทส \n[+]ทดลอง")    
     end
     
     getgenv().posX = 1.5
@@ -2160,12 +2159,15 @@ coroutine.resume(coroutine.create(function()
             if getgenv().AutoReplay then
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+                print("Replay...")
             elseif getgenv().AutoNext then
                 local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                 local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+                print("Next Story...")
             elseif getgenv().AutoLeave and getgenv().AutoReplay ~= true and getgenv().AutoNext ~= true then
                 --Teleport()
                  game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
+                 print("Returning to lobby...")
             end
         end
 	end)
@@ -2374,3 +2376,7 @@ coroutine.resume(coroutine.create(function()
         end
     end
 end))
+
+
+game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false --disables the annoying error messages 
+

@@ -1,4 +1,4 @@
-local versionx = "10.5.0"
+local versionx = "10.5.0b"
 
 ---// Loading Section \\---
 task.wait(2)

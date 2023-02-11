@@ -57,15 +57,15 @@ end
 
 ----------------Map & ID Map
 
-local function GetCurrentLevelName()
-    if game.Workspace._MAP_CONFIG then
-        return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
-    end
-end
-
 local function GetCurrentLevelId()
     if game.Workspace._MAP_CONFIG then
         return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
+    end
+end
+
+local function GetCurrentLevelName()
+    if game.Workspace._MAP_CONFIG then
+        return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
     end
 end
 ----------------endMap & ID Map
@@ -176,9 +176,9 @@ local function webhook()
 							["value"] = gold .. " 💰",
 							["inline"] = true  	   
                         }, {
-                            ["name"] = "โหมด Map:",
+                            ["name"] = "โหมด:",
                             ["value"] = GetCurrentLevelName() .. " 🗺️",
-                            ["inline"] = falseye      
+                            ["inline"] = falseye   
                         }, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",
@@ -232,7 +232,7 @@ function sex()
     getgenv().farmaline = data.farmaline
     getgenv().PortalIDA = data.PortalIDA
 
-    
+
     getgenv().AutoLeave = data.AutoLeave
     getgenv().AutoNext = data.AutoNext
     getgenv().AutoContinue = data.AutoContinue
@@ -279,10 +279,10 @@ function sex()
             -- unitname = getgenv().unitname,
             -- unitid = getgenv().unitid,
             AutoContinue = getgenv().AutoContinue,
+            AutoNext = getgenv().AutoNext,
             autoloadtp = getgenv().AutoLoadTP,
             AutoLeave = getgenv().AutoLeave,
             AutoReplay = getgenv().AutoReplay,
-            AutoNext = getgenv().AutoNext,
             AutoChallenge  = getgenv().AutoChallenge, 
             selectedreward = getgenv().selectedreward,
             AutoChallengeAll = getgenv().AutoChallengeAll, 
@@ -1362,7 +1362,7 @@ else
         
         -- unitname = "name",
         -- unitid = "id",
-        AutoContinue = false,
+        AutoContinue = true,
         AutoNext = false,
         AutoReplay = false,
         AutoLeave = true,
@@ -3103,7 +3103,7 @@ coroutine.resume(coroutine.create(function()
                 local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
             elseif getgenv().AutoNext then
                 local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))    
+                local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))        
             elseif getgenv().AutoContinue then
                 local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
                 local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))

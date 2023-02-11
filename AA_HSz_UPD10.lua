@@ -1362,7 +1362,7 @@ else
         
         -- unitname = "name",
         -- unitid = "id",
-        AutoContinue = true,
+        AutoContinue = false,
         AutoNext = false,
         AutoReplay = false,
         AutoLeave = true,

@@ -320,7 +320,7 @@ function sex()
     local DiscordLib = loadstring(game:HttpGet "https://raw.githubusercontent.com/siradaniy/HSz/main/DiscordLid2.lua")()
     local win = DiscordLib:Window("[HSz Member] Anime Adventures_UPD_ "..versionx.." - "..exec)
        
-    if exec == "Synapse X" or exec == "ScriptWare" then
+    if exec == "ScriptWare" then
         print("Good boi")
     else
         local homeserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=12281640494")

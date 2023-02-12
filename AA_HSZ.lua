@@ -1,4 +1,4 @@
-local versionx = "10.5.0b"
+local versionx = "10.5.0c"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -682,24 +682,16 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
 ------------------ Auto Farm Tab -----------------
 --------------------------------------------------
 --#region Auto Farm Tab
-autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
-    getgenv().AutoContinue = bool
-    updatejson()
-end)
-autofarmtab:Toggle("Auto Next Story ถัดไป", getgenv().AutoNext, function(bool)
-    getgenv().AutoNext = bool
-    updatejson()
-end)
-autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
-    getgenv().AutoReplay = bool
-    updatejson()
-end)
-autofarmtab:Toggle("Auto Leave", getgenv().AutoLeave, function(bool)
-    getgenv().AutoLeave = bool
-    updatejson()
-end)
+
 autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
     getgenv().AutoFarmTP = bool
+    updatejson()
+end)
+
+autofarmtab:Label("```Infinity Castle หอคอย```")
+
+autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
+    getgenv().AutoContinue = bool
     updatejson()
 end)
 
@@ -707,22 +699,41 @@ autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(
     getgenv().AutoFarmIC = bool
     updatejson()
 end)
+
+autofarmtab:Label("```Story,Inf & Farm```")
+
+autofarmtab:Toggle("Auto Next Story ถัดไป", getgenv().AutoNext, function(bool)
+    getgenv().AutoNext = bool
+    updatejson()
+end)
+
+autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, function(bool)
+    getgenv().AutoReplay = bool
+    updatejson()
+end)
+
+
+autofarmtab:Toggle("Auto Leave ออก", getgenv().AutoLeave, function(bool)
+    getgenv().AutoLeave = bool
+    updatejson()
+end)
+
 autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
     getgenv().AutoFarm = bool
     updatejson()
 end)
 
-autofarmtab:Toggle("Auto Start", getgenv().autostart, function(bool)
+autofarmtab:Toggle("Auto Start เริ่ม", getgenv().autostart, function(bool)
     getgenv().autostart = bool
     updatejson()
 end)
 
-autofarmtab:Toggle("Auto Abilities", getgenv().autoabilities, function(bool)
+autofarmtab:Toggle("Auto Abilities ใช้สกิล", getgenv().autoabilities, function(bool)
     getgenv().autoabilities = bool
     updatejson()
 end)
 
-autofarmtab:Toggle("Auto Upgrade Units", getgenv().autoupgrade, function(bool)
+autofarmtab:Toggle("Auto Upgrade Units อัปตัว", getgenv().autoupgrade, function(bool)
     getgenv().autoupgrade = bool
     updatejson()
 end)
@@ -967,10 +978,26 @@ end)
 
         
 --#region Auto Farm Tab
+
+autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
+    getgenv().AutoFarmTP = bool
+    updatejson()
+end)
+
+autofarmtab:Label("```Infinity Castle หอคอย```")
+
 autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
     getgenv().AutoContinue = bool
     updatejson()
 end)
+
+autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(bool)
+    getgenv().AutoFarmIC = bool
+    updatejson()
+end)
+
+autofarmtab:Label("```Story,Inf & Farm```")
+
 autofarmtab:Toggle("Auto Next Story ถัดไป", getgenv().AutoNext, function(bool)
     getgenv().AutoNext = bool
     updatejson()
@@ -979,19 +1006,11 @@ autofarmtab:Toggle("Auto Replay เล่นซ้ำ", getgenv().AutoReplay, fu
     getgenv().AutoReplay = bool
     updatejson()
 end)
-autofarmtab:Toggle("Auto Leave", getgenv().AutoLeave, function(bool)
+autofarmtab:Toggle("Auto Leave ออก", getgenv().AutoLeave, function(bool)
     getgenv().AutoLeave = bool
     updatejson()
 end)
-autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
-    getgenv().AutoFarmTP = bool
-    updatejson()
-end)
 
-autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(bool)
-    getgenv().AutoFarmIC = bool
-    updatejson()
-end)
 autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
     getgenv().AutoFarm = bool
     updatejson()
@@ -1002,12 +1021,12 @@ autofarmtab:Toggle("Auto Abilities ใช้สกิล", getgenv().autoabiliti
     updatejson()
 end)
 
-autofarmtab:Toggle("Auto Start", getgenv().autostart, function(bool)
+autofarmtab:Toggle("Auto Start เริ่ม", getgenv().autostart, function(bool)
     getgenv().autostart = bool
     updatejson()
 end)
 
-autofarmtab:Toggle("Auto Upgrade Units", getgenv().autoupgrade, function(bool)
+autofarmtab:Toggle("Auto Upgrade Units อัปตัว", getgenv().autoupgrade, function(bool)
     getgenv().autoupgrade = bool
     updatejson()
 end)

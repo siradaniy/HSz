@@ -1,4 +1,4 @@
-local versionx = "10.5.0b"
+local versionx = "10.7.5 test"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -21,6 +21,7 @@ local UserInputService = game:GetService("UserInputService")
 
 getgenv().savefilename = "Anime-Adventures_HSz_UPD_"..game.Players.LocalPlayer.Name.."-"..versionx..".json"
 getgenv().door = "_lobbytemplategreen1"
+getgenv().doorraid = "_lobbytemplate211"
 
 ------------item drop result
 function get_inventory_items()
@@ -245,6 +246,7 @@ function sex()
     getgenv().autosell = data.autosell
     getgenv().AutoFarm = data.autofarm
     getgenv().AutoFarmIC = data.autofarmic
+    getgenv().AutoFarmRaid = data.AutoFarmRaid --AutoFarmRaid
     getgenv().AutoFarmTP = data.autofarmtp
     getgenv().AutoLoadTP = data.autoloadtp
     getgenv().weburl = data.webhook
@@ -291,6 +293,7 @@ function sex()
             webhook = getgenv().weburl,
             autofarm = getgenv().AutoFarm,
             autofarmic = getgenv().AutoFarmIC,
+            AutoFarmRaid = getgenv().AutoFarmRaid, --AutoFarmRaid
             autofarmtp = getgenv().AutoFarmTP,
             autostart = getgenv().autostart,
             autoupgrade = getgenv().autoupgrade,
@@ -504,7 +507,7 @@ function sex()
 
         local worlddrop = slectworld:Dropdown("Select World", {"Plannet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
         "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom", "Clover Legend - HARD","Hollow Legend - HARD","Cape Canaveral",
-        "JoJo Legend - HARD","Alien Spaceship"}, getgenv().world, function(world)
+        "JoJo Legend - HARD","Alien Spaceship","[RAID] West City","[RAID] Infinity Train","[RAID] Hidden Sand Village","[RAID] Shiganshinu District","[RAID] Storm Hideout"}, getgenv().world, function(world)
             getgenv().world = world
             updatejson()
             if world == "Plannet Namak" then
@@ -585,7 +588,7 @@ function sex()
                 getgenv().leveldrop:Clear()
                 table.clear(levels)
                 getgenv().levels = {"jjk_infinite","jjk_level_1","jjk_level_2","jjk_level_3",
-                                    "jjk_level_4","jjk_level_5","jjk_level_6","jjk_finger"}
+                                    "jjk_level_4","jjk_level_5","jjk_level_6",}
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
                 end
@@ -632,9 +635,46 @@ function sex()
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
                 end
+            elseif world =="[RAID] West City" then
+                getgenv().leveldrop:Clear()
+                table.clear(levels)
+                getgenv().levels = {"west_city_raid"}
+                for i, v in ipairs(levels) do
+                    getgenv().leveldrop:Add(v)
+                end    
+            elseif world =="[RAID] Infinity Train" then
+                getgenv().leveldrop:Clear()
+                table.clear(levels)
+                getgenv().levels = {"demonslayer_raid_1"}
+                for i, v in ipairs(levels) do
+                    getgenv().leveldrop:Add(v)
+                end 
+            elseif world =="[RAID] Hidden Sand Village" then
+                getgenv().leveldrop:Clear()
+                table.clear(levels)
+                getgenv().levels = {"naruto_raid_1"}
+                for i, v in ipairs(levels) do
+                    getgenv().leveldrop:Add(v)
+                end 
+            elseif world =="[RAID] Shiganshinu District" then
+                getgenv().leveldrop:Clear()
+                table.clear(levels)
+                getgenv().levels = {"aot_raid_1"}
+                for i, v in ipairs(levels) do
+                    getgenv().leveldrop:Add(v)
+                end  
+            elseif world =="[RAID] Storm Hideout" then
+                getgenv().leveldrop:Clear()
+                table.clear(levels)
+                getgenv().levels = {"uchiha_level_1","uchiha_level_2","uchiha_level_3","uchiha_level_4","uchiha_level_5"}
+                for i, v in ipairs(levels) do
+                    getgenv().leveldrop:Add(v)
+                end                 
             end
         end)
 
+
+        ---updatefix fixmap
       
             getgenv().leveldrop = slectworld:Dropdown("Select Level", getgenv().levels, getgenv().level, function(level)
             getgenv().level = level
@@ -685,6 +725,11 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
 
 autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
     getgenv().AutoFarmTP = bool
+    updatejson()
+end)
+
+autofarmtab:Toggle("Auto Start Raid", getgenv().AutoFarmRaid, function(bool)
+    getgenv().AutoFarmRaid = bool
     updatejson()
 end)
 
@@ -984,6 +1029,11 @@ autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().A
     updatejson()
 end)
 
+autofarmtab:Toggle("Auto Start Raid", getgenv().AutoFarmRaid, function(bool)
+    getgenv().AutoFarmRaid = bool
+    updatejson()
+end)
+
 autofarmtab:Label("```Infinity Castle หอคอย```")
 
 autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
@@ -1143,6 +1193,26 @@ end)
                             SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["opm"][UnitPos]["z"] = a.Position.Z
+                        elseif game.Workspace._map:FindFirstChild("west_city") then
+                            print("cell")    
+                            SpawnUnitPos["cell"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["cell"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["cell"][UnitPos]["z"] = a.Position.Z
+                        elseif game.Workspace._map:FindFirstChild("naruto_raid") then
+                            print("naruto")    
+                            SpawnUnitPos["naruto"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["naruto"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["naruto"][UnitPos]["z"] = a.Position.Z
+                        elseif game.Workspace._map:FindFirstChild("aot_raid") then
+                            print("aot_raid")    
+                            SpawnUnitPos["aot_raid"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["aot_raid"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["aot_raid"][UnitPos]["z"] = a.Position.Z
+                        elseif game.Workspace._map:FindFirstChild("uchiha_hideout") then
+                            print("uchiha")    
+                            SpawnUnitPos["uchiha"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["uchiha"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["uchiha"][UnitPos]["z"] = a.Position.Z
                         end
                         
 
@@ -1150,7 +1220,7 @@ end)
                     end
                 end)
         end
-
+        ----updatefix fixmap
         --// Set Position \\--
         autofarmtab:Button("Set จุดวางตัว Unit 1", function()
             DiscordLib:Notification("Set จุดวางตัวที่ 1 ",
@@ -1395,6 +1465,7 @@ else
         autosell = false,
         autofarm = false,
         autofarmic = false,
+        AutoFarmRaid = false,
         autostart = false,
         autoloadtp = false,
         autoupgrade = false,
@@ -1402,6 +1473,7 @@ else
         world = "nil",
         level = "nil",
         door = "nil",
+        doorraid = "nil",
 
     
         xspawnUnitPos  = {
@@ -1951,6 +2023,166 @@ else
                 z = 1325.1728515625
            }
          },
+         cell = {
+            UP1  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+             UP2  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP3  = {
+                x = -0, 
+                y = 0, 
+                z = 0
+             },
+              UP6  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP5  = {
+                x = 0, 
+                y = 0, 
+                z = 0           
+             },
+              UP4  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+           }
+         },
+         Train = {
+            UP1  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+             UP2  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP3  = {
+                x = -0, 
+                y = 0, 
+                z = 0
+             },
+              UP6  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP5  = {
+                x = 0, 
+                y = 0, 
+                z = 0           
+             },
+              UP4  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+           }
+         },
+         naruto = {
+            UP1  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+             UP2  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP3  = {
+                x = -0, 
+                y = 0, 
+                z = 0
+             },
+              UP6  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP5  = {
+                x = 0, 
+                y = 0, 
+                z = 0           
+             },
+              UP4  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+           }
+         },
+         aot_raid = {
+            UP1  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+             UP2  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP3  = {
+                x = -0, 
+                y = 0, 
+                z = 0
+             },
+              UP6  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP5  = {
+                x = 0, 
+                y = 0, 
+                z = 0           
+             },
+              UP4  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+           }
+         },
+         uchiha = {
+            UP1  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+             UP2  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP3  = {
+                x = -0, 
+                y = 0, 
+                z = 0
+             },
+              UP6  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+             },
+              UP5  = {
+                x = 0, 
+                y = 0, 
+                z = 0           
+             },
+              UP4  = {
+                x = 0, 
+                y = 0, 
+                z = 0
+           }
+         },
            opm = {
             UP1  = {
                 x = -284.7133483886719, 
@@ -1984,7 +2216,7 @@ else
             }
            }
          },
-
+--updatefix fixmap
         xselectedUnits = {
             U1 = nil,
             U2 = nil,
@@ -2883,11 +3115,267 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end
+            elseif game.Workspace._map:FindFirstChild("west_city") then
+                print("cell")
+                for i = 1, 6 do
+                    local unitinfo = getgenv().SelectedUnits["U" .. i]
+                    if unitinfo ~= nil then
+                        local unitinfo_ = unitinfo:split(" #")
+                        local pos = getgenv().SpawnUnitPos["cell"]["UP" .. i]
+                        task.wait()
+                        --place units 0
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 1
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 2 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 3 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 4
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 5
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end
+                end 
+            elseif game.Workspace._map:FindFirstChild("demonslayer_raid") then
+                print("Train")
+                for i = 1, 6 do
+                    local unitinfo = getgenv().SelectedUnits["U" .. i]
+                    if unitinfo ~= nil then
+                        local unitinfo_ = unitinfo:split(" #")
+                        local pos = getgenv().SpawnUnitPos["Train"]["UP" .. i]
+                        task.wait()
+                        --place units 0
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 1
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 2 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 3 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 4
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 5
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end
+                end 
+            elseif game.Workspace._map:FindFirstChild("naruto_raid") then
+                print("naruto")
+                for i = 1, 6 do
+                    local unitinfo = getgenv().SelectedUnits["U" .. i]
+                    if unitinfo ~= nil then
+                        local unitinfo_ = unitinfo:split(" #")
+                        local pos = getgenv().SpawnUnitPos["naruto"]["UP" .. i]
+                        task.wait()
+                        --place units 0
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 1
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 2 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 3 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 4
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 5
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end
+                end
+            elseif game.Workspace._map:FindFirstChild("aot_raid") then
+                print("aot_raid")
+                for i = 1, 6 do
+                    local unitinfo = getgenv().SelectedUnits["U" .. i]
+                    if unitinfo ~= nil then
+                        local unitinfo_ = unitinfo:split(" #")
+                        local pos = getgenv().SpawnUnitPos["aot_raid"]["UP" .. i]
+                        task.wait()
+                        --place units 0
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 1
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 2 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 3 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 4
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 5
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end
+                end  
+            elseif game.Workspace._map:FindFirstChild("uchiha_hideout") then
+                print("uchiha")
+                for i = 1, 6 do
+                    local unitinfo = getgenv().SelectedUnits["U" .. i]
+                    if unitinfo ~= nil then
+                        local unitinfo_ = unitinfo:split(" #")
+                        local pos = getgenv().SpawnUnitPos["uchiha"]["UP" .. i]
+                        task.wait()
+                        --place units 0
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 1
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 2 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 3 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 4
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 5
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end
+                end                 
             end
         end
     end
 end
 
+--updatefix fixmap
 
 ---------test Unit Place Robot
 
@@ -3314,7 +3802,7 @@ end
 
 local function startfarming()
     if getgenv().farmprotal == false and getgenv().autostart and getgenv().farmaline == false and getgenv().AutoFarm and getgenv().teleporting 
-                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false then
+                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false then
 
         if game.PlaceId == 8304191830 then
             local cpos = plr.Character.HumanoidRootPart.CFrame
@@ -3374,6 +3862,72 @@ local function startfarming()
             warn("farming")
             task.wait(3)
         end
+
+    ----------//test start Raid \\-------------- game:GetService("Workspace")["_RAID"].Raid
+
+    elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
+
+    if game.PlaceId == 8304191830 then
+
+        local cpos = plr.Character.HumanoidRootPart.CFrame
+
+        if tostring(Workspace._RAID.Raid[getgenv().doorraid].Owner.Value) ~= plr.Name then
+            for i, v in pairs(game:GetService("Workspace")["_RAID"].Raid:GetDescendants()) do
+                if v.Name == "Owner" and v.Value == nil then
+
+                    local args = {
+                        [1] = tostring(v.Parent.Name)
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(unpack(args))
+                
+                    task.wait()
+                
+                    if getgenv().level:match("RAID") then
+                        local args = {
+                            [1] = tostring(v.Parent.Name), -- Lobby 
+                            [2] = getgenv().level, -- World
+                            [3] = true, -- Friends Only or not
+                            [4] = "Hard"
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(unpack(args))
+                    else
+                        local args = {
+                            [1] = tostring(v.Parent.Name), -- Lobby 
+                            [2] = getgenv().level, -- World
+                            [3] = true, -- Friends Only or not
+                            [4] = getgenv().difficulty
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(unpack(args))
+                    end
+
+                    local args = { 
+                        [1] =tostring(v.Parent.Name)
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+                    getgenv().doorraid = v.Parent.Name print(v.Parent.Name) --v.Parent:GetFullName()
+                    plr.Character.HumanoidRootPart.CFrame = v.Parent.door.CFrame
+                    break
+                end
+            end
+        end
+
+        task.wait()
+
+        plr.Character.HumanoidRootPart.CFrame = cpos
+
+        if Workspace._RAID.Raid[getgenv().doorraid].Owner == plr.Name then
+            if Workspace._RAID.Raid[getgenv().doorraid].Teleporting.Value == true then
+                getgenv().teleporting = false
+            else
+                getgenv().teleporting = true
+            end
+        end
+
+        warn("raid farming")
+        task.wait(3)
+    end
+    --end raid game:GetService("Workspace")["_RAID"].Raid    
+
         ------Devil Portal
     elseif getgenv().farmprotal then
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
@@ -3410,8 +3964,8 @@ local function startfarming()
 
         task.wait(7)
 
-        ---Aline Portal
-    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmaline or getgenv().farmaline then    
+        ---Aline PortalAutoFarmRaid
+    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false and getgenv().farmaline or getgenv().farmaline then    
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)
@@ -3490,7 +4044,6 @@ coroutine.resume(coroutine.create(function()
     end
 end))
 --#endregion
-
 
 ------// Auto Start Infiniy Castle && Thriller Park \\------
 

@@ -1,4 +1,4 @@
-local versionx = "10.7.5 test"
+local versionx = "10.7.5b"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -728,8 +728,15 @@ autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().A
     updatejson()
 end)
 
-autofarmtab:Toggle("Auto Start Raid", getgenv().AutoFarmRaid, function(bool)
+autofarmtab:Label("```ฟังชั่น Auto Start```")
+
+autofarmtab:Toggle("Auto Start Raid เปิดฟาร์ม RAID", getgenv().AutoFarmRaid, function(bool)
     getgenv().AutoFarmRaid = bool
+    updatejson()
+end)
+
+autofarmtab:Toggle("Auto Start Story & Inf เปิดฟาร์ม ธรรมดา", getgenv().autostart, function(bool)
+    getgenv().autostart = bool
     updatejson()
 end)
 
@@ -765,11 +772,6 @@ end)
 
 autofarmtab:Toggle("Auto Farm วางตัว [ต้องเปิด]", getgenv().AutoFarm, function(bool)
     getgenv().AutoFarm = bool
-    updatejson()
-end)
-
-autofarmtab:Toggle("Auto Start เริ่ม", getgenv().autostart, function(bool)
-    getgenv().autostart = bool
     updatejson()
 end)
 
@@ -1029,8 +1031,15 @@ autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().A
     updatejson()
 end)
 
-autofarmtab:Toggle("Auto Start Raid", getgenv().AutoFarmRaid, function(bool)
+autofarmtab:Label("```ฟังชั่น Auto Start```")
+
+autofarmtab:Toggle("Auto Start Raid เปิดฟาร์ม RAID", getgenv().AutoFarmRaid, function(bool)
     getgenv().AutoFarmRaid = bool
+    updatejson()
+end)
+
+autofarmtab:Toggle("Auto Start Story & Inf เปิดฟาร์ม ธรรมดา", getgenv().autostart, function(bool)
+    getgenv().autostart = bool
     updatejson()
 end)
 
@@ -1068,11 +1077,6 @@ end)
 
 autofarmtab:Toggle("Auto Abilities ใช้สกิล", getgenv().autoabilities, function(bool)
     getgenv().autoabilities = bool
-    updatejson()
-end)
-
-autofarmtab:Toggle("Auto Start เริ่ม", getgenv().autostart, function(bool)
-    getgenv().autostart = bool
     updatejson()
 end)
 
@@ -2057,130 +2061,130 @@ else
          },
          Train = {
             UP1  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                x = 21.024063110351562, 
+                y = -12.077807426452637, 
+                z = 336.73907470703125
              },
              UP2  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                x = 2.1384387016296387, 
+                y = -7.0199127197265625, 
+                z = 348.75921630859375
              },
               UP3  = {
-                x = -0, 
-                y = 0, 
-                z = 0
+                x = 32.49996566772461, 
+                y = -12.077810287475586, 
+                z = 320.3133239746094
              },
               UP6  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                x = 14.163424491882324, 
+                y = -12.077802658081055,
+                z = 351.39495849609375
              },
               UP5  = {
-                x = 0, 
-                y = 0, 
-                z = 0           
+                x = 88.87351989746094, 
+                y = -12.078625679016113, 
+                z = 350.60040283203125           
              },
               UP4  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                x = 41.927818298339844, 
+                y = -6.658023357391357, 
+                z = 334.2225341796875
            }
          },
          naruto = {
             UP1  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                y  = 25.633787155151368,
+                x  = -890.8043823242188,
+                z  = 313.8632507324219
              },
              UP2  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                y  = 29.9185791015625,
+                x  = -894.8745727539063,
+                z  = 320.17279052734377
              },
               UP3  = {
-                x = -0, 
-                y = 0, 
-                z = 0
+                y  = 25.63469886779785,
+                x  = -890.8817138671875,
+                z  = 288.5116882324219
              },
               UP6  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                y  = 25.634540557861329,
+                x  = -917.6568603515625,
+                z  = 289.572998046875
              },
               UP5  = {
-                x = 0, 
-                y = 0, 
-                z = 0           
+                y  = 25.628511428833009,
+                x  = -888.9928588867188,
+                z  = 327.1591491699219
              },
               UP4  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                y  = 31.52829933166504,
+                x  = -882.33154296875,
+                z  = 297.2707824707031
            }
          },
          aot_raid = {
             UP1  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                y  = 34.18759536743164,
+                x  = -3010.3740234375,
+                z  = -685.14599609375
              },
              UP2  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                y  = 38.68673324584961,
+                x  = -3014.444580078125,
+                z  = -688.4807739257813
              },
               UP3  = {
-                x = -0, 
-                y = 0, 
-                z = 0
+                y  = 34.18759536743164,
+                x  = -2993.00146484375,
+                z  = -713.3661499023438
              },
               UP6  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                y  = 34.190486907958987,
+                x  = -3005.8330078125,
+                z  = -704.356201171875
              },
               UP5  = {
-                x = 0, 
-                y = 0, 
-                z = 0           
+                y  = 34.18759536743164,
+                x  = -3024.729248046875,
+                z  = -684.6459350585938
              },
               UP4  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                y  = 39.27751159667969,
+                x  = -2990.29150390625,
+                z  = -723.272216796875
            }
          },
          uchiha = {
-            UP1  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+            UP1  = { 
+                x = 275.9195251464844, 
+                y = 539.8998413085938, 
+                z = -514.4397583007812
              },
              UP2  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                x = 266.52227783203125, 
+                y = 542.8975830078125, 
+                z = -559.3831787109375
              },
               UP3  = {
-                x = -0, 
-                y = 0, 
-                z = 0
+                x = 241.12887573242188, 
+                y = 539.8998413085938, 
+                z = -521.0133056640625
              },
               UP6  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                x = 275.18841552734375, 
+                y = 539.8999633789062, 
+                z = -576.2612915039062
              },
               UP5  = {
-                x = 0, 
-                y = 0, 
-                z = 0           
+                x = 210.1826934814453, 
+                y = 539.8999633789062, 
+                z = -507.4686279296875           
              },
               UP4  = {
-                x = 0, 
-                y = 0, 
-                z = 0
+                x = 264.4999084472656, 
+                y = 544.1292724609375, 
+                z = -532.8849487304688
            }
          },
            opm = {
@@ -3863,9 +3867,8 @@ local function startfarming()
             task.wait(3)
         end
 
-    ----------//test start Raid \\-------------- game:GetService("Workspace")["_RAID"].Raid
-
-    elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
+    ----------//test startaki \\-------------- game:GetService("Workspace")["_RAID"].Raid
+elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
 
     if game.PlaceId == 8304191830 then
 
@@ -3879,9 +3882,9 @@ local function startfarming()
                         [1] = tostring(v.Parent.Name)
                     }
                     game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(unpack(args))
-                
+
                     task.wait()
-                
+
                     if getgenv().level:match("RAID") then
                         local args = {
                             [1] = tostring(v.Parent.Name), -- Lobby 
@@ -3926,7 +3929,7 @@ local function startfarming()
         warn("raid farming")
         task.wait(3)
     end
-    --end raid game:GetService("Workspace")["_RAID"].Raid    
+    --end raid game:GetService("Workspace")["_RAID"].Raid 
 
         ------Devil Portal
     elseif getgenv().farmprotal then
@@ -4154,5 +4157,5 @@ pcall(function()
     game:GetService("ReplicatedStorage").endpoints.client_to_server.claim_daily_reward:InvokeServer()
 end)
 
-print("Successfully Loaded!!")
+print("Successfully Loaded ไอฟายยยยยยยยยยยยยย!!")
 ---------------------------------------------------------------------

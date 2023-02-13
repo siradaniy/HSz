@@ -786,18 +786,6 @@ autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().A
     updatejson()
 end)
 
-autofarmtab:Label("```ฟังชั่น Auto Start```")
-
-autofarmtab:Toggle("Auto Start Raid เปิดฟาร์ม RAID", getgenv().AutoFarmRaid, function(bool)
-    getgenv().AutoFarmRaid = bool
-    updatejson()
-end)
-
-autofarmtab:Toggle("Auto Start Story & Inf เปิดฟาร์ม ธรรมดา", getgenv().autostart, function(bool)
-    getgenv().autostart = bool
-    updatejson()
-end)
-
 autofarmtab:Label("```Infinity Castle หอคอย```")
 
 autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
@@ -810,7 +798,17 @@ autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(
     updatejson()
 end)
 
-autofarmtab:Label("```Story,Inf & Farm```")
+autofarmtab:Label("```ฟังชั่น Auto Start Story,Inf & Raid```")
+
+autofarmtab:Toggle("Auto Start Raid เปิดฟาร์ม RAID", getgenv().AutoFarmRaid, function(bool)
+    getgenv().AutoFarmRaid = bool
+    updatejson()
+end)
+
+autofarmtab:Toggle("Auto Start Story & Inf เปิดฟาร์ม ธรรมดา", getgenv().autostart, function(bool)
+    getgenv().autostart = bool
+    updatejson()
+end)
 
 autofarmtab:Toggle("Auto Next Story ถัดไป", getgenv().AutoNext, function(bool)
     getgenv().AutoNext = bool
@@ -1089,18 +1087,6 @@ autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().A
     updatejson()
 end)
 
-autofarmtab:Label("```ฟังชั่น Auto Start```")
-
-autofarmtab:Toggle("Auto Start Raid เปิดฟาร์ม RAID", getgenv().AutoFarmRaid, function(bool)
-    getgenv().AutoFarmRaid = bool
-    updatejson()
-end)
-
-autofarmtab:Toggle("Auto Start Story & Inf เปิดฟาร์ม ธรรมดา", getgenv().autostart, function(bool)
-    getgenv().autostart = bool
-    updatejson()
-end)
-
 autofarmtab:Label("```Infinity Castle หอคอย```")
 
 autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
@@ -1113,7 +1099,17 @@ autofarmtab:Toggle("Auto Start หอคอย", getgenv().AutoFarmIC, function(
     updatejson()
 end)
 
-autofarmtab:Label("```Story,Inf & Farm```")
+autofarmtab:Label("```ฟังชั่น Auto Start Story,Inf & Raid```")
+
+autofarmtab:Toggle("Auto Start Raid เปิดฟาร์ม RAID", getgenv().AutoFarmRaid, function(bool)
+    getgenv().AutoFarmRaid = bool
+    updatejson()
+end)
+
+autofarmtab:Toggle("Auto Start Story & Inf เปิดฟาร์ม ธรรมดา", getgenv().autostart, function(bool)
+    getgenv().autostart = bool
+    updatejson()
+end)
 
 autofarmtab:Toggle("Auto Next Story ถัดไป", getgenv().AutoNext, function(bool)
     getgenv().AutoNext = bool

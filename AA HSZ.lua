@@ -1,4 +1,6 @@
-local versionx = "10.7.5b"
+local versionx = "10.7.5b test"
+
+getgenv().hidename = true
 
 ---// Loading Section \\---
 task.wait(2)
@@ -11,6 +13,7 @@ else
     game:GetService("ReplicatedStorage").endpoints.client_to_server.vote_start:InvokeServer()
     repeat task.wait() until game:GetService("Workspace")["_waves_started"].Value == true
 end
+---### Loading Section End ###---
 ------------------------------
 local HttpService = game:GetService("HttpService")
 local Workspace = game:GetService("Workspace") 
@@ -357,83 +360,138 @@ function sex()
 --------------- Select Units Tab -----------------
 --------------------------------------------------
 --#region Select Units Tab
-        local Units = {}
 
-        local function loadUnit()
-            repeat task.wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("collection"):FindFirstChild("grid"):FindFirstChild("List"):FindFirstChild("Outer"):FindFirstChild("UnitFrames")
-            task.wait(2)
-            table.clear(Units)
-            for i, v in pairs(game:GetService("Players")[game.Players.LocalPlayer.Name].PlayerGui.collection.grid.List.Outer.UnitFrames:GetChildren()) do
-                if v.Name == "CollectionUnitFrame" then
-                    repeat task.wait() until v:FindFirstChild("_uuid")
-                    table.insert(Units, v.name.Text .. " #" .. v._uuid.Value)
-                end
-            end
-        end
+local Units = {}
 
-        loadUnit()
-
-        local function Check(x, y)
-            for i, v in ipairs(game:GetService("Players").LocalPlayer.PlayerGui.collection.grid.List.Outer.UnitFrames:GetChildren()) do
-                if v:IsA("ImageButton") then
-                    if v.EquippedList.Equipped.Visible == true then
-                        if v.Main.petimage:GetChildren()[2].Name == x then
-                            --print(v.name.Text.." #"..v._uuid.Value)
-                            getgenv().SelectedUnits["U"..tostring(y)] = tostring(v.name.Text.." #"..v._uuid.Value)
-                            updatejson()
-                            return true
+local function LoadUnit()
+    local reg = getreg() --> returns Roblox's registry in a table
+    repeat task.wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("collection"):FindFirstChild("grid"):FindFirstChild("List"):FindFirstChild("Outer"):FindFirstChild("UnitFrames")
+    task.wait(2)
+    table.clear(Units)
+    for i,v in next, reg do
+        if type(v) == 'function' then --> Checks if the current iteration is a function
+            if getfenv(v).script then --> Checks if the function's environment is in a script
+                for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+                    if type(v) == 'table' then
+                        if v["session"] then
+                            for sus, bak in pairs(v["session"]["profile_data"]['collection']['equipped_units']) do
+                                Units[sus] = v["session"]["profile_data"]['collection']['owned_units'][bak]['unit_id'].." #"..bak
+                            end
+                            return(1)
                         end
                     end
                 end
             end
         end
+    end
+end
 
-        local function Equip()
-            game:GetService("ReplicatedStorage").endpoints.client_to_server.unequip_all:InvokeServer()
-            
-            for i = 1, 6 do
-                local unitinfo = getgenv().SelectedUnits["U" .. i]
-                warn(unitinfo)
-                if unitinfo ~= nil then
-                    local unitinfo_ = unitinfo:split(" #")
-                    task.wait(0.5)
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.equip_unit:InvokeServer(unitinfo_[2])
+LoadUnit()
+
+local function Check(x, y)
+    
+    for i, v in ipairs(game:GetService("Players").LocalPlayer.PlayerGui.collection.grid.List.Outer.UnitFrames:GetChildren()) do
+        if v:IsA("ImageButton") then
+            if v.EquippedList.Equipped.Visible == true then
+                if v.Main.petimage:GetChildren()[2].Name == x then
+                    getgenv().SelectedUnits["U"..tostring(i)] = tostring(v.name.Text.." #"..v._uuid.Value)
+                    updatejson()
+                    return true
                 end
             end
+        end
+    end
+end
+
+local function Equip()
+    --[[game:GetService("ReplicatedStorage").endpoints.client_to_server.unequip_all:InvokeServer()
+    
+    for i = 1, 6 do
+        local unitinfo = getgenv().SelectedUnits["U" .. i]
+        warn(unitinfo)
+        if unitinfo ~= nil then
+            local unitinfo_ = unitinfo:split(" #")
+            task.wait(0.5)
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.equip_unit:InvokeServer(unitinfo_[2])
+        end
+    end]]
+
+    equippedUnits = {}
+			local reg = getreg() --> returns Roblox's registry in a table
+		
+			for i,v in next, reg do
+				if type(v) == 'function' then --> Checks if the current iteration is a function
+					if getfenv(v).script then --> Checks if the function's environment is in a script
+						for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+							if type(v) == 'table' then
+								if v["session"] then
+									for sus, bak in pairs(v["session"]["profile_data"]['collection']['equipped_units']) do
+										table.insert(equippedUnits, {bak, v["session"]["profile_data"]['collection']['owned_units'][bak]['unit_id']})
+									end
+									break
+								end
+							end
+						end
+					end
+				end
+			end
+			
             updatejson()
         end
 
-        unitselecttab:Button("เลือก Units ที่ใส่อยู่ตอนนี้", function()
-            for i, v in ipairs(game:GetService("Players").LocalPlayer.PlayerGui["spawn_units"].Lives.Frame.Units:GetChildren()) do
-                if v:IsA("ImageButton") then
-                    local unitxx = v.Main.petimage.WorldModel:GetChildren()[1]
-                    if unitxx ~= nil then
-                        if Check(unitxx.Name,v) then
-                            print(unitxx, v)
+
+
+    unitselecttab:Button("เลือก Units ที่ใส่อยู่ตอนนี้", function()
+            equippedUnits = {}
+            local reg = getreg() --> returns Roblox's registry in a table
+            
+            for i,v in next, reg do
+                if type(v) == 'function' then --> Checks if the current iteration is a function
+                    if getfenv(v).script then --> Checks if the function's environment is in a script
+                        for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+                            if type(v) == 'table' then
+                                if v["session"] then
+                                    local iter = 1
+                                    for sus, bak in pairs(v["session"]["profile_data"]['collection']['equipped_units']) do
+                                        equippedUnits[tonumber(sus)] = {bak, v["session"]["profile_data"]['collection']['owned_units'][bak]['unit_id'], sus}
+                                        iter += 1
+                                    end
+                                    break
+                                end
+                            end
                         end
                     end
                 end
             end
+
+            for i = 1, 6 do
+                if equippedUnits[i] == nil then
+                    equippedUnits[i] = {"nil", "nil"}
+                end
+                getgenv().SelectedUnits["U"..tostring(i)] = equippedUnits[i][2].." #"..equippedUnits[i][1]
+            end
+
+            updatejson()
             DiscordLib:Notification("ใส่ Units ที่เลือกแล้ว!", "เมนูแบบเลื่อนลงอาจไม่แสดงชื่อหน่วยในขณะนี้ แต่จะแสดงในครั้งต่อไปที่คุณดำเนินการ!", "Okay!")
 
         end)
 
-        local drop = unitselecttab:Dropdown("Unit 1", Units, getgenv().SelectedUnits["U1"], function(bool)
+        local drop = unitselecttab:Dropdown("Unit 1", Units, getgenv().SelectedUnits["U1"] or "nil", function(bool)
             getgenv().SelectedUnits["U1"] = bool
             Equip()
         end)
 
-        local drop2 = unitselecttab:Dropdown("Unit 2", Units, getgenv().SelectedUnits["U2"], function(bool)
+        local drop2 = unitselecttab:Dropdown("Unit 2", Units, getgenv().SelectedUnits["U2"] or "nil", function(bool)
             getgenv().SelectedUnits["U2"] = bool
             Equip()
         end)
 
-        local drop3 = unitselecttab:Dropdown("Unit 3", Units, getgenv().SelectedUnits["U3"], function(bool)
+        local drop3 = unitselecttab:Dropdown("Unit 3", Units, getgenv().SelectedUnits["U3"] or "nil", function(bool)
             getgenv().SelectedUnits["U3"] = bool
             Equip()
         end)
 
-        local drop4 = unitselecttab:Dropdown("Unit 4", Units, getgenv().SelectedUnits["U4"], function(bool)
+        local drop4 = unitselecttab:Dropdown("Unit 4", Units, getgenv().SelectedUnits["U4"] or "nil", function(bool)
             getgenv().SelectedUnits["U4"] = bool
             Equip()
         end)
@@ -442,14 +500,14 @@ function sex()
         _G.drop5 = nil
         _G.drop6 = nil
         if tonumber(axx[2]) >= 20 then
-            _G.drop5 = unitselecttab:Dropdown("Unit 5", Units, getgenv().SelectedUnits["U5"], function(bool)
+            _G.drop5 = unitselecttab:Dropdown("Unit 5", Units, getgenv().SelectedUnits["U5"] or "nil", function(bool)
                 getgenv().SelectedUnits["U5"] = bool
                 Equip()
             end)
         end
 
         if tonumber(axx[2]) >= 50 then
-            _G.drop6 = unitselecttab:Dropdown("Unit 6", Units, getgenv().SelectedUnits["U6"], function(bool)
+            _G.drop6 = unitselecttab:Dropdown("Unit 6", Units, getgenv().SelectedUnits["U6"] or "nil", function(bool)
                 getgenv().SelectedUnits["U6"] = bool
                 Equip()
             end)
@@ -2156,35 +2214,35 @@ else
            }
          },
          uchiha = {
-            UP1  = { 
-                x = 275.9195251464844, 
-                y = 539.8998413085938, 
-                z = -514.4397583007812
-             },
-             UP2  = {
-                x = 266.52227783203125, 
-                y = 542.8975830078125, 
-                z = -559.3831787109375
+            UP1  = {
+                y  = 1.4244641065597535,
+                x  = -109.30056762695313,
+                z  = -54.575347900390628
              },
               UP3  = {
-                x = 241.12887573242188, 
-                y = 539.8998413085938, 
-                z = -521.0133056640625
+                y  = 1.4322717189788819,
+                x  = -114.2433853149414,
+                z  = -55.260982513427737
+             },
+              UP2  = {
+                y  = 1.7082736492156983,
+                x  = -127.53932189941406,
+                z  = -55.277626037597659
              },
               UP6  = {
-                x = 275.18841552734375, 
-                y = 539.8999633789062, 
-                z = -576.2612915039062
+                y  = 1.4487617015838624,
+                x  = -107.07078552246094,
+                z  = -51.333045959472659
              },
               UP5  = {
-                x = 210.1826934814453, 
-                y = 539.8999633789062, 
-                z = -507.4686279296875           
+                y  = 1.8965977430343629,
+                x  = -118.5692138671875,
+                z  = -57.20484161376953
              },
               UP4  = {
-                x = 264.4999084472656, 
-                y = 544.1292724609375, 
-                z = -532.8849487304688
+                y  = 1.4205386638641358,
+                x  = -105.46223449707031,
+                z  = -51.20615005493164
            }
          },
            opm = {
@@ -3867,7 +3925,7 @@ local function startfarming()
             task.wait(3)
         end
 
-    ----------//test startaki \\-------------- game:GetService("Workspace")["_RAID"].Raid
+    ----------//test starraid \\-------------- game:GetService("Workspace")["_RAID"].Raid
 elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
 
     if game.PlaceId == 8304191830 then
@@ -4136,11 +4194,19 @@ end
 --hide name
 task.spawn(function()  -- Hides name for yters (not sure if its Fe)
     while task.wait() do
-        pcall(function()
-            if game.Players.LocalPlayer.Character.Head:FindFirstChild("_overhead") then
-               workspace[game.Players.LocalPlayer.Name].Head["_overhead"]:Destroy()
-            end
-        end)
+		if getgenv().hidename == true then
+			pcall(function()
+				if game.Players.LocalPlayer.Character.Head:FindFirstChild("_overhead") then
+				workspace[game.Players.LocalPlayer.Name].Head["_overhead"].Enabled = false
+				end
+			end)
+		else
+			pcall(function()
+				if game.Players.LocalPlayer.Character.Head:FindFirstChild("_overhead") then
+				workspace[game.Players.LocalPlayer.Name].Head["_overhead"].Enabled = false
+				end
+			end)
+		end
     end
 end)
 

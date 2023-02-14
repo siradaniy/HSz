@@ -1,4 +1,4 @@
-local versionx = "10.7.5f1"
+local versionx = "10.7.5f2"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -1187,12 +1187,7 @@ end)
                             print("Alien Spaceship (Final)")    
                             SpawnUnitPos["opm_leg"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["opm_leg"][UnitPos]["y"] = a.Position.Y
-                            SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z        
-                        elseif game.Workspace._map:FindFirstChild("secret") then
-                            print("opm")    
-                            SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
-                            SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
-                            SpawnUnitPos["opm"][UnitPos]["z"] = a.Position.Z
+                            SpawnUnitPos["opm_leg"][UnitPos]["z"] = a.Position.Z  
                         elseif game.Workspace._map:FindFirstChild("west_city") then
                             print("cell")    
                             SpawnUnitPos["cell"][UnitPos]["x"] = a.Position.X
@@ -1208,11 +1203,16 @@ end)
                             SpawnUnitPos["aot_raid"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["aot_raid"][UnitPos]["y"] = a.Position.Y
                             SpawnUnitPos["aot_raid"][UnitPos]["z"] = a.Position.Z
-                        elseif game.Workspace._map:FindFirstChild("uchiha_hideout") then
+                        elseif game.Workspace._map:FindFirstChild("uchiha") then
                             print("uchiha")    
                             SpawnUnitPos["uchiha"][UnitPos]["x"] = a.Position.X
                             SpawnUnitPos["uchiha"][UnitPos]["y"] = a.Position.Y
-                            SpawnUnitPos["uchiha"][UnitPos]["z"] = a.Position.Z
+                            SpawnUnitPos["uchiha"][UnitPos]["z"] = a.Position.Z          
+                        elseif game.Workspace._map:FindFirstChild("secret") then
+                            print("opm")    
+                            SpawnUnitPos["opm"][UnitPos]["x"] = a.Position.X
+                            SpawnUnitPos["opm"][UnitPos]["y"] = a.Position.Y
+                            SpawnUnitPos["opm"][UnitPos]["z"] = a.Position.Z
                         end
                         
 
@@ -3063,57 +3063,6 @@ function placesex()
                         }
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
-                end    
-            elseif game.Workspace._map:FindFirstChild("secret") then
-                print("opm")
-                for i = 1, 6 do
-                    local unitinfo = getgenv().SelectedUnits["U" .. i]
-                    if unitinfo ~= nil then
-                        local unitinfo_ = unitinfo:split(" #")
-                        local pos = getgenv().SpawnUnitPos["opm"]["UP" .. i]
-                        task.wait()
-                        --place units 0
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 1
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 2 
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 3 
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 4
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                        --place units 5
-                        local args = {
-                            [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
-                        }
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-                    end
                 end
             elseif game.Workspace._map:FindFirstChild("west_city") then
                 print("cell")
@@ -3319,13 +3268,64 @@ function placesex()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
                     end
                 end  
-            elseif game.Workspace._map:FindFirstChild("uchiha_hideout") then
+            elseif game.Workspace._map:FindFirstChild("uchiha") then
                 print("uchiha")
                 for i = 1, 6 do
                     local unitinfo = getgenv().SelectedUnits["U" .. i]
                     if unitinfo ~= nil then
                         local unitinfo_ = unitinfo:split(" #")
                         local pos = getgenv().SpawnUnitPos["uchiha"]["UP" .. i]
+                        task.wait()
+                        --place units 0
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 1
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 2 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 3 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 4
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"]+ x, pos["y"] - y, pos["z"] + z), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+
+                        --place units 5
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"] - y, pos["z"]), Vector3.new(0, 0, -1))
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                    end
+                end        
+            elseif game.Workspace._map:FindFirstChild("secret") then
+                print("opm")
+                for i = 1, 6 do
+                    local unitinfo = getgenv().SelectedUnits["U" .. i]
+                    if unitinfo ~= nil then
+                        local unitinfo_ = unitinfo:split(" #")
+                        local pos = getgenv().SpawnUnitPos["opm"]["UP" .. i]
                         task.wait()
                         --place units 0
                         local args = {

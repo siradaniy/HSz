@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5h1"
+local versionx = "10.7.5h2"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -1370,7 +1370,7 @@ else
 
     
         xspawnUnitPos  = {
-            black_clover  = {
+            clover_legend  = {
                 UP1  = {
                     y  = 1.5824745893478394,
                     x  = -60.936012268066409,
@@ -1402,7 +1402,7 @@ else
                     z  = 2.65594482421875
              }
            },
-           hollow_leg = {
+           bleach_legend = {
             UP1 = {
                 x = -171.5882110595703,
                 y = 36.42063903808594, 
@@ -1852,7 +1852,7 @@ else
                 z = -582.2592163085938
              }
            },
-           jojo_leg = {
+           jojo_legend = {
             UP1  = {
                 x = -93.5505142211914, 
                 y = 17.90195655822754, 
@@ -1884,7 +1884,7 @@ else
                 z = -583.1688232421875
            }
          },  
-         opm_leg = {
+         boros_ship_portal = {
             UP1  = {
                 x = -284.7133483886719, 
                 y = 361.8908386230469, 

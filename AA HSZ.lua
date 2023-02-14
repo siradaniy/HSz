@@ -1,3 +1,5 @@
+--updatefix
+
 local versionx = "10.7.5h1"
 
 ---// Loading Section \\---
@@ -116,6 +118,8 @@ local function webhook()
 			TextDropLabel = "Not Have Items Drops"
 		end
 
+        --updatefix
+
 		local data = {
 			["content"] = "",
 			["username"] = "Anime Adventures",
@@ -132,7 +136,7 @@ local function webhook()
 					["image"] = {
 						['url'] = "https://tr.rbxcdn.com/bc2ea8300bfaea9fb3193d7f801f0e8b/768/432/Image/Png"
 					},
-					["description"] = "๐ฎ ||**"..game:GetService("Players").LocalPlayer.Name.."**|| ๐ฎ",
+					["description"] = "🎮 ||**"..game:GetService("Players").LocalPlayer.Name.."**|| 🎮",
 					["color"] = 110335,
 					["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
 					['footer'] = {
@@ -142,7 +146,7 @@ local function webhook()
 					["fields"] = {
 						{
                             ["name"] = "Current Level:",
-                            ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " โจ",
+                            ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
                             ["inline"] = true		
                         }, {
 							["name"] = "Total Waves:",
@@ -178,9 +182,13 @@ local function webhook()
 							["value"] = gold .. " 💰",
 							["inline"] = true  	   
                         }, {
-                            ["name"] = "โหมด Map:",
+                            ["name"] = "โหมด World:",
                             ["value"] = GetCurrentLevelName() .. " 🗺️",
                             ["inline"] = falseye   
+                        }, {
+                            ["name"] = "โหมด Map:",
+                            ["value"] = GetCurrentLevelId() .. " 🗺️",
+                            ["inline"] = falseye     
                         }, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",
@@ -488,7 +496,7 @@ function sex()
 --#endregion
 
 --------------------------------------------------
---------------- Select World Tab -----------------
+--------------- Select World Tab ----------------- updatefix fixmap
 --------------------------------------------------
 --#region Select world tab
         getgenv().levels = {"nill"}
@@ -861,7 +869,7 @@ end)
         getgenv().autosummongeme = false
         getgenv().autosummongem10e = false
 
-        local misc = autofrmserver:Channel("๐’ธ Auto Buy/Sell")
+        local misc = autofrmserver:Channel("💸 Auto Buy/Sell")
 
 
         local function autobuyfunc(xx, item)
@@ -876,7 +884,7 @@ end)
         end
 
         misc:Label("Special - 2x Mythic")
-        misc:Toggle("Auto Summon {Use Ticket 1}", getgenv().autosummonticketse, function(bool)
+        misc:Toggle("Auto Summon {ใช้ตั๋ว 1}", getgenv().autosummonticketse, function(bool)
             getgenv().autosummonticketse = bool
             while getgenv().autosummonticketse do
                 autobuyfunc("EventClover", "ticket")
@@ -884,7 +892,7 @@ end)
             updatejson()
         end)
 
-        misc:Toggle("Auto Summon {Buy 1}", getgenv().autosummongeme, function(bool)
+        misc:Toggle("Auto Summon {เพชร 1}", getgenv().autosummongeme, function(bool)
             getgenv().autosummongeme = bool
             while getgenv().autosummongeme do
                 autobuyfunc("EventClover", "gems")
@@ -892,7 +900,7 @@ end)
             updatejson()
         end)
 
-        misc:Toggle("Auto Summon {Buy 10}", getgenv().autosummongem10e, function(bool)
+        misc:Toggle("Auto Summon {เพชร 10}", getgenv().autosummongem10e, function(bool)
             getgenv().autosummongem10 = bool
             while getgenv().autosummongem10 do
                 autobuyfunc("EventClover", "gems10")
@@ -900,7 +908,7 @@ end)
             updatejson()
         end)
         misc:Label("Standard")
-        misc:Toggle("Auto Summon {Use Ticket 1}", getgenv().autosummontickets, function(bool)
+        misc:Toggle("Auto Summon {ใช้ตั๋ว 1}", getgenv().autosummontickets, function(bool)
             getgenv().autosummontickets = bool
             while getgenv().autosummontickets do
                 autobuyfunc("Standard", "ticket")
@@ -908,7 +916,7 @@ end)
             updatejson()
         end)
 
-        misc:Toggle("Auto Summon {Buy 1}", getgenv().autosummongem, function(bool)
+        misc:Toggle("Auto Summon {เพชร 1}", getgenv().autosummongem, function(bool)
             getgenv().autosummongem = bool
             while getgenv().autosummongem do
                 autobuyfunc("Standard", "gems")
@@ -916,7 +924,7 @@ end)
             updatejson()
         end)
 
-        misc:Toggle("Auto Summon {Buy 10}", getgenv().autosummongem10, function(bool)
+        misc:Toggle("Auto Summon {เพชร 10}", getgenv().autosummongem10, function(bool)
             getgenv().autosummongem10 = bool
             while getgenv().autosummongem10 do
                 autobuyfunc("Standard", "gems10")
@@ -941,9 +949,6 @@ end)
         game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false
         game:GetService("ReplicatedStorage").packages.assets["ui_sfx"].error.Volume = 0
         game:GetService("ReplicatedStorage").packages.assets["ui_sfx"].error_old.Volume = 0
-        
-
-
 
 
         local autofarmtab = autofrmserver:Channel("🤖 Auto Farm")
@@ -953,8 +958,9 @@ end)
         local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script_")
         local autoseltab = autofrmserver:Channel("💸 Auto Sell")
         local webhooktab = webhookserver:Channel("🌐 Webhook")
+
     
-		autoloadtab:Label("รันสคริปต์โดยอัตโนมัติเมื่อออกจากMap.")
+	autoloadtab:Label("รันสคริปต์โดยอัตโนมัติเมื่อออกจากMap.")
     autoloadtab:Label("ไม่จำเป็นต้องใส่สคริปต์ในโฟลเดอร์ AutoExec!")
     autoloadtab:Toggle("Auto Load Script", getgenv().AutoLoadTP, function(bool)
             getgenv().AutoLoadTP = bool
@@ -1073,6 +1079,8 @@ autofarmtab:Toggle("Auto Upgrade Units อัปตัว", getgenv().autoupgrad
     getgenv().autoupgrade = bool
     updatejson()
 end)
+
+--updatefix mapfix
 
 function MouseClick(UnitPos)
     local connection
@@ -2101,7 +2109,7 @@ else
             }
            }
          },
---updatefix fixmap
+--updatefix fixmap fixplaceunit
         xselectedUnits = {
             U1 = "nil #nil",
             U2 = "nil #nil",

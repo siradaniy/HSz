@@ -1887,7 +1887,7 @@ else
          opm_portal = {
             UP1  = {
                 x = -284.7133483886719, 
-                y = 361.8908386230469, 
+                y = 361.8908386230469,
                 z = 1363.6123046875
              },
              UP2  = {
@@ -2783,7 +2783,7 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
         task.wait(7)
 
         ---Aline PortalAutoFarmRaid
-    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false and getgenv().AutoFarmRaid == false and getgenv().farmaline or getgenv().farmaline then    
+    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false and getgenv().farmaline or getgenv().farmaline then    
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)

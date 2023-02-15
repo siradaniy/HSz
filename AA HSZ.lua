@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5b2"
+local versionx = "10.7.5aa1"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -1107,9 +1107,9 @@ function MouseClick(UnitPos)
 
             world = GetLevelData.world or GetLevelData.name
             print(world)
-            SpawnUnitPos[tostring(world)][UnitPos]["x"] = a.Position.X
-            SpawnUnitPos[tostring(world)][UnitPos]["y"] = a.Position.Y
-            SpawnUnitPos[tostring(world)][UnitPos]["z"] = a.Position.Z
+            getgenv().SpawnUnitPos[tostring(world)][UnitPos]["x"] = a.Position.X
+            getgenv().SpawnUnitPos[tostring(world)][UnitPos]["y"] = a.Position.Y
+            getgenv().SpawnUnitPos[tostring(world)][UnitPos]["z"] = a.Position.Z
 			
             updatejson()
         end
@@ -1791,7 +1791,7 @@ else
                 z  = -636.2127075195313
              }
            },
-           Contract  = {
+           csm_portal  = {
             UP1  = {
                 x = -299.0365295410156, 
                 y = 1.449868083000183,

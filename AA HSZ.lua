@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5v2"
+local versionx = "10.7.5test1"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -1791,7 +1791,7 @@ else
                 z  = -636.2127075195313
              }
            },
-           [Contract] The Tomato Devil  = {
+           ["[Contract] The Tomato Devil"] = {
             UP1  = {
                 x = -299.0365295410156, 
                 y = 1.449868083000183,
@@ -1823,7 +1823,7 @@ else
                 z = -579.830322265625
            }
          },
-           [Contract] The Marshmallow Devil  = {
+         ["[Contract] The Marshmallow Devil"] = {
             UP1  = {
                 x = -299.0365295410156, 
                 y = 1.449868083000183,
@@ -1855,7 +1855,7 @@ else
                 z = -579.830322265625
            }
          },
-           [Contract] The Bat Devil  = {
+         ["[Contract] The Bat Devil"]  = {
             UP1  = {
                 x = -299.0365295410156, 
                 y = 1.449868083000183,
@@ -1887,7 +1887,7 @@ else
                 z = -579.830322265625
            }
          },
-           [Contract] The Slug Devil  = {
+         ["[Contract] The Slug Devil"] = {
             UP1  = {
                 x = -299.0365295410156, 
                 y = 1.449868083000183,

@@ -184,11 +184,7 @@ local function webhook()
                         }, {
                             ["name"] = "โหมด World:",
                             ["value"] = GetCurrentLevelName() .. " 🗺️",
-                            ["inline"] = falseye   
-                        }, {
-                            ["name"] = "โหมด Map:",
-                            ["value"] = GetCurrentLevelId() .. " 🗺️",
-                            ["inline"] = falseye     
+                            ["inline"] = falseye      
                         }, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",

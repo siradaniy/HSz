@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5a2"
+local versionx = "10.7.5a3"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -99,6 +99,8 @@ local function webhook()
 		cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
         resultx = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
 		ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
+        mapid = game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
+        mapname = game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
 		waves = cwaves:split(": ")
 		ttime = ctime:split(": ")
 
@@ -183,8 +185,12 @@ local function webhook()
 							["inline"] = true  	   
                         }, {
                             ["name"] = "โหมด World:",
-                            ["value"] = GetCurrentLevelName() .. " 🗺️",
-                            ["inline"] = falseye            
+                            ["value"] = mapname .. " 🗺️",
+                            ["inline"] = falseye
+                        }, {
+                            ["name"] = "โหมด Map:",
+                            ["value"] = mapid .. " 🗺️",
+                            ["inline"] = falseye                       
                         }, {
                             ["name"] = "Items Drop:",
                             ["value"] = "```ini\n" .. TextDropLabel .. "```",

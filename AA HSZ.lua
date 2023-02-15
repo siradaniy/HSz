@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5b1"
+local versionx = "10.7.5b2"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -1791,7 +1791,7 @@ else
                 z  = -636.2127075195313
              }
            },
-           csm_portal  = {
+           Contract  = {
             UP1  = {
                 x = -299.0365295410156, 
                 y = 1.449868083000183,

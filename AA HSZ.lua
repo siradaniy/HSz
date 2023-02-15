@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5a3"
+local versionx = "10.7.5b1"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -1105,10 +1105,11 @@ function MouseClick(UnitPos)
             end
             a:Destroy()
 
-            print(GetLevelData.world)
-            SpawnUnitPos[tostring(GetLevelData.world)][UnitPos]["x"] = a.Position.X
-            SpawnUnitPos[tostring(GetLevelData.world)][UnitPos]["y"] = a.Position.Y
-            SpawnUnitPos[tostring(GetLevelData.world)][UnitPos]["z"] = a.Position.Z
+            world = GetLevelData.world or GetLevelData.name
+            print(world)
+            SpawnUnitPos[tostring(world)][UnitPos]["x"] = a.Position.X
+            SpawnUnitPos[tostring(world)][UnitPos]["y"] = a.Position.Y
+            SpawnUnitPos[tostring(world)][UnitPos]["z"] = a.Position.Z
 			
             updatejson()
         end
@@ -2144,12 +2145,13 @@ function placesex()
             y = 0
             z = 1.7
             print("AutoFarming")
-			print(tostring(GetLevelData.world))
+            world = GetLevelData.world or GetLevelData.name
+			print(tostring(world))
 			for i = 1, 6 do
 				local unitinfo = getgenv().SelectedUnits["U" .. i]
 				if unitinfo ~= nil then
 					local unitinfo_ = unitinfo:split(" #")
-					local pos = getgenv().SpawnUnitPos[tostring(GetLevelData.world)]["UP" .. i]
+					local pos = getgenv().SpawnUnitPos[tostring(world)]["UP" .. i]
 
 					--place units 0
 					local args = {

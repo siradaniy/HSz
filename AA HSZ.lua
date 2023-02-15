@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5aa1"
+local versionx = "10.7.5aa2"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -184,11 +184,11 @@ local function webhook()
 							["value"] = gold .. " 💰",
 							["inline"] = true  	   
                         }, {
-                            ["name"] = "โหมด World:",
+                            ["name"] = "Map Name:",
                             ["value"] = mapname .. " 🗺️",
                             ["inline"] = falseye
                         }, {
-                            ["name"] = "โหมด Map:",
+                            ["name"] = "Map Id:",
                             ["value"] = mapid .. " 🗺️",
                             ["inline"] = falseye                       
                         }, {
@@ -1791,7 +1791,7 @@ else
                 z  = -636.2127075195313
              }
            },
-           csm_portal  = {
+           Contract  = {
             UP1  = {
                 x = -299.0365295410156, 
                 y = 1.449868083000183,
@@ -2223,7 +2223,6 @@ function PlaceUnitsTEST(map)
     end
     
 end
-
 
 function PlaceUnits(map)
     if getgenv().AutoFarm and not getgenv().disableatuofarm then

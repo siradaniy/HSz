@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5t2"
+local versionx = "10.7.5t3"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -1694,7 +1694,7 @@ else
                     z  = -103.43102264404297
              }
            },
-           nagnolia  = {
+           magnolia  = {
                 UP1  = {
                     y  = 6.311758041381836,
                     x  = -600.5551147460938,

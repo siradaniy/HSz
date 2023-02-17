@@ -341,7 +341,7 @@ function sex()
         local home = homeserver:Channel(" HOLYSHz Member Only")
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
-        home:Label("Update Fix")
+        home:Label("Update Fix T1")
         home:Label("[+]Fix Devil & Aline Portal can open \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
         home:Label(" ")
 
@@ -2965,7 +2965,7 @@ local function startfarming()
         end
 
     ----------//test starraid \\-------------- game:GetService("Workspace")["_RAID"].Raid
-elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
+elseif getgenv().AutoFarmRaid then
 
     if game.PlaceId == 8304191830 then
 
@@ -3038,7 +3038,6 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
             end
         end
           task.wait(1.5)
-
           local args = {
             [1] = tostring(getgenv().PortalID),
             [2] = {
@@ -3046,9 +3045,7 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
             }
         }
 		game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
-
         task.wait(1.5)
-
         for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
             if v.Name == "Owner" then
                 if tostring(v.value) == game.Players.LocalPlayer.Name then
@@ -3061,12 +3058,11 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
                 end
             end 
         end
-
         task.wait(7)
 
-        ---Aline Portal farmportal
-    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmRaid == false  and getgenv().AutoFarmIC == false and getgenv().farmaline or getgenv().farmaline then 
-        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do 
+        ---Aline PortalAutoFarmRaid
+    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmprotal == false and getgenv().AutoFarmRaid == false and getgenv().farmaline or getgenv().farmaline then    
+        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)
                 getgenv().PortalIDA = v._uuid_or_id.value
@@ -3074,7 +3070,6 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
             end
         end
         task.wait(1.5)
-
         local args = {
             [1] = tostring(getgenv().PortalIDA),
             [2] = {
@@ -3083,9 +3078,7 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
         }
         
         game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
-
         task.wait(1.5)
-
         for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
             if v.Name == "Owner" then
                 if tostring(v.value) == game.Players.LocalPlayer.Name then
@@ -3098,7 +3091,6 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
                 end
             end 
         end
-
         task.wait(7)
     end
 end

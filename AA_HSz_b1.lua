@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5t4"
+local versionx = "10.7.5t4.1"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -3028,7 +3028,7 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
     end
     --end raid game:GetService("Workspace")["_RAID"].Raid 
 
-        ------Devil Portal
+        --fixportal  ----Devil Portal
     elseif getgenv().farmprotal then
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
@@ -3064,8 +3064,9 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
 
         task.wait(7)
 
-        ---Aline Portal
-    elseif getgenv().autostart == false and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false and getgenv().farmprotal == false and getgenv().farmaline then 
+        ---Aline Portal farmportal
+    elseif getgenv().autostart == false and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false 
+                                and getgenv().AutoFarmRaid == false and getgenv().farmprotal == false and getgenv().farmportal == false and getgenv().farmaline then 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do 
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)

@@ -342,7 +342,7 @@ function sex()
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Update Fix")
-        home:Label("[+]Fix portal Aline & Devil can open \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ \n[+]Fix Unit set position ให้เช็ทได้ตามปกติ")
+        home:Label("[+]Fix marineford Auto farm \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
         home:Label(" ")
 
         home:Button("👉 Copy HOLYSHz Member Link!", function()
@@ -1737,7 +1737,7 @@ else
              }
            },
            --เน€เธเนเธ—เน€เธเธดเธเธ•เธดเธ”เธ–เธเธ
-            Marine  = {
+           marineford  = {
                 UP1  = {
                     y  = 25.660118103027345,
                     x  = -2575.1875,

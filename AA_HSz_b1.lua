@@ -341,7 +341,7 @@ function sex()
         local home = homeserver:Channel(" HOLYSHz Member Only")
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
-        home:Label("Update Fix T1")
+        home:Label("Update Fix T1 "..versionx.."")
         home:Label("[+]Fix Devil & Aline Portal can open \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
         home:Label(" ")
 
@@ -3061,7 +3061,7 @@ elseif getgenv().AutoFarmRaid then
         task.wait(7)
 
         ---Aline PortalAutoFarmRaid
-    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmprotal == false and getgenv().AutoFarmRaid == false and getgenv().farmaline or getgenv().farmaline then    
+    elseif getgenv().autostart == false and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().farmprotal == false and getgenv().AutoFarmRaid == false and getgenv().farmaline or getgenv().farmaline then    
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)

@@ -342,7 +342,7 @@ function sex()
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Update Fix")
-        home:Label("[+]Fix marineford Auto farm \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
+        home:Label("[+]Fix Devil & Aline Portal can open \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
         home:Label(" ")
 
         home:Button("👉 Copy HOLYSHz Member Link!", function()
@@ -3065,8 +3065,7 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
         task.wait(7)
 
         ---Aline Portal farmportal
-    elseif getgenv().autostart == false and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false 
-                                and getgenv().AutoFarmRaid == false and getgenv().farmprotal == false and getgenv().farmportal == false and getgenv().farmaline then 
+    elseif getgenv().autostart and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmRaid == false  and getgenv().AutoFarmIC == false and getgenv().farmaline or getgenv().farmaline then 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do 
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)

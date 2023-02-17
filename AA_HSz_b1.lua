@@ -339,6 +339,7 @@ function sex()
     else
         local homeserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=12281640494")
         local home = homeserver:Channel(" HOLYSHz Member Only")
+        home:Label("สวัสดี "..game.Players.LocalPlayer.Name.."")
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Fix Update "..versionx.."")

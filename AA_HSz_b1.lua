@@ -341,7 +341,7 @@ function sex()
         local home = homeserver:Channel(" HOLYSHz Member Only")
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
-        home:Label("Update Fix T1 "..versionx.."")
+        home:Label("Update Fix UPD "..versionx.."")
         home:Label("[+]Fix Devil & Aline Portal can open \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
         home:Label(" ")
 
@@ -2965,7 +2965,7 @@ local function startfarming()
         end
 
     ----------//test starraid \\-------------- game:GetService("Workspace")["_RAID"].Raid
-elseif getgenv().AutoFarmRaid then
+elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
 
     if game.PlaceId == 8304191830 then
 
@@ -3029,7 +3029,7 @@ elseif getgenv().AutoFarmRaid then
     --end raid game:GetService("Workspace")["_RAID"].Raid 
 
         --fixportal  ----Devil Portal
-    elseif getgenv().farmprotal then
+    elseif getgenv().farmprotal and getgenv().AutoFarm then
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
                 print(v._uuid_or_id.value)

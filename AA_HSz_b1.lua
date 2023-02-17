@@ -3064,9 +3064,9 @@ elseif getgenv().AutoFarmRaid and getgenv().AutoFarm then
 
         task.wait(7)
 
-        ---Aline PortalAutoFarmRaid
-    elseif getgenv().autostart == false and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false and getgenv().farmaline or getgenv().farmaline then    
-        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
+        ---Aline Portal
+    elseif getgenv().autostart == false and getgenv().AutoFarm and getgenv().teleporting and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false and getgenv().farmprotal == false and getgenv().farmaline then 
+        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do 
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)
                 getgenv().PortalIDA = v._uuid_or_id.value

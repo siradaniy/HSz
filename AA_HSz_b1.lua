@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5t4.1"
+local versionx = "10.7.5t4.2"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -339,7 +339,7 @@ function sex()
     else
         local homeserver = win:Server("Support Member Ship!", "http://www.roblox.com/asset/?id=12281640494")
         local home = homeserver:Channel(" HOLYSHz Member Only")
-        home:Label("สวัสดี "..game.Players.LocalPlayer.Name.."")
+        home:Label("Welcome "..game:GetService("Players").LocalPlayer.Name.." ")
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Fix Update "..versionx.."")
@@ -1673,7 +1673,7 @@ else
                     z  = -149.10423278808595
              }
            },
-           tokyoghoul  = {
+           tokyo_ghoul  = {
                 UP1  = {
                     y  = 59.03092575073242,
                     x  = -2997.170654296875,

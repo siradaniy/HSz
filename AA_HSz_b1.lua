@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5t4.2"
+local versionx = "10.7.5hsz1"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -343,7 +343,7 @@ function sex()
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Fix Update "..versionx.."")
-        home:Label("[+]Fix AutoFarm Clover Kingdom \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
+        home:Label("[+]Fix AutoFarm Clover Kingdom & Aot \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
         home:Label(" ")
 
         home:Button("👉 Copy HOLYSHz Member Link!", function()

@@ -1,4 +1,4 @@
---Beta
+--ียกฟะำดรป
 local version = "10.7.5_HSz_v2"
 
 ---// Loading Section \\---
@@ -209,23 +209,23 @@ local Window = Uilib.new(true, "[HSz Member] Anime Adventures UPD "..version.." 
 Window.ChangeToggleKey(Enum.KeyCode.RightShift)
 
 
-local Home = Window:Category(" 📋 Home")
-local Developers = Home:Sector("Anime Adventures")
+local Home = Window:Category("🏠 หน้าแรก")
+local Developers = Home:Sector("HSz Anime Adventures")
 local asdasd = Home:Sector(" ")
-local UIUPDT = Home:Sector("UPDATE Fix ")
+local UIUPDT = Home:Sector("⚙️ UPDATE Fix ⚙️")
 
 
-local Farm = Window:Category(" 🏹 Auto Farm")
-local SelectUnits = Farm:Sector("Units Selection")
-local SelectWorld = Farm:Sector("World Selection")
-local UnitPosition = Farm:Sector("Select Unit Position")
+local Farm = Window:Category(" 🤖 Auto Farm")
+local SelectUnits = Farm:Sector("🧙‍ เลือก Units")
+local SelectWorld = Farm:Sector("🌏 เลือก World")
+local UnitPosition = Farm:Sector("🧙 เลือกจุดวาง Unit")
 local MoreFarmConfig = Farm:Sector("More Farming Config")
-local AutoFarmConfig = Farm:Sector("Auto Farm Config")
-local ChallengeConfig = Farm:Sector("Challenge Config")
+local AutoFarmConfig = Farm:Sector("⚙️ ตั้งค่า Auto Farm")
+local ChallengeConfig = Farm:Sector("⌛ ตั้งค่า Challenge")
 
 
-local UC = Window:Category(" 👥 Unit Config")
-local NDY = UC:Sector("NOT DONE YET")
+local UC = Window:Category(" 🧙 Unit Config")
+local NDY = UC:Sector("ยังไม่เสร็จ")
 local emptyxx = UC:Sector(" ")
 local Unit1 = UC:Sector("Unit 1")
 local Unit2 = UC:Sector("Unit 2")
@@ -235,11 +235,23 @@ local Unit5 = UC:Sector("Unit 5")
 local Unit6 = UC:Sector("Unit 6")
 
 
-local Misc = Window:Category(" 🛠 Misc")
-local AutoSummonSec = Misc:Sector("Auto Summon Units")
-local AutoSnipeMerchantSec = Misc:Sector("Auto Snipe Merchant")
-local WebhookSec = Misc:Sector("Discord Webhook")
-local OtherSec = Misc:Sector("Other Options")
+local ETC = Window:Category(" 🌐 Discord & etc.")
+local AutoSummonSec = ETC:Sector("💸 Auto สุ่ม Units 💸")
+local AutoSnipeMerchantSec = ETC:Sector("🏪  ดู ร้านค้า 🏪")
+local WebhookSec = ETC:Sector("🌐 Discord Webhook 🌐")
+local OtherSec = ETC:Sector("⌛ Auto Load Script ⌛")
+
+-------------
+---sponsorfix---
+-------------
+
+local sponsor = Window:Category("🌟 Sponsor ของเรา ")
+local discord = sponsor:Sector(" Discord 🌟 StarBux 🌟 Store ")
+local facebook = sponsor:Sector(" 👑ร้าน 🌟 StarBux 🌟 ")
+local kaigem = sponsor:Sector("🐣 ชื้อ ID ไก่เพชร 🐣")
+local farmgem = sponsor:Sector("💎 บริการฟาร์มเพชร 💎")
+local starbux = sponsor:Sector("💎 ROBUX กลุ่ม 💎")
+
 
 function saveSettings()
     local HttpService = game:GetService('HttpService')
@@ -325,7 +337,7 @@ local function UnitSec()
 
     GetUnits()
 
-    SelectUnits:Cheat("Button", "🦸 Select Units", function() --Selects Currently Equipped Units!
+    SelectUnits:Cheat("Button", "🧙 Select Units", function() --มันจะใส่ตัวที่ใส่อยู่
         Settings.SelectedUnits = {
             U1 = "nil",
             U2 = "nil",
@@ -343,61 +355,31 @@ local function UnitSec()
         game:GetService("ReplicatedStorage").endpoints.client_to_server.switch_team_loadout:InvokeServer(unpack(args))
     end
 
-    local a = SelectUnits:Cheat("Dropdown", "👥 Select Team",function(preset)
+    local a = SelectUnits:Cheat("Dropdown", "🧙 เลือกทีม",function(preset)
         Settings.SelectedPreset = preset
         print(preset)
         saveSettings()
     end, { 
-        options = { "Team 1", "Team 2", "Team 3", "Team 4","Team 5" }, 
+        options = { "ทีม 1", "ทีม 2", "ทีม 3", "ทีม 4","ทีม 5" }, 
         default = Settings.SelectedPreset
     })
 
-  --[[  SelectUnits:Cheat("Button", "💾 Save Units Preset", function() --Saves to preset
-        preset = Settings.SelectedPreset
-        if preset == "Team 1" then
-            Settings.preset1 = Settings.SelectedUnits
-        elseif preset == "Team 2" then
-            Settings.preset2 = Settings.SelectedUnits
-        elseif preset == "Team 3" then
-            Settings.preset3 = Settings.SelectedUnits
-        elseif preset == "Team 4" then
-            Settings.preset4 = Settings.SelectedUnits
-        elseif preset == "Team 5" then
-            Settings.preset5 = Settings.SelectedUnits
-        end
-        print(preset)
-        saveSettings()
 
-    end)
-    ]]--
-
-    SelectUnits:Cheat("Button", "⌛ Switch Team", function() --loads preset
+    SelectUnits:Cheat("Button", "⌛ เปลี่ยนทีม", function() --loads preset
         preset = Settings.SelectedPreset
-        if preset == "Team 1" then
+        if preset == "ทีม 1" then
             switchteam("1")
-        elseif preset == "Team 2" then
+        elseif preset == "ทีม 2" then
             switchteam("2")
-        elseif preset == "Team 3" then
+        elseif preset == "ทีม 3" then
             switchteam("3")
-        elseif preset == "Team 4" then
+        elseif preset == "ทีม 4" then
             switchteam("4")
-        elseif preset == "Team 5" then
+        elseif preset == "ทีม 5" then
             switchteam("5")
         end
         print(preset)
         GetUnits()
-
-        --[[game:GetService("ReplicatedStorage").endpoints.client_to_server.unequip_all:InvokeServer()
-            
-        for i = 1, 6 do
-            local unitinfo = loadpreset["U" .. i]
-            warn(unitinfo)
-            if unitinfo ~= nil then
-                local unitinfo_ = unitinfo:split(" #")
-                task.wait(0.5)
-                game:GetService("ReplicatedStorage").endpoints.client_to_server.equip_unit:InvokeServer(unitinfo_[2])
-            end
-        end ]]--
 
     end)
 
@@ -407,7 +389,7 @@ end
 ------------------ World Section -------------
 ----------------------------------------------
 local function WorldSec()
-    SelectWorld:Cheat("Dropdown", "🌟 Select Category",function(value)
+    SelectWorld:Cheat("Dropdown", "🔱 เลือกโหมด",function(value)
         print(value)
         Settings.WorldCategory = value
         getgenv().updateworld()
@@ -424,7 +406,7 @@ local function WorldSec()
         default = Settings.WorldCategory
     })
 
-    local selectworld = SelectWorld:Cheat("Dropdown", "🌏 Select World",function(value)
+    local selectworld = SelectWorld:Cheat("Dropdown", "🌏 เลือก World",function(value)
         print(value)
         Settings.SelectedWorld = value
         getgenv().updatelevel()
@@ -450,7 +432,7 @@ local function WorldSec()
         end
     end
 
-    local selectlevel = SelectWorld:Cheat("Dropdown", "✨ Select Level",function(value)
+    local selectlevel = SelectWorld:Cheat("Dropdown", "🎚️ เลือก ด่าน",function(value)
         print(value)
         Settings.SelectedLevel = value
         getgenv().updatedifficulty()
@@ -510,7 +492,7 @@ local function WorldSec()
         end
     end
 
-    local selectdiff = SelectWorld:Cheat("Dropdown", "💦 Difficulty",function(value)
+    local selectdiff = SelectWorld:Cheat("Dropdown", "🔫 ระดับความยาก",function(value)
         print(value, " Selected")
         Settings.Difficulty = value
         saveSettings()
@@ -544,49 +526,49 @@ end
 ---------------- AutoFarm Config -------------
 ----------------------------------------------
 local function AutoFarmSec()
-    AutoFarmConfig:Cheat("Checkbox","🌾 Auto Farm  ", function(bool)
+    AutoFarmConfig:Cheat("Checkbox"," Auto Farm เริ่มทำงาน  ", function(bool)
         print(bool)
         Settings.AutoFarm = bool
         saveSettings()
     end,{enabled = Settings.AutoFarm })
 
-    AutoFarmConfig:Cheat("Checkbox","🏃 Auto Replay  ", function(bool)
+    AutoFarmConfig:Cheat("Checkbox"," Auto Replay เล่นซ้ำ ", function(bool)
         print(bool)
         Settings.AutoReplay = bool
         saveSettings()
     end,{enabled = Settings.AutoReplay})
 
-    AutoFarmConfig:Cheat("Checkbox","🏃 Auto Next Story  ", function(bool)
+    AutoFarmConfig:Cheat("Checkbox"," Auto Next Story & Next level หอคอย  ", function(bool)
         print(bool)
         Settings.AutoNext = bool
         saveSettings()
     end,{enabled = Settings.AutoNext})
 
-    AutoFarmConfig:Cheat("Checkbox","🏃 Auto Leave  ", function(bool)
+    AutoFarmConfig:Cheat("Checkbox"," Auto Leave ออก ", function(bool)
         print(bool)
         Settings.AutoLeave = bool
         saveSettings()
     end,{enabled = Settings.AutoLeave})
     
-    AutoFarmConfig:Cheat("Checkbox","🔥 Auto Abilities  ", function(bool)
+    AutoFarmConfig:Cheat("Checkbox"," Auto Abilities ใช้สกิล ", function(bool)
         print(bool)
         Settings.AutoAbilities = bool
         saveSettings()
     end,{enabled = Settings.AutoAbilities})
 
-    AutoFarmConfig:Cheat("Checkbox","⭐️ Auto Upgrade Units  ", function(bool)
+    AutoFarmConfig:Cheat("Checkbox"," Auto Upgrade Units อัปตัว  ", function(bool)
         print(bool)
         Settings.AutoUpgrade = bool
         saveSettings()
     end,{enabled = Settings.AutoUpgrade})
 
-    AutoFarmConfig:Cheat("Checkbox","⭐️ Auto Sell Units  ", function(bool)
+    AutoFarmConfig:Cheat("Checkbox"," Auto Sell Units ขายตัว ", function(bool)
         print(bool)
         Settings.AutoSell = bool
         saveSettings()
     end,{enabled = Settings.AutoSell})
 
-    AutoFarmConfig:Cheat("Textbox", "💸 Auto Sell Wave", function(Value)
+    AutoFarmConfig:Cheat("Textbox", " ขายเมื่อถึง Wave", function(Value)
         Value = tonumber(Value)
         Settings.AutoSellWave = Value
         saveSettings()
@@ -597,26 +579,26 @@ end
 --------------- More Farm Config -------------
 ----------------------------------------------
 local function MoreFarmSec()
-    MoreFarmConfig:Cheat("Checkbox","🏰️ Auto Infinity Castle  ", function(bool)
+
+    MoreFarmConfig:Cheat("Checkbox","🏯 Auto Next Level หอคอย ชั้นต่อไป  ", function(bool)
+        print(bool)
+        Settings.AutoContinue = bool
+        saveSettings()
+    end,{enabled = Settings.AutoContinue})
+
+    MoreFarmConfig:Cheat("Checkbox","🏯 Auto Infinity Castle  ", function(bool)
         print(bool)
         Settings.AutoInfinityCastle = bool
         saveSettings()
     end,{enabled = Settings.AutoInfinityCastle})
 
-    --[[
-    MoreFarmConfig:Cheat("Checkbox","⚡️ Auto Event Farm  ", function(bool)
-        print(bool)
-        Settings.AutoEventFarm = bool
-        saveSettings()
-    end,{enabled = Settings.AutoEventFarm})
-    ]]--
 end
 
 ----------------------------------------------
 ----------------- Challenge ------------------
 ----------------------------------------------
 local function ChallengeSec()
-    local challengeconfig = ChallengeConfig:Cheat("Dropdown", "🥇 Select Reward",function(value)
+    local challengeconfig = ChallengeConfig:Cheat("Dropdown", "🏵️ เลือก Reward",function(value)
         print(value)
         Settings.SelectedReward = value
         saveSettings()
@@ -628,7 +610,7 @@ local function ChallengeSec()
         saveSettings()
     end, {enabled =Settings.AutoChallenge})
 
-    ChallengeConfig:Cheat("Checkbox","🏆 Farm Any Rewards  ", function(bool)
+    ChallengeConfig:Cheat("Checkbox","🏆 Farm ทุกอย่าง  ", function(bool)
         print(bool)
        Settings.AutoChallengeAll = bool
         saveSettings()
@@ -639,9 +621,9 @@ end
 ------------------ credits -------------------
 ----------------------------------------------
 local function credits()
-    Developers:Cheat("Label","📝 Scripted by: Negative & HOLYSHz ")       
-    Developers:Cheat("Label","🔧 กด \"RightShift\" เพื่อ เปิด - ปิด เมนู")   
-    Developers:Cheat("Button","🔗 Copy Discord Invite", function()
+    Developers:Cheat("Label","📜 Scripted by: Negative & HOLYSHz ")       
+    Developers:Cheat("Label","⚒️ กด \"RightShift\" หรือ \"Shiftขวา\" เพื่อ เปิด - ปิด เมนู")   
+    Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
     UIUPDT:Cheat("Label","[+] V2 HSz \n[+]Test Time")   
@@ -650,6 +632,54 @@ end
 getgenv().posX = 1.5
 getgenv().posZ = 1.5
 
+----------------------------------------------
+------------------ sponsorfix ----------------kaigem
+----------------------------------------------
+local function sponsor()
+discord:Cheat("Label","Discord สำหรับสั่งชื้อ GamePass และ สอบถามต่าง ๆ ") 
+discord:Cheat("Button","🔥 Copy Discord Link   ", function()
+    setclipboard("https://discord.gg/eGKGE2sQtX")
+    end)
+--facebook
+facebook:Cheat("Label","✅ ร้านเปิดบริการเวลา 12:00 - 22:00 ทุกวัน ") 
+facebook:Cheat("Label","✅ ไม่ต้องใช้ ID - PASS ") 
+facebook:Cheat("Label","✅ รับของผ่านเซิร์ฟ วี จ่ายปุ๊บรับเลย ") 
+facebook:Cheat("Label","✅ Anime Adventures , Blox Fruits , BedWars , Anime Dimension , 9ล9 ") 
+facebook:Cheat("Button","🔥 Copy Facebook Link   ", function()
+    setclipboard("https://www.facebook.com/StarBux.Store/")
+    end)    
+--kaigem
+kaigem:Cheat("Label","🐣 ไก่ 40,000 เพชร  ราคา 250 บาท") 
+kaigem:Cheat("Label","🐣 ไก่ 60,000 เพชร  ราคา 375 บาท") 
+kaigem:Cheat("Label","🐣 ไก่ 100,000 เพชร ราคา 699 บาท") 
+kaigem:Cheat("Label","💳 บัตรเติม ROBUX 10$ ราคา 279 บาท") 
+kaigem:Cheat("Label","💳 จะได้รับ ROBUX 1000 และพรีเมี่ยม 1เดือน  ") 
+kaigem:Cheat("Button","🔥 Copy ไก่เพชร Link  ", function()
+    setclipboard("https://starbuxstore.com/categories/clduzowwu0033jxn22a9llwis")
+    end)
+--farmgem
+farmgem:Cheat("Label","✅ ต้องใช้ ID - PASS") 
+farmgem:Cheat("Label","✅ ต้องปิด 2FA ก่อนทุกครั้ง") 
+farmgem:Cheat("Label","💎 20,000 เพชร (ใช้เวลา 3วัน) ราคา 125 บาท") 
+farmgem:Cheat("Label","💎 30,000 เพชร (ใช้เวลา 4วัน) ราคา 185 บาท") 
+farmgem:Cheat("Label","💎 40,000 เพชร (ใช้เวลา 5วัน) ราคา 249 บาท") 
+farmgem:Cheat("Label","💎 50,000 เพชร (ใช้เวลา 6วัน) ราคา 309 บาท") 
+farmgem:Cheat("Button","🔥 Copy ฟาร์มเพชร Link  ", function()
+    setclipboard("https://starbuxstore.com/categories/clduzowt00000jxn2aaruqdjr")   
+end) 
+--ROBUXGroup
+starbux:Cheat("Label","👑ร้าน 🌟 STARBUX 🌟 ") 
+starbux:Cheat("Label","🛒 กำลังจะเปิดขาย ROBUX แบบกลุ่ม [ROBLOX]🛒") 
+starbux:Cheat("Label","ROBUX กลุ่ม ใครสนใจเข้ากลุ่มไว้เลยนะ") 
+starbux:Cheat("Label","เรทราคาติดตามได้จากกลุ่มเลย") 
+starbux:Cheat("Label","💎 40,000 เพชร (ใช้เวลา 5วัน) ราคา 249 บาท") 
+starbux:Cheat("Label","💎 50,000 เพชร (ใช้เวลา 6วัน) ราคา 309 บาท") 
+starbux:Cheat("Button","🔥 Copy กลุ่มชื้อ ROBUX Link  ", function()
+    setclipboard("https://www.roblox.com/groups/16807082/STARBUX-STORE#!/about")   
+end) 
+
+
+end    
 ----------------------------------------------
 ---------------- Unit Config -----------------
 ----------------------------------------------
@@ -967,7 +997,7 @@ function MouseClick2(UnitPos)
 				local raycastResult6 = workspace:Raycast(rayOrigin6, rayDirection6, raycastParams)
 				a6.CFrame = CFrame.new(raycastResult6.Position) * CFrame.Angles(0, -0, -0)	
 			elseif _G.gg and mobile then
-				warn("MOBILE DEVICE")
+				warn("MOBILE Player")
 				UserInputService.TouchLongPress:Connect(function()
 					mouse.TargetFilter  = a
 
@@ -1071,124 +1101,125 @@ end
 
 local function UnitPosSec()
 
-    UnitPosition:Cheat("Button", "Unit 1 Position", function()
+    UnitPosition:Cheat("Button", "เช็ทจุดวาง Unit 1", function()
         MouseClick2("UP1")
     end)
-    UnitPosition:Cheat("Button", "Unit 2 Position", function()
+    UnitPosition:Cheat("Button", "เช็ทจุดวาง Unit 2", function()
         MouseClick2("UP2")
     end)
-    UnitPosition:Cheat("Button", "Unit 3 Position", function()
+    UnitPosition:Cheat("Button", "เช็ทจุดวาง Unit 3 ", function()
         MouseClick2("UP3")
     end)
-    UnitPosition:Cheat("Button", "Unit 4 Position", function()
+    UnitPosition:Cheat("Button", "เช็ทจุดวาง Unit 4 ", function()
         MouseClick2("UP4")
     end)
-    UnitPosition:Cheat("Button", "Unit 5 Position", function()
+    UnitPosition:Cheat("Button", "เช็ทจุดวาง Unit 5 ", function()
         MouseClick2("UP5")
     end)
-    UnitPosition:Cheat("Button", "Unit 6 Position", function()
+    UnitPosition:Cheat("Button", "เช็ทจุดวาง Unit 6 ", function()
         MouseClick2("UP6")
     end)
 end
 
 local function unitconfig()
     emptyxx:Cheat("Label","    ")
-    NDY:Cheat("Label","THIS SECTION IS NOT FINISHED SO IT WILL NOT WORK. FOR UPDATE JOIN DISCORD!")
+    NDY:Cheat("Label","ยังทำไม่เสร็จ ยังใช้ไม่ได้ ชื้อ X ให้ดิจะรีบทำเลย")
     --//UNIT 1
-    Unit1:Cheat("Textbox", "Place from wave", function(Value)
+    Unit1:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit1:Cheat("Textbox", "Upgrade from wave", function(Value)
+    Unit1:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit1:Cheat("Textbox", "Upgrade Cap", function(Value)
+    Unit1:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 999})
 
-    Unit1:Cheat("Textbox", "Auto Sell at wave", function(Value)
+    Unit1:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 999}) 
 
 
     --//UNIT 2
-    Unit2:Cheat("Textbox", "Place from wave", function(Value)
+    Unit2:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit2:Cheat("Textbox", "Upgrade from wave", function(Value)
+    Unit2:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit2:Cheat("Textbox", "Upgrade Cap", function(Value)
+    Unit2:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
-    end, {placeholder = 0})
-    Unit2:Cheat("Textbox", "Auto Sell at wave", function(Value)
+    end, {placeholder = 999})
+
+    Unit2:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
-    end, {placeholder = 999}) 
+    end, {placeholder = 999})  
     
     --//UNIT 3
-    Unit3:Cheat("Textbox", "Place from wave", function(Value)
+    Unit3:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit3:Cheat("Textbox", "Upgrade from wave", function(Value)
+    Unit3:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit3:Cheat("Textbox", "Upgrade Cap", function(Value)
+    Unit3:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
-    Unit3:Cheat("Textbox", "Auto Sell at wave", function(Value)
+    Unit3:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 999}) 
 
     --//UNIT 4
-    Unit4:Cheat("Textbox", "Place from wave", function(Value)
+    Unit4:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit4:Cheat("Textbox", "Upgrade from wave", function(Value)
+    Unit4:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit4:Cheat("Textbox", "Upgrade Cap", function(Value)
+    Unit4:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
-    Unit4:Cheat("Textbox", "Auto Sell at wave", function(Value)
+    Unit4:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 999}) 
     
         --//UNIT 5
-        Unit5:Cheat("Textbox", "Place from wave", function(Value)
+        Unit5:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit5:Cheat("Textbox", "Upgrade from wave", function(Value)
+    Unit5:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit5:Cheat("Textbox", "Upgrade Cap", function(Value)
+    Unit5:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
-    Unit5:Cheat("Textbox", "Auto Sell at wave", function(Value)
+    Unit5:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 999}) 
 
     --//UNIT 6
-    Unit6:Cheat("Textbox", "Place from wave", function(Value)
+    Unit6:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit6:Cheat("Textbox", "Upgrade from wave", function(Value)
+    Unit6:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
 
-    Unit6:Cheat("Textbox", "Upgrade Cap", function(Value)
+    Unit6:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
-    Unit6:Cheat("Textbox", "Auto Sell at wave", function(Value)
+    Unit6:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 999}) 
 end
@@ -1206,11 +1237,11 @@ function SummonUnits(banner, method)
 end
 
 function AutoSummon()
-    local aaselectbanner = AutoSummonSec:Cheat("Dropdown", "Select Banner",function(value)
+    local aaselectbanner = AutoSummonSec:Cheat("Dropdown", "🧙 เลือก Banner 🧙",function(value)
         getgenv().SelectedBanner = value
     end, { options = {"Special", "Standard"}})
 
-    local aaselectbanner = AutoSummonSec:Cheat("Dropdown", "Select Method",function(value)
+    local aaselectbanner = AutoSummonSec:Cheat("Dropdown", "💸 เลือกของที่ใช้ 💸",function(value)
         getgenv().SelectedMethod = value
     end, { options = {"ticket", "gems", "gems10"}})
 
@@ -1294,7 +1325,7 @@ function Webhooksec()
         saveSettings()
     end, {placeholder = Settings.WebhookUrl})
 
-    WebhookSec:Cheat("Checkbox","Enable Webhook", function(bool)
+    WebhookSec:Cheat("Checkbox","เปิดใช้ Webhook", function(bool)
         Settings.WebhookEnabled = bool
         saveSettings()
     end,{enabled = Settings.WebhookEnabled})
@@ -1320,7 +1351,7 @@ function autoload()
 end
 
 function others()
-    OtherSec:Cheat("Checkbox","Auto Load Script", function(bool)
+    OtherSec:Cheat("Checkbox"," Auto Load Script ", function(bool)
         Settings.AutoLoadScript = bool
         saveSettings()
         autoload()
@@ -1330,7 +1361,7 @@ end
 ------------ /\/\/\/\/\/\/\/\/\ --------------
 ----------------------------------------------
 if game.PlaceId == 8304191830 then
-    UnitPosition:Cheat("Label","Not available in game Lobby!")    
+    UnitPosition:Cheat("Label","ไม่สามารถใช้ได้ใน lobby!!!")    
     UnitSec()
     WorldSec()
     AutoFarmSec()
@@ -1338,19 +1369,21 @@ if game.PlaceId == 8304191830 then
     ChallengeSec()
     unitconfig()
     credits()
+    sponsor()
     AutoSummon()
     SnipeMerchant()
     Webhooksec()
     others()
 else
-    SelectUnits:Cheat("Label","Only available in game Lobby!")    
-    AutoSummonSec:Cheat("Label","Only available in game Lobby!")    
+    SelectUnits:Cheat("Label","ใช้ได้แค่ใน Lobby!!!")    
+    AutoSummonSec:Cheat("Label","Label","ใช้ได้แค่ใน Lobby!!!")    
     WorldSec()
     AutoFarmSec()
     MoreFarmSec()
     ChallengeSec()
     UnitPosSec()
     unitconfig()
+    sponsor()
     credits()
     SnipeMerchant()
     Webhooksec()
@@ -1449,7 +1482,7 @@ local function startfarming()
                     end
                 end
     
-                warn("farming")
+                warn("normal farm")
                 task.wait(3)
             end
         elseif cata == "Raid Worlds" then
@@ -1491,7 +1524,7 @@ local function startfarming()
                     end
                 end
     
-                warn("farming")
+                warn("Raid Farm")
                 task.wait(3)
             end
         end
@@ -1608,24 +1641,24 @@ end
 coroutine.resume(coroutine.create(function()
     while task.wait() do
         if not Settings.AutoInfinityCastle then
-            if not checkChallenge() then --Challenge_Not_Complete
+            if not checkChallenge() then 
                 if  Settings.AutoChallenge and checkReward() == true then
-                    startChallenge() --S_Challenge
+                    startChallenge() 
                 else
-                    startfarming()--S_Farming
+                    startfarming()
                 end
             elseif checkChallenge() == true then
-                startfarming()--S_Farming
+                startfarming()
             end
         elseif Settings.AutoInfinityCastle == true then--Infiniy Castle
-            if not checkChallenge() then --Challenge_Not_Complete
+            if not checkChallenge() then 
                 if  Settings.AutoChallenge and checkReward() == true then
-                    startChallenge() --S_Challenge
+                    startChallenge() 
                 else
-                    FarmInfinityCastle()--S_Farming
+                    FarmInfinityCastle()
                 end
             elseif checkChallenge() == true then
-                FarmInfinityCastle()--S_Farming
+                FarmInfinityCastle()
             end
         end
 
@@ -1715,6 +1748,10 @@ coroutine.resume(coroutine.create(function()
                     game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer()
                     game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer()
                     print("Next Room...")
+                elseif getgenv().AutoContinue then
+                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
+                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))   
+                    print("Next Room infint Castle...") 
                 elseif Settings.AutoNext and not Settings.AutoInfinityCastle then
                     local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
@@ -2038,6 +2075,6 @@ if Settings.AutoLoadScript then
     autoload()
 end
 
-game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false --disables the annoying error messages 
+game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false --ปิดแจ้งเตือนต่าง ๆ 
 
 print("HSz AA v2 Loaded สำเร็จ!!!")

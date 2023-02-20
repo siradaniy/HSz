@@ -169,8 +169,8 @@ function webhook()
               ["inline"] = true
             },
             {
-               ["name"] ="Current Gems 💎 & Gold 💰",
-               ["value"] = "Gems รวม : "  ..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰\n "
+               ["name"] ="Current Gems 💎 & Gold 💰 & Level ✨",
+               ["value"] = "Gems รวม : "  ..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰\n "  ..tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text)..  " ✨\n "
              },
              {
                 ["name"] ="Rewards",

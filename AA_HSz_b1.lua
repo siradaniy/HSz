@@ -343,7 +343,7 @@ function sex()
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Fix Update "..versionx.."")
-        home:Label("[+]Fix Devil & Aline Portal can't Open \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
+        home:Label("[+]Fix JJK Finger can't AutoFarm \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
         home:Label(" ")
 
         home:Button("👉 Copy HOLYSHz Member Link!", function()

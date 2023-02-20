@@ -174,7 +174,7 @@ function webhook()
              },
              {
                 ["name"] ="Rewards",
-                ["value"] = gold.." Gold 💰\n"..gems.." Gems <:gem:997123585476927558>\n"..xp[1].." XP 🧪\n"..trophy.." Trophy 🏆\nCurrent Gems <:gem:997123585476927558>= "..tostring(game.Players.LocalPlayer._stats.gem_amount.Value)
+                ["value"] = gold.." Gold 💰\n"..gems.." Gems <:gem:997123585476927558>\n"..xp[1].." XP 🧪\n"..trophy.." Trophy 🏆"
              },
              {
               ["name"] ="Items Drop",

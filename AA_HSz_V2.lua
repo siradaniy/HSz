@@ -1,4 +1,4 @@
---ียกฟะำดรป
+--updatefix
 local version = "10.7.5_HSz_v2"
 
 ---// Loading Section \\---
@@ -165,7 +165,7 @@ function webhook()
           ["fields"] = {
              {
               ["name"] ="ผลรวม",
-              ["value"] = " Map Name : "..levelname.. " 🗺️\nMap ID : "..mapid..  " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>",
+              ["value"] = " Map Name : "..levelname.. " 🗺️\nMap ID : "..mapid..  " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>\n เวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ",
               ["inline"] = true
             },
             {

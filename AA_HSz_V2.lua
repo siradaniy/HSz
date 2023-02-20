@@ -85,16 +85,30 @@ function webhook()
     return
     end 
     
+    local Time = os.date('!*t', OSTime);
+
+	local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
+
+
     userlevel = plr.PlayerGui:FindFirstChild("spawn_units"):FindFirstChild("Lives"):FindFirstChild("Main"):FindFirstChild("Desc"):FindFirstChild("Level").Text
     totalgems = plr.PlayerGui:FindFirstChild("spawn_units"):FindFirstChild("Lives"):FindFirstChild("Frame"):FindFirstChild("Resource"):FindFirstChild("Gem"):FindFirstChild("Level").Text
     
     ResultHolder = plr.PlayerGui:FindFirstChild("ResultsUI"):FindFirstChild("Holder")
     if game.PlaceId ~= 8304191830 then
     levelname = game:GetService("Workspace"):FindFirstChild("_MAP_CONFIG"):FindFirstChild("GetLevelData"):InvokeServer()["name"]
+
     result = ResultHolder.Title.Text else levelname, result = "nil","nil" end
+    if result == "VICTORY" then result = "ชนะ" end
+    if result == "DEFEAT" then result = "แพ้" end
+
+
     resultx = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
     mapid = game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
     mapname = game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
+    cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
+	ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
+    waves = cwaves:split(": ")
+	ttime = ctime:split(": ")
     
     gold = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("GoldReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
     if gold == "+99999" then gold = "+0" end	 
@@ -132,7 +146,7 @@ function webhook()
 			["embeds"] = {
 				{
 					["author"] = {
-						["name"] = "Anime Adventures |  แจ้งเตือน ✔️",
+						["name"] = "Anime Adventures |  แจ้งเตือน V2 ✔️",
 						["icon_url"] = "https://cdn.discordapp.com/emojis/997123585476927558.webp?size=96&quality=lossless"
 					},
 					["thumbnail"] = {
@@ -150,19 +164,23 @@ function webhook()
 					},
           ["fields"] = {
              {
-              ["name"] ="Result",
-              ["value"] = levelname.." — "..result,
+              ["name"] ="ผลรวม",
+              ["value"] = " Map Name : "..levelname.. " 🗺️\nMap ID : "..mapid..  " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>",
               ["inline"] = true
-             },
-             {
-              ["name"] ="Rewards",
-              ["value"] = getgenv().item.."\n"..gold.." Gold\n"..gems.." Gems\n"..xp[1].." XP\n"..trophy.." Trophy\n⬖ Total Gems = "..totalgems
             },
             {
-             ["name"] = "Map:",
-             ["value"] = "\n"..mapname.." name\n"..mapid.." Id,
-             ["inline"] = falseye
-            }
+               ["name"] ="Current Gems 💎 & Gold 💰",
+               ["value"] = "Gems รวม : "  ..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰\n "
+             },
+             {
+                ["name"] ="Rewards",
+                ["value"] = gold.." Gold 💰\n"..gems.." Gems <:gem:997123585476927558>\n"..xp[1].." XP 🧪\n"..trophy.." Trophy 🏆\nCurrent Gems <:gem:997123585476927558>= "..tostring(game.Players.LocalPlayer._stats.gem_amount.Value)
+             },
+             {
+              ["name"] ="Items Drop",
+              ["value"] = "```ini\n" .. TextDropLabel .. "```",
+              ["inline"] = falseye 
+             }
           }
         }
       }
@@ -2013,7 +2031,7 @@ pcall(function()
         vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
     game:GetService("ReplicatedStorage").endpoints.client_to_server.claim_daily_reward:InvokeServer()
-    warn("Anti-AFK loaded!")
+    warn("HSz Test Anti-AFK !")
 end)
 
 if Settings.AutoLoadScript then
@@ -2022,4 +2040,4 @@ end
 
 game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false --disables the annoying error messages 
 
-print("Loaded!")
+print("HSz AA v2 Loaded สำเร็จ!!!")

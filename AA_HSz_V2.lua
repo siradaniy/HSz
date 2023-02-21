@@ -219,7 +219,7 @@ local Farm = Window:Category(" 🤖 Auto Farm")
 local SelectUnits = Farm:Sector("🧙‍ เลือก Units")
 local SelectWorld = Farm:Sector("🌏 เลือก World")
 local UnitPosition = Farm:Sector("🧙 เลือกจุดวาง Unit")
-local MoreFarmConfig = Farm:Sector("More Farming Config")
+local castleconfig = Farm:Sector("🏯 ตั้งค่า Infinity Castle 🏯")
 local AutoFarmConfig = Farm:Sector("⚙️ ตั้งค่า Auto Farm")
 local ChallengeConfig = Farm:Sector("⌛ ตั้งค่า Challenge")
 
@@ -587,13 +587,13 @@ end
 ----------------------------------------------
 local function MoreFarmSec()
 
-    MoreFarmConfig:Cheat("Checkbox","🏯 Auto Next Level หอคอย ชั้นต่อไป  ", function(bool)
+    castleconfig:Cheat("Checkbox","🏯 Auto Next Level หอคอย ชั้นต่อไป  ", function(bool)
         print(bool)
         Settings.AutoContinue = bool
         saveSettings()
     end,{enabled = Settings.AutoContinue})
 
-    MoreFarmConfig:Cheat("Checkbox","🏯 Auto Infinity Castle  ", function(bool)
+    castleconfig:Cheat("Checkbox","🏯 Auto Infinity Castle  ", function(bool)
         print(bool)
         Settings.AutoInfinityCastle = bool
         saveSettings()
@@ -634,7 +634,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+] V2 HSz \n[+]Test Time \n[+]Fix Story,Inf,Raid")   
+    UIUPDT:Cheat("Label","[+] Beta Test \n[+]Support Story,Inf,Legend Stage,Raid,Infinity Castle ")   
 end
 
 getgenv().posX = 1.5

@@ -397,9 +397,9 @@ local function WorldSec()
         saveSettings()
     end, {
         options = {
-            "Story Worlds",
+            "โหมด Story & Inf",
             "Legend Stages",
-            "Raid Worlds",
+            "โหมด Raid",
             "Portals"
         },
         default = Settings.WorldCategory
@@ -415,12 +415,12 @@ local function WorldSec()
 
     getgenv().updateworld = function()
         selectworld:ClearDrop() local storylist;
-        if Settings.WorldCategory == "Story Worlds" then
+        if Settings.WorldCategory == "โหมด Story & Inf" then
             storylist = {"Planet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
             "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom","Cape Canaveral", "Alien Spaceship"}
         elseif Settings.WorldCategory == "Legend Stages" then
             storylist = {"Clover Kingdom (Elf Invasion)", "Hollow Invasion","Cape Canaveral"}
-        elseif Settings.WorldCategory == "Raid Worlds" then
+        elseif Settings.WorldCategory == "โหมด Raid" then
             storylist = {"Storm Hideout","West City", "Infinity Train", "Shiganshinu District - Raid","Hiddel Sand Village - Raid"}
         elseif Settings.WorldCategory == "Portals" then
             storylist = {"Coming Soon...","Coming Soon..."}
@@ -440,7 +440,7 @@ local function WorldSec()
 
     getgenv().updatelevel = function()
         selectlevel:ClearDrop() local levellist; local level = Settings.SelectedWorld;
-        ---///Story Worlds\\\---
+        ---///โหมด Story & Inf\\\---
         if level == "Planet Namak" then
             levellist = {"namek_infinite", "namek_level_1", "namek_level_2", "namek_level_3", "namek_level_4", "namek_level_5", "namek_level_6"}
         elseif level == "Shiganshinu District" then
@@ -504,7 +504,7 @@ local function WorldSec()
         if level == "namek_infinite" or level == "aot_infinite" or level == "demonslayer_infinite" 
         or level == "naruto_infinite" or level == "marineford_infinite" or level == "tokyoghoul_infinite" or level == "hueco_infinite" 
         or level == "hxhant_infinite" or level == "magnolia_infinite" or level == "jjk_infinite" or level == "clover_infinite" 
-        or level == "jojo_infinite" or level == "opm_infinite" or cata == "Legend Stages" or cata == "Raid Worlds" then
+        or level == "jojo_infinite" or level == "opm_infinite" or cata == "Legend Stages" or cata == "โหมด Raid" then
             diff = {"Hard"}
         else
             diff = {"Normal", "Hard"}
@@ -1454,7 +1454,7 @@ local function startfarming()
         not Settings.farmprotal and Settings.autostart and Settings.AutoFarm and Settings.teleporting and not Settings.AutoInfinityCastle then
         local cpos = plr.Character.HumanoidRootPart.CFrame; cata = Settings.WorldCategory
         
-        if cata == "Story Worlds" or cata == "Legend Stages" then
+        if cata == "โหมด Story & Inf" or cata == "Legend Stages" then
             if tostring(game.Workspace._LOBBIES.Story[getgenv().door].Owner.Value) ~= plr.Name then
                 for i, v in pairs(game:GetService("Workspace")["_LOBBIES"].Story:GetDescendants()) do
                     if v.Name == "Owner" and v.Value == nil then
@@ -1492,10 +1492,10 @@ local function startfarming()
                     end
                 end
     
-                warn("farming")
+                warn("Story or Inf farming")
                 task.wait(3)
             end
-        elseif cata == "Raid Worlds" then
+        elseif cata == "โหมด Raid" then
             getgenv().door =  "_lobbytemplate211"
             if tostring(game.Workspace._RAID.Raid[getgenv().door].Owner.Value) ~= plr.Name then
                 for i, v in pairs(game:GetService("Workspace")["_RAID"].Raid:GetDescendants()) do
@@ -1534,7 +1534,7 @@ local function startfarming()
                     end
                 end
     
-                warn("farming")
+                warn("Raid farming")
                 task.wait(3)
             end
         end

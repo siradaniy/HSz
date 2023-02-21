@@ -526,7 +526,14 @@ end
 ---------------- AutoFarm Config -------------
 ----------------------------------------------
 local function AutoFarmSec()
-    AutoFarmConfig:Cheat("Checkbox"," Auto Farm เริ่มทำงาน  ", function(bool)
+
+    AutoFarmConfig:Cheat("Checkbox"," Auto Start เริ่มทำงาน  ", function(bool)
+        print(bool)
+        Settings.autostart = bool
+        saveSettings()
+    end,{enabled = Settings.autostart })
+
+    AutoFarmConfig:Cheat("Checkbox"," Auto Farm วางตัว  ", function(bool)
         print(bool)
         Settings.AutoFarm = bool
         saveSettings()
@@ -1442,7 +1449,7 @@ getgenv().door = "_lobbytemplategreen1"
 
 local function startfarming()
     if game.PlaceId == 8304191830 and 
-        not Settings.farmprotal and Settings.AutoFarm and Settings.teleporting and not Settings.AutoInfinityCastle then
+        not Settings.farmprotal and Settings.autostart and Settings.AutoFarm and Settings.teleporting and not Settings.AutoInfinityCastle then
         local cpos = plr.Character.HumanoidRootPart.CFrame; cata = Settings.WorldCategory
         
         if cata == "Story Worlds" or cata == "Legend Stages" then
@@ -1530,7 +1537,7 @@ local function startfarming()
             end
         end
 
-    elseif game.PlaceId == 8304191830 and Settings.AutoFarm and getgenv().teleporting and Settings.AutoFarmTP ~= true 
+    elseif game.PlaceId == 8304191830 and Settings.autostart and Settings.AutoFarm and getgenv().teleporting and Settings.AutoFarmTP ~= true 
             and Settings.AutoInfinityCastle ~= true and Settings.farmprotal or Settings.farmprotal then
 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do

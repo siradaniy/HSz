@@ -415,12 +415,12 @@ local function WorldSec()
 
     getgenv().updateworld = function()
         selectworld:ClearDrop() local storylist;
-        if Settings.WorldCategory == "Story Worlds" then
+        if Settings.WorldCategory == "โหมด Story & Inf" then
             storylist = {"Planet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
             "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom","Cape Canaveral", "Alien Spaceship"}
         elseif Settings.WorldCategory == "Legend Stages" then
             storylist = {"Clover Kingdom (Elf Invasion)", "Hollow Invasion","Cape Canaveral"}
-        elseif Settings.WorldCategory == "Raid Worlds" then
+        elseif Settings.WorldCategory == "โหมด Raid" then
             storylist = {"Storm Hideout","West City", "Infinity Train", "Shiganshinu District - Raid","Hiddel Sand Village - Raid"}
         elseif Settings.WorldCategory == "Portals" then
             storylist = {"Coming Soon...","Coming Soon..."}

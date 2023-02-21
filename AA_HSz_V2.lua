@@ -769,7 +769,7 @@ function updatepos(map, UnitPos, a,a2,a3,a4,a5,a6)
     print("updatepos")
     saveSettings()
 end
-
+--updatefix fixmap
 function savepos(UnitPos, a,a2,a3,a4,a5,a6)
     if game.Workspace._map:FindFirstChild("namek mushroom model") then
         updatepos("Namak", UnitPos, a,a2,a3,a4,a5,a6)
@@ -2014,7 +2014,7 @@ function PlaceUnits(map)
         end
     end
 end
-
+--updatefix fixmap
 coroutine.resume(coroutine.create(function()
     while task.wait(1.5) do
         if game.PlaceId ~= 8304191830 and Settings.AutoFarm and not getgenv().disableatuofarm then
@@ -2079,5 +2079,16 @@ if Settings.AutoLoadScript then
 end
 
 game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false --ปิดแจ้งเตือนต่าง ๆ 
+
+--hide name
+task.spawn(function()  -- Hides name for yters (not sure if its Fe)
+    while task.wait() do
+        pcall(function()
+            if game.Players.LocalPlayer.Character.Head:FindFirstChild("_overhead") then
+               workspace[game.Players.LocalPlayer.Name].Head["_overhead"]:Destroy()
+            end
+        end)
+    end
+end)
 
 print("HSz AA v2 Loaded สำเร็จ!!!")

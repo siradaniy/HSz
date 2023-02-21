@@ -545,7 +545,7 @@ local function AutoFarmSec()
         saveSettings()
     end,{enabled = Settings.AutoReplay})
 
-    AutoFarmConfig:Cheat("Checkbox"," Auto Next Story & Next level หอคอย  ", function(bool)
+    AutoFarmConfig:Cheat("Checkbox"," Auto Next Story ", function(bool)
         print(bool)
         Settings.AutoNext = bool
         saveSettings()
@@ -1754,10 +1754,6 @@ coroutine.resume(coroutine.create(function()
                     local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     print("Replay...")
-                elseif Settings.AutoInfinityCastle then
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer()
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer()
-                    print("Next Room...")
                 elseif getgenv().AutoContinue then
                     local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
                     local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))   

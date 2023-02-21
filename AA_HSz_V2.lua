@@ -235,9 +235,9 @@ local Unit4 = UC:Sector("Unit 4")
 local Unit5 = UC:Sector("Unit 5")
 local Unit6 = UC:Sector("Unit 6")
 
-local ETC = Window:Category(" 🌐 Discord & etc.")
+local ETC = Window:Category(" 🌐 Discord & Shop")
 local AutoSummonSec = ETC:Sector("💸 Auto สุ่ม Units 💸")
-local AutoSnipeMerchantSec = ETC:Sector("🏪 Auto  ชื้อของ ร้านค้า 🏪")
+local AutoSnipeMerchantSec = ETC:Sector("🏪 Auto ชื้อของร้านค้า Bulma 🏪")
 local WebhookSec = ETC:Sector("🌐 Discord Webhook 🌐")
 local OtherSec = ETC:Sector("⌛ Auto Load Script ⌛")
 

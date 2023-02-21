@@ -13,7 +13,7 @@ else
 end
 ------------------------------
 Settings = {}
-local a = 'HSz_Anime_Adventures' -- Paste Name
+local a = 'HSz_Anime_Adventures' -- ชื่อโฟเดอร์
 local b = game:GetService('Players').LocalPlayer.Name .. '_AnimeAdventures.json' 
 ------------------------------
 local HttpService = game:GetService("HttpService")
@@ -23,6 +23,7 @@ local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 ------------------------------
+
 ------------item drop result
 function get_inventory_items()
 	for i,v in next, getgc() do
@@ -71,7 +72,6 @@ local function GetCurrentLevelName()
 end
 ----------------endMap & ID Map
 
-
 getgenv().item = "-"
 
 plr.PlayerGui:FindFirstChild("HatchInfo"):FindFirstChild("holder"):FindFirstChild("info1"):FindFirstChild("UnitName").Text = getgenv().item
@@ -85,6 +85,7 @@ function webhook()
     return
     end 
     
+
     local Time = os.date('!*t', OSTime);
 
 	local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
@@ -234,7 +235,6 @@ local Unit4 = UC:Sector("Unit 4")
 local Unit5 = UC:Sector("Unit 5")
 local Unit6 = UC:Sector("Unit 6")
 
-
 local ETC = Window:Category(" 🌐 Discord & etc.")
 local AutoSummonSec = ETC:Sector("💸 Auto สุ่ม Units 💸")
 local AutoSnipeMerchantSec = ETC:Sector("🏪  ดู ร้านค้า 🏪")
@@ -251,7 +251,6 @@ local facebook = sponsor:Sector(" 👑ร้าน 🌟 StarBux 🌟 ")
 local kaigem = sponsor:Sector("🐣 ชื้อ ID ไก่เพชร 🐣")
 local farmgem = sponsor:Sector("💎 บริการฟาร์มเพชร 💎")
 local starbux = sponsor:Sector("💎 ROBUX กลุ่ม 💎")
-
 
 function saveSettings()
     local HttpService = game:GetService('HttpService')
@@ -337,7 +336,7 @@ local function UnitSec()
 
     GetUnits()
 
-    SelectUnits:Cheat("Button", "🧙 ใส่ทีมที่เลือก", function() --มันจะใส่ตัวที่ใส่อยู่
+    SelectUnits:Cheat("Button", "🧙 ใส่ทีมที่เลือก", function() --Selects Currently Equipped Units!
         Settings.SelectedUnits = {
             U1 = "nil",
             U2 = "nil",
@@ -398,10 +397,10 @@ local function WorldSec()
         saveSettings()
     end, {
         options = {
-            "Story Worlds",
+            "โหมด Story & Inf",
             "Legend Stages",
-            "Raid Worlds",
-            "Portals"
+            "โหมด Raid",
+            "ประตู Portals"
         },
         default = Settings.WorldCategory
     })
@@ -515,7 +514,7 @@ local function WorldSec()
         end
     end
     
-    SelectWorld:Cheat("Checkbox","🙋️ Friends Only  ", function(bool)
+    SelectWorld:Cheat("Checkbox","👬 Friends Only  ", function(bool)
         print(bool)
         Settings.isFriendOnly = bool
         saveSettings()
@@ -644,50 +643,52 @@ getgenv().posZ = 1.5
 ------------------ sponsorfix ----------------kaigem
 ----------------------------------------------
 local function sponsor()
-discord:Cheat("Label","Discord สำหรับสั่งชื้อ GamePass และ สอบถามต่าง ๆ ") 
-discord:Cheat("Button","🔥 Copy Discord Link   ", function()
-    setclipboard("https://discord.gg/eGKGE2sQtX")
-    end)
---facebook
-facebook:Cheat("Label","✅ ร้านเปิดบริการเวลา 12:00 - 22:00 ทุกวัน ") 
-facebook:Cheat("Label","✅ ไม่ต้องใช้ ID - PASS ") 
-facebook:Cheat("Label","✅ รับของผ่านเซิร์ฟ วี จ่ายปุ๊บรับเลย ") 
-facebook:Cheat("Label","✅ Anime Adventures , Blox Fruits , BedWars , Anime Dimension , 9ล9 ") 
-facebook:Cheat("Button","🔥 Copy Facebook Link   ", function()
-    setclipboard("https://www.facebook.com/StarBux.Store/")
-    end)    
---kaigem
-kaigem:Cheat("Label","🐣 ไก่ 40,000 เพชร  ราคา 250 บาท") 
-kaigem:Cheat("Label","🐣 ไก่ 60,000 เพชร  ราคา 375 บาท") 
-kaigem:Cheat("Label","🐣 ไก่ 100,000 เพชร ราคา 699 บาท") 
-kaigem:Cheat("Label","💳 บัตรเติม ROBUX 10$ ราคา 279 บาท") 
-kaigem:Cheat("Label","💳 จะได้รับ ROBUX 1000 และพรีเมี่ยม 1เดือน  ") 
-kaigem:Cheat("Button","🔥 Copy ไก่เพชร Link  ", function()
-    setclipboard("https://starbuxstore.com/categories/clduzowwu0033jxn22a9llwis")
-    end)
---farmgem
-farmgem:Cheat("Label","✅ ต้องใช้ ID - PASS") 
-farmgem:Cheat("Label","✅ ต้องปิด 2FA ก่อนทุกครั้ง") 
-farmgem:Cheat("Label","💎 20,000 เพชร (ใช้เวลา 3วัน) ราคา 125 บาท") 
-farmgem:Cheat("Label","💎 30,000 เพชร (ใช้เวลา 4วัน) ราคา 185 บาท") 
-farmgem:Cheat("Label","💎 40,000 เพชร (ใช้เวลา 5วัน) ราคา 249 บาท") 
-farmgem:Cheat("Label","💎 50,000 เพชร (ใช้เวลา 6วัน) ราคา 309 บาท") 
-farmgem:Cheat("Button","🔥 Copy ฟาร์มเพชร Link  ", function()
-    setclipboard("https://starbuxstore.com/categories/clduzowt00000jxn2aaruqdjr")   
-end) 
---ROBUXGroup
-starbux:Cheat("Label","👑ร้าน 🌟 STARBUX 🌟 ") 
-starbux:Cheat("Label","🛒 กำลังจะเปิดขาย ROBUX แบบกลุ่ม [ROBLOX]🛒") 
-starbux:Cheat("Label","ROBUX กลุ่ม ใครสนใจเข้ากลุ่มไว้เลยนะ") 
-starbux:Cheat("Label","เรทราคาติดตามได้จากกลุ่มเลย") 
-starbux:Cheat("Label","💎 40,000 เพชร (ใช้เวลา 5วัน) ราคา 249 บาท") 
-starbux:Cheat("Label","💎 50,000 เพชร (ใช้เวลา 6วัน) ราคา 309 บาท") 
-starbux:Cheat("Button","🔥 Copy กลุ่มชื้อ ROBUX Link  ", function()
-    setclipboard("https://www.roblox.com/groups/16807082/STARBUX-STORE#!/about")   
-end) 
+    discord:Cheat("Label","Discord สำหรับสั่งชื้อ GamePass และ สอบถามต่าง ๆ ") 
+    discord:Cheat("Button","🔥 Copy Discord Link   ", function()
+        setclipboard("https://discord.gg/eGKGE2sQtX")
+        end)
+    --facebook
+    facebook:Cheat("Label","✅ ร้านเปิดบริการเวลา 12:00 - 22:00 ทุกวัน ") 
+    facebook:Cheat("Label","✅ ไม่ต้องใช้ ID - PASS ") 
+    facebook:Cheat("Label","✅ รับของผ่านเซิร์ฟ วี จ่ายปุ๊บรับเลย ") 
+    facebook:Cheat("Label","✅ Anime Adventures , Blox Fruits , BedWars , Anime Dimension , 9ล9 ") 
+    facebook:Cheat("Button","🔥 Copy Facebook Link   ", function()
+        setclipboard("https://www.facebook.com/StarBux.Store/")
+        end)    
+    --kaigem
+    kaigem:Cheat("Label","🐣 ไก่ 40,000 เพชร  ราคา 250 บาท") 
+    kaigem:Cheat("Label","🐣 ไก่ 60,000 เพชร  ราคา 375 บาท") 
+    kaigem:Cheat("Label","🐣 ไก่ 100,000 เพชร ราคา 699 บาท") 
+    kaigem:Cheat("Label","💳 บัตรเติม ROBUX 10$ ราคา 279 บาท") 
+    kaigem:Cheat("Label","💳 จะได้รับ ROBUX 1000 และพรีเมี่ยม 1เดือน  ") 
+    kaigem:Cheat("Button","🔥 Copy ไก่เพชร Link  ", function()
+        setclipboard("https://starbuxstore.com/categories/clduzowwu0033jxn22a9llwis")
+        end)
+    --farmgem
+    farmgem:Cheat("Label","✅ ต้องใช้ ID - PASS") 
+    farmgem:Cheat("Label","✅ ต้องปิด 2FA ก่อนทุกครั้ง") 
+    farmgem:Cheat("Label","💎 20,000 เพชร (ใช้เวลา 3วัน) ราคา 125 บาท") 
+    farmgem:Cheat("Label","💎 30,000 เพชร (ใช้เวลา 4วัน) ราคา 185 บาท") 
+    farmgem:Cheat("Label","💎 40,000 เพชร (ใช้เวลา 5วัน) ราคา 249 บาท") 
+    farmgem:Cheat("Label","💎 50,000 เพชร (ใช้เวลา 6วัน) ราคา 309 บาท") 
+    farmgem:Cheat("Button","🔥 Copy ฟาร์มเพชร Link  ", function()
+        setclipboard("https://starbuxstore.com/categories/clduzowt00000jxn2aaruqdjr")   
+    end) 
+    --ROBUXGroup
+    starbux:Cheat("Label","👑ร้าน 🌟 STARBUX 🌟 ") 
+    starbux:Cheat("Label","🛒 กำลังจะเปิดขาย ROBUX แบบกลุ่ม [ROBLOX]🛒") 
+    starbux:Cheat("Label","ROBUX กลุ่ม ใครสนใจเข้ากลุ่มไว้เลยนะ") 
+    starbux:Cheat("Label","เรทราคาติดตามได้จากกลุ่มเลย") 
+    starbux:Cheat("Label","💎 40,000 เพชร (ใช้เวลา 5วัน) ราคา 249 บาท") 
+    starbux:Cheat("Label","💎 50,000 เพชร (ใช้เวลา 6วัน) ราคา 309 บาท") 
+    starbux:Cheat("Button","🔥 Copy กลุ่มชื้อ ROBUX Link  ", function()
+        setclipboard("https://www.roblox.com/groups/16807082/STARBUX-STORE#!/about")   
+    end) 
+    
+    
+    end    
 
 
-end    
 ----------------------------------------------
 ---------------- Unit Config -----------------
 ----------------------------------------------
@@ -763,7 +764,9 @@ function updatepos(map, UnitPos, a,a2,a3,a4,a5,a6)
         }
     saveSettings()
     end
-
+    pcall(function()
+        
+    end)
     Settings[map][UnitPos]["x"] = a.Position.X
     Settings[map][UnitPos]["z"] = a.Position.Z
 
@@ -1005,7 +1008,7 @@ function MouseClick2(UnitPos)
 				local raycastResult6 = workspace:Raycast(rayOrigin6, rayDirection6, raycastParams)
 				a6.CFrame = CFrame.new(raycastResult6.Position) * CFrame.Angles(0, -0, -0)	
 			elseif _G.gg and mobile then
-				warn("MOBILE Player")
+				warn("MOBILE DEVICE")
 				UserInputService.TouchLongPress:Connect(function()
 					mouse.TargetFilter  = a
 
@@ -1257,7 +1260,6 @@ function AutoSummon()
         getgenv().AutoSummon = bool
     end)
 end
-
 ----------------------------------------------
 ------------ Auto Snipe Merchant -------------
 ----------------------------------------------
@@ -1490,7 +1492,7 @@ local function startfarming()
                     end
                 end
     
-                warn("normal farm")
+                warn("farming")
                 task.wait(3)
             end
         elseif cata == "Raid Worlds" then
@@ -1532,7 +1534,7 @@ local function startfarming()
                     end
                 end
     
-                warn("Raid Farm")
+                warn("farming")
                 task.wait(3)
             end
         end
@@ -1649,24 +1651,24 @@ end
 coroutine.resume(coroutine.create(function()
     while task.wait() do
         if not Settings.AutoInfinityCastle then
-            if not checkChallenge() then 
+            if not checkChallenge() then --Challenge_Not_Complete
                 if  Settings.AutoChallenge and checkReward() == true then
-                    startChallenge() 
+                    startChallenge() --S_Challenge
                 else
-                    startfarming()
+                    startfarming()--S_Farming
                 end
             elseif checkChallenge() == true then
-                startfarming()
+                startfarming()--S_Farming
             end
         elseif Settings.AutoInfinityCastle == true then--Infiniy Castle
-            if not checkChallenge() then 
+            if not checkChallenge() then --Challenge_Not_Complete
                 if  Settings.AutoChallenge and checkReward() == true then
-                    startChallenge() 
+                    startChallenge() --S_Challenge
                 else
-                    FarmInfinityCastle()
+                    FarmInfinityCastle()--S_Farming
                 end
             elseif checkChallenge() == true then
-                FarmInfinityCastle()
+                FarmInfinityCastle()--S_Farming
             end
         end
 
@@ -1808,7 +1810,7 @@ function PlacePos(map,name,_uuid,pos)
     if Settings.AutoFarm and not getgenv().disableatuofarm then
         x = getgenv().posX; z = getgenv().posZ
        
-        print(map.." กำลังวางตัว  "..name)
+        print(map.." กำลังวางตัว "..name)
 
         if name ~= "metal_knight_evolved" then
             warn("x")
@@ -1930,92 +1932,94 @@ end
 
 
 function PlaceUnits(map)
-    if Settings.AutoFarm and not getgenv().disableatuofarm then
-        x = getgenv().posX; z = getgenv().posZ
-        for i = 1, 6 do
-            local unitinfo = Settings.SelectedUnits["U" .. i]
-            if unitinfo ~= nil then
-                local unitinfo_ = unitinfo:split(" #")
-                local pos = Settings[map]["UP" .. i]
-                print(map.." กำลังวางตัว "..unitinfo_[1])
-
-                if unitinfo_[1] ~= "metal_knight_evolved" then
-
-                    --place units 0
-                    local args = {
-                        [1] = unitinfo_[2],
-                        [2] = CFrame.new(Vector3.new(pos["x"], pos["y"], pos["z"]) )
-                    }
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-        
-                    --place units 1
-                    local args = {
-                        [1] = unitinfo_[2],
-                        [2] = CFrame.new(Vector3.new(pos["x"], pos["y2"], pos["z"] + z) )
-                    }
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-        
-                    --place units 2 
-                    local args = {
-                        [1] = unitinfo_[2],
-                        [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y3"], pos["z"]) )
-                    }
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-        
-                    --place units 3 
-                    local args = {
-                        [1] = unitinfo_[2],
-                        [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y4"], pos["z"]) )
-                    }
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-        
-                    --place units 4
-                    local args = {
-                        [1] = unitinfo_[2],
-                        [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y5"], pos["z"] + z) )
-                    }
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-        
-                    --place units 5
-                    local args = {
-                        [1] = unitinfo_[2],
-                        [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y6"], pos["z"] + z) )
-                    }
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-
-                elseif unitinfo_[1] == "metal_knight_evolved" then
-                    task.spawn(function()
+    pcall(function()
+        if Settings.AutoFarm and not getgenv().disableatuofarm then
+            x = getgenv().posX; z = getgenv().posZ
+            for i = 1, 6 do
+                local unitinfo = Settings.SelectedUnits["U" .. i]
+                if unitinfo ~= nil then
+                    local unitinfo_ = unitinfo:split(" #")
+                    local pos = Settings[map]["UP" .. i]
+                    print(map.." กำลังวางตัว "..unitinfo_[1])
+    
+                    if unitinfo_[1] ~= "metal_knight_evolved" then
+    
                         --place units 0
                         local args = {
                             [1] = unitinfo_[2],
                             [2] = CFrame.new(Vector3.new(pos["x"], pos["y"], pos["z"]) )
                         }
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-                    end)
-
-                    task.spawn(function()
+            
                         --place units 1
-                        task.wait(2)
                         local args = {
                             [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y"], pos["z"] + z) )
+                            [2] = CFrame.new(Vector3.new(pos["x"], pos["y2"], pos["z"] + z) )
                         }
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-                    end)
-
-                    task.spawn(function()
-                        --place units 2
-                        task.wait(3)
+            
+                        --place units 2 
                         local args = {
                             [1] = unitinfo_[2],
-                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"], pos["z"]) )
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y3"], pos["z"]) )
                         }
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
-                    end)
+            
+                        --place units 3 
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y4"], pos["z"]) )
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+            
+                        --place units 4
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y5"], pos["z"] + z) )
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+            
+                        --place units 5
+                        local args = {
+                            [1] = unitinfo_[2],
+                            [2] = CFrame.new(Vector3.new(pos["x"] - x, pos["y6"], pos["z"] + z) )
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+    
+                    elseif unitinfo_[1] == "metal_knight_evolved" then
+                        task.spawn(function()
+                            --place units 0
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"], pos["y"], pos["z"]) )
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                        end)
+    
+                        task.spawn(function()
+                            --place units 1
+                            task.wait(2)
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"], pos["y"], pos["z"] + z) )
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                        end)
+    
+                        task.spawn(function()
+                            --place units 2
+                            task.wait(3)
+                            local args = {
+                                [1] = unitinfo_[2],
+                                [2] = CFrame.new(Vector3.new(pos["x"] + x, pos["y"], pos["z"]) )
+                            }
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.spawn_unit:InvokeServer(unpack(args))
+                        end)
+                    end
                 end
             end
         end
-    end
+    end)
 end
 --updatefix fixmap
 coroutine.resume(coroutine.create(function()
@@ -2074,14 +2078,14 @@ pcall(function()
         vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
     game:GetService("ReplicatedStorage").endpoints.client_to_server.claim_daily_reward:InvokeServer()
-    warn("HSz Test Anti-AFK !")
+    warn("HSz Test Anti-AFK!")
 end)
 
 if Settings.AutoLoadScript then
     autoload()
 end
 
-game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false --ปิดแจ้งเตือนต่าง ๆ 
+game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false --disables the annoying error messages 
 
 --hide name
 task.spawn(function()  -- Hides name for yters (not sure if its Fe)

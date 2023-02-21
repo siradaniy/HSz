@@ -212,7 +212,7 @@ Window.ChangeToggleKey(Enum.KeyCode.RightShift)
 local Home = Window:Category("🏠 หน้าแรก")
 local Developers = Home:Sector("HSz Anime Adventures")
 local asdasd = Home:Sector(" ")
-local UIUPDT = Home:Sector("⚙️ UPDATE Fix ⚙️")
+local UIUPDT = Home:Sector("⚙️ Fix UPDATE "..version.." ⚙️")
 
 
 local Farm = Window:Category(" 🤖 Auto Farm")
@@ -224,7 +224,7 @@ local AutoFarmConfig = Farm:Sector("⚙️ ตั้งค่า Auto Farm")
 local ChallengeConfig = Farm:Sector("⌛ ตั้งค่า Challenge")
 
 
-local UC = Window:Category(" 🧙 Unit Config")
+local UC = Window:Category(" 🧙 ตั้งค่า Unit")
 local NDY = UC:Sector("ยังไม่เสร็จ")
 local emptyxx = UC:Sector(" ")
 local Unit1 = UC:Sector("Unit 1")
@@ -337,7 +337,7 @@ local function UnitSec()
 
     GetUnits()
 
-    SelectUnits:Cheat("Button", "🧙 Select Units", function() --มันจะใส่ตัวที่ใส่อยู่
+    SelectUnits:Cheat("Button", "🧙 ใส่ทีมที่เลือก", function() --มันจะใส่ตัวที่ใส่อยู่
         Settings.SelectedUnits = {
             U1 = "nil",
             U2 = "nil",
@@ -621,12 +621,13 @@ end
 ------------------ credits -------------------
 ----------------------------------------------
 local function credits()
+    Developers:Cheat("Label","ยินดีต้อนรับ "..game:GetService("Players").LocalPlayer.Name.." ")  
     Developers:Cheat("Label","📜 Scripted by: Negative & HOLYSHz ")       
     Developers:Cheat("Label","⚒️ กด \"RightShift\" หรือ \"Shiftขวา\" เพื่อ เปิด - ปิด เมนู")   
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+] V2 HSz \n[+]Test Time")   
+    UIUPDT:Cheat("Label","[+] V2 HSz \n[+]Test Time \n[+]Fix Story,Inf,Raid")   
 end
 
 getgenv().posX = 1.5

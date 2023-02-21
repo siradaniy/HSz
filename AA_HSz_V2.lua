@@ -210,7 +210,7 @@ local Window = Uilib.new(true, "[HSz Member] Anime Adventures UPD "..version.." 
 Window.ChangeToggleKey(Enum.KeyCode.RightShift)
 
 
-local Home = Window:Category("🏠 หน้าแรก")
+local Home = Window:Category(" 🏠 หน้าแรก")
 local Developers = Home:Sector("HSz Anime Adventures")
 local asdasd = Home:Sector(" ")
 local UIUPDT = Home:Sector("⚙️ Fix UPDATE "..version.." ⚙️")
@@ -237,7 +237,7 @@ local Unit6 = UC:Sector("Unit 6")
 
 local ETC = Window:Category(" 🌐 Discord & etc.")
 local AutoSummonSec = ETC:Sector("💸 Auto สุ่ม Units 💸")
-local AutoSnipeMerchantSec = ETC:Sector("🏪  ดู ร้านค้า 🏪")
+local AutoSnipeMerchantSec = ETC:Sector("🏪 Auto  ชื้อของ ร้านค้า 🏪")
 local WebhookSec = ETC:Sector("🌐 Discord Webhook 🌐")
 local OtherSec = ETC:Sector("⌛ Auto Load Script ⌛")
 
@@ -1304,22 +1304,22 @@ end
 
 
 function SnipeMerchant()
-    AutoSnipeMerchantSec:Cheat("Dropdown", "Select Star Fruit",function(value)
+    AutoSnipeMerchantSec:Cheat("Dropdown", "เลือก Star Fruit ที่จะชื้อ",function(value)
         Settings.ASM_SelectedFruit = value
         saveSettings()
     end, { options = {"None","Any StarFruits","StarFruit","StarFruitGreen","StarFruitRed", "StarFruitPink","StarFruitBlue","StarFruitEpic"}, default =Settings.ASM_SelectedFruit})
    
-    AutoSnipeMerchantSec:Cheat("Dropdown", "Select Other Items",function(value)
+    AutoSnipeMerchantSec:Cheat("Dropdown", "เลือก Items ที่จะชื้อ",function(value)
         Settings.ASM_SelectedOtherItems = value
         saveSettings()
     end, { options = {"None","Any Items","LuckPotion","star_remnant","summon_ticket"}, default =Settings.ASM_SelectedOtherItems})
 
-    AutoSnipeMerchantSec:Cheat("Dropdown", "Select Evo Items",function(value)
+    AutoSnipeMerchantSec:Cheat("Dropdown", "เลือก Evo Items ที่จะชื้อ",function(value)
         Settings.ASM_SelectedEvoItems = value
         saveSettings()
     end, { options = {"None"}, default =Settings.ASM_SelectedEvoItems})
 
-    AutoSnipeMerchantSec:Cheat("Checkbox","Enable Auto Snipe", function(bool)
+    AutoSnipeMerchantSec:Cheat("Checkbox","เปิดชื้อของ Auto", function(bool)
         Settings.AutoSnipeMerchant = bool
         saveSettings()
     end,{enabled = Settings.AutoSnipeMerchant })

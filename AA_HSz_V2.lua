@@ -1384,7 +1384,7 @@ if game.PlaceId == 8304191830 then
     others()
 else
     SelectUnits:Cheat("Label","ใช้ได้แค่ใน Lobby!!!")    
-    AutoSummonSec:Cheat("Label","Label","ใช้ได้แค่ใน Lobby!!!")    
+    AutoSummonSec:Cheat("Label","ใช้ได้แค่ใน Lobby!!!")    
     WorldSec()
     AutoFarmSec()
     MoreFarmSec()

@@ -1850,9 +1850,11 @@ coroutine.resume(coroutine.create(function()
                     local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))   
                     print("Next Room infint Castle...")              
                 elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue then
-                   -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
-                    print("Returning to lobby...")
+                   game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
+                
                     Teleport()
+
+                    print("Returning to lobby...")
                 end
             end
         end)

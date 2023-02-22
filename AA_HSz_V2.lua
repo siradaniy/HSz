@@ -1,5 +1,5 @@
 --updatefix
-local version = "10.7.5_HSz_v2h1"
+local version = "10.7.5_HSz_v2"
 
 ---// Loading Section \\---
 repeat  task.wait() until game:IsLoaded()
@@ -1832,8 +1832,6 @@ coroutine.resume(coroutine.create(function()
                         end)
                     end)
                     task.wait(2)
-                    getgenv().item = game:GetService("Players").LocalPlayer.PlayerGui.HatchInfo.holder.info1.UnitName.Text
-                    warn(game:GetService("Players").LocalPlayer.PlayerGui.HatchInfo.holder.info1.UnitName.Text)
     
                     webhook()
                 end

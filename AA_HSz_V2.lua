@@ -544,7 +544,7 @@ local function AutoFarmSec()
         saveSettings()
     end,{enabled = Settings.AutoReplay})
 
-    AutoFarmConfig:Cheat("Checkbox"," Auto Next Story ", function(bool)
+    AutoFarmConfig:Cheat("Checkbox"," Auto Next Story & หอคอย  ", function(bool)
         print(bool)
         Settings.AutoNext = bool
         saveSettings()
@@ -590,7 +590,7 @@ local function MoreFarmSec()
         print(bool)
         Settings.AutoContinue = bool
         saveSettings()
-    end,{enabled = Settings.AutoContinue and Settings.AutoNext })
+    end,{enabled = Settings.AutoContinue })
 
     castleconfig:Cheat("Checkbox","🏯 Auto Infinity Castle  ", function(bool)
         print(bool)
@@ -633,7 +633,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Fix Can't Next Level Infinity Castle  \n[+]Support Story,Inf,Legend Stage,Raid,Infinity Castle ")   
+    UIUPDT:Cheat("Label","[+]Fix Can't Next Level Infinity Castle 2 \n[+]Support Story,Inf,Legend Stage,Raid,Infinity Castle ")   
 end
 
 getgenv().posX = 1.5
@@ -1643,6 +1643,7 @@ local function FarmInfinityCastle()
                     end
                 end
             end
+            warn("Infinity Castle farming")
             task.wait(6)
         end
     end

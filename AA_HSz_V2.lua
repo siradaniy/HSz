@@ -1853,8 +1853,8 @@ coroutine.resume(coroutine.create(function()
                 elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue and not Settings.AutoInfinityCastle then
                    game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
                    print("Returning to lobby...")
+                   
                    Teleport()
-
 
                 end
             end

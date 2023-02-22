@@ -1851,9 +1851,10 @@ coroutine.resume(coroutine.create(function()
                     local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     print("Next Story...")
                 elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue and not Settings.AutoInfinityCastle then
-                   -- game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
-                   Teleport()
+                   game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
                    print("Returning to lobby...")
+                   Teleport()
+
 
                 end
             end

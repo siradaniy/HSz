@@ -1898,7 +1898,7 @@ function PlacePos(map,name,_uuid,pos)
     if Settings.AutoFarm and not getgenv().disableatuofarm then
         x = getgenv().posX; z = getgenv().posZ
        
-        print(" ด่าน "..map.." กำลังวางตัว "..name)
+        print(" ด่าน "..map.." กำลังวางหรืออัพตัว "..name)
 
         if name ~= "metal_knight_evolved" then
             warn("x")
@@ -2028,7 +2028,7 @@ function PlaceUnits(map)
                 if unitinfo ~= nil then
                     local unitinfo_ = unitinfo:split(" #")
                     local pos = Settings[map]["UP" .. i]
-                    print(" ด่าน "..map.." กำลังวางตัว "..unitinfo_[1])
+                    print(" ด่าน "..map.." กำลังวางหรืออัพตัว "..unitinfo_[1])
     
                     if unitinfo_[1] ~= "metal_knight_evolved" then
     

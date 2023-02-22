@@ -590,7 +590,7 @@ local function MoreFarmSec()
         print(bool)
         Settings.AutoContinue = bool
         saveSettings()
-    end,{enabled = Settings.AutoContinue})
+    end,{enabled = Settings.AutoContinue and Settings.AutoNext })
 
     castleconfig:Cheat("Checkbox","🏯 Auto Infinity Castle  ", function(bool)
         print(bool)
@@ -1842,20 +1842,22 @@ coroutine.resume(coroutine.create(function()
                     local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     print("Replay...")
-                elseif Settings.AutoNext then
-                    local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-                    local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
-                    print("Next Story...")
+                elseif Settings.AutoInfinityCastle then
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer()
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer()
+                    print("Next Room...")
                 elseif Settings.AutoContinue then
                     local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
                     local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))   
                     print("Next Room infint Castle...")     
-                elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue then
-                   game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
-                   print("Returning to lobby...")
-                   
-                   Teleport()
-
+                elseif Settings.AutoNext and not Settings.AutoInfinityCastle then
+                    local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+                    local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
+                    print("Next Story...")
+                elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue and not Settings.AutoInfinityCastle then
+                    game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
+                    print("Returning to lobby...")
+                    Teleport()
                 end
             end
         end)

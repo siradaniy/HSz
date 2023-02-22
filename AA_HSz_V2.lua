@@ -1842,14 +1842,14 @@ coroutine.resume(coroutine.create(function()
                     local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     print("Replay...")
-                elseif getgenv().AutoContinue then
-                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
-                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))   
-                    print("Next Room infint Castle...") 
-                elseif Settings.AutoNext and not Settings.AutoContinue and not Settings.AutoInfinityCastle then
+                elseif Settings.AutoNext then
                     local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     print("Next Story...")
+                elseif getgenv().AutoContinue then
+                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
+                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))   
+                    print("Next Room infint Castle...")     
                 elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue then
                    game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
                    print("Returning to lobby...")

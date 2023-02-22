@@ -633,7 +633,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Fix Can't Next Level Infinity Castle 2 \n[+]Support Story,Inf,Legend Stage,Raid,Infinity Castle ")   
+    UIUPDT:Cheat("Label","[+]Fix Can't Next Level Infinity Castle 3 \n[+]Support Story,Inf,Legend Stage,Raid,Infinity Castle ")   
 end
 
 getgenv().posX = 1.5
@@ -1846,15 +1846,15 @@ coroutine.resume(coroutine.create(function()
                 elseif Settings.AutoInfinityCastle then
                     game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer()
                     game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer()
-                    print("Next Room infint Castle...")
-                elseif Settings.AutoContinue then
-                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
-                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))   
                     print("Next Room infint Castle...")     
                 elseif Settings.AutoNext and not Settings.AutoInfinityCastle then
                     local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     local a={[1]="next_story"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
                     print("Next Story...")
+                elseif Settings.AutoContinue then
+                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))
+                    local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))   
+                    print("Next Room infint Castle...")     
                 elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue and not Settings.AutoInfinityCastle then
                     game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
                     print("Returning to lobby...")

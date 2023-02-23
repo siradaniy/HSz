@@ -1,5 +1,5 @@
 --updatefix
-local version = "10.7.5_HSz_v2"
+local version = "10.7.5"
 
 ---// Loading Section \\---
 repeat  task.wait() until game:IsLoaded()
@@ -206,7 +206,7 @@ local dir = "Anime_Adventures/"..game.Players.LocalPlayer.Name
 local Uilib = loadstring(game:HttpGet("https://raw.githubusercontent.com/siradaniy/HSz/main/finitylib.lua"))()
 local exec = tostring(identifyexecutor())
 
-local Window = Uilib.new(true, "[HSz Member] Anime Adventures UPD "..version.." - "..exec)
+local Window = Uilib.new(true, "[HSz_AA_v2] Anime Adventures UPD "..version.." - "..exec)
 Window.ChangeToggleKey(Enum.KeyCode.RightShift)
 
 
@@ -1831,9 +1831,9 @@ coroutine.resume(coroutine.create(function()
                             end 
                         end)
                     end)
-                    task.wait(2)
+                    task.wait(1)
     
-                    webhook()
+                pcall(function() webhook() end)
                 end
                 print("รอเลือก ออก หรือ ไปต่อ")
                 task.wait(2.1)

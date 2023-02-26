@@ -420,7 +420,7 @@ local function WorldSec()
             "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom","Cape Canaveral", "Alien Spaceship", 
             "Fabled Kingdom"}
         elseif Settings.WorldCategory == "Legend Stages" then
-            storylist = {"Clover Kingdom (Elf Invasion)", "Hollow Invasion","Cape Canaveral"}
+            storylist = {"Clover Kingdom (Elf Invasion)", "Hollow Invasion","Cape Canaveral","Fabled Kingdom (Ten Commandments)"}
         elseif Settings.WorldCategory == "โหมด Raid" then
             storylist = {"Storm Hideout","West City", "Infinity Train", "Shiganshinu District - Raid","Hiddel Sand Village - Raid"}
         elseif Settings.WorldCategory == "Portals" then
@@ -487,6 +487,8 @@ local function WorldSec()
             levellist = {"aot_raid_1"}
         elseif level == "Hiddel Sand Village - Raid" then
             levellist = {"naruto_raid_1"}
+        elseif level == "Fabled Kingdom (Ten Commandments)" then
+            levellist = {"7ds_legend_1","7ds_legend_2","7ds_legend_3"}    
         end
 
         for i = 1, #levellist do

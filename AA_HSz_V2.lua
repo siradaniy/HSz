@@ -104,6 +104,8 @@ function webhook()
 
 
     resultx = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
+    if resultx == "VICTORY" then result = "ชนะ" end
+    if resultx == "DEFEAT" then result = "แพ้" end
     mapid = game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
     mapname = game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
     cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
@@ -166,7 +168,7 @@ function webhook()
           ["fields"] = {
              {
               ["name"] ="ผลรวม",
-              ["value"] = " Map Name : "..mapname.. " 🗺️\nMap ID : "..mapid..  " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>\n เวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ",
+              ["value"] = " Map Name : "..mapname.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>\n เวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ",
               ["inline"] = true
             },
             {

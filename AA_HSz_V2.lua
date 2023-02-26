@@ -170,7 +170,7 @@ function webhook()
           ["fields"] = {
              {
               ["name"] ="ผลรวม",
-              ["value"] = " โหมด name : "..mapname.. " 🗺️\nMap name : "..world.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>\n เวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ",
+              ["value"] = " World name : "..mapname.. " 🗺️\nMap name : "..world.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>\n เวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ",
               ["inline"] = true
             },
             {

@@ -636,7 +636,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Fix Can't Next Level Infinity Castle Test 1 \n[+]Support Story,Inf,Legend Stage,Raid,Infinity Castle ")   
+    UIUPDT:Cheat("Label","[+]Story 7ds_maps \n[+]Support Story,Inf,Legend Stage,Raid,Infinity Castle ")   
 end
 
 getgenv().posX = 1.5

@@ -101,8 +101,10 @@ function webhook()
     result = ResultHolder.Title.Text else levelname, result = "nil","nil" end
     if result == "VICTORY" then result = "ชนะ" end
     if result == "DEFEAT" then result = "แพ้" end
-
-
+    
+    _map = game:GetService("Workspace")["_BASES"].player.base["fake_unit"]:WaitForChild("HumanoidRootPart")
+    GetLevelData = game.workspace._MAP_CONFIG:WaitForChild("GetLevelData"):InvokeServer()
+    world = GetLevelData.world or GetLevelData.name
     resultx = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
     if resultx == "VICTORY" then result = "ชนะ" end
     if resultx == "DEFEAT" then result = "แพ้" end
@@ -168,7 +170,7 @@ function webhook()
           ["fields"] = {
              {
               ["name"] ="ผลรวม",
-              ["value"] = " Map Name : "..mapname.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>\n เวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ",
+              ["value"] = " Map name : "..mapname.. " 🗺️\nMap Id : "..world.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>\n เวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ",
               ["inline"] = true
             },
             {
@@ -2177,7 +2179,7 @@ pcall(function()
         vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
     end)
     game:GetService("ReplicatedStorage").endpoints.client_to_server.claim_daily_reward:InvokeServer()
-    warn("HSz Test Anti-AFK!")
+    warn("HSz Anti-AFK Loaded สำเร็จ!!!")
 end)
 
 if Settings.AutoLoadScript then
@@ -2197,4 +2199,5 @@ task.spawn(function()  -- Hides name for yters (not sure if its Fe)
     end
 end)
 
-print("HSz AA v2 Loaded สำเร็จ!!!")
+warn("HSz Hider Name Loaded สำเร็จ!!!")
+warn("HSz AA v2 Loaded สำเร็จ!!!")

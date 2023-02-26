@@ -343,7 +343,7 @@ function sex()
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Fix Update "..versionx.."")
-        home:Label("[+]Add 7ds_map \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
+        home:Label("[+]Add 7ds_map \n[+]Delete Frozen Event")
         home:Label(" ")
 
         home:Button("👉 Copy HOLYSHz Member Link!", function()
@@ -746,11 +746,6 @@ alinecity:Label("ต้องมีประตูในกระเป๋าเ
 --------------------------------------------------
 --#region Auto Farm Tab
 
-autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
-    getgenv().AutoFarmTP = bool
-    updatejson()
-end)
-
 autofarmtab:Label("```Infinity Castle หอคอย```")
 
 autofarmtab:Toggle("Auto Next Level หอคอย", getgenv().AutoContinue, function(bool)
@@ -1044,11 +1039,6 @@ end)
 
         
 --#region Auto Farm Tab
-
-autofarmtab:Toggle("Auto Farm ประตูน้ำแข็ง", getgenv().AutoFarmTP, function(bool)
-    getgenv().AutoFarmTP = bool
-    updatejson()
-end)
 
 autofarmtab:Label("```Infinity Castle หอคอย```")
 

@@ -1,5 +1,5 @@
 --updatefix
-local version = "10.7.5"
+local version = "11.0.0"
 
 ---// Loading Section \\---
 repeat  task.wait() until game:IsLoaded()
@@ -143,7 +143,7 @@ function webhook()
     local data = {
         ["content"] = "",
 			["username"] = "Anime Adventures",
-			["avatar_url"] = "https://tr.rbxcdn.com/33e128db5189ee794a9d8255e4b80044/150/150/Image/Png",
+			["avatar_url"] = "https://tr.rbxcdn.com/59ef1ccab6ac14595231fcfc338c3bb7/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {
@@ -417,7 +417,8 @@ local function WorldSec()
         selectworld:ClearDrop() local storylist;
         if Settings.WorldCategory == "โหมด Story & Inf" then
             storylist = {"Planet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
-            "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom","Cape Canaveral", "Alien Spaceship"}
+            "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom","Cape Canaveral", "Alien Spaceship", 
+            "Fabled Kingdom"}
         elseif Settings.WorldCategory == "Legend Stages" then
             storylist = {"Clover Kingdom (Elf Invasion)", "Hollow Invasion","Cape Canaveral"}
         elseif Settings.WorldCategory == "โหมด Raid" then
@@ -440,7 +441,7 @@ local function WorldSec()
 
     getgenv().updatelevel = function()
         selectlevel:ClearDrop() local levellist; local level = Settings.SelectedWorld;
-        ---///โหมด Story & Inf\\\---
+        ---///โหมด Story & Inf\\\---fixmap
         if level == "Planet Namak" then
             levellist = {"namek_infinite", "namek_level_1", "namek_level_2", "namek_level_3", "namek_level_4", "namek_level_5", "namek_level_6"}
         elseif level == "Shiganshinu District" then
@@ -467,6 +468,8 @@ local function WorldSec()
             levellist = {"jojo_infinite","jojo_level_1","jojo_level_2","jojo_level_3","jojo_level_4","jojo_level_5","jojo_level_6",}
         elseif level == "Alien Spaceship" then
             levellist = {"opm_infinite","opm_level_1","opm_level_2","opm_level_3","opm_level_4","opm_level_5","opm_level_6",}
+        elseif level == "Fabled Kingdom" then
+            levellist = {"7ds_infinite","7ds_level_1","7ds_level_2","7ds_level_3","7ds_level_4","7ds_level_5","7ds_level_6",}    
         ---///Legend Stages\\\---
         elseif level == "Clover Kingdom (Elf Invasion)" then
             levellist = {"clover_legend_1","clover_legend_2","clover_legend_3"}
@@ -504,7 +507,7 @@ local function WorldSec()
         if level == "namek_infinite" or level == "aot_infinite" or level == "demonslayer_infinite" 
         or level == "naruto_infinite" or level == "marineford_infinite" or level == "tokyoghoul_infinite" or level == "hueco_infinite" 
         or level == "hxhant_infinite" or level == "magnolia_infinite" or level == "jjk_infinite" or level == "clover_infinite" 
-        or level == "jojo_infinite" or level == "opm_infinite" or cata == "Legend Stages" or cata == "โหมด Raid" then
+        or level == "jojo_infinite" or level == "opm_infinite" or cata == "7ds_infinite" or cata == "Legend Stages" or cata == "โหมด Raid" then
             diff = {"Hard"}
         else
             diff = {"Normal", "Hard"}
@@ -819,6 +822,8 @@ function savepos(UnitPos, a,a2,a3,a4,a5,a6)
         updatepos("Storm_Hideout", UnitPos, a,a2,a3,a4,a5,a6)
     elseif game.Workspace._map:FindFirstChild("snow grass") then
         updatepos("infinity_trian", UnitPos, a,a2,a3,a4,a5,a6)
+    elseif game.Workspace._map:FindFirstChild("misc noncollide no obstacle") then
+        updatepos("7ds_map", UnitPos, a,a2,a3,a4,a5,a6)    
     end
     warn("savepos")
 end
@@ -2153,6 +2158,8 @@ coroutine.resume(coroutine.create(function()
                 PlaceUnits("Storm_Hideout")
             elseif game.Workspace._map:FindFirstChild("snow grass") then
                 PlaceUnits("infinity_trian")
+            elseif game.Workspace._map:FindFirstChild("misc noncollide no obstacle") then
+                PlaceUnits("7ds_map")
             end
         end
     end

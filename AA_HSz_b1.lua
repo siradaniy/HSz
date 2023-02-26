@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "10.7.5hsz1"
+local versionx = "11.0.0"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -125,7 +125,7 @@ local function webhook()
 		local data = {
 			["content"] = "",
 			["username"] = "Anime Adventures",
-			["avatar_url"] = "https://tr.rbxcdn.com/33e128db5189ee794a9d8255e4b80044/150/150/Image/Png",
+			["avatar_url"] = "https://tr.rbxcdn.com/59ef1ccab6ac14595231fcfc338c3bb7/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {
@@ -145,7 +145,7 @@ local function webhook()
 						['text'] = "// Made by Negative & HOLYSHz", 
 						['icon_url'] = "https://yt3.ggpht.com/mApbVVD8mT92f50OJuTObnBbc3j7nDCXMJFBk2SCDpSPcaoH9DB9rxVpJhsB5SxAQo1UN2GzyA=s48-c-k-c0x00ffffff-no-rj"
 					},
-					["fields"] = {
+          ["fields"] = {
 						{
                             ["name"] = "Current Level:",
                             ["value"] = tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text).. " ✨",
@@ -515,7 +515,8 @@ function sex()
 
         local worlddrop = slectworld:Dropdown("Select World", {"Plannet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
         "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom", "Clover Legend - HARD","Hollow Legend - HARD","Cape Canaveral",
-        "JoJo Legend - HARD","Alien Spaceship","[RAID] West City","[RAID] Infinity Train","[RAID] Hidden Sand Village","[RAID] Shiganshinu District","[RAID] Storm Hideout"}, getgenv().world, function(world)
+        "JoJo Legend - HARD","Alien Spaceship","[RAID] West City","[RAID] Infinity Train","[RAID] Hidden Sand Village","[RAID] Shiganshinu District",
+        "[RAID] Storm Hideout","Fabled Kingdom"}, getgenv().world, function(world)
             getgenv().world = world
             updatejson()
             if world == "Plannet Namak" then
@@ -677,7 +678,14 @@ function sex()
                 getgenv().levels = {"uchiha_level_1","uchiha_level_2","uchiha_level_3","uchiha_level_4","uchiha_level_5"}
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
-                end                 
+                end 
+            elseif world =="Fabled Kingdom" then
+                getgenv().leveldrop:Clear()
+                table.clear(levels)
+                getgenv().levels = {"7ds_infinite","7ds_level_1","7ds_level_2","7ds_level_3","7ds_level_4","7ds_level_5","7ds_level_6"}
+                for i, v in ipairs(levels) do
+                    getgenv().leveldrop:Add(v)
+                end                      
             end
         end)
 
@@ -2281,6 +2289,38 @@ else
                 y = 365.66925048828127, 
                 z = 1325.1728515625
             }
+        },
+        ["7ds"] = {
+           UP1  = {
+               x = -100.60639190673828, 
+               y = 212.9611053466797, 
+               z = -195.98094177246095
+            },
+            UP2  = {
+               x = -86.73683166503906, 
+               y = 216.9965057373047, 
+               z = -211.91287231445313
+            },
+             UP3  = {
+               x = -118.31477355957031, 
+               y = 212.861083984375, 
+               z = -233.3929443359375
+            },
+             UP6  = {
+               x = -100.40522003173828, 
+               y = 212.96104431152345, 
+               z = -187.8174591064453
+            },
+             UP5  = {
+               x = -90.78057861328125, 
+               y = 212.9611053466797, 
+               z = -264.75848388671877       
+            },
+             UP4  = {
+               x = -118.33492279052735, 
+               y = 217.64389038085938, 
+               z = -256.07647705078127
+            }
            }
          },
 --updatefix fixmap fixplaceunit
@@ -2401,7 +2441,7 @@ function SpawnUnitPos(map)
             if unitinfo ~= nil then
                 local unitinfo_ = unitinfo:split(" #")
                 local pos = Settings[map]["UP" .. i]
-                print(map.." attempt to place "..unitinfo_[1])
+                print(" ด่าน "..map.." กำลังวางตัว "..unitinfo_[1])
 
                 if unitinfo_[1] ~= "metal_knight_evolved" then
 
@@ -2621,7 +2661,7 @@ function PlacePos(map,name,_uuid,pos)
     if getgenv().AutoFarm and not getgenv().disableatuofarm then
         x = getgenv().posX; z = getgenv().posZ
        
-        print(map.." attempt to place "..name)
+        print(" ด่าน "..map.." กำลังวางตัว " ..name)
 
         if name ~= "metal_knight_evolved" then
             warn("x")
@@ -2708,7 +2748,7 @@ function PlacePos(map,name,_uuid,pos)
     if getgenv().AutoFarm and not getgenv().disableatuofarm then
         x = getgenv().posX; z = getgenv().posZ
        
-        print(map.." attempt to place "..name)
+        print(" ด่าน "..map.." กำลังวางตัว "..name)
 
         if name ~= "metal_knight" then
             warn("x")

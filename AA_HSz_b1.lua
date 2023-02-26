@@ -343,7 +343,7 @@ function sex()
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Fix Update "..versionx.."")
-        home:Label("[+]Fix JJK Finger can't AutoFarm \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
+        home:Label("[+]Add 7ds_map \n[+]แก้ให้ AutoFarm ทำงานกับทุกแมพ ประตู Devil,Aline ทำงานปกติ")
         home:Label(" ")
 
         home:Button("👉 Copy HOLYSHz Member Link!", function()
@@ -516,7 +516,7 @@ function sex()
         local worlddrop = slectworld:Dropdown("Select World", {"Plannet Namak", "Shiganshinu District", "Snowy Town","Hidden Sand Village", "Marine's Ford",
         "Ghoul City", "Hollow World", "Ant Kingdom", "Magic Town", "Cursed Academy","Clover Kingdom", "Clover Legend - HARD","Hollow Legend - HARD","Cape Canaveral",
         "JoJo Legend - HARD","Alien Spaceship","[RAID] West City","[RAID] Infinity Train","[RAID] Hidden Sand Village","[RAID] Shiganshinu District",
-        "[RAID] Storm Hideout","Fabled Kingdom"}, getgenv().world, function(world)
+        "[RAID] Storm Hideout","Fabled Kingdom","Fabled Kingdom (Ten Commandments)"}, getgenv().world, function(world)
             getgenv().world = world
             updatejson()
             if world == "Plannet Namak" then
@@ -685,7 +685,14 @@ function sex()
                 getgenv().levels = {"7ds_infinite","7ds_level_1","7ds_level_2","7ds_level_3","7ds_level_4","7ds_level_5","7ds_level_6"}
                 for i, v in ipairs(levels) do
                     getgenv().leveldrop:Add(v)
-                end                      
+                end    
+            elseif world =="Fabled Kingdom (Ten Commandments)" then
+                getgenv().leveldrop:Clear()
+                table.clear(levels)
+                getgenv().levels = {"7ds_legend_1","7ds_legend_2","7ds_legend_3"}
+                for i, v in ipairs(levels) do
+                    getgenv().leveldrop:Add(v)
+                end                        
             end
         end)
 

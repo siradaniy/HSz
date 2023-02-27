@@ -90,6 +90,8 @@ function webhook()
 
 	local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
 
+    local exec = tostring(identifyexecutor())
+
 
     userlevel = plr.PlayerGui:FindFirstChild("spawn_units"):FindFirstChild("Lives"):FindFirstChild("Main"):FindFirstChild("Desc"):FindFirstChild("Level").Text
     totalgems = plr.PlayerGui:FindFirstChild("spawn_units"):FindFirstChild("Lives"):FindFirstChild("Frame"):FindFirstChild("Resource"):FindFirstChild("Gem"):FindFirstChild("Level").Text
@@ -160,7 +162,7 @@ function webhook()
 					["image"] = {
 						['url'] = "https://tr.rbxcdn.com/bc2ea8300bfaea9fb3193d7f801f0e8b/768/432/Image/Png"
 					},
-					["description"] = "🎮 ||**"..game:GetService("Players").LocalPlayer.Name.."**|| 🎮",
+					["description"] = " Player Name : 🐱 ||**"..game:GetService("Players").LocalPlayer.Name.."**|| 🐱\nตัวรันที่ใช้ : 🎮 "..exec.." 🎮 ",
 					["color"] = 110335,
 					["timestamp"] = string.format('%d-%d-%dT%02d:%02d:%02dZ', Time.year, Time.month, Time.day, Time.hour, Time.min, Time.sec),
 					['footer'] = {
@@ -168,24 +170,24 @@ function webhook()
 						['icon_url'] = "https://yt3.ggpht.com/mApbVVD8mT92f50OJuTObnBbc3j7nDCXMJFBk2SCDpSPcaoH9DB9rxVpJhsB5SxAQo1UN2GzyA=s48-c-k-c0x00ffffff-no-rj"
 					},
           ["fields"] = {
-             {
-              ["name"] ="ผลรวม",
-              ["value"] = " World name : "..mapname.. " 🗺️\nMap name : "..world.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."<:wave:997136622363627530>\n เวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ",
-              ["inline"] = true
-            },
             {
                ["name"] ="Current Gems 💎 & Gold 💰 & Level ✨",
-               ["value"] = "Gems รวม : "  ..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰\n "  ..tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text)..  " ✨\n "
-             },
-             {
-                ["name"] ="Rewards",
-                ["value"] = gold.." Gold 💰\n"..gems.." Gems <:gem:997123585476927558>\n"..xp[1].." XP 🧪\n"..trophy.." Trophy 🏆"
-             },
-             {
-              ["name"] ="Items Drop",
+               ["value"] = "```ini\n"..tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text)..  " ✨\nGems รวม : "..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰```",
+            },
+            {
+               ["name"] ="Results :",
+               ["value"] = " ```ini\nWorld name : "..mapname.. " 🗺️\nMap name : "..world.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."🌊\n เวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ```",
+               ["inline"] = true
+            },
+            {
+                ["name"] ="Rewards :",
+                ["value"] = "```ini\n" ..gold.." Gold 💰\n"..gems.." Gems 💎\n"..xp[1].." XP 🧪\n"..trophy.." Trophy 🏆```",
+            },
+            {
+              ["name"] ="Items Drop :",
               ["value"] = "```ini\n" .. TextDropLabel .. "```",
               ["inline"] = falseye 
-             }
+            }
           }
         }
       }
@@ -642,7 +644,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Story 7ds_maps \n[+]Support Story,Inf,Legend Stage,Raid,Infinity Castle ")   
+    UIUPDT:Cheat("Label","[+]Story 7ds_maps \n[+]Add New Webhook ")   
 end
 
 getgenv().posX = 1.5

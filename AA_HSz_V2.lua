@@ -2185,9 +2185,12 @@ end)
 if Settings.AutoLoadScript then
     autoload()
 end
-
-game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false --disables the annoying error messages 
-
+--disms
+if game.PlaceId ~= 8304191830 then
+    game:GetService("ReplicatedStorage").packages.assets["ui_sfx"].error.Volume = 0
+    game:GetService("ReplicatedStorage").packages.assets["ui_sfx"].error_old.Volume = 0
+    game.Players.LocalPlayer.PlayerGui.MessageGui.Enabled = false --disables the annoying error messages 
+end
 --hide name
 task.spawn(function()  -- Hides name for yters (not sure if its Fe)
     while task.wait() do

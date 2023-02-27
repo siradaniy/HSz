@@ -176,7 +176,7 @@ function webhook()
             },
             {
                ["name"] ="Results :",
-               ["value"] = " ```ini\nWorld name : "..mapname.. " 🗺️\nMap name : "..world.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).."🌊\nเวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ```",
+               ["value"] = " ```ini\n🌏 World name : "..mapname.. "\n🗺️ Map name : "..world.. "\n⚔️ ผลต่อสู้ : "..result.. "\n🌊 Wave ที่จบ : " ..tostring(waves[2]).."\n⌛ เวลาที่ใช้ : " ..tostring(ttime[2]).."\n ```",
                ["inline"] = true
             },
             {

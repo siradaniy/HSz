@@ -25,18 +25,18 @@ local UserInputService = game:GetService("UserInputService")
 getgenv().savefilename = "Anime-Adventures_HSz_UPD_"..game.Players.LocalPlayer.Name.."-"..versionx..".json"
 getgenv().door = "_lobbytemplategreen1"
 getgenv().doorraid = "_lobbytemplate211"
+getgenv().doorjjk = "_lobbytemplate_event222"
 
 
 --test fixportal
 
 function getBorosPortals()
-    local reg = getreg() --> returns Roblox's registry in a table
+    local reg = getreg()
 
     for i,v in next, reg do
-        if type(v) == 'function' then --> Checks if the current iteration is a function
-            if getfenv(v).script then --> Checks if the function's environment is in a script
-                --if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.DropService" or getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
-                    for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+        if type(v) == 'function' then 
+            if getfenv(v).script then
+                    for _, v in pairs(debug.getupvalues(v)) do 
                         if type(v) == 'table' then
                             if v["session"] then
                                 local portals = {}
@@ -49,20 +49,18 @@ function getBorosPortals()
                             end
                         end
                     end
-                --end
             end
         end
     end
 end
 
 function getCSMPortals()
-    local reg = getreg() --> returns Roblox's registry in a table
+    local reg = getreg() 
 
     for i,v in next, reg do
-        if type(v) == 'function' then --> Checks if the current iteration is a function
-            if getfenv(v).script then --> Checks if the function's environment is in a script
-                --if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.DropService" or getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
-                    for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+        if type(v) == 'function' then 
+            if getfenv(v).script then 
+                    for _, v in pairs(debug.getupvalues(v)) do
                         if type(v) == 'table' then
                             if v["session"] then
                                 local portals = {}
@@ -75,7 +73,6 @@ function getCSMPortals()
                             end
                         end
                     end
-                --end
             end
         end
     end
@@ -314,6 +311,7 @@ function sex()
     getgenv().autosell = data.autosell
     getgenv().AutoFarm = data.autofarm
     getgenv().AutoFarmIC = data.autofarmic
+    getgenv().AutoFarmJJK = data.AutoFarmJJK --AutoFarmJJK
     getgenv().AutoFarmRaid = data.AutoFarmRaid --AutoFarmRaid
     getgenv().AutoFarmTP = data.autofarmtp
     getgenv().AutoLoadTP = data.autoloadtp
@@ -361,6 +359,7 @@ function sex()
             webhook = getgenv().weburl,
             autofarm = getgenv().AutoFarm,
             autofarmic = getgenv().AutoFarmIC,
+            AutoFarmJJK = getgenv().AutoFarmJJK, --AutoFarmJJK
             AutoFarmRaid = getgenv().AutoFarmRaid, --AutoFarmRaid
             autofarmtp = getgenv().AutoFarmTP,
             autostart = getgenv().autostart,
@@ -799,9 +798,15 @@ end)
 alinecity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf Aline Spacship.")
 
 --------------------------------------------------
------------------- Auto Farm Tab -----------------
+------------------ Auto Farm Tab -----------------AutoFarmJJK
 --------------------------------------------------
 --#region Auto Farm Tab
+autofarmtab:Label("```DUNGEON JJK Finger ดันนิ้วสุคุนะ```")
+
+autofarmtab:Toggle("Auto Start JJK เปิดฟาร์ม ดันนิ้ว", getgenv().AutoFarmJJK, function(bool)
+    getgenv().AutoFarmJJK = bool
+    updatejson()
+end)
 
 autofarmtab:Label("```Infinity Castle หอคอย```")
 
@@ -1096,6 +1101,13 @@ end)
 
         
 --#region Auto Farm Tab
+
+autofarmtab:Label("```DUNGEON JJK Finger ดันนิ้วสุคุนะ```")
+
+autofarmtab:Toggle("Auto Start JJK เปิดฟาร์ม ดันนิ้ว", getgenv().AutoFarmJJK, function(bool)
+    getgenv().AutoFarmJJK = bool
+    updatejson()
+end)
 
 autofarmtab:Label("```Infinity Castle หอคอย```")
 
@@ -1434,6 +1446,7 @@ else
         autosell = false,
         autofarm = false,
         autofarmic = false,
+        AutoFarmJJK = false,
         AutoFarmRaid = false,
         autostart = false,
         autoloadtp = false,
@@ -3061,8 +3074,8 @@ end
 
 
 local function startfarming()
-    if getgenv().farmprotal == false and getgenv().autostart and getgenv().farmaline == false and getgenv().AutoFarm and getgenv().teleporting 
-                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false  then
+    if getgenv().farmprotal == false and getgenv().autostart and getgenv().farmaline == false and getgenv().AutoFarm and getgenv().teleporting  
+                           and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false and getgenv().AutoFarmJJK == false  then
 
         if game.PlaceId == 8304191830 then
             local cpos = plr.Character.HumanoidRootPart.CFrame
@@ -3186,6 +3199,76 @@ elseif getgenv().autostart == false and getgenv().AutoFarmRaid and getgenv().Aut
     end
     --end raid game:GetService("Workspace")["_RAID"].Raid 
 
+        ----------//test star นิ้ว jjkfinger \\-------------- 
+
+elseif getgenv().autostart == false and getgenv().AutoFarmJJK and getgenv().AutoFarm  then
+    if game.PlaceId == 8304191830 then
+        local cpos = plr.Character.HumanoidRootPart.CFrame
+        local string_1 = "_lobbytemplate_event222";
+        local table_1 = {
+        ["selected_key"] = 'key_jjk_finger'
+        };
+        local Target = game:GetService("ReplicatedStorage").endpoints["client_to_server"]["request_join_lobby"];
+        Target:InvokeServer(string_1, table_1);
+
+
+        if tostring(Workspace._DUNGEONS.Lobbies[getgenv().doorjjk].Owner.Value) ~= plr.Name then
+            for i, v in pairs(game:GetService("Workspace")["_DUNGEONS"].Lobbies:GetDescendants()) do
+                if v.Name == "Owner" and v.Value == nil then
+
+                    local args = {
+                        [1] = tostring(v.Parent.Name)
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(unpack(args))
+
+                    task.wait()
+
+                    if getgenv().level:match("Dungeon") then
+                        local args = {
+                            [1] = tostring(v.Parent.Name), -- Lobby 
+                            [2] = getgenv().level, -- World
+                            [3] = true, -- Friends Only or not
+                            [4] = "Hard"
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(unpack(args))
+                    else
+                        local args = {
+                            [1] = tostring(v.Parent.Name), -- Lobby 
+                            [2] = getgenv().level, -- World
+                            [3] = true, -- Friends Only or not
+                            [4] = getgenv().difficulty
+                        }
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(unpack(args))
+                    end
+
+                    local args = { 
+                        [1] =tostring(v.Parent.Name)
+                    }
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+                    getgenv().doorjjk = v.Parent.Name print(v.Parent.Name) --v.Parent:GetFullName()
+                    plr.Character.HumanoidRootPart.CFrame = v.Parent.door.CFrame
+                    break
+                end
+            end
+        end
+
+        task.wait()
+
+        plr.Character.HumanoidRootPart.CFrame = cpos
+
+        if Workspace._DUNGEONS.Lobbies[getgenv().doorjjk].Owner == plr.Name then
+            if Workspace._DUNGEONS.Lobbies[getgenv().doorjjk].Teleporting.Value == true then
+                getgenv().teleporting = false
+            else
+                getgenv().teleporting = true
+            end
+        end
+
+        warn("JJK farming")
+        task.wait(3)
+    end
+    --end นิ้ว jjkfinger
+
 --fixportal  ----Devil Portal
 
 elseif getgenv().autostart == false and getgenv().farmprotal or getgenv().farmportal and getgenv().AutoFarm  then
@@ -3226,7 +3309,7 @@ elseif getgenv().autostart == false and getgenv().farmprotal or getgenv().farmpo
 
         ---Aline PortalAutoFarmRaid
     elseif getgenv().autostart == false and getgenv().AutoFarm and getgenv().teleporting 
-    and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false and getgenv().farmprotal == false and getgenv().farmaline  then  
+    and getgenv().AutoFarmTP == false and getgenv().AutoFarmIC == false and getgenv().AutoFarmRaid == false and getgenv().AutoFarmJJK == false and getgenv().farmprotal == false and getgenv().farmaline  then  
 
 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do

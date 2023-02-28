@@ -26,6 +26,63 @@ getgenv().savefilename = "Anime-Adventures_HSz_UPD_"..game.Players.LocalPlayer.N
 getgenv().door = "_lobbytemplategreen1"
 getgenv().doorraid = "_lobbytemplate211"
 
+
+--test fixportal
+
+function getBorosPortals()
+    local reg = getreg() --> returns Roblox's registry in a table
+
+    for i,v in next, reg do
+        if type(v) == 'function' then --> Checks if the current iteration is a function
+            if getfenv(v).script then --> Checks if the function's environment is in a script
+                --if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.DropService" or getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
+                    for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                local portals = {}
+                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
+                                  if item["item_id"] == "portal_boros_g" then
+                                    table.insert(portals, item)
+                                  end
+                                end
+                                return portals
+                            end
+                        end
+                    end
+                --end
+            end
+        end
+    end
+end
+
+function getCSMPortals()
+    local reg = getreg() --> returns Roblox's registry in a table
+
+    for i,v in next, reg do
+        if type(v) == 'function' then --> Checks if the current iteration is a function
+            if getfenv(v).script then --> Checks if the function's environment is in a script
+                --if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.DropService" or getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
+                    for _, v in pairs(debug.getupvalues(v)) do --> Basically a for loop that prints everything, but in one line
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                local portals = {}
+                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
+                                  if item["item_id"] == "portal_csm" then
+                                    table.insert(portals, item)
+                                  end
+                                end
+                                return portals
+                            end
+                        end
+                    end
+                --end
+            end
+        end
+    end
+end
+
+
+
 ------------item drop result
 function get_inventory_items()
 	for i,v in next, getgc() do
@@ -343,7 +400,7 @@ function sex()
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Fix Update "..versionx.."")
-        home:Label("[+]Add 7ds_map \n[+]Delete Frozen Event")
+        home:Label("[+]Add 7ds_map \n[+]Fix Devil & Aline Portal cab open")
         home:Label(" ")
 
         home:Button("👉 Copy HOLYSHz Member Link!", function()
@@ -3142,7 +3199,7 @@ elseif getgenv().autostart == false and getgenv().farmprotal or getgenv().farmpo
         end
           task.wait(1.5)
           local args = {
-            [1] = tostring(getgenv().PortalID),
+            [1] = getCSMPortals()[1]["uuid"],
             [2] = {
                 ["friends_only"] = true
             }
@@ -3181,12 +3238,11 @@ elseif getgenv().autostart == false and getgenv().farmprotal or getgenv().farmpo
         end
         task.wait(1.5)
         local args = {
-            [1] = tostring(getgenv().PortalIDA),
+            [1] = getBorosPortals()[1]["uuid"],
             [2] = {
                 ["friends_only"] = true
             }
         }
-        
         game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
 
         task.wait(1.5)

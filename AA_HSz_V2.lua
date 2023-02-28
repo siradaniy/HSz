@@ -75,6 +75,23 @@ function getCSMPortals()
 end
 
 ------------item drop result
+function get_inventory_items_unique_items()
+	for i,v in next, getgc() do
+		if type(v) == 'function' then 
+			if getfenv(v).script then 
+				if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.ItemInventoryServiceClient" then
+					for _, v in pairs(debug.getupvalues(v)) do 
+						if type(v) == 'table' then
+							if v["session"] then
+								return v["session"]['inventory']['inventory_profile_data']['unique_items']
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+end
 function get_inventory_items()
 	for i,v in next, getgc() do
 		if type(v) == 'function' then 
@@ -92,18 +109,28 @@ function get_inventory_items()
 		end
 	end
 end
-
-local Table_Items_Name_data = {}
-local Old_Inventory_table = {}
+local Table_All_Items_Old_data = {}
+local Table_All_Items_New_data = {}
 for v2, v3 in pairs(game:GetService("ReplicatedStorage").src.Data.Items:GetDescendants()) do
 	if v3:IsA("ModuleScript") then
 		for v4, v5 in pairs(require(v3)) do
-		    Table_Items_Name_data[v4] = v5.name
-		end;
-	end;
-end;
+		    Table_All_Items_Old_data[v4] = {}
+			Table_All_Items_Old_data[v4]['Name'] = v5['name']
+		    Table_All_Items_Old_data[v4]['Count'] = 0
+
+			Table_All_Items_New_data[v4] = {}
+			Table_All_Items_New_data[v4]['Name'] = v5['name']
+			Table_All_Items_New_data[v4]['Count'] = 0
+		end
+	end
+end
 for i,v in pairs(get_inventory_items()) do
-	Old_Inventory_table[i] = v
+	Table_All_Items_Old_data[i]['Count'] = v
+end
+for i,v in pairs(get_inventory_items_unique_items()) do
+    if string.find(v['item_id'],"portal") or string.find(v['item_id'],"disc") then
+        Table_All_Items_Old_data[v['item_id']]['Count'] = Table_All_Items_Old_data[v['item_id']]['Count'] + 1
+    end
 end
 ---------------------end webhook
 
@@ -183,13 +210,25 @@ function webhook()
     local TextDropLabel = ""
 		local CountAmount = 1
 		for i,v in pairs(get_inventory_items()) do
-			if (v - Old_Inventory_table[i]) > 0 then
-				for NameData, NameShow in pairs(Table_Items_Name_data) do
-					if (v - Old_Inventory_table[i]) > 0 and tostring(NameData) == tostring(i) then
-						TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(string.gsub(i, i, NameShow)) .. " : x" .. tostring(v - Old_Inventory_table[i]) .. "\n"
-						CountAmount = CountAmount + 1
+			Table_All_Items_New_data[i]['Count'] = v
+		end
+		for i,v in pairs(get_inventory_items_unique_items()) do
+			if string.find(v['item_id'],"portal") or string.find(v['item_id'],"disc") then
+				Table_All_Items_New_data[v['item_id']]['Count'] = Table_All_Items_New_data[v['item_id']]['Count'] + 1
+			end
+		end
+		for i,v in pairs(Table_All_Items_New_data) do
+			if v['Count'] > 0 and (v['Count'] - Table_All_Items_Old_data[i]['Count']) > 0 then
+				if string.find(i,"portal") or string.find(i,"disc") then
+					if string.gsub(i, "%D", "") == "" then
+						TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(v['Name']) .. " : x" .. tostring(v['Count'] - Table_All_Items_Old_data[i]['Count']) .. "\n"
+					else
+						TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(v['Name']) .. " Tier " .. tostring(string.gsub(i, "%D", "")) .. " : x" .. tostring(v['Count'] - Table_All_Items_Old_data[i]['Count']) .. "\n"
 					end
-				end;
+				else
+					TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(v['Name']) .. " : x" .. tostring(v['Count'] - Table_All_Items_Old_data[i]['Count']) .. "\n"
+				end
+				CountAmount = CountAmount + 1
 			end
 		end
 		if TextDropLabel == "" then
@@ -618,7 +657,7 @@ local function Farmportal()
 
     devilcity:Cheat("Label","ประตูจะสุ่มเปิดจากที่มีในกระเป๋าที่มี ระดับจะเปิดตามที่เราเลือก") 
 
-    
+
     --Aline
 
     alinecity:Cheat("Dropdown", "เลือก ประตู Portal",function(value)

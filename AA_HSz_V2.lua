@@ -260,7 +260,7 @@ function webhook()
 					},
           ["fields"] = {
             {
-               ["name"] ="Current Gems 💎 & Gold 💰 & Level ✨",
+               ["name"] ="Current Level ✨ & Gems 💎 & Gold 💰",
                ["value"] = "```ini\n"..tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text)..  " ✨\nGems รวม : "..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰```",
             },
             {
@@ -640,19 +640,21 @@ local function Farmportal()
     devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(pornname)
         getgenv().portalnameX = pornname
         saveSettings()
-    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = getgenv().portalnameX})
+    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = Settings.portalnameX})
 
 
     devilcity:Cheat("Button","Buy Devil Portal", function(bool)
         local string_1 = getgenv().portalnameX
         local Target = game:GetService("ReplicatedStorage").endpoints["client_to_server"]["buy_csmportal_shop_item"];
         Target:InvokeServer(string_1);
+        warn("Buy Devil Portal !!!")
     end)
 
     devilcity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
         print(bool)
         Settings.farmprotal = bool
         saveSettings()
+        warn("Farm Devil Portal !!!")
     end,{enabled = Settings.farmprotal })
 
     devilcity:Cheat("Label","ประตูจะสุ่มเปิดจากที่มีในกระเป๋าที่มี ระดับจะเปิดตามที่เราเลือก") 
@@ -666,10 +668,11 @@ local function Farmportal()
     end, { options = {"Aline portal",}, default =Settings.portalnameA})
 
 
-    alinecity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
+    alinecity:Cheat("Checkbox"," Auto Farm Aline Portal  ", function(bool)
         print(bool)
         Settings.farmaline = bool
         saveSettings()
+        warn("Farm Aline Portal !!!")
     end,{enabled = Settings.farmaline })
 
     alinecity:Cheat("Label","ประตูจะสุ่มเปิดจากในกระเป๋าที่มี ") 

@@ -24,6 +24,56 @@ local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 ------------------------------
 
+--test fixportal
+
+function getBorosPortals()
+    local reg = getreg()
+
+    for i,v in next, reg do
+        if type(v) == 'function' then 
+            if getfenv(v).script then
+                    for _, v in pairs(debug.getupvalues(v)) do 
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                local portals = {}
+                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
+                                  if item["item_id"] == "portal_boros_g" then
+                                    table.insert(portals, item)
+                                  end
+                                end
+                                return portals
+                            end
+                        end
+                    end
+            end
+        end
+    end
+end
+
+function getCSMPortals()
+    local reg = getreg() 
+
+    for i,v in next, reg do
+        if type(v) == 'function' then 
+            if getfenv(v).script then 
+                    for _, v in pairs(debug.getupvalues(v)) do
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                local portals = {}
+                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
+                                  if item["item_id"] == "portal_csm" then
+                                    table.insert(portals, item)
+                                  end
+                                end
+                                return portals
+                            end
+                        end
+                    end
+            end
+        end
+    end
+end
+
 ------------item drop result
 function get_inventory_items()
 	for i,v in next, getgc() do
@@ -229,6 +279,11 @@ local UnitPosition = Farm:Sector("🧙 เลือกจุดวาง Unit")
 local castleconfig = Farm:Sector("🏯 ตั้งค่า Infinity Castle 🏯")
 local AutoFarmConfig = Farm:Sector("⚙️ ตั้งค่า Auto Farm")
 local ChallengeConfig = Farm:Sector("⌛ ตั้งค่า Challenge")
+
+local Portals = Window:Category(" 🚪 Portals Farm")
+local devilcity = Portals:Sector("😈‍ Devil Portal 😈")
+local alinecity = Portals:Sector("👽 Aline Portal 👽")
+
 
 
 local UC = Window:Category(" 🧙 ตั้งค่า Unit")
@@ -443,7 +498,7 @@ local function WorldSec()
         Settings.SelectedLevel = value
         getgenv().updatedifficulty()
         saveSettings()
-    end, {options = { }, default = Settings.SelectedLevel})
+    end, {options = { }, default = Settings.portalnameX})
 
     getgenv().updatelevel = function()
         selectlevel:ClearDrop() local levellist; local level = Settings.SelectedWorld;
@@ -531,6 +586,48 @@ local function WorldSec()
         saveSettings()
     end,{enabled = Settings.isFriendOnly})
 end
+
+
+----------------------------------------------
+---------------- Portal Config ------------- fixportal
+----------------------------------------------
+local function Farmportal()
+
+    --Devil
+
+    devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(value)
+        Settings.portalnameX = value
+        saveSettings()
+    end, { options = {"Devil Portal"}, default =Settings.portalnameX})
+
+
+    devilcity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
+        print(bool)
+        Settings.farmprotal = bool
+        saveSettings()
+    end,{enabled = Settings.farmprotal })
+
+    devilcity:Cheat("Label","ให้ชื้อประตู้ที่จะลงไว้ก่อนเลยนะครับ [เอาระดับที่ลงผ่าน]") 
+    devilcity:Cheat("Label","ประตูจะสุ่มเปิดจากในกระเป๋าที่มี [บัคเลือกระดับประตูไม่ได้ (ค่อยแก้)]") 
+
+    --Aline
+
+    alinecity:Cheat("Dropdown", "เลือก ประตู Portal",function(value)
+        Settings.portalnameA = value
+        saveSettings()
+    end, { options = {"Aline portal",}, default =Settings.portalnameA})
+
+
+    alinecity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
+        print(bool)
+        Settings.farmaline = bool
+        saveSettings()
+    end,{enabled = Settings.farmaline })
+
+    alinecity:Cheat("Label","ประตูจะสุ่มเปิดจากในกระเป๋าที่มี ") 
+end
+
+
 
 ----------------------------------------------
 ---------------- AutoFarm Config -------------
@@ -644,7 +741,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Story 7ds_maps \n[+]Add New Webhook ")   
+    UIUPDT:Cheat("Label","[+]Add New Webhook \n[+]Add Portal Farm [Devil & Aline] ")   
 end
 
 getgenv().posX = 1.5
@@ -1388,6 +1485,7 @@ if game.PlaceId == 8304191830 then
     UnitSec()
     WorldSec()
     AutoFarmSec()
+    Farmportal()
     MoreFarmSec()
     ChallengeSec()
     unitconfig()
@@ -1402,6 +1500,7 @@ else
     AutoSummonSec:Cheat("Label","ใช้ได้แค่ใน Lobby!!!")    
     WorldSec()
     AutoFarmSec()
+    Farmportal()
     MoreFarmSec()
     ChallengeSec()
     UnitPosSec()
@@ -1552,8 +1651,9 @@ local function startfarming()
             end
         end
 
-    elseif game.PlaceId == 8304191830 and Settings.autostart and Settings.AutoFarm and getgenv().teleporting and Settings.AutoFarmTP ~= true 
-            and Settings.AutoInfinityCastle ~= true and Settings.farmprotal or Settings.farmprotal then
+--fixportal  ----Devil Portal
+
+elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and Settings.AutoFarm  then
 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
@@ -1563,12 +1663,51 @@ local function startfarming()
             end
         end
           task.wait(1.5)
-
           local args = {
-            [1] = tostring(getgenv().PortalID),
-            [2] = { ["friends_only"] = getgenv().isFriendOnly }
+            [1] = getCSMPortals()[1]["uuid"],
+            [2] = {
+                ["friends_only"] = true
+            }
         }
-        
+		game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
+
+        task.wait(1.5)
+
+        for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
+            if v.Name == "Owner" then
+                if tostring(v.value) == game.Players.LocalPlayer.Name then
+                    local args = {
+                        [1] = tostring(v.Parent.Name)
+                    }
+                    
+                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+                    break;
+                end
+            end 
+        end
+
+        warn("Devil farming")
+        task.wait(7)
+
+        ---Aline PortalAutoFarmRaid
+    elseif not Settings.autostart and Settings.AutoFarm and Settings.teleporting 
+    and not Settings.AutoFarmTP and not Settings.AutoFarmIC and not Settings.farmprotal and Settings.farmaline  then  
+
+
+        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
+            if v.Name == "portal_boros_g" then
+                print(v._uuid_or_id.value)
+                getgenv().PortalIDA = v._uuid_or_id.value
+                break;
+            end
+        end
+        task.wait(1.5)
+        local args = {
+            [1] = getBorosPortals()[1]["uuid"],
+            [2] = {
+                ["friends_only"] = true
+            }
+        }
         game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
 
         task.wait(1.5)
@@ -1585,9 +1724,13 @@ local function startfarming()
                 end
             end 
         end
+
+        warn("Aline farming")
         task.wait(7)
     end
 end
+
+--end fixportal
 
 getgenv().autoabilityerr = false
 

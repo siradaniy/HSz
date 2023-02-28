@@ -399,7 +399,7 @@ function sex()
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Fix Update "..versionx.."")
-        home:Label("[+]Add 7ds_map \n[+]Fix Devil & Aline Portal cab open")
+        home:Label("[+]Fix Devil & Aline Portal cab open \n[+]Add JJK Finger Dungeon Farm ")
         home:Label(" ")
 
         home:Button("👉 Copy HOLYSHz Member Link!", function()

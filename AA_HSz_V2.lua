@@ -460,8 +460,7 @@ local function WorldSec()
         options = {
             "โหมด Story & Inf",
             "Legend Stages",
-            "โหมด Raid",
-            "Dungeon"
+            "โหมด Raid"
         },
         default = Settings.WorldCategory
     })
@@ -484,8 +483,6 @@ local function WorldSec()
             storylist = {"Clover Kingdom (Elf Invasion)", "Hollow Invasion","Cape Canaveral","Fabled Kingdom (Ten Commandments)"}
         elseif Settings.WorldCategory == "โหมด Raid" then
             storylist = {"Storm Hideout","West City", "Infinity Train", "Shiganshinu District - Raid","Hiddel Sand Village - Raid"}
-        elseif Settings.WorldCategory == "Dungeon" then
-            storylist = {"JJK Finger"}    
         end
     
         for i = 1, #storylist do
@@ -550,9 +547,6 @@ local function WorldSec()
             levellist = {"naruto_raid_1"}
         elseif level == "Fabled Kingdom (Ten Commandments)" then
             levellist = {"7ds_legend_1","7ds_legend_2","7ds_legend_3"}    
-            ---///Dungeon\\\---
-        elseif level == "JJK Finger" then
-            levellist = {"jjk_finger"}    
         end
 
         for i = 1, #levellist do
@@ -573,7 +567,7 @@ local function WorldSec()
         if level == "namek_infinite" or level == "aot_infinite" or level == "demonslayer_infinite" 
         or level == "naruto_infinite" or level == "marineford_infinite" or level == "tokyoghoul_infinite" or level == "hueco_infinite" 
         or level == "hxhant_infinite" or level == "magnolia_infinite" or level == "jjk_infinite" or level == "clover_infinite" 
-        or level == "jojo_infinite" or level == "opm_infinite" or level == "7ds_infinite" or cata == "Legend Stages" or cata == "โหมด Raid"  or cata == "Dungeon" then
+        or level == "jojo_infinite" or level == "opm_infinite" or level == "7ds_infinite" or cata == "Legend Stages" or cata == "โหมด Raid" then
             diff = {"Hard"}
         else
             diff = {"Normal", "Hard"}
@@ -598,11 +592,17 @@ local function Farmportal()
 
     --Devil
 
-    devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(value)
-        Settings.portalnameX = value
+    devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(pornname)
+        getgenv().portalnameX = pornname
         saveSettings()
-    end, { options = {"Devil Portal"}, default =Settings.portalnameX})
+    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = getgenv().portalnameX})
 
+
+    devilcity:Cheat("Button","Buy Devil Portal", function(bool)
+        local string_1 = getgenv().portalnameX
+        local Target = game:GetService("ReplicatedStorage").endpoints["client_to_server"]["buy_csmportal_shop_item"];
+        Target:InvokeServer(string_1);
+    end)
 
     devilcity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
         print(bool)
@@ -610,8 +610,7 @@ local function Farmportal()
         saveSettings()
     end,{enabled = Settings.farmprotal })
 
-    devilcity:Cheat("Label","ให้ชื้อประตู้ที่จะลงไว้ก่อนเลยนะครับ [เอาระดับที่ลงผ่าน]") 
-    devilcity:Cheat("Label","ประตูจะสุ่มเปิดจากในกระเป๋าที่มี [บัคเลือกระดับประตูไม่ได้ (ค่อยแก้)]") 
+    devilcity:Cheat("Label","ประตูจะสุ่มเปิดจากที่มีในกระเป๋าที่มี ระดับจะเปิดตามที่เราเลือก") 
 
     --Aline
 
@@ -1609,7 +1608,7 @@ local function startfarming()
     
                 warn("Story or Inf farming")
                 task.wait(3)
-            --raid
+            end
         elseif cata == "โหมด Raid" then
             getgenv().door =  "_lobbytemplate211"
             if tostring(game.Workspace._RAID.Raid[getgenv().door].Owner.Value) ~= plr.Name then
@@ -1654,57 +1653,6 @@ local function startfarming()
             end
         end
 
-       --ฟาร์มนิ้ว 
-    elseif cata == "Dungeon" then
-    local string_1 = "_lobbytemplate_event222";
-    local table_1 = {
-    ["selected_key"] = 'key_jjk_finger'
-    };
-    local Target = game:GetService("ReplicatedStorage").endpoints["client_to_server"]["request_join_lobby"];
-    Target:InvokeServer(string_1, table_1);
-
-        if tostring(game.Workspace._DUNGEONS.Lobbies[getgenv().door].Owner.Value) ~= plr.Name then
-            for i, v in pairs(game:GetService("Workspace")["_DUNGEONS"].Lobbies:GetDescendants()) do
-                if v.Name == "Owner" and v.Value == nil then
-                    local args = { [1] = tostring(v.Parent.Name) }
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(unpack(args))
-
-                    task.wait()
-                
-                    local args = {
-                        [1] = tostring(v.Parent.Name), -- Lobby 
-                        [2] = Settings.SelectedLevel, -- World/Level
-                        [3] = Settings.isFriendOnly or true, -- Friends Only or not
-                        [4] = Settings.Difficulty }
-
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(unpack(args))
-
-                    local args = { [1] =tostring(v.Parent.Name) }
-                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
-                    
-                    getgenv().door = v.Parent.Name print(v.Parent.Name) --v.Parent:GetFullName()
-                    plr.Character.HumanoidRootPart.CFrame = v.Parent.Door.CFrame
-                    break
-                end
-            end
-
-            task.wait()
-
-            plr.Character.HumanoidRootPart.CFrame = cpos
-
-            if Workspace._DUNGEONS.Lobbies[getgenv().door].Owner == plr.Name then
-                if Workspace._DUNGEONS.Lobbies[getgenv().door].Teleporting.Value == true then
-                    getgenv().teleporting = false
-                else
-                    getgenv().teleporting = true
-                end
-            end
-
-            warn("DUNGEONS farming")
-            task.wait(3)
-        end
-    end
-
 --fixportal  ----Devil Portal
 
 elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and Settings.AutoFarm  then
@@ -1742,7 +1690,7 @@ elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and
 
         warn("Devil farming")
         task.wait(7)
-    
+
         ---Aline PortalAutoFarmRaid
     elseif not Settings.autostart and Settings.AutoFarm and Settings.teleporting 
     and not Settings.AutoFarmTP and not Settings.AutoFarmIC and not Settings.farmprotal and Settings.farmaline  then  

@@ -240,7 +240,7 @@ function webhook()
 			["embeds"] = {
 				{
 					["author"] = {
-						["name"] = "Anime Adventures |  แจ้งเตือน V2 test ✔️",
+						["name"] = "Anime Adventures |  แจ้งเตือน V2 ✔️",
 						["icon_url"] = "https://cdn.discordapp.com/emojis/997123585476927558.webp?size=96&quality=lossless"
 					},
 					["thumbnail"] = {

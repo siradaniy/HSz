@@ -647,13 +647,13 @@ local function Farmportal()
     --Devil
 
     devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(pornname)
-        getgenv().portalnameX = pornname
+        getgenv().portalnameC = pornname
         saveSettings()
-    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = Settings.portalnameX})
+    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = Settings.portalnameC})
 
 
     devilcity:Cheat("Button","Buy Devil Portal", function(bool)
-        local string_1 = getgenv().portalnameX
+        local string_1 = getgenv().portalnameC
         local Target = game:GetService("ReplicatedStorage").endpoints["client_to_server"]["buy_csmportal_shop_item"];
         Target:InvokeServer(string_1);
         warn("Buy Devil Portal !!!")
@@ -801,7 +801,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Add New Webhook \n[+]Add Portal Farm [Devil & Aline] ")   
+    UIUPDT:Cheat("Label","[+]Add New Webhook result Portals drop \n[+]Add JJK finger & Portal Farm [Devil & Aline] ")   
 end
 
 getgenv().posX = 1.5

@@ -132,6 +132,8 @@ for i,v in pairs(get_inventory_items_unique_items()) do
         Table_All_Items_Old_data[v['item_id']]['Count'] = Table_All_Items_Old_data[v['item_id']]['Count'] + 1
     end
 end
+
+
 ---------------------end webhook
 
 ----------------Map & ID Map
@@ -279,14 +281,13 @@ function webhook()
     }
     
     
-    local xd = game:GetService("HttpService"):JSONEncode(data)
-    
-    local headers = {["content-type"] = "application/json"}
-    request = http_request or request or HttpPost or syn.request or http.request
-    local sex = {Url = url, Body = xd, Method = "POST", Headers = headers}
-    warn("Sending webhook notification...")
-    request(sex)
+    local porn = game:GetService("HttpService"):JSONEncode(data)
 
+		local headers = {["content-type"] = "application/json"}
+		local request = http_request or request or HttpPost or syn.request or http.request
+		local sex = {Url = url, Body = porn, Method = "POST", Headers = headers}
+		warn("Sending webhook notification...")
+		request(sex)
 end
 
 coroutine.resume(coroutine.create(function()
@@ -649,13 +650,14 @@ local function Farmportal()
     devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(pornname)
         getgenv().portalnameC = pornname
         saveSettings()
-    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = Settings.portalnameC})
+    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default =Settings.portalnameC})
 
-
+    
     devilcity:Cheat("Button","Buy Devil Portal", function(bool)
         local string_1 = getgenv().portalnameC
         local Target = game:GetService("ReplicatedStorage").endpoints["client_to_server"]["buy_csmportal_shop_item"];
         Target:InvokeServer(string_1);
+        saveSettings()
         warn("Buy Devil Portal !!!")
     end)
 

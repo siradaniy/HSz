@@ -292,6 +292,19 @@ function webhook()
     request(sex)
 
 end
+
+coroutine.resume(coroutine.create(function()
+	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
+
+    GameFinished:GetPropertyChangedSignal("Value"):Connect(function()
+        print("Changed", GameFinished.Value == true)
+        if GameFinished.Value == true then
+            repeat task.wait() until  game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Enabled == true
+            task.wait()
+            webhook()
+        end
+	end)
+end))
 ------------------------------\
 if game.CoreGui:FindFirstChild("FinityUI") then
     game.CoreGui["FinityUI"]:Destroy()

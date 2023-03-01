@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "11.0.0h1"
+local versionx = "11.0.0"
 
 ---// Loading Section \\---
 task.wait(2)

@@ -184,10 +184,6 @@ function webhook()
     _map = game:GetService("Workspace")["_BASES"].player.base["fake_unit"]:WaitForChild("HumanoidRootPart")
     GetLevelData = game.workspace._MAP_CONFIG:WaitForChild("GetLevelData"):InvokeServer()
     world = GetLevelData.world or GetLevelData.name
-    resultx = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Title.Text
-    if resultx == "VICTORY" then result = "ชนะ" end
-    if resultx == "DEFEAT" then result = "แพ้" end
-    mapid = game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
     mapname = game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
     cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 	ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text

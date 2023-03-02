@@ -627,7 +627,7 @@ local function Farmportal()
     devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(pornname)
         getgenv().portalnameC = pornname
         saveSettings()
-    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = getgenv().portalnameC})
+    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = Settings.portalnameC})
 
 
     devilcity:Cheat("Button","Buy Devil Portal", function(bool)
@@ -779,7 +779,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label"," \n [+]Chacge farm Portal to Old ver.   \n [+]Fix Bug 7ds    \n [+]Fix Bug Inf Castle Cracher ")   
+    UIUPDT:Cheat("Label"," \n [+]Chacge farm Portal to Old ver.   \n [+]Fix Bug 7ds    \n [+]Fix Bug Inf Castle Cracher test ")   
 end
 
 getgenv().posX = 1.5

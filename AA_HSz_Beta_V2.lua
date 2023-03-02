@@ -240,7 +240,7 @@ function webhook()
 					},
                     ["fields"] = {
                         {
-                            ["name"] ="Current Level ✨ & Gems 💎 & Gold 💰",
+                            ["name"] ="Current Level ✨ & Gems 💎 & Gold 💰 & Portals ",
                             ["value"] = "```ini\n"..tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text)..  " ✨\nGems รวม : "..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰\nPortal รวม : ".. tostring(Count_Portal_list) .." 🌀```",
                         },
                         {

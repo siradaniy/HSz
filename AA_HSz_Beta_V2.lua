@@ -751,7 +751,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label"," [+]Add JJK finger & Portal Farm [Devil & Aline]  \n [+]Fix Bug 7ds 2 ???  \n [+]Fix Bug Inf Castle ??? ")   
+    UIUPDT:Cheat("Label"," \n [+]Add JJK finger & Portal Farm [Devil & Aline]  \n [+]Fix Bug 7ds 2 ???  \n [+]Fix Bug Inf Castle ??? ")   
 end
 
 getgenv().posX = 1.5

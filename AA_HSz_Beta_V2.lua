@@ -52,40 +52,14 @@ local UserInputService = game:GetService("UserInputService")
 ------------------------------
 
 ------------item drop result
+local ItemInventoryServiceClient = require(game.ReplicatedStorage.src.client.Services.ItemInventoryServiceClient)
 function get_inventory_items_unique_items()
-	for i,v in next, getgc() do
-		if type(v) == 'function' then 
-			if getfenv(v).script then 
-				if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.ItemInventoryServiceClient" then
-					for _, v in pairs(debug.getupvalues(v)) do 
-						if type(v) == 'table' then
-							if v["session"] then
-								return v["session"]['inventory']['inventory_profile_data']['unique_items']
-							end
-						end
-					end
-				end
-			end
-		end
-	end
+	return ItemInventoryServiceClient["session"]['inventory']['inventory_profile_data']['unique_items']
 end
 function get_inventory_items()
-	for i,v in next, getgc() do
-		if type(v) == 'function' then 
-			if getfenv(v).script then 
-				if getfenv(v).script:GetFullName() == "ReplicatedStorage.src.client.Services.NPCServiceClient" then
-					for _, v in pairs(debug.getupvalues(v)) do 
-						if type(v) == 'table' then
-							if v["session"] then
-								return v["session"]["inventory"]['inventory_profile_data']['normal_items']
-							end
-						end
-					end
-				end
-			end
-		end
-	end
+	return ItemInventoryServiceClient["session"]["inventory"]['inventory_profile_data']['normal_items']
 end
+local Count_Portal_list = 0
 local Table_All_Items_Old_data = {}
 local Table_All_Items_New_data = {}
 for v2, v3 in pairs(game:GetService("ReplicatedStorage").src.Data.Items:GetDescendants()) do
@@ -106,13 +80,10 @@ for i,v in pairs(get_inventory_items()) do
 end
 for i,v in pairs(get_inventory_items_unique_items()) do
     if string.find(v['item_id'],"portal") or string.find(v['item_id'],"disc") then
+        Count_Portal_list = Count_Portal_list + 1
         Table_All_Items_Old_data[v['item_id']]['Count'] = Table_All_Items_Old_data[v['item_id']]['Count'] + 1
     end
 end
-
-
----------------------
-
 ----------------Map & ID Map
 
 local function GetCurrentLevelId()
@@ -127,8 +98,6 @@ local function GetCurrentLevelName()
     end
 end
 ----------------endMap & ID Map
-
-
 getgenv().item = "-"
 
 plr.PlayerGui:FindFirstChild("HatchInfo"):FindFirstChild("holder"):FindFirstChild("info1"):FindFirstChild("UnitName").Text = getgenv().item
@@ -138,8 +107,8 @@ function webhook()
     local url = Settings.WebhookUrl
     print("webhook?")
     if url == "" then
-    warn("Webhook Url is empty!")
-    return
+        warn("Webhook Url is empty!")
+        return
     end 
     
 
@@ -184,32 +153,33 @@ function webhook()
     totalwaves = ResultHolder:FindFirstChild("Middle"):FindFirstChild("WavesCompleted").Text
 
     local TextDropLabel = ""
-		local CountAmount = 1
-		for i,v in pairs(get_inventory_items()) do
-			Table_All_Items_New_data[i]['Count'] = v
+	local CountAmount = 1
+	for i,v in pairs(get_inventory_items()) do
+		Table_All_Items_New_data[i]['Count'] = v
+	end
+	for i,v in pairs(get_inventory_items_unique_items()) do
+		if string.find(v['item_id'],"portal") or string.find(v['item_id'],"disc") then
+			Table_All_Items_New_data[v['item_id']]['Count'] = Table_All_Items_New_data[v['item_id']]['Count'] + 1
 		end
-		for i,v in pairs(get_inventory_items_unique_items()) do
-			if string.find(v['item_id'],"portal") or string.find(v['item_id'],"disc") then
-				Table_All_Items_New_data[v['item_id']]['Count'] = Table_All_Items_New_data[v['item_id']]['Count'] + 1
-			end
-		end
-		for i,v in pairs(Table_All_Items_New_data) do
-			if v['Count'] > 0 and (v['Count'] - Table_All_Items_Old_data[i]['Count']) > 0 then
-				if string.find(i,"portal") or string.find(i,"disc") then
-					if string.gsub(i, "%D", "") == "" then
-						TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(v['Name']) .. " : x" .. tostring(v['Count'] - Table_All_Items_Old_data[i]['Count']) .. "\n"
-					else
-						TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(v['Name']) .. " Tier " .. tostring(string.gsub(i, "%D", "")) .. " : x" .. tostring(v['Count'] - Table_All_Items_Old_data[i]['Count']) .. "\n"
-					end
-				else
+	end
+	for i,v in pairs(Table_All_Items_New_data) do
+		if v['Count'] > 0 and (v['Count'] - Table_All_Items_Old_data[i]['Count']) > 0 then
+			if string.find(i,"portal") or string.find(i,"disc") then
+                Count_Portal_list = Count_Portal_list + 1
+				if string.gsub(i, "%D", "") == "" then
 					TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(v['Name']) .. " : x" .. tostring(v['Count'] - Table_All_Items_Old_data[i]['Count']) .. "\n"
+				else
+					TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(v['Name']) .. " Tier " .. tostring(string.gsub(i, "%D", "")) .. " : x" .. tostring(v['Count'] - Table_All_Items_Old_data[i]['Count']) .. "\n"
 				end
-				CountAmount = CountAmount + 1
+			else
+				TextDropLabel = TextDropLabel .. tostring(CountAmount) .. ". " .. tostring(v['Name']) .. " : x" .. tostring(v['Count'] - Table_All_Items_Old_data[i]['Count']) .. "\n"
 			end
+			CountAmount = CountAmount + 1
 		end
-		if TextDropLabel == "" then
-			TextDropLabel = "Not Have Items Drops"
-		end
+	end
+	if TextDropLabel == "" then
+		TextDropLabel = "Not Have Items Drops"
+	end
     
     local data = {
         ["content"] = "",
@@ -234,38 +204,38 @@ function webhook()
 						['text'] = "// Made by Negative & HOLYSHz", 
 						['icon_url'] = "https://yt3.ggpht.com/mApbVVD8mT92f50OJuTObnBbc3j7nDCXMJFBk2SCDpSPcaoH9DB9rxVpJhsB5SxAQo1UN2GzyA=s48-c-k-c0x00ffffff-no-rj"
 					},
-          ["fields"] = {
-            {
-               ["name"] ="Current Level ✨ & Gems 💎 & Gold 💰",
-               ["value"] = "```ini\n"..tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text)..  " ✨\nGems รวม : "..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰```",
-            },
-            {
-               ["name"] ="Results :",
-               ["value"] = " ```ini\nWorld : "..mapname.. " 🌏\nMap : "..world.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).." 🌊\nเวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ```",
-               ["inline"] = true
-            },
-            {
-                ["name"] ="Rewards :",
-                ["value"] = "```ini\n" ..gold.." Gold 💰\n"..gems.." Gems 💎\n"..xp[1].." XP 🧪\n"..trophy.." Trophy 🏆```",
-            },
-            {
-              ["name"] ="Items Drop :",
-              ["value"] = "```ini\n" .. TextDropLabel .. "```",
-              ["inline"] = falseye 
+                    ["fields"] = {
+                        {
+                            ["name"] ="Current Level ✨ & Gems 💎 & Gold 💰",
+                            ["value"] = "```ini\n"..tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text)..  " ✨\nGems รวม : "..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰\nPortal รวม : ".. tostring(Count_Portal_list) .." 🌀```",
+                        },
+                        {
+                            ["name"] ="Results :",
+                            ["value"] = " ```ini\nWorld : "..mapname.. " 🌏\nMap : "..world.. " 🗺️\nผลต่อสู้ : "..result.. " ⚔️\nWave ที่จบ : " ..tostring(waves[2]).." 🌊\nเวลาที่ใช้ : " ..tostring(ttime[2]).." ⌛\n ```",
+                            ["inline"] = true
+                        },
+                        {
+                            ["name"] ="Rewards :",
+                            ["value"] = "```ini\n" ..gold.." Gold 💰\n"..gems.." Gems 💎\n"..xp[1].." XP 🧪\n"..trophy.." Trophy 🏆```",
+                        },
+                        {
+                            ["name"] ="Items Drop :",
+                            ["value"] = "```ini\n" .. TextDropLabel .. "```",
+                            ["inline"] = falseye 
+                        }
+                    }
+                    }
             }
-          }
         }
-      }
-    }
     
     
     local porn = game:GetService("HttpService"):JSONEncode(data)
 
-		local headers = {["content-type"] = "application/json"}
-		local request = http_request or request or HttpPost or syn.request or http.request
-		local sex = {Url = url, Body = porn, Method = "POST", Headers = headers}
-		warn("Sending webhook notification...")
-		request(sex)
+	local headers = {["content-type"] = "application/json"}
+	local request = http_request or request or HttpPost or syn.request or http.request
+	local sex = {Url = url, Body = porn, Method = "POST", Headers = headers}
+	warn("Sending webhook notification...")
+	request(sex)
 end
 
 ------------------------------\
@@ -300,7 +270,6 @@ local ChallengeConfig = Farm:Sector("⌛ ตั้งค่า Challenge")
 local devilcity = Portals:Sector("😈‍ Devil Portal 😈")
 local alinecity = Portals:Sector("👽 Aline Portal 👽")]]
 
-
 local UC = Window:Category(" 🧙 ตั้งค่า Unit")
 local NDY = UC:Sector("ยังไม่เสร็จ")
 local emptyxx = UC:Sector(" ")
@@ -334,55 +303,54 @@ local starbux = sponsor:Sector("💎 ROBUX กลุ่ม 💎")
 ---------------- Units Selection -------------
 ----------------------------------------------
 local function UnitSec()
-        --#region Select Units Tab
-        local Units = {}
-        
-        function Check()
-            local DataUnits = require(game:GetService("ReplicatedStorage").src.Data.Units)
-            for i, v in pairs(getgenv().profile_data.equipped_units) do
-                if DataUnits[v.unit_id] and v.equipped_slot then
-                    Settings.SelectedUnits["U"..tostring(v.equipped_slot)] = tostring(DataUnits[v.unit_id].id) .. " #" .. tostring(v.uuid)
-                    print("U"..tostring(v.equipped_slot).." "..tostring(DataUnits[v.unit_id].id).." #" .. tostring(v.uuid))
-                end
+    --#region Select Units Tab
+    local Units = {}
+    
+    function Check()
+        local DataUnits = require(game:GetService("ReplicatedStorage").src.Data.Units)
+        for i, v in pairs(getgenv().profile_data.equipped_units) do
+            if DataUnits[v.unit_id] and v.equipped_slot then
+                Settings.SelectedUnits["U"..tostring(v.equipped_slot)] = tostring(DataUnits[v.unit_id].id) .. " #" .. tostring(v.uuid)
+                print("U"..tostring(v.equipped_slot).." "..tostring(DataUnits[v.unit_id].id).." #" .. tostring(v.uuid))
             end
+        end
+        saveSettings()
+    end
+
+    function LoadUnits()
+        local DataUnits = require(game:GetService("ReplicatedStorage").src.Data.Units)
+        table.clear(Units)
+        for i, v in pairs(getgenv().profile_data.equipped_units) do
+            if DataUnits[v.unit_id] then
+                table.insert(Units, DataUnits[v.unit_id].name .. " #" .. tostring(v.uuid))
+            end
+        end
+        Check()
+    end
+
+    function GetUnits()
+        if Settings.SelectedUnits == nil then
+            Settings.SelectedUnits = {
+                U1 = "nil",
+                U2 = "nil",
+                U3 = "nil",
+                U4 = "nil",
+                U5 = "nil",
+                U6 = "nil"
+            }
             saveSettings()
         end
-
-        function LoadUnits()
-            local DataUnits = require(game:GetService("ReplicatedStorage").src.Data.Units)
-            table.clear(Units)
-            for i, v in pairs(getgenv().profile_data.equipped_units) do
-                if DataUnits[v.unit_id] then
-                    table.insert(Units, DataUnits[v.unit_id].name .. " #" .. tostring(v.uuid))
-                end
-            end
-
-            Check()
-        end
-
-        function GetUnits()
-            if Settings.SelectedUnits == nil then
-                Settings.SelectedUnits = {
-                    U1 = "nil",
-                    U2 = "nil",
-                    U3 = "nil",
-                    U4 = "nil",
-                    U5 = "nil",
-                    U6 = "nil"
-                }
-                saveSettings()
-            end
-            getgenv().profile_data = { equipped_units = {} }; repeat
-                do
-                    for i, v in pairs(getgc(true)) do
-                        if type(v) == "table" and rawget(v, "xp") then wait()
-                            table.insert(getgenv().profile_data.equipped_units, v)
-                        end
+        getgenv().profile_data = { equipped_units = {} }; repeat
+            do
+                for i, v in pairs(getgc(true)) do
+                    if type(v) == "table" and rawget(v, "xp") then wait()
+                        table.insert(getgenv().profile_data.equipped_units, v)
                     end
                 end
-            until #getgenv().profile_data.equipped_units > 0
-            LoadUnits()
-        end
+            end
+        until #getgenv().profile_data.equipped_units > 0
+        LoadUnits()
+    end
 
     GetUnits()
 
@@ -429,10 +397,7 @@ local function UnitSec()
         end
         print(preset)
         GetUnits()
-
-
     end)
-
 end
 
 ----------------------------------------------
@@ -552,7 +517,6 @@ local function WorldSec()
         elseif level == "JJK Finger" then
             levellist = {"jjk_finger"}       
         end
-
 
         for i = 1, #levellist do
             selectlevel:AddOption(levellist[i])
@@ -753,7 +717,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Add JJK finger & Portal Farm [Devil & Aline] \n[+]Fix Bug 7ds 1 ??? ")   
+    UIUPDT:Cheat("Label"," [+]Add JJK finger & Portal Farm [Devil & Aline]  \n [+]Fix Bug 7ds 2 ???  \n [+]Fix Bug Inf Castle ??? ")   
 end
 
 getgenv().posX = 1.5
@@ -1596,80 +1560,37 @@ end
 --test fixportal
 
 function getBorosPortals()
-    local reg = getreg()
-
-    for i,v in next, reg do
-        if type(v) == 'function' then 
-            if getfenv(v).script then
-                    for _, v in pairs(debug.getupvalues(v)) do 
-                        if type(v) == 'table' then
-                            if v["session"] then
-                                local portals = {}
-                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
-                                  if item["item_id"] == "portal_boros_g" then
-                                    table.insert(portals, item)
-                                  end
-                                end
-                                return portals
-                            end
-                        end
-                    end
-            end
+    local portals = {}
+    for _, item in pairs(get_inventory_items_unique_items()) do
+        if item["item_id"] == "portal_boros_g" then
+            table.insert(portals, item)
         end
     end
+    return portals
 end
 
 function getCSMPortals()
-    local reg = getreg() 
-
-    for i,v in next, reg do
-        if type(v) == 'function' then 
-            if getfenv(v).script then 
-                    for _, v in pairs(debug.getupvalues(v)) do
-                        if type(v) == 'table' then
-                            if v["session"] then
-                                local portals = {}
-                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
-                                  if item["item_id"] == "portal_csm" or "portal_csm1" or "portal_csm2" or "portal_csm3" or "portal_csm4" or "portal_csm5" then
-                                    table.insert(portals, item)
-                                  end
-                                end
-                                return portals
-                            end
-                        end
-                    end
-            end
+    local portals = {}
+    for _, item in pairs(get_inventory_items_unique_items()) do
+        if item["item_id"] == "portal_csm" or "portal_csm1" or "portal_csm2" or "portal_csm3" or "portal_csm4" or "portal_csm5" then
+            table.insert(portals, item)
         end
     end
+    return portals
 end
 
 
 function GetPortals(id)
-    local reg = getreg()  
-    local portals = {}
-    for i,v in next, reg do
-        if type(v) == 'function' then 
-            if getfenv(v).script then 
-                for _, v in pairs(debug.getupvalues(v)) do  
-                    if type(v) == 'table' then
-                        if v["session"] then
-                            for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
-                              if item["item_id"] == id then
-                                table.insert(portals, item)
-                              end
-                            end
-                            return portals
-                        end
-                    end
-                end
-            end
+    for _, item in pairs(get_inventory_items_unique_items()) do
+        if item["item_id"] == id then
+            table.insert(portals, item)
         end
     end
+    return portals
 end
 
 Settings.teleporting = true
 getgenv().door = "_lobbytemplategreen1"
-
 
 local function startfarming()
     if game.PlaceId == 8304191830 and not Settings.farmprotal and Settings.autostart and Settings.AutoFarm and Settings.teleporting and not Settings.AutoInfinityCastle then
@@ -1944,12 +1865,11 @@ function autoabilityfunc()
         end
     end)
      
-     if err then
-         warn("//////////////////////////////////////////////////")
-         getgenv().autoabilityerr = true
-         error(err)
-     end
-
+    if err then
+        warn("//////////////////////////////////////////////////")
+        getgenv().autoabilityerr = true
+        error(err)
+    end
 end
 
 function autoupgradefunc()
@@ -1963,7 +1883,6 @@ function autoupgradefunc()
                 end
             end
         end
-
     end)
 
     if err then
@@ -2241,8 +2160,6 @@ coroutine.resume(coroutine.create(function()
         end
     end  
 end))
-
-
 
 function PlacePos(map,name,_uuid,unit)
     if Settings.AutoFarm and not getgenv().disableatuofarm then
@@ -2531,7 +2448,6 @@ coroutine.resume(coroutine.create(function()
             local _wave = game:GetService("Workspace"):WaitForChild("_wave_num")
             repeat task.wait() until game:GetService("Workspace"):WaitForChild("_map")
             if game.Workspace._map:FindFirstChild("namek mushroom model") then
-                --PlaceUnitsTEST("Namak")
                 PlaceUnits("Namak")
             elseif game.Workspace._map:FindFirstChild("houses_new") then
                 PlaceUnits("Aot")
@@ -2602,7 +2518,7 @@ task.spawn(function()  -- Hides name for yters (not sure if its Fe)
     while task.wait() do
         pcall(function()
             if game.Players.LocalPlayer.Character.Head:FindFirstChild("_overhead") then
-               workspace[game.Players.LocalPlayer.Name].Head["_overhead"]:Destroy()
+                game.Players.LocalPlayer.Character.Head:FindFirstChild("_overhead"):Destroy()
             end
         end)
     end

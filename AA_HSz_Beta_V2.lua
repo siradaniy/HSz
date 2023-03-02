@@ -600,7 +600,7 @@ local function Farmportal()
 
     --Devil
 
-    devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(pornname)
+    devilcity:Cheat("Dropdown", "เลือก ประตู ที่จะชื้อ",function(pornname)
         getgenv().portalnameC = pornname
         saveSettings()
     end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = getgenv().portalnameC})

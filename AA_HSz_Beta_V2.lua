@@ -418,15 +418,15 @@ local function UnitSec()
 
     SelectUnits:Cheat("Button", "⌛ เปลี่ยนทีม", function() --loads preset
         preset = Settings.SelectedPreset
-        if preset == "Team 1" then
+        if preset == "ทีม 1" then
             switchteam("1")
-        elseif preset == "Team 2" then
+        elseif preset == "ทีม 2" then
             switchteam("2")
-        elseif preset == "Team 3" then
+        elseif preset == "ทีม 3" then
             switchteam("3")
-        elseif preset == "Team 4" then
+        elseif preset == "ทีม 4" then
             switchteam("4")
-        elseif preset == "Team 5" then
+        elseif preset == "ทีม 5" then
             switchteam("5")
         end
         print(preset)

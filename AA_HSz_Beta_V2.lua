@@ -102,15 +102,6 @@ function getCSMPortals()
 end
 
 
---[[function GetPortals(id)
-    for _, item in pairs(get_inventory_items_unique_items()) do
-        if item["item_id"] == id then
-            table.insert(portals, item)
-        end
-    end
-    return portals
-end]]
-
 
 
 ------------item drop result
@@ -570,11 +561,6 @@ local function WorldSec()
             levellist = {"aot_raid_1"}
         elseif level == "Hiddel Sand Village - Raid" then
             levellist = {"naruto_raid_1"}
-        --///Portals\\\---
-        --[[elseif level == "Alien Portals" then
-            levellist = {"portal_boros_g"}
-        elseif level == "Devil Portals (All)" then
-            levellist = {"portal_csm"}]]
         ---///Dungeon\\\---    
         elseif level == "JJK Finger" then
             levellist = {"jjk_finger"}       
@@ -600,8 +586,6 @@ local function WorldSec()
         or level == "hxhant_infinite" or level == "magnolia_infinite" or level == "jjk_infinite" or level == "clover_infinite" 
         or level == "jojo_infinite" or level == "opm_infinite" or cata == "Legend Stages" or cata == "Raid Worlds" or cata == "Dungeon"  then
             diff = {"Hard"}
-       --[[ elseif cata == "Portals" then
-            diff = {"Default"}]]
         else
             diff = {"Normal", "Hard"}
         end
@@ -779,7 +763,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label"," \n [+]Chacge farm Portal to Old ver.   \n [+]Fix Bug 7ds    \n [+]Fix Bug Inf Castle Cracher test ")   
+    UIUPDT:Cheat("Label"," \n [+]Chacge farm Portal to Old ver.   \n [+]Fix Bug 7ds    \n [+]Fix Bug Inf Castle Cracher test 1 ")   
 end
 
 getgenv().posX = 1.5
@@ -1709,42 +1693,6 @@ local function startfarming()
                 warn("Raid farming")
                 task.wait(3)
             end
---aline fixportal            
---[[elseif cata == "Portals" then
-	if level == "portal_boros_g" then
-		local args = {
-			[1] = GetPortals("portal_boros_g")[1]["uuid"],
-			[2] = { ["friends_only"] = getgenv().isFriendOnly } }
-		game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
-		
-		task.wait(1.5)
-		for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
-			if v.Name == "Owner" and tostring(v.value) == game.Players.LocalPlayer.Name then
-				local args = { [1] = tostring(v.Parent.Name) }
-				game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
-				break;
-			end 
-		end
-		warn("Aline farming")
-		task.wait(7)
---Devil fixportal		
-	elseif level == "portal_csm" then
-		local args = {
-			[1] = GetPortals("portal_csm")[1]["uuid"],
-			[2] = { ["friends_only"] = getgenv().isFriendOnly } }
-		game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
-		
-		task.wait(1.5)
-		for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
-			if v.Name == "Owner" and tostring(v.value) == game.Players.LocalPlayer.Name then
-				local args = { [1] = tostring(v.Parent.Name) }
-				game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
-				break;
-			end 
-		end
-		warn("Aline farming")
-		task.wait(7)
-	end]]
 --ดันนิ้ว
     elseif cata == "Dungeon" then
         local string_1 = "_lobbytemplate_event222";

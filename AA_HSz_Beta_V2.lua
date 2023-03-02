@@ -627,7 +627,7 @@ local function Farmportal()
     devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(pornname)
         getgenv().portalnameC = pornname
         saveSettings()
-    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = Settings.portalnameC})
+    end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = getgenv().portalnameC})
 
 
     devilcity:Cheat("Button","Buy Devil Portal", function(bool)

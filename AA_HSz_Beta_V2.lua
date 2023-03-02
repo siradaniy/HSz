@@ -2124,7 +2124,7 @@ coroutine.resume(coroutine.create(function()
                 elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue then
                    game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
                 
-                    --Teleport()
+                    Teleport()
 
                     print("Returning to lobby...")
                 end

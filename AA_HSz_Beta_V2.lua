@@ -12,7 +12,7 @@ else
     repeat task.wait() until game:GetService("Workspace")["_waves_started"].Value == true
 end
 ------------------------------
-local a = 'HSz_V2_Anime_Adventures' -- ชื่อโฟเดอร์
+local a = 'HSz_Anime_Adventures' -- ชื่อโฟเดอร์
 local b = game:GetService('Players').LocalPlayer.Name .. '_AnimeAdventures.json' 
 Settings = {}
 function saveSettings()
@@ -753,7 +753,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Add JJK finger & Portal Farm [Devil & Aline] \n[+]Fix Bug 3 ??? ")   
+    UIUPDT:Cheat("Label","[+]Add JJK finger & Portal Farm [Devil & Aline] \n[+]Fix Bug test 3 ??? ")   
 end
 
 getgenv().posX = 1.5

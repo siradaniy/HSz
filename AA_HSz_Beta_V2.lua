@@ -51,6 +51,40 @@ local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 ------------------------------
 
+--test fixportal
+
+function getBorosPortals()
+    local portals = {}
+    for _, item in pairs(get_inventory_items_unique_items()) do
+        if item["item_id"] == "portal_boros_g" then
+            table.insert(portals, item)
+        end
+    end
+    return portals
+end
+
+function getCSMPortals()
+    local portals = {}
+    for _, item in pairs(get_inventory_items_unique_items()) do
+        if item["item_id"] == "portal_csm" or "portal_csm1" or "portal_csm2" or "portal_csm3" or "portal_csm4" or "portal_csm5" then
+            table.insert(portals, item)
+        end
+    end
+    return portals
+end
+
+
+function GetPortals(id)
+    for _, item in pairs(get_inventory_items_unique_items()) do
+        if item["item_id"] == id then
+            table.insert(portals, item)
+        end
+    end
+    return portals
+end
+
+
+
 ------------item drop result
 local ItemInventoryServiceClient = require(game.ReplicatedStorage.src.client.Services.ItemInventoryServiceClient)
 function get_inventory_items_unique_items()
@@ -1555,38 +1589,6 @@ local function startChallenge()
             plr.Character.HumanoidRootPart.CFrame = cpos
         end
     end
-end
-
---test fixportal
-
-function getBorosPortals()
-    local portals = {}
-    for _, item in pairs(get_inventory_items_unique_items()) do
-        if item["item_id"] == "portal_boros_g" then
-            table.insert(portals, item)
-        end
-    end
-    return portals
-end
-
-function getCSMPortals()
-    local portals = {}
-    for _, item in pairs(get_inventory_items_unique_items()) do
-        if item["item_id"] == "portal_csm" or "portal_csm1" or "portal_csm2" or "portal_csm3" or "portal_csm4" or "portal_csm5" then
-            table.insert(portals, item)
-        end
-    end
-    return portals
-end
-
-
-function GetPortals(id)
-    for _, item in pairs(get_inventory_items_unique_items()) do
-        if item["item_id"] == id then
-            table.insert(portals, item)
-        end
-    end
-    return portals
 end
 
 Settings.teleporting = true

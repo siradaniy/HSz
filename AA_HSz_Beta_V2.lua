@@ -1854,15 +1854,18 @@ function autoupgradefunc()
         error(err)
     end
 end
+
 local function FarmInfinityCastle()
     if Settings.AutoInfinityCastle and Settings.AutoFarm or Settings.AutoInfinityCastle then
         if game.PlaceId == 8304191830 then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(12423.1855, 155.24025, 3198.07593, -1.34111269e-06, -2.02512282e-08, 1, 3.91705386e-13, 1, 2.02512282e-08, -1, 4.18864542e-13, -1.34111269e-06)
             getgenv().infinityroom = 0
+
             for i, v in pairs(game:GetService("Players")[game.Players.LocalPlayer.Name].PlayerGui.InfiniteTowerUI.LevelSelect.InfoFrame.LevelButtons:GetChildren()) do
                 if v.Name == "FloorButton" then
                     if v.clear.Visible == false and v.Locked.Visible == false then
                         local room = string.split(v.Main.text.Text, " ")
+
                         local args = {
                             [1] = tonumber(room[2])
                         }
@@ -1877,6 +1880,7 @@ local function FarmInfinityCastle()
         end
     end
 end
+
 coroutine.resume(coroutine.create(function()
     while task.wait() do
         if not Settings.AutoInfinityCastle then
@@ -1900,6 +1904,7 @@ coroutine.resume(coroutine.create(function()
                 FarmInfinityCastle()--S_Farming
             end
         end
+
         if game.PlaceId ~= 8304191830 then
             local _wave = game:GetService("Workspace"):WaitForChild("_wave_num")
             if Settings.AutoSell and tonumber(Settings.AutoSellWave) <= _wave.Value then
@@ -1920,6 +1925,7 @@ coroutine.resume(coroutine.create(function()
         end
     end
 end))
+
 coroutine.resume(coroutine.create(function()
     while task.wait(2) do
         if Settings.AutoAbilities then

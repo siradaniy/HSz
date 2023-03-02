@@ -1,5 +1,6 @@
 --updatefix
 local version = "11.0.0"
+
 ---// Loading Section \\---
 repeat  task.wait() until game:IsLoaded()
 if game.PlaceId == 8304191830 then
@@ -23,6 +24,7 @@ function saveSettings()
     Settings = ReadSetting()
     warn("Settings Saved!")
 end
+
 function ReadSetting()
     local s, e = pcall(function()
         local HttpService = game:GetService('HttpService')
@@ -38,6 +40,7 @@ function ReadSetting()
         return ReadSetting()
     end
 end
+
 Settings = ReadSetting()
 ------------------------------
 local HttpService = game:GetService("HttpService")
@@ -47,6 +50,7 @@ local RunService = game:GetService("RunService")
 local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 ------------------------------
+
 ------------item drop result
 function get_inventory_items_unique_items()
 	for i,v in next, getgc() do
@@ -90,6 +94,7 @@ for v2, v3 in pairs(game:GetService("ReplicatedStorage").src.Data.Items:GetDesce
 		    Table_All_Items_Old_data[v4] = {}
 			Table_All_Items_Old_data[v4]['Name'] = v5['name']
 		    Table_All_Items_Old_data[v4]['Count'] = 0
+
 			Table_All_Items_New_data[v4] = {}
 			Table_All_Items_New_data[v4]['Name'] = v5['name']
 			Table_All_Items_New_data[v4]['Count'] = 0
@@ -104,22 +109,32 @@ for i,v in pairs(get_inventory_items_unique_items()) do
         Table_All_Items_Old_data[v['item_id']]['Count'] = Table_All_Items_Old_data[v['item_id']]['Count'] + 1
     end
 end
+
+
 ---------------------
+
 ----------------Map & ID Map
+
 local function GetCurrentLevelId()
     if game.Workspace._MAP_CONFIG then
         return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["id"]
     end
 end
+
 local function GetCurrentLevelName()
     if game.Workspace._MAP_CONFIG then
         return game:GetService("Workspace")._MAP_CONFIG.GetLevelData:InvokeServer()["name"]
     end
 end
 ----------------endMap & ID Map
+
+
 getgenv().item = "-"
+
 plr.PlayerGui:FindFirstChild("HatchInfo"):FindFirstChild("holder"):FindFirstChild("info1"):FindFirstChild("UnitName").Text = getgenv().item
+
 function webhook()
+
     local url = Settings.WebhookUrl
     print("webhook?")
     if url == "" then
@@ -127,15 +142,21 @@ function webhook()
     return
     end 
     
+
     local Time = os.date('!*t', OSTime);
+
 	local thumbnails_avatar = HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" .. game:GetService("Players").LocalPlayer.UserId .. "&size=150x150&format=Png&isCircular=true", true))
+
     local exec = tostring(identifyexecutor())
+
+
     userlevel = plr.PlayerGui:FindFirstChild("spawn_units"):FindFirstChild("Lives"):FindFirstChild("Main"):FindFirstChild("Desc"):FindFirstChild("Level").Text
     totalgems = plr.PlayerGui:FindFirstChild("spawn_units"):FindFirstChild("Lives"):FindFirstChild("Frame"):FindFirstChild("Resource"):FindFirstChild("Gem"):FindFirstChild("Level").Text
     
     ResultHolder = plr.PlayerGui:FindFirstChild("ResultsUI"):FindFirstChild("Holder")
     if game.PlaceId ~= 8304191830 then
     levelname = game:GetService("Workspace"):FindFirstChild("_MAP_CONFIG"):FindFirstChild("GetLevelData"):InvokeServer()["name"]
+
     result = ResultHolder.Title.Text else levelname, result = "nil","nil" end
     if result == "VICTORY" then result = "ชนะ" end
     if result == "DEFEAT" then result = "แพ้" end
@@ -148,7 +169,6 @@ function webhook()
 	ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
     waves = cwaves:split(": ")
 	ttime = ctime:split(": ")
-
     
     gold = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("GoldReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
     if gold == "+99999" then gold = "+0" end	 
@@ -162,6 +182,7 @@ function webhook()
     
     totaltime =  ResultHolder:FindFirstChild("Middle"):FindFirstChild("Timer").Text
     totalwaves = ResultHolder:FindFirstChild("Middle"):FindFirstChild("WavesCompleted").Text
+
     local TextDropLabel = ""
 		local CountAmount = 1
 		for i,v in pairs(get_inventory_items()) do
@@ -239,25 +260,34 @@ function webhook()
     
     
     local porn = game:GetService("HttpService"):JSONEncode(data)
+
 		local headers = {["content-type"] = "application/json"}
 		local request = http_request or request or HttpPost or syn.request or http.request
 		local sex = {Url = url, Body = porn, Method = "POST", Headers = headers}
 		warn("Sending webhook notification...")
 		request(sex)
 end
+
 ------------------------------\
+
 if game.CoreGui:FindFirstChild("FinityUI") then
     game.CoreGui["FinityUI"]:Destroy()
 end
+
 local dir = "Anime_Adventures/"..game.Players.LocalPlayer.Name
 local Uilib = loadstring(game:HttpGet("https://raw.githubusercontent.com/siradaniy/HSz/main/finitylib.lua"))()
 local exec = tostring(identifyexecutor())
+
 local Window = Uilib.new(true, "[HSz_AA_v2] Anime Adventures UPD "..version.." - "..exec)
 Window.ChangeToggleKey(Enum.KeyCode.RightShift)
+
+
 local Home = Window:Category(" 🏠 หน้าแรก")
 local Developers = Home:Sector("HSz Anime Adventures")
 local asdasd = Home:Sector(" ")
 local UIUPDT = Home:Sector("⚙️ Fix UPDATE "..version.." ⚙️")
+
+
 local Farm = Window:Category(" 🤖 Auto Farm")
 local SelectUnits = Farm:Sector("🧙‍ เลือก Units")
 local SelectWorld = Farm:Sector("🌏 เลือก World")
@@ -265,9 +295,12 @@ local UnitPosition = Farm:Sector("🧙 เลือกจุดวาง Unit")
 local castleconfig = Farm:Sector("🏯 ตั้งค่า Infinity Castle 🏯")
 local AutoFarmConfig = Farm:Sector("⚙️ ตั้งค่า Auto Farm")
 local ChallengeConfig = Farm:Sector("⌛ ตั้งค่า Challenge")
+
 --[[local Portals = Window:Category(" 🚪 Portals Farm")
 local devilcity = Portals:Sector("😈‍ Devil Portal 😈")
 local alinecity = Portals:Sector("👽 Aline Portal 👽")]]
+
+
 local UC = Window:Category(" 🧙 ตั้งค่า Unit")
 local NDY = UC:Sector("ยังไม่เสร็จ")
 local emptyxx = UC:Sector(" ")
@@ -279,31 +312,24 @@ local Unit5 = UC:Sector("Unit 5")
 local Unit6 = UC:Sector("Unit 6")
 
 
-local ETC = Window:Category(" 🌐 Web & Shop")
+local ETC = Window:Category(" 🌐 Discord & Shop")
 local AutoSummonSec = ETC:Sector("💸 Auto สุ่ม Units 💸")
 local AutoSnipeMerchantSec = ETC:Sector("🏪 Auto ชื้อของร้านค้า Bulma 🏪")
 local WebhookSec = ETC:Sector("🌐 Discord Webhook 🌐")
-
-    
-          
-            
-    
-
-          
-    
-    
-  
 local OtherSec = ETC:Sector("⌛ Auto Load Script ⌛")
 local devilcity = ETC:Sector("😈‍ ชื้อ Devil Portal 😈")
+
 -------------
 ---sponsorfix---
 -------------
+
 local sponsor = Window:Category("🌟 Sponsor ของเรา ")
 local discord = sponsor:Sector(" Discord 🌟 StarBux 🌟 Store ")
 local facebook = sponsor:Sector(" 👑ร้าน 🌟 StarBux 🌟 ")
 local kaigem = sponsor:Sector("🐣 ชื้อ ID ไก่เพชร 🐣")
 local farmgem = sponsor:Sector("💎 บริการฟาร์มเพชร 💎")
 local starbux = sponsor:Sector("💎 ROBUX กลุ่ม 💎")
+
 ----------------------------------------------
 ---------------- Units Selection -------------
 ----------------------------------------------
@@ -321,6 +347,7 @@ local function UnitSec()
             end
             saveSettings()
         end
+
         function LoadUnits()
             local DataUnits = require(game:GetService("ReplicatedStorage").src.Data.Units)
             table.clear(Units)
@@ -329,8 +356,10 @@ local function UnitSec()
                     table.insert(Units, DataUnits[v.unit_id].name .. " #" .. tostring(v.uuid))
                 end
             end
+
             Check()
         end
+
         function GetUnits()
             if Settings.SelectedUnits == nil then
                 Settings.SelectedUnits = {
@@ -354,7 +383,9 @@ local function UnitSec()
             until #getgenv().profile_data.equipped_units > 0
             LoadUnits()
         end
+
     GetUnits()
+
     SelectUnits:Cheat("Button", "🧙 ใส่ทีมที่เลือก", function() --Selects Currently Equipped Units!
         Settings.SelectedUnits = {
             U1 = "nil",
@@ -367,10 +398,12 @@ local function UnitSec()
         saveSettings()
         GetUnits()
     end)
+
     function switchteam(string)
         local args = { [1] = string }
         game:GetService("ReplicatedStorage").endpoints.client_to_server.switch_team_loadout:InvokeServer(unpack(args))
     end
+
     local a = SelectUnits:Cheat("Dropdown", "🧙 เลือกทีม",function(preset)
         Settings.SelectedPreset = preset
         print(preset)
@@ -379,6 +412,8 @@ local function UnitSec()
         options = { "ทีม 1", "ทีม 2", "ทีม 3", "ทีม 4","ทีม 5" }, 
         default = Settings.SelectedPreset
     })
+
+
     SelectUnits:Cheat("Button", "⌛ เปลี่ยนทีม", function() --loads preset
         preset = Settings.SelectedPreset
         if preset == "Team 1" then
@@ -394,8 +429,12 @@ local function UnitSec()
         end
         print(preset)
         GetUnits()
+
+
     end)
+
 end
+
 ----------------------------------------------
 ------------------ World Section -------------
 ----------------------------------------------
@@ -417,6 +456,7 @@ local function WorldSec()
         },
         default = Settings.WorldCategory
     })
+
     local selectworld = SelectWorld:Cheat("Dropdown", "🌏 เลือก World",function(value)
         print(value)
         Settings.SelectedWorld = value
@@ -424,6 +464,7 @@ local function WorldSec()
         getgenv().updatedifficulty()
         saveSettings()
     end, {options = { }, default = Settings.SelectedWorld })
+
     getgenv().updateworld = function()
         selectworld:ClearDrop() local storylist;
         if Settings.WorldCategory == "Story Worlds" then
@@ -443,12 +484,14 @@ local function WorldSec()
             selectworld:AddOption(storylist[i])
         end
     end
+
     local selectlevel = SelectWorld:Cheat("Dropdown", "🎚️ เลือก ด่าน",function(value)
         print(value)
         Settings.SelectedLevel = value
         getgenv().updatedifficulty()
         saveSettings()
     end, {options = { }, default = Settings.SelectedLevel})
+
     getgenv().updatelevel = function()
         selectlevel:ClearDrop() local levellist; local level = Settings.SelectedWorld;
         ---///Story Worlds\\\---
@@ -509,10 +552,13 @@ local function WorldSec()
         elseif level == "JJK Finger" then
             levellist = {"jjk_finger"}       
         end
+
+
         for i = 1, #levellist do
             selectlevel:AddOption(levellist[i])
         end
     end
+
     local selectdiff = SelectWorld:Cheat("Dropdown", "🔫 ระดับความยาก",function(value)
         print(value, " Selected")
         Settings.Difficulty = value
@@ -520,6 +566,7 @@ local function WorldSec()
     end, {
         options = {}, default = Settings.Difficulty
     })
+
     getgenv().updatedifficulty = function()
         selectdiff:ClearDrop(); level = Settings.SelectedLevel; cata = Settings.WorldCategory; local diff;
         if level == "namek_infinite" or level == "aot_infinite" or level == "demonslayer_infinite" 
@@ -543,65 +590,85 @@ local function WorldSec()
         saveSettings()
     end,{enabled = Settings.isFriendOnly})
 end
+
 ----------------------------------------------
 ---------------- Portal Config ------------- fixportal
 ----------------------------------------------
 local function Farmportal()
+
     --Devil
+
     devilcity:Cheat("Dropdown", "เลือก ประตู Portal",function(pornname)
         getgenv().portalnameC = pornname
         saveSettings()
     end, { options = {"csm_contract_0", "csm_contract_1","csm_contract_2","csm_contract_3","csm_contract_4","csm_contract_5"}, default = getgenv().portalnameC})
+
+
     devilcity:Cheat("Button","Buy Devil Portal", function(bool)
         local string_1 = getgenv().portalnameC
         local Target = game:GetService("ReplicatedStorage").endpoints["client_to_server"]["buy_csmportal_shop_item"];
         Target:InvokeServer(string_1);
         warn("Buy Devil Portal !!!")
     end)
+
    --[[ devilcity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
         print(bool)
         Settings.farmprotal = bool
         saveSettings()
         warn("Farm Devil Portal !!!")
     end,{enabled = Settings.farmprotal })
+
     devilcity:Cheat("Label","ประตูจะสุ่มเปิดจากที่มีในกระเป๋าที่มี ระดับจะเปิดตามที่เราเลือก") 
+
+
     --Aline
+
     alinecity:Cheat("Dropdown", "เลือก ประตู Portal",function(value)
         Settings.portalnameA = value
         saveSettings()
     end, { options = {"Aline portal",}, default =Settings.portalnameA})
+
+
     alinecity:Cheat("Checkbox"," Auto Farm Aline Portal  ", function(bool)
         print(bool)
         Settings.farmaline = bool
         saveSettings()
         warn("Farm Aline Portal !!!")
     end,{enabled = Settings.farmaline })
+
     alinecity:Cheat("Label","ประตูจะสุ่มเปิดจากในกระเป๋าที่มี ") ]]
 end
+
+
 ----------------------------------------------
 ---------------- AutoFarm Config -------------
 ----------------------------------------------
 local function AutoFarmSec()
+
     AutoFarmConfig:Cheat("Checkbox"," Auto Start เริ่มทำงาน  ", function(bool)
         print(bool)
         Settings.autostart = bool
         saveSettings()
     end,{enabled = Settings.autostart })
+
     AutoFarmConfig:Cheat("Checkbox"," Auto Farm วางตัว  ", function(bool)
         print(bool)
         Settings.AutoFarm = bool
         saveSettings()
     end,{enabled = Settings.AutoFarm })
+
     AutoFarmConfig:Cheat("Checkbox"," Auto Replay เล่นซ้ำ ", function(bool)
         print(bool)
         Settings.AutoReplay = bool
         saveSettings()
     end,{enabled = Settings.AutoReplay})
+
     AutoFarmConfig:Cheat("Checkbox"," Auto Next Story  ", function(bool)
         print(bool)
         Settings.AutoNext = bool
         saveSettings()
     end,{enabled = Settings.AutoNext})
+
     AutoFarmConfig:Cheat("Checkbox"," Auto Leave ออก ", function(bool)
         print(bool)
         Settings.AutoLeave = bool
@@ -613,37 +680,46 @@ local function AutoFarmSec()
         Settings.AutoAbilities = bool
         saveSettings()
     end,{enabled = Settings.AutoAbilities})
+
     AutoFarmConfig:Cheat("Checkbox"," Auto Upgrade Units อัปตัว  ", function(bool)
         print(bool)
         Settings.AutoUpgrade = bool
         saveSettings()
     end,{enabled = Settings.AutoUpgrade})
+
     AutoFarmConfig:Cheat("Checkbox"," Auto Sell Units ขายตัว ", function(bool)
         print(bool)
         Settings.AutoSell = bool
         saveSettings()
     end,{enabled = Settings.AutoSell})
+
     AutoFarmConfig:Cheat("Textbox", " ขายเมื่อถึง Wave", function(Value)
         Value = tonumber(Value)
         Settings.AutoSellWave = Value
         saveSettings()
     end, {placeholder = Settings.AutoSellWave})
 end
+
+
 ----------------------------------------------
 --------------- More Farm Config -------------
 ----------------------------------------------
 local function MoreFarmSec()
+
     castleconfig:Cheat("Checkbox","🏯 Auto Next Level หอคอย ชั้นต่อไป  ", function(bool)
         print(bool)
         Settings.AutoContinue = bool
         saveSettings()
     end,{enabled = Settings.AutoContinue })
+
     castleconfig:Cheat("Checkbox","🏯 Auto Infinity Castle  ", function(bool)
         print(bool)
         Settings.AutoInfinityCastle = bool
         saveSettings()
     end,{enabled = Settings.AutoInfinityCastle})
+
 end
+
 ----------------------------------------------
 ----------------- Challenge ------------------
 ----------------------------------------------
@@ -653,17 +729,20 @@ local function ChallengeSec()
         Settings.SelectedReward = value
         saveSettings()
     end, { options = {"star_fruit_random","star_remnant","gems", "gold"}, default =Settings.SelectedReward})
+
     ChallengeConfig:Cheat("Checkbox","🎯 Auto Challenge  ", function(bool)
         print(bool)
         Settings.AutoChallenge = bool
         saveSettings()
     end, {enabled =Settings.AutoChallenge})
+
     ChallengeConfig:Cheat("Checkbox","🏆 Farm ทุกอย่าง  ", function(bool)
         print(bool)
        Settings.AutoChallengeAll = bool
         saveSettings()
     end,{enabled =Settings.AutoChallengeAll})
 end
+
 ----------------------------------------------
 ------------------ credits -------------------
 ----------------------------------------------
@@ -676,8 +755,11 @@ local function credits()
     end)    
     UIUPDT:Cheat("Label","[+]Add New Webhook result Portals drop \n[+]Add JJK finger & Portal Farm [Devil & Aline] ")   
 end
+
 getgenv().posX = 1.5
 getgenv().posZ = 1.5
+
+
 ----------------------------------------------
 ------------------ sponsorfix ----------------
 ----------------------------------------------
@@ -726,11 +808,13 @@ local function sponsor()
     
     
     end    
+
 ----------------------------------------------
 ---------------- Unit Config -----------------
 ----------------------------------------------
 function updatepos(map, UnitPos, a,a2,a3,a4,a5,a6)
     warn(map)		
+
     if Settings[map] == nil then
         Settings[map] = {}
         saveSettings()
@@ -805,6 +889,7 @@ function updatepos(map, UnitPos, a,a2,a3,a4,a5,a6)
     end)
     Settings[map][UnitPos]["x"] = a.Position.X
     Settings[map][UnitPos]["z"] = a.Position.Z
+
     Settings[map][UnitPos]["y"] = a.Position.Y
     Settings[map][UnitPos]["y2"] = a2.Position.Y
     Settings[map][UnitPos]["y3"] = a3.Position.Y
@@ -814,6 +899,7 @@ function updatepos(map, UnitPos, a,a2,a3,a4,a5,a6)
     print("updatepos")
     saveSettings()
 end
+
 function savepos(UnitPos, a,a2,a3,a4,a5,a6)
     if game.Workspace._map:FindFirstChild("namek mushroom model") then
         updatepos("Namak", UnitPos, a,a2,a3,a4,a5,a6)
@@ -858,6 +944,7 @@ function savepos(UnitPos, a,a2,a3,a4,a5,a6)
     end
     warn("savepos")
 end
+
 function mobilegui(a,a2,a3,a4,a5,a6)
 	local BillboardGui = Instance.new("BillboardGui")
 	local Frame = Instance.new("Frame")
@@ -866,6 +953,7 @@ function mobilegui(a,a2,a3,a4,a5,a6)
 	local UICorner = Instance.new("UICorner")
 	local Cancel = Instance.new("TextButton")
 	local UICorner_2 = Instance.new("UICorner")
+
 	--Properties:
 	BillboardGui.Adornee = a
 	BillboardGui.Parent = game.Players.LocalPlayer.PlayerGui 
@@ -874,14 +962,17 @@ function mobilegui(a,a2,a3,a4,a5,a6)
 	BillboardGui.LightInfluence = 1.000
 	BillboardGui.Size = UDim2.new(7, 0, 3, 0)
 	BillboardGui.SizeOffset = Vector2.new(0, 1.5)
+
 	Frame.Parent = BillboardGui
 	Frame.BackgroundColor3 = Color3.fromRGB(49, 49, 57)
 	Frame.BackgroundTransparency = 1.000
 	Frame.Size = UDim2.new(1, 0, 0.5, 0)
+
 	UIListLayout.Parent = Frame
 	UIListLayout.FillDirection = Enum.FillDirection.Horizontal
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 	UIListLayout.Padding = UDim.new(0.0599999987, 0)
+
 	Done.Name = "Done"
 	Done.Parent = Frame
 	Done.BackgroundColor3 = Color3.fromRGB(34, 255, 0)
@@ -915,6 +1006,7 @@ function mobilegui(a,a2,a3,a4,a5,a6)
 	
 	UICorner.CornerRadius = UDim.new(0.119999997, 0)
 	UICorner.Parent = Done
+
 	Cancel.Name = "Cancel"
 	Cancel.Parent = Frame
 	Cancel.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
@@ -949,39 +1041,46 @@ function mobilegui(a,a2,a3,a4,a5,a6)
 	UICorner_2.CornerRadius = UDim.new(0.119999997, 0)
 	UICorner_2.Parent = Cancel
 end
+
 function MouseClick2(UnitPos)
 	if UserInputService.TouchEnabled then mobile = true else mobile = false end 
 	print("a")
 	local raycastParams = RaycastParams.new()
 	raycastParams.FilterType = Enum.RaycastFilterType.Whitelist
 	raycastParams.FilterDescendantsInstances = {game:GetService("Workspace")["_terrain"]}
+
 	_G.gg = true
 	task.wait(0.5)
 	local x = getgenv().posX
 	local z = getgenv().posZ
+
 	local a = Instance.new("Part", game.Workspace)
 	local a2 = Instance.new("Part", game.Workspace)
 	local a3 = Instance.new("Part", game.Workspace)
 	local a4 = Instance.new("Part", game.Workspace)
 	local a5 = Instance.new("Part", game.Workspace)
 	local a6 = Instance.new("Part", game.Workspace)
+
 	a.Size = Vector3.new(1, 1, 1)
 	a2.Size = Vector3.new(1, 1, 1)
 	a3.Size = Vector3.new(1, 1, 1)
 	a4.Size = Vector3.new(1, 1, 1)
 	a5.Size = Vector3.new(1, 1, 1)
 	a6.Size = Vector3.new(1, 1, 1)
+
 	a.Material = Enum.Material.Neon
 	a2.Material = Enum.Material.Neon
 	a3.Material = Enum.Material.Neon
 	a4.Material = Enum.Material.Neon
 	a5.Material = Enum.Material.Neon
 	a6.Material = Enum.Material.Neon
+
 	--a.Position = mouse.hit.p
 	game:GetService("RunService").RenderStepped:Connect(function()
 		pcall(function()
 			if _G.gg and not mobile then
 				mouse.TargetFilter  = a
+
 				local xPos = mouse.Hit.Position.X --x position of unit
 				local zPos = mouse.Hit.Position.Z --z position of unit
 				local rayOrigin = CFrame.new(xPos, 1000, zPos).p
@@ -989,6 +1088,8 @@ function MouseClick2(UnitPos)
 				local rayDirection = (rayDestination - rayOrigin)
 				local raycastResult = workspace:Raycast(rayOrigin, rayDirection, raycastParams)
 				a.CFrame = CFrame.new(raycastResult.Position) * CFrame.Angles(0, -0, -0)
+
+
 				local xPos2 = a.Position.X --x position of unit
 				local zPos2 = a.Position.Z + z --z position of unit
 				local rayOrigin2 = CFrame.new(xPos2, 1000, zPos2).p
@@ -996,6 +1097,7 @@ function MouseClick2(UnitPos)
 				local rayDirection2 = (rayDestination2 - rayOrigin2)
 				local raycastResult2 = workspace:Raycast(rayOrigin2, rayDirection2, raycastParams)
 				a2.CFrame = CFrame.new(raycastResult2.Position) * CFrame.Angles(0, -0, -0)
+
 				local xPos3 = a.Position.X + x --x position of unit
 				local zPos3 = a.Position.Z  --z position of unit
 				local rayOrigin3 = CFrame.new(xPos3, 1000, zPos3).p
@@ -1003,6 +1105,7 @@ function MouseClick2(UnitPos)
 				local rayDirection3 = (rayDestination3 - rayOrigin3)
 				local raycastResult3 = workspace:Raycast(rayOrigin3, rayDirection3, raycastParams)
 				a3.CFrame = CFrame.new(raycastResult3.Position) * CFrame.Angles(0, -0, -0)
+
 				local xPos4 = a.Position.X - x --x position of unit
 				local zPos4 = a.Position.Z  --z position of unit
 				local rayOrigin4 = CFrame.new(xPos4, 1000, zPos4).p
@@ -1010,6 +1113,7 @@ function MouseClick2(UnitPos)
 				local rayDirection4 = (rayDestination4 - rayOrigin4)
 				local raycastResult4 = workspace:Raycast(rayOrigin4, rayDirection4, raycastParams)
 				a4.CFrame = CFrame.new(raycastResult4.Position) * CFrame.Angles(0, -0, -0)
+
 				local xPos5 = a.Position.X + x--x position of unit
 				local zPos5 = a.Position.Z + z --z position of unit
 				local rayOrigin5 = CFrame.new(xPos5, 1000, zPos5).p
@@ -1017,6 +1121,7 @@ function MouseClick2(UnitPos)
 				local rayDirection5 = (rayDestination5 - rayOrigin5)
 				local raycastResult5 = workspace:Raycast(rayOrigin5, rayDirection5, raycastParams)
 				a5.CFrame = CFrame.new(raycastResult5.Position) * CFrame.Angles(0, -0, -0)
+
 				local xPos6 = a.Position.X - x --x position of unit
 				local zPos6 = a.Position.Z + z --z position of unit
 				local rayOrigin6 = CFrame.new(xPos6, 1000, zPos6).p
@@ -1028,6 +1133,7 @@ function MouseClick2(UnitPos)
 				warn("MOBILE DEVICE")
 				UserInputService.TouchLongPress:Connect(function()
 					mouse.TargetFilter  = a
+
 					local xPos = mouse.Hit.Position.X --x position of unit
 					local zPos = mouse.Hit.Position.Z --z position of unit
 					local rayOrigin = CFrame.new(xPos, 1000, zPos).p
@@ -1035,6 +1141,8 @@ function MouseClick2(UnitPos)
 					local rayDirection = (rayDestination - rayOrigin)
 					local raycastResult = workspace:Raycast(rayOrigin, rayDirection, raycastParams)
 					a.CFrame = CFrame.new(raycastResult.Position) * CFrame.Angles(0, -0, -0)
+
+
 					local xPos2 = a.Position.X --x position of unit
 					local zPos2 = a.Position.Z + z --z position of unit
 					local rayOrigin2 = CFrame.new(xPos2, 1000, zPos2).p
@@ -1042,6 +1150,7 @@ function MouseClick2(UnitPos)
 					local rayDirection2 = (rayDestination2 - rayOrigin2)
 					local raycastResult2 = workspace:Raycast(rayOrigin2, rayDirection2, raycastParams)
 					a2.CFrame = CFrame.new(raycastResult2.Position) * CFrame.Angles(0, -0, -0)
+
 					local xPos3 = a.Position.X + x --x position of unit
 					local zPos3 = a.Position.Z  --z position of unit
 					local rayOrigin3 = CFrame.new(xPos3, 1000, zPos3).p
@@ -1049,6 +1158,7 @@ function MouseClick2(UnitPos)
 					local rayDirection3 = (rayDestination3 - rayOrigin3)
 					local raycastResult3 = workspace:Raycast(rayOrigin3, rayDirection3, raycastParams)
 					a3.CFrame = CFrame.new(raycastResult3.Position) * CFrame.Angles(0, -0, -0)
+
 					local xPos4 = a.Position.X - x --x position of unit
 					local zPos4 = a.Position.Z  --z position of unit
 					local rayOrigin4 = CFrame.new(xPos4, 1000, zPos4).p
@@ -1056,6 +1166,7 @@ function MouseClick2(UnitPos)
 					local rayDirection4 = (rayDestination4 - rayOrigin4)
 					local raycastResult4 = workspace:Raycast(rayOrigin4, rayDirection4, raycastParams)
 					a4.CFrame = CFrame.new(raycastResult4.Position) * CFrame.Angles(0, -0, -0)
+
 					local xPos5 = a.Position.X + x--x position of unit
 					local zPos5 = a.Position.Z + z --z position of unit
 					local rayOrigin5 = CFrame.new(xPos5, 1000, zPos5).p
@@ -1063,6 +1174,7 @@ function MouseClick2(UnitPos)
 					local rayDirection5 = (rayDestination5 - rayOrigin5)
 					local raycastResult5 = workspace:Raycast(rayOrigin5, rayDirection5, raycastParams)
 					a5.CFrame = CFrame.new(raycastResult5.Position) * CFrame.Angles(0, -0, -0)
+
 					local xPos6 = a.Position.X - x --x position of unit
 					local zPos6 = a.Position.Z + z --z position of unit
 					local rayOrigin6 = CFrame.new(xPos6, 1000, zPos6).p
@@ -1073,14 +1185,17 @@ function MouseClick2(UnitPos)
 				end)
 			end
 		end)
+
 	end)
 	task.wait()
+
 	a.Anchored = true
 	a2.Anchored = true
 	a3.Anchored = true
 	a4.Anchored = true
 	a5.Anchored = true
 	a6.Anchored = true
+
 	a.CanCollide = false
 	a2.CanCollide = false
 	a3.CanCollide = false
@@ -1093,6 +1208,7 @@ function MouseClick2(UnitPos)
 			print("b")
 			savepos(UnitPos, a,a2,a3,a4,a5,a6)
 			_G.gg = false 
+
 			for i = 0, 1, 0.1 do
 				a.Transparency = i
 				a2.Transparency = i
@@ -1112,8 +1228,12 @@ function MouseClick2(UnitPos)
 	elseif _G.gg  and mobile then
 		mobilegui(a,a2,a3,a4,a5,a6)
 	end
+
 end
+
+
 local function UnitPosSec()
+
     UnitPosition:Cheat("Button", "เช็ทจุดวาง Unit 1", function()
         MouseClick2("UP1")
     end)
@@ -1133,6 +1253,7 @@ local function UnitPosSec()
         MouseClick2("UP6")
     end)
 end
+
 local function unitconfig()
     emptyxx:Cheat("Label","    ")
     NDY:Cheat("Label","ยังทำไม่เสร็จ ยังใช้ไม่ได้ ")
@@ -1142,42 +1263,52 @@ local function unitconfig()
         Settings.U1_Wave = Value
         saveSettings()
     end, {placeholder = Settings.U1_Wave})
+
     Unit1:Cheat("Textbox", "จำนวน Unit ที่วาง", function(Value)
         Value = tonumber(Value)
         Settings.U1_TotalAmmount = Value
         saveSettings()
     end, {placeholder = Settings.U1_TotalAmmount})
+
     Unit1:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
         Settings.U1_UpgWave = Value
     end, {placeholder = Settings.U1_UpgWave})
+
     Unit1:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
         Settings.U1_UpgCap = Value
     end, {placeholder = Settings.U1_UpgCap})
+
     Unit1:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
         Settings.U1_SellWave = Value
     end, {placeholder = Settings.U1_SellWave}) 
+
+
     --//UNIT 2
     Unit2:Cheat("Textbox", "วางตัวเมื่อถึง wav", function(Value)
         Value = tonumber(Value)
         Settings.U2_Wave = Value
         saveSettings()
     end, {placeholder = Settings.U2_Wave})
+
     Unit2:Cheat("Textbox", "จำนวน Unit ที่วาง", function(Value)
         Value = tonumber(Value)
         Settings.U2_TotalAmmount = Value
         saveSettings()
     end, {placeholder = Settings.U2_TotalAmmount})
+
     Unit2:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
         Settings.U2_UpgWave = Value
     end, {placeholder = Settings.U2_UpgWave})
+
     Unit2:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
         Settings.U2_UpgCap = Value
     end, {placeholder = Settings.U2_UpgCap})
+
     Unit2:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
         Settings.U2_SellWave = Value
@@ -1187,22 +1318,27 @@ local function unitconfig()
     Unit3:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
+
     Unit3:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
+
     Unit3:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
     Unit3:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 999}) 
+
     --//UNIT 4
     Unit4:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
+
     Unit4:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
+
     Unit4:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
@@ -1214,22 +1350,27 @@ local function unitconfig()
         Unit5:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
+
     Unit5:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
+
     Unit5:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
     Unit5:Cheat("Textbox", "ขายเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 999}) 
+
     --//UNIT 6
     Unit6:Cheat("Textbox", "วางตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
+
     Unit6:Cheat("Textbox", "อัปตัวเมื่อถึง wave", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
+
     Unit6:Cheat("Textbox", "จำนวนขั้นที่อัป", function(Value)
         Value = tonumber(Value)
     end, {placeholder = 0})
@@ -1237,6 +1378,7 @@ local function unitconfig()
         Value = tonumber(Value)
     end, {placeholder = 999}) 
 end
+
 ----------------------------------------------
 ---------------- Auto Summon -----------------
 ----------------------------------------------
@@ -1248,24 +1390,30 @@ function SummonUnits(banner, method)
     game:GetService("ReplicatedStorage").endpoints.client_to_server.buy_from_banner:InvokeServer(unpack(args)) 
     wait(1.5)
 end
+
 function AutoSummon()
     local aaselectbanner = AutoSummonSec:Cheat("Dropdown", "🧙 เลือก Banner 🧙",function(value)
         getgenv().SelectedBanner = value
     end, { options = {"Special", "Standard"}})
+
     local aaselectbanner = AutoSummonSec:Cheat("Dropdown", "💸 เลือกของที่ใช้ 💸",function(value)
         getgenv().SelectedMethod = value
     end, { options = {"ticket", "gems", "gems10"}})
+
     AutoSummonSec:Cheat("Checkbox","Auto Summon", function(bool)
         getgenv().AutoSummon = bool
     end)
 end
+
 ----------------------------------------------
 ------------ Auto Snipe Merchant -------------
 ----------------------------------------------
+
 function buymerchant(item)
     local args = { [1] = item } 
     game:GetService("ReplicatedStorage").endpoints.client_to_server.buy_travelling_merchant_item:InvokeServer(unpack(args))
 end
+
 function snipefunc(item)
     if item =="Any StarFruits" then
         if game:GetService("Workspace")["travelling_merchant"]["is_open"].Value == true then
@@ -1298,6 +1446,8 @@ function snipefunc(item)
         end
     end
 end
+
+
 function SnipeMerchant()
     AutoSnipeMerchantSec:Cheat("Dropdown", "เลือก Star Fruit ที่จะชื้อ",function(value)
         Settings.ASM_SelectedFruit = value
@@ -1308,15 +1458,19 @@ function SnipeMerchant()
         Settings.ASM_SelectedOtherItems = value
         saveSettings()
     end, { options = {"None","Any Items","LuckPotion","star_remnant","summon_ticket"}, default =Settings.ASM_SelectedOtherItems})
+
     AutoSnipeMerchantSec:Cheat("Dropdown", "เลือก Evo Items ที่จะชื้อ",function(value)
         Settings.ASM_SelectedEvoItems = value
         saveSettings()
     end, { options = {"None"}, default =Settings.ASM_SelectedEvoItems})
+
     AutoSnipeMerchantSec:Cheat("Checkbox","เปิดชื้อของ Auto", function(bool)
         Settings.AutoSnipeMerchant = bool
         saveSettings()
     end,{enabled = Settings.AutoSnipeMerchant })
+
 end
+
 ----------------------------------------------
 -------------- Discord Webhook ---------------
 ----------------------------------------------
@@ -1325,15 +1479,18 @@ function Webhooksec()
         Settings.WebhookUrl = Value
         saveSettings()
     end, {placeholder = Settings.WebhookUrl})
+
     WebhookSec:Cheat("Checkbox","เปิดใช้ Webhook", function(bool)
         Settings.WebhookEnabled = bool
         saveSettings()
     end,{enabled = Settings.WebhookEnabled})
+
     WebhookSec:Cheat("Button", "Test Webhook", function()
         print(Settings.WebhookUrl)
         webhook()
     end)
 end
+
 ----------------------------------------------
 ------------------ Others --------------------
 ----------------------------------------------
@@ -1347,6 +1504,7 @@ function autoload()
         end
     end)
 end
+
 function others()
     OtherSec:Cheat("Checkbox","Auto Load Script", function(bool)
         Settings.AutoLoadScript = bool
@@ -1391,6 +1549,7 @@ end
 ----------------------------------------------
 ------------ /\/\/\/\/\/\/\/\/\ --------------
 ----------------------------------------------
+
 local function checkChallenge()
     for i,v in pairs(game.Players.LocalPlayer.PlayerGui:GetChildren()) do
         if v:IsA("SurfaceGui") then
@@ -1400,6 +1559,7 @@ local function checkChallenge()
         end
     end
 end
+
 local function checkReward()
     if checkChallenge() == false then
         if Settings.SelectedReward == game:GetService("Workspace")["_LOBBIES"]["_DATA"]["_CHALLENGE"]["current_reward"].Value then
@@ -1413,6 +1573,7 @@ local function checkReward()
         return false
     end
 end
+
 local function startChallenge()
     if game.PlaceId == 8304191830 then
         local cpos = plr.Character.HumanoidRootPart.CFrame
@@ -1431,9 +1592,12 @@ local function startChallenge()
         end
     end
 end
+
 --test fixportal
+
 function getBorosPortals()
     local reg = getreg()
+
     for i,v in next, reg do
         if type(v) == 'function' then 
             if getfenv(v).script then
@@ -1454,8 +1618,10 @@ function getBorosPortals()
         end
     end
 end
+
 function getCSMPortals()
     local reg = getreg() 
+
     for i,v in next, reg do
         if type(v) == 'function' then 
             if getfenv(v).script then 
@@ -1476,6 +1642,8 @@ function getCSMPortals()
         end
     end
 end
+
+
 function GetPortals(id)
     local reg = getreg()  
     local portals = {}
@@ -1498,8 +1666,11 @@ function GetPortals(id)
         end
     end
 end
+
 Settings.teleporting = true
 getgenv().door = "_lobbytemplategreen1"
+
+
 local function startfarming()
     if game.PlaceId == 8304191830 and not Settings.farmprotal and Settings.autostart and Settings.AutoFarm and Settings.teleporting and not Settings.AutoInfinityCastle then
         local cpos = plr.Character.HumanoidRootPart.CFrame; cata = Settings.WorldCategory; level = Settings.SelectedLevel;
@@ -1674,8 +1845,12 @@ elseif cata == "Portals" then
             end
         end
    
+
+
         --fixportal  ----Devil Portal
+
 elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and Settings.AutoFarm  then
+
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
                 print(v._uuid_or_id.value)
@@ -1691,7 +1866,9 @@ elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and
             }
         }
 		game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
+
         task.wait(1.5)
+
         for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
             if v.Name == "Owner" then
                 if tostring(v.value) == game.Players.LocalPlayer.Name then
@@ -1704,12 +1881,15 @@ elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and
                 end
             end 
         end
+
         warn("Devil farming")
         task.wait(7)
     
         ---Aline PortalAutoFarmRaid
     elseif not Settings.autostart and Settings.AutoFarm and Settings.teleporting 
     and not Settings.AutoFarmTP and not Settings.AutoFarmIC and not Settings.farmprotal and Settings.farmaline  then  
+
+
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_boros_g" then
                 print(v._uuid_or_id.value)
@@ -1725,7 +1905,9 @@ elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and
             }
         }
         game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
+
         task.wait(1.5)
+
         for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
             if v.Name == "Owner" then
                 if tostring(v.value) == game.Players.LocalPlayer.Name then
@@ -1738,12 +1920,16 @@ elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and
                 end
             end 
         end
+
         warn("Aline farming")
         task.wait(7)
     end
 end
+
 --end fixportal
+
 getgenv().autoabilityerr = false
+
 function autoabilityfunc()
     local success, err = pcall(function() --///
         repeat task.wait() until game:GetService("Workspace"):WaitForChild("_UNITS")
@@ -1763,9 +1949,12 @@ function autoabilityfunc()
          getgenv().autoabilityerr = true
          error(err)
      end
+
 end
+
 function autoupgradefunc()
     local success, err = pcall(function() --///
+
         repeat task.wait() until game:GetService("Workspace"):WaitForChild("_UNITS")
         for i, v in ipairs(game:GetService("Workspace")["_UNITS"]:GetChildren()) do
            if v:FindFirstChild("_stats") then
@@ -1774,7 +1963,9 @@ function autoupgradefunc()
                 end
             end
         end
+
     end)
+
     if err then
         warn("//////////////////////////////////////////////////")
         warn("//////////////////////////////////////////////////")
@@ -1782,15 +1973,18 @@ function autoupgradefunc()
         error(err)
     end
 end
+
 local function FarmInfinityCastle()
     if Settings.AutoInfinityCastle and Settings.AutoFarm or Settings.AutoInfinityCastle then
         if game.PlaceId == 8304191830 then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(12423.1855, 155.24025, 3198.07593, -1.34111269e-06, -2.02512282e-08, 1, 3.91705386e-13, 1, 2.02512282e-08, -1, 4.18864542e-13, -1.34111269e-06)
             getgenv().infinityroom = 0
+
             for i, v in pairs(game:GetService("Players")[game.Players.LocalPlayer.Name].PlayerGui.InfiniteTowerUI.LevelSelect.InfoFrame.LevelButtons:GetChildren()) do
                 if v.Name == "FloorButton" then
                     if v.clear.Visible == false and v.Locked.Visible == false then
                         local room = string.split(v.Main.text.Text, " ")
+
                         local args = {
                             [1] = tonumber(room[2])
                         }
@@ -1805,6 +1999,7 @@ local function FarmInfinityCastle()
         end
     end
 end
+
 coroutine.resume(coroutine.create(function()
     while task.wait() do
         if not Settings.AutoInfinityCastle then
@@ -1828,6 +2023,7 @@ coroutine.resume(coroutine.create(function()
                 FarmInfinityCastle()--S_Farming
             end
         end
+
         if game.PlaceId ~= 8304191830 then
             local _wave = game:GetService("Workspace"):WaitForChild("_wave_num")
             if Settings.AutoSell and tonumber(Settings.AutoSellWave) <= _wave.Value then
@@ -1848,8 +2044,11 @@ coroutine.resume(coroutine.create(function()
         end
     end
 end))
+
+
 coroutine.resume(coroutine.create(function()
     while task.wait(2) do
+
         if Settings.AutoAbilities then
             if game.PlaceId ~= 8304191830 then
                 pcall(function()
@@ -1877,14 +2076,20 @@ coroutine.resume(coroutine.create(function()
         end
     end
 end))
+
+
 ------// Auto Leave \\------
 --#region Auto Leave 
+
+
 local PlaceID = 8304191830
 local AllIDs = {}
 local foundAnything = ""
 local actualHour = os.date("!*t").hour
 local Deleted = false
+
 local last
+
 local File = pcall(function()
    AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
 end)
@@ -1892,6 +2097,7 @@ if not File then
    table.insert(AllIDs, actualHour)
    writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
 end
+
 function TPReturner()
    local Site;
    if foundAnything == "" then
@@ -1944,6 +2150,7 @@ function TPReturner()
        end
    end
 end
+
 function Teleport()
    while wait() do
        pcall(function()
@@ -1955,6 +2162,9 @@ function Teleport()
    end
 end
 -------------------------------------------
+
+
+
 coroutine.resume(coroutine.create(function()
 	
     task.spawn(function()
@@ -1994,11 +2204,13 @@ coroutine.resume(coroutine.create(function()
                    game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
                 
                     Teleport()
+
                     print("Returning to lobby...")
                 end
             end
         end)
     end)
+
     while task.wait() do
         if getgenv().AutoSummon then
             if getgenv().SelectedBanner == "Special" and getgenv().SelectedMethod ~= nil then
@@ -2007,6 +2219,7 @@ coroutine.resume(coroutine.create(function()
                 SummonUnits("Standard", getgenv().SelectedMethod)
             end
         end
+
         if Settings.AutoSnipeMerchant then
             if Settings.ASM_SelectedFruit ~= "None" or Settings.ASM_SelectedFruit ~= nil then
                 if Settings.ASM_SelectedFruit == "Any StarFruits" then
@@ -2028,11 +2241,16 @@ coroutine.resume(coroutine.create(function()
         end
     end  
 end))
+
+
+
 function PlacePos(map,name,_uuid,unit)
     if Settings.AutoFarm and not getgenv().disableatuofarm then
         x = getgenv().posX; z = getgenv().posZ
         local pos = Settings[map][unit]
+
         warn(" ด่าน "..map.." กำลังวางหรืออัพตัว "..name)
+
         if name ~= "metal_knight_evolved" then
             warn("x")
             local i = math.random(1,6)
@@ -2115,6 +2333,8 @@ function PlacePos(map,name,_uuid,unit)
         end
     end
 end
+
+
 function updateunit(name, min)
     for i, v in ipairs(game:GetService("Workspace")["_UNITS"]:GetChildren()) do
        if v:FindFirstChild("_stats") then
@@ -2126,6 +2346,7 @@ function updateunit(name, min)
         end
     end
 end
+
 function sellunit(name) 
     repeat task.wait() until game:GetService("Workspace"):WaitForChild("_UNITS")
     for i, v in ipairs(game:GetService("Workspace")["_UNITS"]:GetChildren()) do
@@ -2135,6 +2356,8 @@ function sellunit(name)
         end
     end
 end
+
+
 function GetUnitInfo(Unit)
     local unitinfo = Settings.SelectedUnits[Unit]
     local unitinfo_ = unitinfo:split(" #")
@@ -2170,13 +2393,17 @@ function GetUnitInfo(Unit)
     
     return #_units or 0, unitinfo_[1], unitinfo_[2], min or 0
 end
+
+
 function PlaceUnitsTEST(map)
     current_wave = game:GetService("Workspace")["_wave_num"].Value
+
     U1_wv, U2_wv = Settings.U1_Wave or 0, Settings.U2_Wave or 0
     U1_TAmm, U2_TAmm = Settings.U1_TotalAmmount or 6, Settings.U2_TotalAmmount or 6
     U1_upgW, U2_upgW = Settings.U1_UpgWave or 0, Settings.U2_UpgWave or 0
     U1_upgCap, U2_upgCap = Settings.U1_UpgCap or 99, Settings.U2_UpgCap or 99
     U1_sellW, U2_sellW = Settings.U1_SellWave or 999, Settings.U2_SellWave or 999
+
     --//Unit 1
     local U1_amm, U1_name, U1_uuid, U1_u = GetUnitInfo("U1")
     if U1_wv <= current_wave and U1_amm <= U1_TAmm then
@@ -2189,6 +2416,7 @@ function PlaceUnitsTEST(map)
             updateunit(tostring(U1_name), U1_upgCap)
         end
     end
+
     --//Unit 2
     U2_amm, U2_name, U2_uuid, U2_u = GetUnitInfo("U2")
     if U2_wv <= current_wave and U2_amm <= U2_TAmm then
@@ -2201,8 +2429,11 @@ function PlaceUnitsTEST(map)
             updateunit(tostring(U2_name), U2_upgCap)
         end
     end
+
+
 end
 --fix sell and place spam
+
 function PlaceUnits(map)
     pcall(function()
         if Settings.AutoFarm and not getgenv().disableatuofarm then
@@ -2293,6 +2524,7 @@ function PlaceUnits(map)
         end
     end)
 end
+
 coroutine.resume(coroutine.create(function()
     while task.wait(1.5) do
         if game.PlaceId ~= 8304191830 and Settings.AutoFarm and not getgenv().disableatuofarm then
@@ -2343,6 +2575,7 @@ coroutine.resume(coroutine.create(function()
         end
     end
 end))
+
 pcall(function()
     local vu = game:GetService("VirtualUser")
     game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -2353,9 +2586,11 @@ pcall(function()
     game:GetService("ReplicatedStorage").endpoints.client_to_server.claim_daily_reward:InvokeServer()
     warn("HSz Anti-AFK Loaded สำเร็จ!!!")
 end)
+
 if Settings.AutoLoadScript then
     autoload()
 end
+
 --disms
 if game.PlaceId ~= 8304191830 then
     game:GetService("ReplicatedStorage").packages.assets["ui_sfx"].error.Volume = 0
@@ -2372,5 +2607,6 @@ task.spawn(function()  -- Hides name for yters (not sure if its Fe)
         end)
     end
 end)
+
 warn("HSz Hider Name Loaded สำเร็จ!!!")
 warn("HSz AA v2 Loaded สำเร็จ!!!")

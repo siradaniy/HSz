@@ -142,14 +142,14 @@ function webhook()
     if ttime[2] == "22:55" then ttime[2] = "N/A [Test Webhook]" end	
 
     gold = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("GoldReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
-    if gold == "+99999" then gold = "N/A [Test Webhook]" end	 
+    if gold == "+99999" then gold = "+0" end	 
     gems = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("GemReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
-    if gems == "+99999" then gems = "N/A [Test Webhook]" end	 
+    if gems == "+99999" then gems = "+0" end	 
     xpx = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("XPReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
     xp = xpx:split(" ")
-    if xp[1] == "+99999" then xp[1] = "N/A [Test Webhook]" end
+    if xp[1] == "+99999" then xp[1] = "+0" end
     trophy = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("TrophyReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
-    if trophy == "+99999" then trophy = "N/A [Test Webhook]" end	 
+    if trophy == "+99999" then trophy = "+0" end	 
     
     totaltime =  ResultHolder:FindFirstChild("Middle"):FindFirstChild("Timer").Text
     totalwaves = ResultHolder:FindFirstChild("Middle"):FindFirstChild("WavesCompleted").Text

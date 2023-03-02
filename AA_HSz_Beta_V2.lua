@@ -753,7 +753,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Add New Webhook result Portals drop \n[+]Add JJK finger & Portal Farm [Devil & Aline] ")   
+    UIUPDT:Cheat("Label","[+]Add JJK finger & Portal Farm [Devil & Aline] \n[+]Fix Bug ??? ")   
 end
 
 getgenv().posX = 1.5
@@ -2201,7 +2201,7 @@ coroutine.resume(coroutine.create(function()
                     local a={[1]="NextRetry"} game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_infinite_tower_from_game:InvokeServer(unpack(a))   
                     print("Next Room infint Castle...")              
                 elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue then
-                   game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
+                   --game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
                 
                     Teleport()
 

@@ -2060,8 +2060,6 @@ function Teleport()
 end
 -------------------------------------------
 
-
-
 coroutine.resume(coroutine.create(function()
 	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
     GameFinished:GetPropertyChangedSignal("Value"):Connect(function()
@@ -2089,11 +2087,11 @@ coroutine.resume(coroutine.create(function()
                 
                     Teleport()
 
-                    print("Returning to lobby...")
+                    rint("Returning to lobby...")
                 end
             end
         end)
-    end)
+    end))
 
     while task.wait() do
         if getgenv().AutoSummon then
@@ -2103,6 +2101,7 @@ coroutine.resume(coroutine.create(function()
                 SummonUnits("Standard", getgenv().SelectedMethod)
             end
         end
+
 
         if Settings.AutoSnipeMerchant then
             if Settings.ASM_SelectedFruit ~= "None" or Settings.ASM_SelectedFruit ~= nil then
@@ -2124,7 +2123,7 @@ coroutine.resume(coroutine.create(function()
             end
         end
     end  
-end))
+
 
 function PlacePos(map,name,_uuid,unit)
     if Settings.AutoFarm and not getgenv().disableatuofarm then

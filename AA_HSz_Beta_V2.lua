@@ -137,17 +137,19 @@ function webhook()
     cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 	ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
     waves = cwaves:split(": ")
+    if waves[2] == "999" then waves[2] = "N/A [Test Webhook]" end	
 	ttime = ctime:split(": ")
-    
+    if ttime[2] == "22:55" then ttime[2] = "N/A [Test Webhook]" end	
+
     gold = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("GoldReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
-    if gold == "+99999" then gold = "+0" end	 
+    if gold == "+99999" then gold = "N/A [Test Webhook]" end	 
     gems = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("GemReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
-    if gems == "+99999" then gems = "+0" end	 
+    if gems == "+99999" then gems = "N/A [Test Webhook]" end	 
     xpx = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("XPReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
     xp = xpx:split(" ")
-    if xp[1] == "+99999" then xp[1] = "+0" end
+    if xp[1] == "+99999" then xp[1] = "N/A [Test Webhook]" end
     trophy = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("TrophyReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text
-    if trophy == "+99999" then trophy = "+0" end	 
+    if trophy == "+99999" then trophy = "N/A [Test Webhook]" end	 
     
     totaltime =  ResultHolder:FindFirstChild("Middle"):FindFirstChild("Timer").Text
     totalwaves = ResultHolder:FindFirstChild("Middle"):FindFirstChild("WavesCompleted").Text
@@ -284,10 +286,9 @@ local Unit6 = UC:Sector("Unit 6")
 local ETC = Window:Category(" 🌐 Discord & Shop")
 local AutoSummonSec = ETC:Sector("💸 Auto สุ่ม Units 💸")
 local AutoSnipeMerchantSec = ETC:Sector("🏪 Auto ชื้อของร้านค้า Bulma 🏪")
-local WebhookSec = ETC:Sector("🌐 Discord Webhook 🌐")
-local OtherSec = ETC:Sector("⌛ Auto Load Script ⌛")
 local devilcity = ETC:Sector("😈‍ ชื้อ Devil Portal 😈")
-
+local OtherSec = ETC:Sector("⌛ Auto Load Script ⌛")
+local WebhookSec = ETC:Sector("🌐 Discord Webhook 🌐")
 -------------
 ---sponsorfix---
 -------------

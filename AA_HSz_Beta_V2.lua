@@ -712,7 +712,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Add New Webhook result Portals drop \n[+]Add JJK finger & Portal Farm [Devil & Aline] ")   
+    UIUPDT:Cheat("Label","[+]Add JJK finger & Portal Farm [Devil & Aline] \n[+]Fix some bux with Infinity Castle ")   
 end
 getgenv().posX = 1.5
 getgenv().posZ = 1.5
@@ -1742,12 +1742,11 @@ elseif cata == "Portals" then
                 task.wait(3)
             end
         end
-
-
-
+    end
+end
         --fixportal  ----Devil Portal
 
-elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and Settings.AutoFarm  then
+--[[elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and Settings.AutoFarm  then
 
         for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
             if v.Name == "portal_csm" or v.Name == "portal_csm1" or v.Name == "portal_csm2" or v.Name == "portal_csm3" or v.Name == "portal_csm4" or v.Name == "portal_csm5"  then
@@ -1814,7 +1813,7 @@ elseif not Settings.autostart and Settings.farmprotal or Settings.farmportal and
         warn("Aline farming")
         task.wait(7)
     end
-end
+end]]
 --end fixportal
 getgenv().autoabilityerr = false
 function autoabilityfunc()

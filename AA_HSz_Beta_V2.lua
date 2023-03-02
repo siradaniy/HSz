@@ -753,7 +753,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Add JJK finger & Portal Farm [Devil & Aline] \n[+]Fix Bug 7ds ??? ")   
+    UIUPDT:Cheat("Label","[+]Add JJK finger & Portal Farm [Devil & Aline] \n[+]Fix Bug 7ds 1 ??? ")   
 end
 
 getgenv().posX = 1.5
@@ -2569,7 +2569,7 @@ coroutine.resume(coroutine.create(function()
                 PlaceUnits("Storm_Hideout")
             elseif game.Workspace._map:FindFirstChild("snow grass") then
                 PlaceUnits("infinity_trian")
-            elseif game.Workspace._map:FindFirstChild("misc nonocollide obstacles")
+            elseif game.Workspace._map:FindFirstChild("misc nonocollide obstacles") then
                 PlaceUnits("7ds")
             end
         end

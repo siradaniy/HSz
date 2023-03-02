@@ -763,7 +763,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label"," \n [+]Chacge farm Portal to Old ver.   \n [+]Fix Bug 7ds    \n [+]Fix Bug Inf Castle Cracher test 1 ")   
+    UIUPDT:Cheat("Label"," \n [+]Chacge farm Portal to Old ver.   \n [+]Fix Webhook Cracher    \n [+]Fix Bug Inf Castle Cracher when end ")   
 end
 
 getgenv().posX = 1.5
@@ -2063,27 +2063,14 @@ end
 
 
 coroutine.resume(coroutine.create(function()
-	
-    task.spawn(function()
-        local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
-        GameFinished:GetPropertyChangedSignal("Value"):Connect(function()
-            print("Changed", GameFinished.Value == true)
-            if GameFinished.Value == true then
-                repeat task.wait() until  game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Enabled == true
-                if Settings.WebhookEnabled then 
-                    local btn = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Buttons.Next
-                    task.spawn(function()
-                        pcall(function()
-                            for i,v in pairs(getconnections(btn.Activated)) do
-                                v:Fire()
-                            end 
-                        end)
-                    end)
-                    task.wait(1)
-    
-                pcall(function() webhook() end)
-                end
-                print("รอเลือก ออก หรือ ไปต่อ")
+	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
+    GameFinished:GetPropertyChangedSignal("Value"):Connect(function()
+        print("Changed", GameFinished.Value == true)
+        if GameFinished.Value == true then
+            repeat task.wait() until  game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Enabled == true
+            task.wait()
+            pcall(function() webhook() end)
+            print("รอเลือก ออก หรือ ไปต่อ")
                 task.wait(2.1)
                 if Settings.AutoReplay then
                     local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))

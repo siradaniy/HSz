@@ -475,7 +475,7 @@ local function WorldSec()
         elseif Settings.WorldCategory == "Raid Worlds" then
             storylist = {"Storm Hideout","West City", "Infinity Train", "Shiganshinu District - Raid","Hiddel Sand Village - Raid"}
         elseif Settings.WorldCategory == "Portals" then
-            storylist = {"Alien Portals","Devil Portals (ANY)"}
+            storylist = {"Alien Portals","Devil Portals (All)"}
         elseif Settings.WorldCategory == "Dungeon" then
             storylist = {"JJK Finger"}     
         end
@@ -753,7 +753,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","[+]Add JJK finger & Portal Farm [Devil & Aline] \n[+]Fix Bug test 3 ??? ")   
+    UIUPDT:Cheat("Label","[+]Add JJK finger & Portal Farm [Devil & Aline] \n[+]Fix Bug 7ds ??? ")   
 end
 
 getgenv().posX = 1.5
@@ -939,8 +939,8 @@ function savepos(UnitPos, a,a2,a3,a4,a5,a6)
         updatepos("Storm_Hideout", UnitPos, a,a2,a3,a4,a5,a6)
     elseif game.Workspace._map:FindFirstChild("snow grass") then
        updatepos("infinity_trian", UnitPos, a,a2,a3,a4,a5,a6)
-    elseif game.Workspace._map:FindFirstChild("ETC nonocollide obstacles") then
-        updatepos("fabled_kingdom", UnitPos, a,a2,a3,a4,a5,a6)
+    elseif game.Workspace._map:FindFirstChild("misc nonocollide obstacles") then
+        updatepos("7ds", UnitPos, a,a2,a3,a4,a5,a6)
     end
     warn("savepos")
 end
@@ -2569,8 +2569,8 @@ coroutine.resume(coroutine.create(function()
                 PlaceUnits("Storm_Hideout")
             elseif game.Workspace._map:FindFirstChild("snow grass") then
                 PlaceUnits("infinity_trian")
-            elseif game.Workspace._map:FindFirstChild("ETC nonocollide obstacles") then
-                PlaceUnits("fabled_kingdom")
+            elseif game.Workspace._map:FindFirstChild("misc nonocollide obstacles")
+                PlaceUnits("7ds")
             end
         end
     end

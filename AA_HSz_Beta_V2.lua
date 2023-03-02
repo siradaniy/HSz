@@ -54,34 +54,62 @@ local UserInputService = game:GetService("UserInputService")
 --test fixportal
 
 function getBorosPortals()
-    local portals = {}
-    for _, item in pairs(get_inventory_items_unique_items()) do
-        if item["item_id"] == "portal_boros_g" then
-            table.insert(portals, item)
+    local reg = getreg()
+
+    for i,v in next, reg do
+        if type(v) == 'function' then 
+            if getfenv(v).script then
+                    for _, v in pairs(debug.getupvalues(v)) do 
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                local portals = {}
+                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
+                                  if item["item_id"] == "portal_boros_g" then
+                                    table.insert(portals, item)
+                                  end
+                                end
+                                return portals
+                            end
+                        end
+                    end
+            end
         end
     end
-    return portals
 end
 
 function getCSMPortals()
-    local portals = {}
-    for _, item in pairs(get_inventory_items_unique_items()) do
-        if item["item_id"] == "portal_csm" or "portal_csm1" or "portal_csm2" or "portal_csm3" or "portal_csm4" or "portal_csm5" then
-            table.insert(portals, item)
+    local reg = getreg() 
+
+    for i,v in next, reg do
+        if type(v) == 'function' then 
+            if getfenv(v).script then 
+                    for _, v in pairs(debug.getupvalues(v)) do
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                local portals = {}
+                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
+                                  if item["item_id"] == "portal_csm" then
+                                    table.insert(portals, item)
+                                  end
+                                end
+                                return portals
+                            end
+                        end
+                    end
+            end
         end
     end
-    return portals
 end
 
 
-function GetPortals(id)
+--[[function GetPortals(id)
     for _, item in pairs(get_inventory_items_unique_items()) do
         if item["item_id"] == id then
             table.insert(portals, item)
         end
     end
     return portals
-end
+end]]
 
 
 
@@ -300,9 +328,9 @@ local castleconfig = Farm:Sector("🏯 ตั้งค่า Infinity Castle �
 local AutoFarmConfig = Farm:Sector("⚙️ ตั้งค่า Auto Farm")
 local ChallengeConfig = Farm:Sector("⌛ ตั้งค่า Challenge")
 
---[[local Portals = Window:Category(" 🚪 Portals Farm")
+local Portals = Window:Category(" 🚪 Portals Farm")
 local devilcity = Portals:Sector("😈‍ Devil Portal 😈")
-local alinecity = Portals:Sector("👽 Aline Portal 👽")]]
+local alinecity = Portals:Sector("👽 Aline Portal 👽")
 
 local UC = Window:Category(" 🧙 ตั้งค่า Unit")
 local NDY = UC:Sector("ยังไม่เสร็จ")
@@ -320,7 +348,7 @@ local AutoSummonSec = ETC:Sector("💸 Auto สุ่ม Units 💸")
 local AutoSnipeMerchantSec = ETC:Sector("🏪 Auto ชื้อของร้านค้า Bulma 🏪")
 local WebhookSec = ETC:Sector("🌐 Discord Webhook 🌐")
 local OtherSec = ETC:Sector("⌛ Auto Load Script ⌛")
-local devilcity = ETC:Sector("😈‍ ชื้อ Devil Portal 😈")
+
 
 -------------
 ---sponsorfix---
@@ -450,7 +478,7 @@ local function WorldSec()
             "Story Worlds",
             "Legend Stages",
             "Raid Worlds",
-            "Portals",
+            --"Portals",
             "Dungeon"
         },
         default = Settings.WorldCategory
@@ -473,8 +501,8 @@ local function WorldSec()
             storylist = {"Clover Kingdom (Elf Invasion)", "Hollow Invasion","Cape Canaveral (Legend)", "Fabled Kingdom (Legend)"}
         elseif Settings.WorldCategory == "Raid Worlds" then
             storylist = {"Storm Hideout","West City", "Infinity Train", "Shiganshinu District - Raid","Hiddel Sand Village - Raid"}
-        elseif Settings.WorldCategory == "Portals" then
-            storylist = {"Alien Portals","Devil Portals (All)"}
+       --[[ elseif Settings.WorldCategory == "Portals" then
+            storylist = {"Alien Portals","Devil Portals (All)"}]]
         elseif Settings.WorldCategory == "Dungeon" then
             storylist = {"JJK Finger"}     
         end
@@ -543,10 +571,10 @@ local function WorldSec()
         elseif level == "Hiddel Sand Village - Raid" then
             levellist = {"naruto_raid_1"}
         --///Portals\\\---
-        elseif level == "Alien Portals" then
+        --[[elseif level == "Alien Portals" then
             levellist = {"portal_boros_g"}
         elseif level == "Devil Portals (All)" then
-            levellist = {"portal_csm"}
+            levellist = {"portal_csm"}]]
         ---///Dungeon\\\---    
         elseif level == "JJK Finger" then
             levellist = {"jjk_finger"}       
@@ -572,8 +600,8 @@ local function WorldSec()
         or level == "hxhant_infinite" or level == "magnolia_infinite" or level == "jjk_infinite" or level == "clover_infinite" 
         or level == "jojo_infinite" or level == "opm_infinite" or cata == "Legend Stages" or cata == "Raid Worlds" or cata == "Dungeon"  then
             diff = {"Hard"}
-        elseif cata == "Portals" then
-            diff = {"Default"}
+       --[[ elseif cata == "Portals" then
+            diff = {"Default"}]]
         else
             diff = {"Normal", "Hard"}
         end
@@ -609,7 +637,7 @@ local function Farmportal()
         warn("Buy Devil Portal !!!")
     end)
 
-   --[[ devilcity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
+    devilcity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
         print(bool)
         Settings.farmprotal = bool
         saveSettings()
@@ -634,7 +662,7 @@ local function Farmportal()
         warn("Farm Aline Portal !!!")
     end,{enabled = Settings.farmaline })
 
-    alinecity:Cheat("Label","ประตูจะสุ่มเปิดจากในกระเป๋าที่มี ") ]]
+    alinecity:Cheat("Label","ประตูจะสุ่มเปิดจากในกระเป๋าที่มี ") 
 end
 
 
@@ -751,7 +779,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label"," \n [+]Add JJK finger & Portal Farm [Devil & Aline]  \n [+]Fix Bug 7ds 2 ???  \n [+]Fix Bug Inf Castle ??? ")   
+    UIUPDT:Cheat("Label"," \n [+]Chacge farm Portal to Old ver.   \n [+]Fix Bug 7ds    \n [+]Fix Bug Inf Castle Cracher ")   
 end
 
 getgenv().posX = 1.5
@@ -1682,7 +1710,7 @@ local function startfarming()
                 task.wait(3)
             end
 --aline fixportal            
-elseif cata == "Portals" then
+--[[elseif cata == "Portals" then
 	if level == "portal_boros_g" then
 		local args = {
 			[1] = GetPortals("portal_boros_g")[1]["uuid"],
@@ -1716,7 +1744,7 @@ elseif cata == "Portals" then
 		end
 		warn("Aline farming")
 		task.wait(7)
-	end
+	end]]
 --ดันนิ้ว
     elseif cata == "Dungeon" then
         local string_1 = "_lobbytemplate_event222";

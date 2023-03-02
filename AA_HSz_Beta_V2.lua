@@ -475,7 +475,7 @@ local function WorldSec()
         elseif Settings.WorldCategory == "Raid Worlds" then
             storylist = {"Storm Hideout","West City", "Infinity Train", "Shiganshinu District - Raid","Hiddel Sand Village - Raid"}
         elseif Settings.WorldCategory == "Portals" then
-            storylist = {"Alien Portals","Devil Portals (ANY)"}
+            storylist = {"Alien Portals","Devil Portals (All)"}
         elseif Settings.WorldCategory == "Dungeon" then
             storylist = {"JJK Finger"}     
         end

@@ -536,6 +536,8 @@ local function WorldSec()
         getgenv().updatedifficulty()
         saveSettings()
     end, {options = { }, default = Settings.portalnameX})
+        saveSettings()
+
 
     getgenv().updatelevel = function()
         selectlevel:ClearDrop() local levellist; local level = Settings.SelectedWorld;

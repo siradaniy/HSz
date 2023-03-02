@@ -168,9 +168,7 @@ function webhook()
     cwaves = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.WavesCompleted.Text
 	ctime = game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Holder.Middle.Timer.Text
     waves = cwaves:split(": ")
-    if waves[2] == "999" then waves[2] = "N/A [TEST Webhook]" end	
 	ttime = ctime:split(": ")
-    if ttime[2] == "22:55" then ttime[2] = "N/A [TEST Webhook]" end	
 
 
     gold = ResultHolder:FindFirstChild("LevelRewards"):FindFirstChild("ScrollingFrame"):FindFirstChild("GoldReward"):FindFirstChild("Main"):FindFirstChild("Amount").Text

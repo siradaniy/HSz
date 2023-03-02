@@ -51,59 +51,6 @@ local mouse = game.Players.LocalPlayer:GetMouse()
 local UserInputService = game:GetService("UserInputService")
 ------------------------------
 
---test fixportal
-
-function getBorosPortals()
-    local reg = getreg()
-
-    for i,v in next, reg do
-        if type(v) == 'function' then 
-            if getfenv(v).script then
-                    for _, v in pairs(debug.getupvalues(v)) do 
-                        if type(v) == 'table' then
-                            if v["session"] then
-                                local portals = {}
-                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
-                                  if item["item_id"] == "portal_boros_g" then
-                                    table.insert(portals, item)
-                                  end
-                                end
-                                return portals
-                            end
-                        end
-                    end
-            end
-        end
-    end
-end
-
-function getCSMPortals()
-    local reg = getreg() 
-
-    for i,v in next, reg do
-        if type(v) == 'function' then 
-            if getfenv(v).script then 
-                    for _, v in pairs(debug.getupvalues(v)) do
-                        if type(v) == 'table' then
-                            if v["session"] then
-                                local portals = {}
-                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
-                                  if item["item_id"] == "portal_csm" then
-                                    table.insert(portals, item)
-                                  end
-                                end
-                                return portals
-                            end
-                        end
-                    end
-            end
-        end
-    end
-end
-
-
-
-
 ------------item drop result
 local ItemInventoryServiceClient = require(game.ReplicatedStorage.src.client.Services.ItemInventoryServiceClient)
 function get_inventory_items_unique_items()
@@ -259,7 +206,7 @@ function webhook()
 					},
                     ["fields"] = {
                         {
-                            ["name"] ="Current Level ✨ & Gems 💎 & Gold 💰 & Portals ",
+                            ["name"] ="Current Level ✨ & Gems 💎 & Gold 💰 & Portals",
                             ["value"] = "```ini\n"..tostring(game.Players.LocalPlayer.PlayerGui.spawn_units.Lives.Main.Desc.Level.Text)..  " ✨\nGems รวม : "..tostring(game.Players.LocalPlayer._stats.gem_amount.Value).. " 💎\nGold รวม : "  ..tostring(game.Players.LocalPlayer._stats.gold_amount.Value)..  " 💰\nPortal รวม : ".. tostring(Count_Portal_list) .." 🌀```",
                         },
                         {
@@ -319,9 +266,9 @@ local castleconfig = Farm:Sector("🏯 ตั้งค่า Infinity Castle �
 local AutoFarmConfig = Farm:Sector("⚙️ ตั้งค่า Auto Farm")
 local ChallengeConfig = Farm:Sector("⌛ ตั้งค่า Challenge")
 
-local Portals = Window:Category(" 🚪 Portals Farm")
+--[[local Portals = Window:Category(" 🚪 Portals Farm")
 local devilcity = Portals:Sector("😈‍ Devil Portal 😈")
-local alinecity = Portals:Sector("👽 Aline Portal 👽")
+local alinecity = Portals:Sector("👽 Aline Portal 👽")]]
 
 local UC = Window:Category(" 🧙 ตั้งค่า Unit")
 local NDY = UC:Sector("ยังไม่เสร็จ")
@@ -339,7 +286,7 @@ local AutoSummonSec = ETC:Sector("💸 Auto สุ่ม Units 💸")
 local AutoSnipeMerchantSec = ETC:Sector("🏪 Auto ชื้อของร้านค้า Bulma 🏪")
 local WebhookSec = ETC:Sector("🌐 Discord Webhook 🌐")
 local OtherSec = ETC:Sector("⌛ Auto Load Script ⌛")
-
+local devilcity = ETC:Sector("😈‍ ชื้อ Devil Portal 😈")
 
 -------------
 ---sponsorfix---
@@ -437,15 +384,15 @@ local function UnitSec()
 
     SelectUnits:Cheat("Button", "⌛ เปลี่ยนทีม", function() --loads preset
         preset = Settings.SelectedPreset
-        if preset == "ทีม 1" then
+        if preset == "Team 1" then
             switchteam("1")
-        elseif preset == "ทีม 2" then
+        elseif preset == "Team 2" then
             switchteam("2")
-        elseif preset == "ทีม 3" then
+        elseif preset == "Team 3" then
             switchteam("3")
-        elseif preset == "ทีม 4" then
+        elseif preset == "Team 4" then
             switchteam("4")
-        elseif preset == "ทีม 5" then
+        elseif preset == "Team 5" then
             switchteam("5")
         end
         print(preset)
@@ -469,7 +416,7 @@ local function WorldSec()
             "Story Worlds",
             "Legend Stages",
             "Raid Worlds",
-            --"Portals",
+            "Portals",
             "Dungeon"
         },
         default = Settings.WorldCategory
@@ -492,8 +439,8 @@ local function WorldSec()
             storylist = {"Clover Kingdom (Elf Invasion)", "Hollow Invasion","Cape Canaveral (Legend)", "Fabled Kingdom (Legend)"}
         elseif Settings.WorldCategory == "Raid Worlds" then
             storylist = {"Storm Hideout","West City", "Infinity Train", "Shiganshinu District - Raid","Hiddel Sand Village - Raid"}
-       --[[ elseif Settings.WorldCategory == "Portals" then
-            storylist = {"Alien Portals","Devil Portals (All)"}]]
+        elseif Settings.WorldCategory == "Portals" then
+            storylist = {"Alien Portals","Devil Portals (All)"}
         elseif Settings.WorldCategory == "Dungeon" then
             storylist = {"JJK Finger"}     
         end
@@ -561,6 +508,11 @@ local function WorldSec()
             levellist = {"aot_raid_1"}
         elseif level == "Hiddel Sand Village - Raid" then
             levellist = {"naruto_raid_1"}
+        --///Portals\\\---
+        elseif level == "Alien Portals" then
+            levellist = {"portal_boros_g"}
+        elseif level == "Devil Portals (All)" then
+            levellist = {"portal_csm"}
         ---///Dungeon\\\---    
         elseif level == "JJK Finger" then
             levellist = {"jjk_finger"}       
@@ -586,6 +538,8 @@ local function WorldSec()
         or level == "hxhant_infinite" or level == "magnolia_infinite" or level == "jjk_infinite" or level == "clover_infinite" 
         or level == "jojo_infinite" or level == "opm_infinite" or cata == "Legend Stages" or cata == "Raid Worlds" or cata == "Dungeon"  then
             diff = {"Hard"}
+        elseif cata == "Portals" then
+            diff = {"Default"}
         else
             diff = {"Normal", "Hard"}
         end
@@ -621,7 +575,7 @@ local function Farmportal()
         warn("Buy Devil Portal !!!")
     end)
 
-    devilcity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
+   --[[ devilcity:Cheat("Checkbox"," Auto Farm Devil Portal  ", function(bool)
         print(bool)
         Settings.farmprotal = bool
         saveSettings()
@@ -646,7 +600,7 @@ local function Farmportal()
         warn("Farm Aline Portal !!!")
     end,{enabled = Settings.farmaline })
 
-    alinecity:Cheat("Label","ประตูจะสุ่มเปิดจากในกระเป๋าที่มี ") 
+    alinecity:Cheat("Label","ประตูจะสุ่มเปิดจากในกระเป๋าที่มี ") ]]
 end
 
 
@@ -763,7 +717,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label"," \n [+]Chacge farm Portal to Old ver.   \n [+]Fix Webhook Cracher    \n [+]Fix Bug Inf Castle Cracher when end ")   
+    UIUPDT:Cheat("Label"," [+]Fix Webhook Cracher \n [+]Fix Bug ??? ")   
 end
 
 getgenv().posX = 1.5
@@ -1603,6 +1557,38 @@ local function startChallenge()
     end
 end
 
+--test fixportal
+
+function getBorosPortals()
+    local portals = {}
+    for _, item in pairs(get_inventory_items_unique_items()) do
+        if item["item_id"] == "portal_boros_g" then
+            table.insert(portals, item)
+        end
+    end
+    return portals
+end
+
+function getCSMPortals()
+    local portals = {}
+    for _, item in pairs(get_inventory_items_unique_items()) do
+        if item["item_id"] == "portal_csm" or "portal_csm1" or "portal_csm2" or "portal_csm3" or "portal_csm4" or "portal_csm5" then
+            table.insert(portals, item)
+        end
+    end
+    return portals
+end
+
+
+function GetPortals(id)
+    for _, item in pairs(get_inventory_items_unique_items()) do
+        if item["item_id"] == id then
+            table.insert(portals, item)
+        end
+    end
+    return portals
+end
+
 Settings.teleporting = true
 getgenv().door = "_lobbytemplategreen1"
 
@@ -1693,6 +1679,42 @@ local function startfarming()
                 warn("Raid farming")
                 task.wait(3)
             end
+--aline fixportal            
+elseif cata == "Portals" then
+	if level == "portal_boros_g" then
+		local args = {
+			[1] = GetPortals("portal_boros_g")[1]["uuid"],
+			[2] = { ["friends_only"] = getgenv().isFriendOnly } }
+		game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
+		
+		task.wait(1.5)
+		for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
+			if v.Name == "Owner" and tostring(v.value) == game.Players.LocalPlayer.Name then
+				local args = { [1] = tostring(v.Parent.Name) }
+				game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+				break;
+			end 
+		end
+		warn("Aline farming")
+		task.wait(7)
+--Devil fixportal		
+	elseif level == "portal_csm" then
+		local args = {
+			[1] = GetPortals("portal_csm")[1]["uuid"],
+			[2] = { ["friends_only"] = getgenv().isFriendOnly } }
+		game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
+		
+		task.wait(1.5)
+		for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
+			if v.Name == "Owner" and tostring(v.value) == game.Players.LocalPlayer.Name then
+				local args = { [1] = tostring(v.Parent.Name) }
+				game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+				break;
+			end 
+		end
+		warn("Aline farming")
+		task.wait(7)
+	end
 --ดันนิ้ว
     elseif cata == "Dungeon" then
         local string_1 = "_lobbytemplate_event222";
@@ -2060,15 +2082,18 @@ function Teleport()
 end
 -------------------------------------------
 
+
+
 coroutine.resume(coroutine.create(function()
-	local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
-    GameFinished:GetPropertyChangedSignal("Value"):Connect(function()
-        print("Changed", GameFinished.Value == true)
-        if GameFinished.Value == true then
-            repeat task.wait() until  game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Enabled == true
-            task.wait()
-            pcall(function() webhook() end)
-            print("รอเลือก ออก หรือ ไปต่อ")
+	
+    task.spawn(function()
+        local GameFinished = game:GetService("Workspace"):WaitForChild("_DATA"):WaitForChild("GameFinished")
+        GameFinished:GetPropertyChangedSignal("Value"):Connect(function()
+            print("Changed", GameFinished.Value == true)
+            if GameFinished.Value == true then
+                repeat task.wait() until  game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Enabled == true
+                pcall(function() webhook() end)
+                print("รอเลือก ออก หรือ ไปต่อ")
                 task.wait(2.1)
                 if Settings.AutoReplay then
                     local a={[1]="replay"} game:GetService("ReplicatedStorage").endpoints.client_to_server.set_game_finished_vote:InvokeServer(unpack(a))
@@ -2085,13 +2110,13 @@ coroutine.resume(coroutine.create(function()
                 elseif Settings.AutoLeave and not Settings.AutoReplay and not Settings.AutoNext and not Settings.AutoContinue then
                    game:GetService("TeleportService"):Teleport(8304191830, game.Players.LocalPlayer)
                 
-                    Teleport()
+                    --Teleport()
 
-                    rint("Returning to lobby...")
+                    print("Returning to lobby...")
                 end
             end
         end)
-    end))
+    end)
 
     while task.wait() do
         if getgenv().AutoSummon then
@@ -2101,7 +2126,6 @@ coroutine.resume(coroutine.create(function()
                 SummonUnits("Standard", getgenv().SelectedMethod)
             end
         end
-
 
         if Settings.AutoSnipeMerchant then
             if Settings.ASM_SelectedFruit ~= "None" or Settings.ASM_SelectedFruit ~= nil then
@@ -2123,7 +2147,7 @@ coroutine.resume(coroutine.create(function()
             end
         end
     end  
-
+end))
 
 function PlacePos(map,name,_uuid,unit)
     if Settings.AutoFarm and not getgenv().disableatuofarm then

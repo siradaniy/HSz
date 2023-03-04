@@ -537,7 +537,7 @@ local function WorldSec()
         if level == "namek_infinite" or level == "aot_infinite" or level == "demonslayer_infinite" 
         or level == "naruto_infinite" or level == "marineford_infinite" or level == "tokyoghoul_infinite" or level == "hueco_infinite" 
         or level == "hxhant_infinite" or level == "magnolia_infinite" or level == "jjk_infinite" or level == "clover_infinite" 
-        or level == "jojo_infinite" or level == "opm_infinite" or cata == "Legend Stages" or cata == "Raid Worlds" or cata == "Dungeon"  then
+        or level == "jojo_infinite" or level == "opm_infinite" or level == "7ds_infinite" or cata == "Legend Stages" or cata == "Raid Worlds" or cata == "Dungeon"  then
             diff = {"Hard"}
         elseif cata == "Portals" then
             diff = {"Default"}

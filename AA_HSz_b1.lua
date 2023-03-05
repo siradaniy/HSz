@@ -1,6 +1,6 @@
 --updatefix
 
-local versionx = "11.0.0h2"
+local versionx = "11.5.0"
 
 ---// Loading Section \\---
 task.wait(2)
@@ -179,7 +179,7 @@ local function webhook()
 		local data = {
 			["content"] = "",
 			["username"] = "Anime Adventures",
-			["avatar_url"] = "https://tr.rbxcdn.com/59ef1ccab6ac14595231fcfc338c3bb7/150/150/Image/Png",
+			["avatar_url"] = "https://tr.rbxcdn.com/1667d11665efd9fdb0b6d1cb1536ac80/150/150/Image/Png",
 			["embeds"] = {
 				{
 					["author"] = {

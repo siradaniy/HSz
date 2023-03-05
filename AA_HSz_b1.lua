@@ -78,6 +78,30 @@ function getCSMPortals()
     end
 end
 
+function getZeldrisPortals()
+    local reg = getreg() 
+
+    for i,v in next, reg do
+        if type(v) == 'function' then 
+            if getfenv(v).script then 
+                    for _, v in pairs(debug.getupvalues(v)) do
+                        if type(v) == 'table' then
+                            if v["session"] then
+                                local portals = {}
+                                for _, item in pairs(v["session"]["inventory"]['inventory_profile_data']['unique_items']) do
+                                  if item["item_id"] == "portal_zeldris" then
+                                    table.insert(portals, item)
+                                  end
+                                end
+                                return portals
+                            end
+                        end
+                    end
+            end
+        end
+    end
+end
+
 
 
 ------------item drop result
@@ -298,6 +322,11 @@ function sex()
     getgenv().farmaline = data.farmaline
     getgenv().PortalIDA = data.PortalIDA
 
+    --Aline
+    getgenv().portalname = data.portalnameD
+    getgenv().farm7ds = data.farm7ds
+    getgenv().PortalIDD = data.PortalIDD
+
 
     getgenv().AutoLeave = data.AutoLeave
     getgenv().AutoNext = data.AutoNext
@@ -343,6 +372,11 @@ function sex()
             portalnameA = getgenv().portalnameA,
             farmaline = getgenv().farmaline,
             PortalIDA = getgenv().PortalIDA,
+
+             --Aline Portal
+             portalnameD = getgenv().portalnameD,
+             farm7ds = getgenv().farm7ds,
+             PortalIDD = getgenv().PortalIDD,
 
             -- unitname = getgenv().unitname,
             -- unitid = getgenv().unitid,
@@ -399,7 +433,7 @@ function sex()
         home:Label("Thank for Support")
         home:Label("อย่าลืมต่อ Member กันด้วยละ")
         home:Label("Fix Update "..versionx.."")
-        home:Label("[+]Fix Devil & Aline Portal cab open \n[+]Add JJK Finger Dungeon Farm ")
+        home:Label("\n [+]Add Zeldris Portal [Demon Leader's Portal] Auto Farm \n ")
         home:Label(" ")
 
         home:Button("👉 Copy HOLYSHz Member Link!", function()
@@ -421,6 +455,7 @@ function sex()
         local slectworld = autofrmserver:Channel("🌏 Select World")
         local devilcity = autofrmserver:Channel("😈 Devil City")
         local alinecity = autofrmserver:Channel("👽 Aline Portal")
+        local dscity = autofrmserver:Channel("🌀 7ds Portal")
         local autofarmtab = autofrmserver:Channel("🤖 Auto Farm")
         local autoclngtab = autofrmserver:Channel("⌛ Auto Challenge")
     
@@ -797,6 +832,19 @@ end)
 
 alinecity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf Aline Spacship.")
 
+-- 7ds Portal ------------------------------------
+
+getgenv().portalnameD = dscity:Dropdown("Select Portal", {"portal_zeldris"}, getgenv().portalnameD, function(pornname)
+    getgenv().portalnameD = pornname
+    updatejson()
+end)
+
+dscity:Toggle("Auto Farm 7ds Portal", getgenv().farm7ds, function(bool)
+    getgenv().farm7ds = bool
+    updatejson()
+end)
+
+dscity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf 7ds & Legend Stage 7ds.")
 --------------------------------------------------
 ------------------ Auto Farm Tab -----------------AutoFarmJJK
 --------------------------------------------------
@@ -1033,6 +1081,7 @@ end)
         local autofarmtab = autofrmserver:Channel("🤖 Auto Farm")
         local devilcity = autofrmserver:Channel("😈 Devil City")
         local alinecity = autofrmserver:Channel("👽 Aline Portal")
+        local dscity = autofrmserver:Channel("🌀 7ds Portal")
         local autoclngtab = autofrmserver:Channel("🎯 Auto Challenge")
         local autoloadtab = autofrmserver:Channel("⌛ Auto Load Script_")
         local autoseltab = autofrmserver:Channel("💸 Auto Sell")
@@ -1096,9 +1145,20 @@ end)
 
     alinecity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf Aline Spacship.")
 
+-- 7ds Portal ------------------------------------
 
+getgenv().portalnameD = dscity:Dropdown("Select Portal", {"portal_zeldris"}, getgenv().portalnameD, function(pornname)
+    getgenv().portalnameD = pornname
+    updatejson()
+end)
+
+dscity:Toggle("Auto Farm 7ds Portal", getgenv().farm7ds, function(bool)
+    getgenv().farm7ds = bool
+    updatejson()
+end)
+
+dscity:Label("ต้องมีประตูในกระเป๋าเท่านั้น ฟาร์มได้จาก inf 7ds & Legend Stage 7ds.")
         
-
         
 --#region Auto Farm Tab
 
@@ -1429,6 +1489,12 @@ else
         portalnameA = "boros_ship_portal",
         farmaline = false,
         PortalIDA = "nil",
+
+        --7ds protal
+        portalnameD = "portal_zeldris",
+        farm7ds = false,
+        PortalIDD = "nil",
+        
         
         -- unitname = "name",
         -- unitid = "id",
@@ -3306,6 +3372,44 @@ elseif getgenv().autostart == false and getgenv().farmprotal or getgenv().farmpo
 
         warn("Devil farming")
         task.wait(7)
+
+            --fixportal  ----7ds Portal
+
+elseif getgenv().autostart == false and getgenv().farmprotal == false or getgenv().farmportal == false and getgenv().farm7ds and getgenv().AutoFarm  then
+
+    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.items.grid.List.Outer.ItemFrames:GetChildren()) do
+        if v.Name == "portal_zeldris" then
+            print(v._uuid_or_id.value)
+            getgenv().PortalIDD = v._uuid_or_id.value
+            break;
+        end
+    end
+      task.wait(1.5)
+      local args = {
+        [1] = getZeldrisPortals()[1]["uuid"],
+        [2] = {
+            ["friends_only"] = true
+        }
+    }
+    game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
+
+    task.wait(1.5)
+
+    for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
+        if v.Name == "Owner" then
+            if tostring(v.value) == game.Players.LocalPlayer.Name then
+                local args = {
+                    [1] = tostring(v.Parent.Name)
+                }
+                
+                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+                break;
+            end
+        end 
+    end
+
+    warn("7Ds farming")
+    task.wait(7)
 
         ---Aline PortalAutoFarmRaid
     elseif getgenv().autostart == false and getgenv().AutoFarm and getgenv().teleporting 

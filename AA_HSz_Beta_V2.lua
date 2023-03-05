@@ -441,7 +441,7 @@ local function WorldSec()
         elseif Settings.WorldCategory == "Raid Worlds" then
             storylist = {"Storm Hideout","West City", "Infinity Train", "Shiganshinu District - Raid","Hiddel Sand Village - Raid"}
         elseif Settings.WorldCategory == "Portals" then
-            storylist = {"Alien Portals","Devil Portals (All)"}
+            storylist = {"Alien Portals","Devil Portals (All)","Zeldris Portals"}
         elseif Settings.WorldCategory == "Dungeon" then
             storylist = {"JJK Finger"}     
         end
@@ -514,6 +514,8 @@ local function WorldSec()
             levellist = {"portal_boros_g"}
         elseif level == "Devil Portals (All)" then
             levellist = {"portal_csm"}
+        elseif level == "Zeldris Portals" then
+            levellist = {"portal_zeldris"}    
         ---///Dungeon\\\---    
         elseif level == "JJK Finger" then
             levellist = {"jjk_finger"}       
@@ -718,7 +720,7 @@ local function credits()
     Developers:Cheat("Button","🔥 Copy Discord Link   ", function()
         setclipboard("https://discord.gg/6V8nzm5ZYB")
     end)    
-    UIUPDT:Cheat("Label","\n [+]Fix Portals can't open \n [+]Fix Bug Inf Castle Cracher\n [+]Fix Bug Can't Change Team  ")   
+    UIUPDT:Cheat("Label","\n [+]Add Zeldris Portal [Demon Leader's Portal] Auto Farm \n \n   ")   
 end
 
 getgenv().posX = 1.5
@@ -1727,7 +1729,24 @@ elseif level == "portal_csm" then
             break;
         end 
     end
-    warn("Aline farming")
+    warn("Devil farming")
+    task.wait(7)
+    --7Ds fixportal		
+elseif level == "portal_zeldris" then
+    local args = {
+        [1] = GetPortals("portal_zeldris")[1]["uuid"],
+        [2] = { ["friends_only"] = getgenv().isFriendOnly } }
+    game:GetService("ReplicatedStorage").endpoints.client_to_server.use_portal:InvokeServer(unpack(args))
+    
+    task.wait(1.5)
+    for i,v in pairs(game:GetService("Workspace")["_PORTALS"].Lobbies:GetDescendants()) do
+        if v.Name == "Owner" and tostring(v.value) == game.Players.LocalPlayer.Name then
+            local args = { [1] = tostring(v.Parent.Name) }
+            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(unpack(args))
+            break;
+        end 
+    end
+    warn("7ds farming")
     task.wait(7)
 --ดันนิ้ว
     elseif cata == "Dungeon" then

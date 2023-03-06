@@ -1426,39 +1426,4 @@ function finity.new(isdark, gprojectName, thinProject)
 	return self2, finityData
 end
 
--- Paragraph
-function Tab:CreateParagraph(ParagraphSettings)
-	local ParagraphValue = {}
-
-	local Paragraph = Elements.Template.Paragraph:Clone()
-	Paragraph.Title.Text = ParagraphSettings.Title
-	Paragraph.Content.Text = ParagraphSettings.Content
-	Paragraph.Visible = true
-	Paragraph.Parent = TabPage
-
-	Paragraph.Content.Size = UDim2.new(0, 438, 0, Paragraph.Content.TextBounds.Y)
-	Paragraph.Content.Position = UDim2.new(1, -10, 0.575,0 )
-	Paragraph.Size = UDim2.new(1, -10, 0, Paragraph.Content.TextBounds.Y + 40)
-
-	Paragraph.BackgroundTransparency = 1
-	Paragraph.UIStroke.Transparency = 1
-	Paragraph.Title.TextTransparency = 1
-	Paragraph.Content.TextTransparency = 1
-	
-	Paragraph.BackgroundColor3 = SelectedTheme.SecondaryElementBackground
-	Paragraph.UIStroke.Color = SelectedTheme.SecondaryElementStroke
-	
-	TweenService:Create(Paragraph, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {BackgroundTransparency = 0}):Play()
-	TweenService:Create(Paragraph.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
-	TweenService:Create(Paragraph.Title, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()	
-	TweenService:Create(Paragraph.Content, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()	
-
-	function ParagraphValue:Set(NewParagraphSettings)
-		Paragraph.Title.Text = NewParagraphSettings.Title
-		Paragraph.Content.Text = NewParagraphSettings.Content
-	end
-
-	return ParagraphValue
-end
-
 return finity

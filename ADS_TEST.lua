@@ -1218,7 +1218,7 @@ z:AddToggle(
                                 ["title"] = "GAME CLEAR",
                                 ["type"] = "rich",
                                 ["thumbnail"] = {
-                                    ["url"] = "https://cdn.discordapp.com/attachments/943829587090100224/987429857354973224/Opera_Snapshot_2022-06-18_015321_www.canva.com.png"
+                                    ["url"] = "https://tr.rbxcdn.com/3eba3ee83f4f32a0691f8e40738f1833/768/432/Image/Png"
                                 },
                                 ["description"] = "Character Info / Session Info:",
                                 ["fields"] = {
@@ -1291,7 +1291,7 @@ z:AddToggle(
                                 ["title"] = "RAID & BOSSRUSH CLEAR",
                                 ["type"] = "rich",
                                 ["thumbnail"] = {
-                                    ["url"] = "https://cdn.discordapp.com/attachments/943829587090100224/987429857354973224/Opera_Snapshot_2022-06-18_015321_www.canva.com.png"
+                                    ["url"] = "https://tr.rbxcdn.com/3eba3ee83f4f32a0691f8e40738f1833/768/432/Image/Png"
                                 },
                                 ["description"] = "Character Info / Session Info:",
                                 ["fields"] = {
@@ -1364,7 +1364,7 @@ z:AddToggle(
                                 ["title"] = "🆙 YOU HAVE LEVELED",
                                 ["type"] = "rich",
                                 ["thumbnail"] = {
-                                    ["url"] = "https://cdn.discordapp.com/attachments/943829587090100224/987429857354973224/Opera_Snapshot_2022-06-18_015321_www.canva.com.png"
+                                    ["url"] = "https://tr.rbxcdn.com/3eba3ee83f4f32a0691f8e40738f1833/768/432/Image/Png"
                                 },
                                 ["description"] = "",
                                 ["fields"] = {
@@ -1886,12 +1886,12 @@ w:AddLabel("‼️ Specific + Raid + Boss Rush ")
 w:AddLabel("‼️ Trial + Raid + Boss Rush ")
 G:AddButton(
     {Name = "Script by HOLYSHz", Callback = function()
-            setclipboard("Test ADS")
+            setclipboard("HOLYSHz")
         end}
 )
 G:AddButton(
     {Name = "Discord", Callback = function()
-            setclipboard("https://discord.gg/yF4hc2pm")
+            setclipboard(" ลิ้งค์ ")
         end}
 )
 G:AddTextbox(
@@ -1901,7 +1901,7 @@ G:AddTextbox(
         end}
 )
 
-G:AddLabel("LastestUpdate : 28/6/2022 ")
+G:AddLabel("Support to Me ")
 
 u:MakeNotification({Name = "☀️ Test ADS ☀️", Content = "Game: Anime Dimension", Time = 15})
 u:Init()

@@ -3002,7 +3002,7 @@ function Library:CreateWindow(...)
 
         uis.InputBegan:Connect(function(input)
             if input.KeyCode == key then
-                print("pressed")
+                warn("Hide UI")
                 if ScreenGui.Enabled then
                     ScreenGui.Enabled = false
                 elseif ScreenGui.Enabled == false then

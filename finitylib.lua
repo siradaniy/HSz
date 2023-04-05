@@ -1,4 +1,6 @@
---[[a 12206409737
+--[[a 6644617688
+
+เส้นยาว 6644617688
 	 ______ _____ _   _ _____ _________     __
 	|  ____|_   _| \ | |_   _|__   __\ \   / /
 	| |__    | | |  \| | | |    | |   \ \_/ / 
@@ -605,7 +607,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							Position = UDim2.new(1, 0, 0.5, 0),
 							Size = UDim2.new(0, 20, 0, 20),
 							ZIndex = 2,
-							Image = "rbxassetid://12206409737",
+							Image = "rbxassetid://6644617688",
 							ImageColor3 = theme.checkbox_outer,
 							ScaleType = Enum.ScaleType.Slice,
 							SliceCenter = Rect.new(100, 100, 100, 100),
@@ -620,7 +622,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							Position = UDim2.new(0.5, 0, 0.5, 0),
 							Size = UDim2.new(0, 14, 0, 14),
 							ZIndex = 2,
-							Image = "rbxassetid://12206409737",
+							Image = "rbxassetid://6644617688",
 							ImageColor3 = theme.checkbox_inner,
 							ScaleType = Enum.ScaleType.Slice,
 							SliceCenter = Rect.new(100, 100, 100, 100),
@@ -802,7 +804,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							Position = UDim2.new(0.1, 0, 0, 0),
 							Size = UDim2.new(0.9, 0, 1, 0),
 							ZIndex = 2,
-							Image = "rbxassetid://12206409737",
+							Image = "rbxassetid://6644617688",
 							ImageColor3 = theme.dropdown_background,
 							ImageTransparency = 0.5,
 							ScaleType = Enum.ScaleType.Slice,
@@ -1003,7 +1005,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							Position = UDim2.new(0.1, 0, 0, 0),
 							Size = UDim2.new(0.9, 0, 1, 0),							
 							ZIndex = 2,
-							Image = "rbxassetid://12206409737",
+							Image = "rbxassetid://6644617688",
 							ImageColor3 = theme.textbox_background,
 							ImageTransparency = 0.5,
 							ScaleType = Enum.ScaleType.Slice,
@@ -1077,7 +1079,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							Position = UDim2.new(1, 0, 0.5, 0),
 							Size = UDim2.new(1, 0, 0, 6),
 							ZIndex = 2,
-							Image = "rbxassetid://12206409737",
+							Image = "rbxassetid://6644617688",
 							ImageColor3 = theme.slider_background,
 							ImageTransparency = 0.5,
 							ScaleType = Enum.ScaleType.Slice,
@@ -1107,7 +1109,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							BackgroundTransparency = 1,
 							Size = UDim2.new(0.5, 0, 1, 0),
 							ZIndex = 2,
-							Image = "rbxassetid://12206409737",
+							Image = "rbxassetid://6644617688",
 							ImageColor3 = theme.slider_color,
 							ScaleType = Enum.ScaleType.Slice,
 							SliceCenter = Rect.new(100, 100, 100, 100),
@@ -1203,7 +1205,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							Position = UDim2.new(0.1, 0, 0, 0),
 							Size = UDim2.new(0.9, 0, 1, 0),
 							ZIndex = 2,
-							Image = "rbxassetid://12206409737",
+							Image = "rbxassetid://6644617688",
 							ImageColor3 = theme.button_background,
 							ImageTransparency = 0.5,
 							ScaleType = Enum.ScaleType.Slice,
@@ -1259,7 +1261,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							BackgroundTransparency = 1,
 							Size = UDim2.new(1, 0, 1, 0),
 							ZIndex = 2,
-							Image = "rbxassetid://12206409737",
+							Image = "rbxassetid://6644617688",
 							ImageColor3 = theme.button_background,
 							ImageTransparency = 0.5,
 							ScaleType = Enum.ScaleType.Slice,

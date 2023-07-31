@@ -106,7 +106,6 @@ setmetatable(finity.gs, {
 	end
 })
 
-
 local mouse = finity.gs["Players"].LocalPlayer:GetMouse()
 
 function finity:Create(class, properties)
@@ -117,7 +116,7 @@ function finity:Create(class, properties)
 			object[prop] = val
 		end
 	end
-
+    
 	return object
 end
 
@@ -822,7 +821,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							Text = tostring(cheat.value),
 							TextColor3 = theme.dropdown_text,
 							TextSize = 13,
-							TextXAlignment = Enum.TextXAlignment.Left
+							TextXAlignment = Enum.TextXAlignment.Left,
 						})
 
 						cheat.list = finity:Create("ScrollingFrame", {
@@ -873,7 +872,8 @@ function finity.new(isdark, gprojectName, thinProject)
 									Font = Enum.Font.Gotham,
 									Text = value,
 									TextColor3 = theme.dropdown_text,
-									TextSize = 13
+									TextSize = 13,
+                                    ClipsDescendants = true
 								})
 
 								button.Parent = cheat.list
@@ -993,6 +993,7 @@ function finity.new(isdark, gprojectName, thinProject)
 
 						cheat.selected.Parent = cheat.dropdown
 						cheat.dropdown.Parent = cheat.container
+                        cheat.dropdown.ClipsDescendants = true
 						cheat.list.Parent = cheat.container
 					elseif string.lower(kind) == "textbox" then
 						local placeholdertext = data and data.placeholder
@@ -1030,6 +1031,7 @@ function finity.new(isdark, gprojectName, thinProject)
 							ClearTextOnFocus = false
 						})
 
+                        cheat.textbox.ClipsDescendants = true
 						cheat.background.MouseEnter:Connect(function()
 							finity.gs["TweenService"]:Create(cheat.textbox, TweenInfo.new(0.1), {TextColor3 = theme.textbox_text_hover}):Play()
 						end)
@@ -1201,8 +1203,8 @@ function finity.new(isdark, gprojectName, thinProject)
 							Name = "Background",
 							BackgroundColor3 = Color3.new(1, 1, 1),
 							BackgroundTransparency = 1,
-							Position = UDim2.new(0.1, 0, 0, 0),
-							Size = UDim2.new(0.9, 0, 1, 0),
+							Position = UDim2.new(0.5, 0, 0, 0),
+							Size = UDim2.new(0.5, 0, 1, 0),
 							ZIndex = 2,
 							Image = "rbxassetid://6644617491",
 							ImageColor3 = theme.button_background,

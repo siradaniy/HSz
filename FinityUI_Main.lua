@@ -144,6 +144,7 @@ function finity.new(isdark, gprojectName, thinProject)
 
 	if not finity.gs["RunService"]:IsStudio() and self.gs["CoreGui"]:FindFirstChild("FinityUI") then
 		warn("finity:", "instance already exists in coregui!")
+
 		return
 	end
 
@@ -1414,8 +1415,7 @@ function finity.new(isdark, gprojectName, thinProject)
 	self2.categories.ClipsDescendants = true
 
 	if not finity.gs["RunService"]:IsStudio() then
-		self2.userinterface.Parent = self.gs["PlayerGui"]
-		or self2.userinterface.Parent = self.gs["CoreGui"] --game.Players.LocalPlayer.PlayerGui
+		self2.userinterface.Parent = self.gs["CoreGui"]
 	else
 		self2.userinterface.Parent = self.gs["Players"].LocalPlayer:WaitForChild("PlayerGui")
 	end

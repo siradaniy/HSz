@@ -157,7 +157,7 @@ function finity.new(isdark, gprojectName, thinProject)
 
 	local toggled = true
 	local typing = false
-	local firstCategory = false
+	local firstCategory = true
 	local savedposition = UDim2.new(0.5, 0, 0.5, 0)
 
 

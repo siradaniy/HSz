@@ -142,10 +142,10 @@ function finity.new(isdark, gprojectName, thinProject)
 	local self2 = finityObject
 	local self = finity
 
-	--[[if not finity.gs["RunService"]:IsStudio() and self.gs["CoreGui"]:FindFirstChild("FinityUI") then
+	if not finity.gs["RunService"]:IsStudio() and self.gs["CoreGui"]:FindFirstChild("FinityUI") then
 		warn("finity:", "instance already exists in coregui!")
 		return
-	end]]--
+	end
 
 	local theme = finity.theme
 	local projectName = false
@@ -157,7 +157,7 @@ function finity.new(isdark, gprojectName, thinProject)
 
 	local toggled = true
 	local typing = false
-	local firstCategory = true
+	local firstCategory = false
 	local savedposition = UDim2.new(0.5, 0, 0.5, 0)
 
 
@@ -1414,7 +1414,8 @@ function finity.new(isdark, gprojectName, thinProject)
 	self2.categories.ClipsDescendants = true
 
 	if not finity.gs["RunService"]:IsStudio() then
-		self2.userinterface.Parent = game.Players.LocalPlayer.PlayerGui--self.gs["CoreGui"]
+		self2.userinterface.Parent = self.gs["PlayerGui"]
+		or self2.userinterface.Parent = self.gs["CoreGui"] --game.Players.LocalPlayer.PlayerGui
 	else
 		self2.userinterface.Parent = self.gs["Players"].LocalPlayer:WaitForChild("PlayerGui")
 	end

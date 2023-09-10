@@ -780,17 +780,21 @@ function finity.new(isdark, gprojectName, thinProject)
 						if data then
 							if data.default then
 								cheat.value = data.default
-							elseif data.options then
-								cheat.value = data.options[1]
+							elseif data.Options then
+								cheat.value = data.Options[1]
 							else
 								cheat.value = "None"
 							end
 						end
 
-						local options
+						local Options
+						local Toggles
 
-						if data and data.options then
-							options = data.options
+						getgenv().Toggles = Toggles
+						getgenv().Options = Options
+
+						if data and data.Options then
+							Options = data.Options
 						end
 
 						cheat.dropped = false
@@ -863,7 +867,7 @@ function finity.new(isdark, gprojectName, thinProject)
 								end
 							end
 
-							for _, value in next, options do
+							for _, value in next, Options do
 								local button = finity:Create("TextButton", {
 									BackgroundColor3 = Color3.new(1, 1, 1),
 									BackgroundTransparency = 1,
@@ -945,9 +949,9 @@ function finity.new(isdark, gprojectName, thinProject)
 
 						function cheat:RemoveOption(value)
 							local removed = false
-							for index, option in next, options do
+							for index, option in next, Options do
 								if option == value then
-									table.remove(options, index)
+									table.remove(Options, index)
 									removed = true
 									break
 								end
@@ -961,14 +965,14 @@ function finity.new(isdark, gprojectName, thinProject)
 						end
 
 						function cheat:AddOption(value)
-							table.insert(options, value)
+							table.insert(Options, value)
 
 							refreshOptions()
 						end
 						
 						function cheat:ClearDrop()
-							for k in pairs (options) do
-								options[k] = nil
+							for k in pairs (Options) do
+								Options[k] = nil
 							end
 							cheat.selected.Text = ""
 							refreshOptions()
